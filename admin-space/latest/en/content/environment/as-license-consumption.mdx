@@ -1,0 +1,39 @@
+---
+title: "License consumption and service lifecycle"
+description: "This topic describes where to find license consumption information and to understand the CyberArk service entitlement lifecycle."
+---
+
+This topic describes where to find license consumption information and to understand the CyberArk service entitlement lifecycle.
+
+Review license consumption information
+----------------------------------------------------
+
+You can review license consumption information in the License consumption page.
+
+To navigate to the License consumption page, in the Administration space, go to My environment &gt;Environment management &gt;License consumption.
+
+License consumption includes the following details about your license usage per service:
+
+*   Time that the displayed license usage information was last updated
+
+*   (Optional per service)Total number of licenses in use out of total number of available licenses
+
+*   Number of licenses in use out of number of available licenses per license type (the types vary per service)
+
+This feature is currently available for Privilege Cloud (see more information in the Privilege Cloud docs) and CyberArk Identity (see more information in the [CyberArk Identity docs](https://docs.cyberark.com/privilege-cloud-shared-services/latest/en/content/coreservices/getstarted/ispss-user-roles.htm "link to topic in CyberArk Identity docs that explains licensing")).
+
+If you want to see license usage information for another ISPSS service, contact your CyberArk representative.
+
+[](https://docs.cyberark.com/admin-space/latest/en/content/environment/as-license-consumption.htm)ISPSS service lifecycle
+---------------------------------------------------------------------------------------------------------------------------------------
+
+CyberArk manages the service lifecycle in the ISPSS environment according to the entitlement period and its renewal.
+
+The following table presents the different stages of the ISPSS service lifecycle.
+
+ISPSS entitlement lifecycle| Service status | Description and recommended actions |
+| --- | --- |
+| Active | * All CyberArk services in your ISPSS environment require valid and active entitlements, which are granted based on your purchased licenses * During the entitlement period, the service is available for use |
+| Expiration | * Some time before the entitlement period ends, CyberArk personnel will contact you to discuss service renewal * If the entitlement is not renewed, it will expire at the end of the initial entitlement period |
+| Suspension | * After the entitlement period expires, the related service is suspended * Access is restricted and the service is no longer available * Service availability depends on your renewal decision: * If the entitlement is renewed, the service is reactivated * If the entitlement is not renewed, the service is permanently discontinued |
+| Deletion | CyberArk does not delete the service immediately after suspension. It retains the service, along with its associated data and configurations, for a minimum of seven (7) days before permanent removal from the tenant. |

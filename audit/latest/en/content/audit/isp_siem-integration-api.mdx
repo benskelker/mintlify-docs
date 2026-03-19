@@ -1,0 +1,86 @@
+---
+title: "SIEM integration API"
+description: "This topic describes the API that you call to integrate Audit with third-party SIEM applications."
+---
+
+This topic describes the API that you call to integrate Audit with third-party SIEM applications.
+
+The SIEM integration API retrieves events from the previous 7 days.
+
+Filter by service, status, or action
+--------------------------------------------------
+
+In the Create Query API, use any of the following parameters in your query.
+
+The following table contains the Enum values for FilterType:
+
+| Enum value | Description |
+| --- | --- |
+| 1 | Contains string |
+| 2 | An exact match of string |
+| 3 | The number equals |
+| 4 | A number greater than equals |
+| 5 | A number less than equals |
+| 6 | Contains string in a list of strings |
+| 7 | An exact match of any of the strings in the list of strings |
+| 8 | Contains any of the strings in the list of strings |
+| 9 | A number less than |
+| 10 | The field exists |
+
+### Filter by service
+
+Set the filterModel.applicationCode parameter to the service name value.
+
+To view the full list of services, see [Application codes and corresponding services](/audit/latest/en/content/audit/isp_system-activities).
+
+### Filter by status
+
+Set the filterModel.auditType parameter to the status type value.
+
+Status type and values| Status type | Value |
+| --- | --- |
+| Service error Timeout or URL not found | System Error |
+| Failure reason Typo or a missing user permission | Failure |
+| Service status Success | Info |
+
+### Filter by action type
+
+Set the filterModel.ActionType parameter to the action type value:
+
+*   Login
+
+*   Logout
+
+*   Password
+
+*   Create
+
+*   Suspend
+
+*   Active
+
+*   Edit
+
+*   Delete
+
+*   Download
+
+*   Start
+
+*   End
+
+*   Execute
+
+*   Trust added
+
+*   Rotate
+
+*   View
+
+*   Sync
+
+*   Retrieve
+
+*   Install
+
+*   Upgrade

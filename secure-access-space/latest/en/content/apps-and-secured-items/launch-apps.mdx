@@ -1,0 +1,201 @@
+---
+title: "Launch web apps"
+description: "This section describes how to view and launch the web apps available in your Secure Access space."
+---
+
+This section describes how to view and launch the web apps available in your Secure Access space.
+
+Your system administrator can assign apps to you and configure them for single sign-on (SSO). This means you only have to sign in to your Secure Access space, then you can launch and sign in to assigned apps without entering additional credentials.
+
+In addition, your system administrator can enable you to save your own applications to the Secure Access space for SSO.
+
+Your admin might require MFA for some applications.
+
+View web apps
+---------------------------
+
+You can view your web apps from the Applications page of the Secure Access space. This page displays a button for each web app that your system administrator has assigned to you. If your Applications page is empty, no web apps have been assigned to you.
+
+Each web app button may have one or more of the following symbols, indicating a status or restriction:
+
+Symbols and descriptions for web app buttons| Symbol | Description |
+| --- | --- |
+| ![Image 1](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/new_39x21.png) | This appears when an application or secured item has been added to your Secure Access space dashboard. |
+| ![Image 2](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/shield_40x43.png) | This indicates that the CyberArk Secure Web Sessions is protecting the application. Refer to Secure Web Sessions documentation for more information. |
+| ![Image 3](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/people_30x25.png) | This indicates a shared access application or item. |
+| ![Image 4](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/exclamation_41x39.png) | This indicates an error in the application setup and remains until the issue is fixed. Applications with errors are grayed out and not accessible by end-users. |
+
+You can define the default set of applications that display on the Apps page of the user portal.
+
+To make sure that you see all of the web applications assigned to you, expand your username menu and then click Reload rights.
+
+Sign in to web apps
+---------------------------------
+
+In the Secure Access space, you can search for your applications using a variety of fields. The search results include matches based in the following fields:
+
+*   Name
+*   URL
+*   Username
+*   Description
+
+### Search for a specific application
+
+1.   At the top of the window, open the Search by list and select a search type (for example, **All**, **Name**, or **Username**).
+
+2.   In the Search field, enter a value to look for.
+
+3.   Press **Enter** or wait a moment for the results to appear.
+
+Filter the Secure Access space contents
+-----------------------------------------------------
+
+You can filter the contents in the Secure Access space using the following criteria:
+
+Filter options| Filter | Options |
+| --- | --- |
+| Type | * Applications * Passwords * Notes * Folders |
+| Shared | * Shared by me * Shared with me * Not shared |
+| Password risk | * Compromised * Weak * Aged Password risk filters appear only if enabled by your administrator. Detection for weak and aged passwords are early access features, provided on a case-by-case basis. |
+| Tags | Filter by custom tags |
+
+Filters use **AND** logic, so you can combine multiple criteria to refine results. For example, you can filter for applications and secured passwords with compromised passwords to quickly identify at-risk entries.
+
+### Filter the displayed contents
+
+1.   Select the filter button to expand the filter panel.
+
+2.   Under each category, select the options that match what you want to see. The contents update automatically.
+
+### Save and reuse filters
+
+Saved filters let you store up to ten filter combinations and select a default filter to load automatically each time you open the Secure Access space.
+
+#### Save a filter configuration
+
+1.   In the filter panel, select the desired filter criteria.
+
+2.   Do one of the following:
+
+    *   If no saved filter is currently selected, choose Save Filters.
+
+    *   If a saved filter is selected, choose:
+
+        *   Save to overwrite the selected filter with the current conditions.
+
+        *   Save As to create a new filter from the current conditions.
+
+3.   In the Save Filter Configuration dialog, enter a name. Filter names can contain up to 30 characters.
+
+4.   (Optional)Select Set as default to load this filter automatically whenever you open the Secure Access space.
+
+5.   Select Save.
+
+#### Manage or delete saved filters
+
+1.   Next to the Saved Filters menu, click the gear button.
+
+2.   On the Manage saved filters screen, highlight a filter's row and do one or both of the following:
+
+    *   Click Set as default to set the highlighted filter as the default filter.
+
+    *   Click Remove default to remove the highlighted filter as the default filter.
+
+    *   Click the trashcan button to delete a filter.
+
+3.   When finished, select Save Changes.
+
+Launch web apps
+-----------------------------
+
+You can launch web apps from the Secure Access space or the Browser Extension.
+
+If CyberArk Identity is configured to store application credentials in CyberArk PAM - Self-Hosted, then application credentials are stored and fetched from the PAM - Self-Hosted Vault.
+
+### Launch apps from the Secure Access space
+
+From the Secure Access space, click an app tile to launch the app in your default browser.
+
+If it's the first time you are launching the app, you may need to enter your app user name and password. These credentials may differ from the credentials you use to sign in to the Secure Access space. CyberArk Identity stores your app credentials and automatically authenticates you the next time you launch the app.
+
+If you are launching a shared app, multi-factor authentication may be required.
+
+### Launch apps from the Browser Extension
+
+You can launch apps from your Browser Extension, without opening the Secure Access space.
+
+Refer to Workforce Password Management documentation for more information about using the Browser Extension.
+
+### [](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/launch-apps.htm)Configure a generic app to auto-fill credentials at launch
+
+The following procedure is applicable to PAM - Self-Hosted business users that have migrated their business application accounts to the Identity User Portal, but the apps were migrated as generic username and password apps.
+
+In this scenario, you can launch an app, but CyberArk Identity will not autofill the credentials. To configure the app to autofill credentials at launch, use the Land & Catch function of the Browser Extension, as described below.
+
+For the following procedures, your system administrator must enable Land & Catch in the Browser Extension.
+
+1.   In the Secure Access space, go to Apps and Secured Items and locate the generic app, then click the Show menu button and click Settings.
+
+2.   Copy the user name and password from the User Identity fields.
+
+3.   Launch the app and manually paste the copied credentials into the user name and password fields.
+
+4.   Use the Land & Catch feature to add the app to the Secure Access space. For more details, see [Manage web apps](/secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps).
+
+You can now see two application buttons for the same application in the Secure Access space.
+
+5.   As the generic app is no longer needed, you can delete it. Go to Application Settings&gt;Delete this app? and click Yes.
+
+Update your user identity for a web app
+-----------------------------------------------------
+
+If you change your user name or password after an app is deployed to the Secure Access space, you need to update your user identity in order to continue using single sign-on.
+
+When you update your user identity for an app on the Secure Access space, it automatically synchronizes with the CyberArk Identity mobile app.
+
+To update your user identity for an app:
+
+1.   In the Secure Access space, click Applications.
+2.   Find the app and click the gear button to open Application Settings.
+3.   Under User Identity, enter the user name and password for the app.
+
+    *   To copy your user name or password to your clipboard, click Copy next to the field.
+
+    *   To see your password, click the eye button next to the field.
+
+You may not have these options if your system administrator has disabled them.
+
+4.   Click Save.
+
+Manage app tags
+-----------------------------
+
+This section describes how to create tags that you can use to group the apps in your Secure Access space.
+
+For example, you could create one tag for cloud storage apps and another tag for travel apps. You could also create a tag called "favorites", so you can easily find your most used apps.
+
+### [](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/launch-apps.htm)Create and assign a tag
+
+You can create and assign tags from the Application Settings window.
+
+1.   Find the app you want to configure and click the gear button to open the Application Settings window.
+
+2.   In the Tags field, select an existing tag using the drop-down menu or start typing to create a new tag.
+
+An app can have multiple tags. If you want to assign another tag to the app, repeat this step.
+
+3.   Click Save.
+
+Repeat this procedure for every app that you want to tag.
+
+Tags that you create in Application Settings override the default app grouping defined by your system administrator.
+
+### Remove a tag from an app
+
+1.   Find the app you want to configure and click the gear button to open the Application Settings window.
+
+2.   In the Add Tags field, click X for the tag that you want to delete.
+
+3.   Click Save.
+
+If you delete all tags from an app, the app reverts to the default grouping defined by your system administrator.

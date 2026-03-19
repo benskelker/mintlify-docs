@@ -1,0 +1,42 @@
+---
+title: "Add users and roles"
+description: "This section covers all steps required to add and authenticate your users in Identity Administration and assign them the relevant permissions to access and use CyberArk shared services on ISPSS."
+---
+
+This section covers all steps required to add and authenticate your users in Identity Administration and assign them the relevant permissions to access and use CyberArk shared services on ISPSS.
+
+User types
+------------------------
+
+There are two main types of users in ISPSS.
+
+| User type | Description |
+| --- | --- |
+| Interactive users - for end user access to the User Portal and to any supported CyberArk service. | Any user who signs in to CyberArk to interact with a service portal (for example, the User Portal). Interactive users are defined manually, or are imported from the following sources: * External directory based on your authentication solution: * On-prem authentication solution, such as Microsoft Active Directory, LDAP, or RADIUS. * Cloud-based authentication, such as Microsoft Entra ID or Google Workspace. * External Identity Provider (IdP)using SAML token to provide access to resources you want to share. |
+| Service users, for non-interactive API | A service user, dedicated to API and automation tasks. This user has least privilege access permissions, is not assigned MFA policies, and cannot access Identity Administration. Customer service users: Any user who needs to run API and automation tasks must use a service user. To create a Service user, see Custom OAuth2 Client and the client credentials it describes. To run API requests, see [API Authentication for CyberArk Identity Security Platform Shared Services](/ispss-deployment/latest/en/content/ispss/ispss-api-authentication). Internal service users: Internal service users built into the ISPSS for internal tasks. These users may appear in the user reports and audits generated in the various ISPSS services. See the service user information in this section. |
+
+User roles
+------------------------
+
+Roles determine which service the assigned users can access and the set of permissions that they have in that specific service.
+
+After users are provisioned on CyberArk Identity Security Platform Shared Services, either from external directories or manually, the users, or groups, must be assigned to at least one role.
+
+After assigning roles to users, you can invite them to sign in to ISPSS and access the specific service.
+
+To learn about supported roles per service, see ISPSS user roles.
+
+User provisioning workflow
+----------------------------------------
+
+The following work flow illustrates the steps required to add and authenticate your users, then authorize them to securely access relevant services.
+
+<Frame>
+![Image 3](https://docs.cyberark.com/ispss-deployment/latest/en/content/ispss/images/ispssaddusers&roles.png)
+</Frame>
+
+### Prepare for deployment
+
+1.   Receive the CyberArk Welcome email to the CyberArk Identity Security Platform Shared Services portal. The email contains a link to your CyberArk Identity Security Platform Shared Services cloud tenant, access credentials and your customer ID.
+
+2.   Check necessary setup details and sign in to the ISPSS user portal. See [Collect setup details and sign in to the ISPSS user portal](/ispss-deployment/latest/en/content/ispss/ispss-collect-login-and-setup-details).

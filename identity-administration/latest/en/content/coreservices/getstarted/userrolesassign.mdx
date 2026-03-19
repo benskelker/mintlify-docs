@@ -1,0 +1,24 @@
+---
+title: "Assign users to roles and manage roles"
+description: "This topic describes how to manage role membership in the Identity Administration portal to control authorization to features and services."
+---
+
+This topic describes how to manage role membership in the Identity Administration portal to control authorization to features and services.
+
+Users can access a specific CyberArk service only if assigned a role with access permissions to that service. Built-in roles are available per service to define the access levels for each user in that service. Roles can be assigned to a group of users or to a single user.
+
+Roles are the most efficient way to  assign access rights to multiple users, enforce adaptive MFA, and deploy applications. All users should belong to at least one role.
+
+See list of Built-in roles and [CyberArk Identity Security Platform Shared Services user roles](/identity-administration/latest/en/content/coreservices/getstarted/ispss-user-roles).
+
+About the Everybody role
+--------------------------------------
+
+By default, all new users are added to the Everybody role. Members of the Everybody role are automatically granted permission to access the Identity Administration User Portal. Make sure the Everybody role allows user access to the Identity Administration User Portal at all times. This allows users to access the Identity Administration User Portal, open assigned applications and enroll mobile devices.
+
+Before you begin
+------------------------------
+
+Check the following:
+
+*   You must be assigned to the System Administrator role or to a role with the Role Management administrative right. You can only create roles and assign users to roles if you have the appropriate rights.

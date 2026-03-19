@@ -1,0 +1,162 @@
+---
+title: "Discover AI agents in AWS"
+description: "This topic describes how to deploy scanners and view discovered AWS Bedrock and AWS AgentCore agents in the Discovery & Context unified inventory and dashboard, complete with trends, risk analysis, and recommended"
+---
+
+This topic describes how to deploy scanners and view discovered AWS Bedrock and AWS AgentCore agents in the Discovery & Context unified inventory and dashboard, complete with trends, risk analysis, and recommended remediation steps.
+
+Overview
+----------------------
+
+Use this capability to find AI agents in your cloud and review them in Discovery & Context. You need to deploy a scanner in each selected AWS account. The scanner is used to discover supported agent types and reports results to Discovery & Context for inventory and insights.
+
+Before you begin
+------------------------------
+
+Verify the required access and resources are available before starting scanner deployment.
+
+[Identity Administration](/admin-space/latest/en/content/secureai/discoveryaws)
+
+*   You know your CyberArk Identity tenant name. Your tenant name is taken from the Identity Administration User Portal from your account settings About page.
+
+[AWS environment setup](/admin-space/latest/en/content/secureai/discoveryaws)
+
+*   Use a dedicated environment for scanner deployment. un the scanner deployment in a new, dedicated environment that is created and used only for this process.
+
+*   Make sure your AWS user has the following permissions:
+
+    *   CloudFormation stack creation
+
+    *   IAM role creation
+
+    *   AWS Glue job and trigger management
+
+    *   S3 bucket operations
+
+    *   Secrets Manager access
+
+*   Ensure you have existing Bedrock Agent or AgentCore agents to collect data from.
+
+*   Verify AWS Bedrock Agent and AgentCore services are available in your target region.
+
+*   The discovery process runs on all regions, not only in the region it is deployed.
+
+Step 1: [](https://docs.cyberark.com/admin-space/latest/en/content/secureai/discoveryaws.htm)Create a CyberArk Identity service user for scanner
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Create a new service user to allow the scanner to authenticate with the Discovery & Context service.
+
+As a best practice, we recommend creating a separate user for each scanner (one per AWS account). Give each user a meaningful name, such as the AWS account ID it is associated with.
+
+1.   In Identity Administration, Go to Core Services&gt;Users.
+
+2.   Click Add User and complete the following fields:
+
+    *   Login name
+
+    *   Display name
+
+    *   Password
+
+3.   In the Status checklist, select the Is OAuth confidential client checkbox.
+
+4.   The Is Service User check box should be selected.
+
+5.   Click Create User.
+
+Step 2: Add the service user to the Discovery & Context role
+--------------------------------------------------------------------------
+
+Assign the newly created service user to the Discovery & Context role that enables them to authenticate the discovery job.
+
+1.   In Identity Administration, go to Core Services&gt;Roles.
+
+2.   Select the role with the name Discovery & Context AWS Communication.
+
+3.   Go to the Members tab.
+
+4.   Search for the user you created and add them to the role.
+
+Service users are not displayed in the list of active users as they do not access the Identity Administration User Portal. To view service users, click All Users or All Service Users.
+
+Step 3: Download and run scanner in AWS
+-----------------------------------------------------
+
+1.   Open a terminal and connect to your target AWS account.
+
+2.   Download the scanner from [Marketplace](https://community.cyberark.com/marketplace/s/#software-aK4Vy00000001FRKAY-). From the Components list, select the AWS Bedrock scanner.
+
+The zip folder includes the following files:
+
+    *   deploy.sh - The deployment script that runs the automatic deployment of the scanner.
+
+    *   cloudformation-template.yaml - CloudFormation template for AWS infrastructure.
+
+    *   dependencies.zip - Pre-built dependencies package with pinned versions (boto3, botocore, requests).
+
+    *   discovery.py - The glue job script.
+
+3.   Run the deployment script.
+
+Copy to clipboard`./deploy.sh`
+4.   An S3 bucket is needed to store the discovery process deployment artifacts. If an S3 bucket doesn't exist, it will be created. Otherwise, when prompted, provide:
+
+    *   S3 bucket name - Choose a unique bucket name. A name is created for you if you don't choose one.
+
+In AWS, S3 bucket names must be unique across all AWS accounts and all regions within the same partition. A partition is a grouping of regions. A bucket name cannot be used by another AWS account in the same partition until the original bucket is deleted.
+
+For details, see [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html#automatically-created-buckets). If your access is denied, the bucket name might already exist in another account.
+
+Consider using this naming pattern - `&lt;bucket-purpose&gt;-&lt;aws-account-id&gt;`
+    *   AWS region (default us-east-1)
+
+5.   When prompted, add the following CyberArk Identity details:
+
+    *   Tenant name
+
+    *   Service user name
+
+    *   Service user password
+
+The scan runs immediately. The scanner is then planned to run every 12 hours.
+
+When scanner deployment is completed, the following resources are deployed:
+
+| Resource | Description |
+| --- | --- |
+| AWS Glue ETL Job | Executes data collection, upload logic and scheduling triggers. |
+| AWS Secrets Manager | Securely stores CyberArk service user credentials fetched by the scanner each run. |
+| AWS IAM | Manages execution roles and permissions. |
+| AWS S3 | Stores Discovery process deployment artifacts. |
+| AWS CloudWatch | Provides logging and monitoring capabilities. |
+| AWS Permissions used by the scanner when scanning | Service: bedrock, bedrock-agentcore Actions: Get*, List* |
+
+Step 4: Monitor scan status in AWS
+------------------------------------------------
+
+Go to AWS Glue and monitor the job run status and related logs for troubleshoot in case of failure.
+
+*   Monitor CloudWatch Logs for execution details
+
+*   Verify successful authentication and data upload
+
+Step 5: View discovered AI agents in Discovery & Context dashboard
+--------------------------------------------------------------------------------
+
+For details, see Analyze the AI agent inventory and remediate risks.
+
+Uninstall the scanner
+-----------------------------------
+
+1.   Delete the CloudFormation stack.
+
+Copy to clipboard`aws cloudformation delete-stack --stack-name cyberark-discovery --region your-region`
+2.   (Optional) Clean up S3 bucket
+
+Copy to clipboard`aws s3 rm s3://your-bucket-name/cyberark-discovery/discovery.py`
+aws s3 rm s3://your-bucket-name/cyberark-discovery/dependencies.zip
+
+aws s3 rb s3://your-bucket-name --force
+3.   (Optional) Clean up local build artifacts.
+
+Copy to clipboard`rm -f dependencies.zip`

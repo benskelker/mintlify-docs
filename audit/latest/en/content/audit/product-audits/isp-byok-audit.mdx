@@ -1,0 +1,37 @@
+---
+title: "Encryption Key Provider audit events"
+description: "This topic describes Encryption Key Provider (EKP) audit events and codes. This capability is also known as Bring your own key (BYOK) capability. To learn more about Encryption Key Provider functionality, see [Bring"
+---
+
+This topic describes Encryption Key Provider (EKP) audit events and codes. This capability is also known as Bring your own key (BYOK) capability. To learn more about Encryption Key Provider functionality, see [Bring your own key (BYOK) for data encryption](/ispss-deployment/latest/en/content/privilege cloud/privcloud-byok-intro).
+
+Audit events by component and activity
+----------------------------------------------------
+
+Audit events and codes are available for the component and activities listed below.
+
+Encryption Key Provider (EKP/BYOK) audit events| Component | Activity |
+| --- | --- |
+| BYOK configuration | * Enable * Disable * Configure |
+| Key management | * Revoke * Reactivate * Rotate |
+
+[](https://docs.cyberark.com/audit/latest/en/content/audit/product-audits/isp-byok-audit.htm)Audit codes
+----------------------------------------------------------------------------------------------------------------------
+
+The following table includes Encryption Key Provider (EKP)audit codes and descriptions.
+
+### Encryption Key Provider (EKP) configuration
+
+EKP/BYOK configuration audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| EKP1001 | Info | BYOK is enabled. CyberArk started encryption using your KMS key. |
+| EKP1002 | Info | BYOK is disabled. CyberArk stopped encryption using your KMS key and switched to the CyberArk encryption key. |
+| EKP1003 | Info | Your KMS key is configured in the CyberArk BYOK service. |
+
+### Key Management
+
+EKP/BYOK management audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| EKP1004 | Info | The customer KMS key is revoked. |
+| EKP1005 | Info | The customer KMS key is reactivated. |
+| EKP1006 | Info | The customer KMS key is rotated. Your previous KMS key is replaced with a new KMS key. |

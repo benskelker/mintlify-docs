@@ -1,0 +1,36 @@
+---
+title: "Set remote access to target machines"
+description: "Providing access to your organization's internal assets from remote is essential for maintaining business operations."
+---
+
+Providing access to your organization's internal assets from remote is essential for maintaining business operations.
+
+Privilege Cloud uses CyberArk Remote Access to enable you to configure remote access for privileged users in your organization as well as just-in-time provisioning to remote vendors.
+
+CyberArk Remote Access is a SaaS product that enables vendors with just in time (JIT)access to your internal assets without the need for a VPN, agents, or passwords. To learn about Remote Access and how it works, see Introduction to CyberArk Remote Access and CyberArk Remote Access main concepts.
+
+[](https://docs.cyberark.com/ispss-deployment/latest/en/content/privilege%20cloud/privcloud-remote-access-lp.htm)Remote access options
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Privilege Cloud enables remote access for your organization's employees and vendors, with the following setup options:
+
+| Option | Setup |
+| --- | --- |
+| Remote access for employees | Set up one of the following options: * Remote access service for independent setup (modern service): Multi-region, automatically-scaled HTML5GW service for independent installation by the customer. This is CyberArk's recommended solution for ISPSS customers. This solution is supported in all [AWS regions](/ispss-deployment/latest/en/content/getstarted/issp-data-centers) that support SIA, excluding the AWS region Jakarta and FedRAMP environments. See [Configure remote for employees using the HTML5 Gateway service](/ispss-deployment/latest/en/content/privilege cloud/privcloud-config-remote-access-html5gw-service). * Remote access enabled with CyberArk Support (legacy service): Based on a HTML5 gateway component installed in Privilege Cloud backend, and therefore dependent on CyberArk Support. See [Configure remote access for employees](/ispss-deployment/latest/en/content/privilege cloud/privcloud-config-remote-access). |
+| Remote access for vendors | Enables select vendors to access specified organizational assets using Remote Access. See [Configure remote access for vendors](/ispss-deployment/latest/en/content/privilege cloud/privcloud-config-remote-access-vendors). |
+
+Remote access does not require additional installation (such as a Remote Access connector).
+
+Flow overview
+---------------------------
+
+The following diagram displays the flow of remote access connections and the components that take part in this process.
+
+Choose the tab that displays your remote access solution and click the image to enlarge the display:
+
+*   [Independent HTML5GW service](/ispss-deployment/latest/en/content/privilege cloud/privcloud-remote-access-lp)
+*   [Support-dependent HTML5GW component](/ispss-deployment/latest/en/content/privilege cloud/privcloud-remote-access-lp)
+
+[![Image 3: Remote Access based on HTML5GW service](https://docs.cyberark.com/ispss-deployment/latest/en/content/images/privilege%20cloud/privcloud-ra-ispss-dpa.png)](https://docs.cyberark.com/ispss-deployment/latest/en/content/images/privilege%20cloud/privcloud-ra-ispss-dpa.png)
+
+[![Image 4: Remote Access based on HTML5GW component](https://docs.cyberark.com/ispss-deployment/latest/en/content/images/privilege%20cloud/privcloud-ra-ispss-securetunnel.png)](https://docs.cyberark.com/ispss-deployment/latest/en/content/images/privilege%20cloud/privcloud-ra-ispss-securetunnel.png)

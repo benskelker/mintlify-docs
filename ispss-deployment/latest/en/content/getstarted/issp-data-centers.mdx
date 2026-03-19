@@ -1,0 +1,38 @@
+---
+title: "AWS region support"
+description: "This topic lists the supported AWS regions for each CyberArk service. When a region is chosen for a service, that service is deployed in the closest supported region."
+---
+
+This topic lists the supported AWS regions for each CyberArk service. When a region is chosen for a service, that service is deployed in the closest supported region.
+
+Supported AWS regions for ISPSS
+---------------------------------------------
+
+### Business services
+
+| Region | Service |
+| --- | --- |
+| Privilege Cloud | Identity Administration | SIA* | SCA | Identity Flows | Secrets Manager - SaaS** | Secrets Hub | Cloud Visibility | Cloud Discovery | Risk Management | Threat Detection and Response | Secure AI agents |
+| America East us-east-1 (Virginia) | ü | ü | ü | ü | ü | ü | ü | ü | ü | ü | û | ü |
+| Canada ca-central-1 (Montreal) | ü | ü | ü | ü | ü | ü | ü | ü | ü | ü | û | û |
+| Brazil sa-east-1 (Sao Paulo) | ü | û | ü | ü | û | ü | û | û | û | û | û | û |
+| Germany eu-central-1 (Frankfurt) | ü | ü | ü | ü | ü | ü | ü | ü | ü | ü | û | û |
+| UK eu-west-2 (London) | ü | ü | ü | ü | ü | ü | ü | ü | ü | ü | û | û |
+| UAE me-central-1 | ü | ü | ü | ü | ü | ü | û | û | û | û | ü | û |
+| Israel il-central-1 (Tel Aviv) | ü | û | ü | ü | ü | û | û | û | û | û | ü | û |
+| Singapore ap-southeast-1 | ü | ü | ü | ü | ü | ü | ü | ü | ü | ü | û | û |
+| Australia ap-southeast-2 (Sydney) | ü | ü | ü | ü | ü | ü | ü | ü | ü | ü | û | û |
+| Indonesia ap-southeast-3 (Jakarta) | ü | ü | û | û | ü | û | û | û | û | û | ü | û |
+| Japan ap-northeast-1 (Tokyo) | ü | ü | ü | ü | ü | û | û | û | ü | û | ü | û |
+| India ap-south-1 (Mumbai) | ü | ü | ü | ü | ü | ü | û | û | ü | û | ü | û |
+| Italy eu-south-1 (Milan) | ü | ü | ü | û | ü | ü | û | û | û | û | ü | û |
+| America West us-west-2 (Oregon) | û | û | û | û | û | ü | ü | û | û | û | û | û |
+
+* All regions that support SIA also support Remote Access HTML5GW service.
+
+** When deploying in Milan, CyberArk routes IoT components to Frankfurt.
+
+### [](https://docs.cyberark.com/ispss-deployment/latest/en/content/getstarted/issp-data-centers.htm)Shared services
+
+| Region | Service |
+| --- | --- |

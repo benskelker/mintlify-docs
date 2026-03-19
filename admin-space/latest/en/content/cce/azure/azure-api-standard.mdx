@@ -1,0 +1,29 @@
+---
+title: "Azure standard APIs"
+description: "This topic contains the APIs that you use to add and manage Microsoft Entra tenant s and subscriptions."
+---
+
+This topic contains the APIs that you use to add and manage Microsoft Entra tenant s and subscriptions.
+
+Before you use APIs to add Microsoft Entra tenant s and Azure subscriptions, make sure that you have the required permissions. For more information, see [Azure resources and required permissions](/admin-space/latest/en/content/cce/azure/azure-resources).
+
+For end-to-end guidance on using the standard APIs, see:
+
+[Add Microsoft Entra tenant API workflow](/admin-space/latest/en/content/cce/azure/azure-entratenant-main)
+
+[Add management group API workflow](/admin-space/latest/en/content/cce/azure/azure-managementgroup-main)
+
+[Add subscription API workflow](/admin-space/latest/en/content/cce/azure/azure-subscription-main)
+
+Microsoft Entra tenant, management group, and subscription standard APIs
+--------------------------------------------------------------------------------------
+
+*   All APIs must be run in the following domain:
+
+&lt;subdomain&gt;.cloudonboarding.cyberark.cloud
+
+*   The Microsoft Entra tenant discovery scan API will be deprecated: `/api/azure/entras/scan`
+
+Use the new Azure discovery scan API: `/api/azure/scan`
+
+[Edit this hyperlink to point the relevant YAML file in Content/YAML.](https://docs.cyberark.com/admin-space/latest/en/content/yaml/cce-apis-azure-standard.json)

@@ -1,0 +1,58 @@
+---
+title: "Threat Detection and Response audit events"
+description: "This topic describes the Threat Detection and Response audit events and codes."
+---
+
+This topic describes the Threat Detection and Response audit events and codes.
+
+Audit events by component and activity
+----------------------------------------------------
+
+Audit events and codes are available for the components and activities listed below.
+
+Threat Detection and Response audit events by component and activity| Component | Activity | Event name |
+| --- | --- | --- |
+| Security alert type |
+|  | Create | New alert created |
+|  | Execute | Response triggered on the security alert |
+|  | Status update | Security alert resolved |
+|  | Edit | Alert updated |
+|  | Disable | Security alert disabled |
+|  | Enable | Security alert enabled |
+|  | Restore | Security alert settings restored to default |
+|  | * Edit * Create * Delete * Enable * Disable | Security configuration of alert changed |
+|  | Edit | Response settings of security alert changed |
+|  | Edit | Added a response to security alert settings |
+|  | Edit | Removed a response from security alert settings |
+|  | Create | Added a response to security alert settings while creating a rule |
+| General settings |
+|  | Edit | General settings updated |
+| Import from SIEM |
+|  | Download | Certificate information downloaded for SIEM settings |
+
+Audit codes
+-------------------------
+
+The following table describes the Threat Detection and Response audit codes according to functionality.
+
+Threat Detection and Response audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| ITDR0001 | Create | Security alert has been reported. |
+| ITDR0002 | Execute | * A manual response was triggered by user on the alert. * An automated response was triggered for the alert. |
+| ITDR0003 | Status update | * A security alert was resolved by the user. * A security alert was automatically resolved. |
+| ITDR0005 | Edit | The security alert was updated. |
+| ITDR0021 | Disable | The security alert was disabled by user. |
+| ITDR0022 | Enable | The security alert was enabled by user. |
+| ITDR0023 | Restore | The settings for the security alert were restored to default by user. |
+| ITDR0024 |
+|  | Edit | User changed the security configuration of alert, modifying the severity. |
+|  | Create | User added a security configuration for the alert with properties set to category and pattern. |
+|  | Delete | User deleted a security configuration for the alert with properties set to severity value. |
+|  | Disable | User changed the security configuration of alert, modifying the rule to disabled. |
+|  | Enable | User changed the security configuration of alert, modifying the rule to enabled. |
+| ITDR0027 | Edit | User updated the general settings. |
+| ITDR0041 | Edit | User changed the response setting for the security alert configuration. |
+| ITDR0042 | Edit | User added response to security configuration alert. |
+| ITDR0043 | Edit | Use removed response from security configuration alert. |
+| ITDR0044 | Create | User added response to security configuration alert while creating a rule. |
+| ITDR0061 | Download | User downloaded certificate information to import SIEM settings in the Identity Administration section. |

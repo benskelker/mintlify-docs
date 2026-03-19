@@ -1,0 +1,49 @@
+---
+title: "Secure AI agents support and scope"
+description: "This topic describes the scope of what the secure AI agents capability supports."
+---
+
+This topic describes the scope of what the secure AI agents capability supports.
+
+Supported AI agent types
+--------------------------------------
+
+The Secure AI agents capability supports the following agent types:
+
+*   Claude (Anthropic)
+
+*   Copilot (Microsoft Copilot Studio)
+
+*   Other agents must support OAuth 2.1.
+
+*   Custom agents - You can define custom agents and you need to add the redirect URL for them. The redirect URL is a specific, pre-registered web address on the AI agent's platform where CyberArk Identity securely sends the user's browser back to after they have successfully signed in and approved the connection, which allows the agent to receive the security approval and finalize the handshake.
+
+Scale and platform
+--------------------------------
+
+*   Agent capacity - Up to 1,000 agents per tenant.
+
+*   Dynamic client registration is currently not supported.
+
+Prepare environment and services
+----------------------------------------------
+
+Your tenant needs to have the following environments and services set up:
+
+[Secure Infrastructure Access (SIA)](/admin-space/latest/en/content/secureai/scope)
+
+Deploy and configure SIA in a Zero Standing Privilege (ZSP) model to manage database access. During the initial release, agents connect to databases through Secure Infrastructure Access. Secure Infrastructure Access provides the secure access layer required for AI agents to connect to databases through CyberArk’s infrastructure.
+
+For details, see Manage database access with zero standing privileges
+
+### Prepare to use Secure Infrastructure Access database with MCP
+
+*   Your tenant must have Secure Infrastructure Access enabled. AI agent registration and configuration are only available for tenants that have Secure Infrastructure Access enabled.
+
+*   MFA caching must be activated (enabled by default).
+
+*   Client IP enforcement - When multiple outgoing IP addresses are used, functionality might not behave as expected in all cases.
+
+*   Database support - Only PostgreSQL is supported.
+
+*   The AI agent can invoke only the default database.

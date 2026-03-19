@@ -1,0 +1,26 @@
+---
+title: "Recommendation filter logic reference"
+description: "This topic describes the filter logic used behind the accounts displayed in each recommendation."
+---
+
+This topic describes the filter logic used behind the accounts displayed in each recommendation.
+
+| Recommendation | Description | Filter logic |
+| --- | --- | --- |
+| Domain admin accounts must be secured | Calculates Windows Domain accounts that are members of active directory domain groups | WHEN type = 'Windows' and sub_type='Domain' and privileged= TRUE AND isDomainPrivilege: True |
+| Domain accounts with privilege access to Windows Servers should be secured | Calculates Windows Domain accounts that are members of administrative Server groups based on SID | WHEN type = 'Windows' and sub_type='Domain' and privileged= TRUE AND isDomainPrivilege: False AND isServerPrivilege: True |
+| Windows server local admin accounts must be secured | Calculates the total number of privileged Windows server admin accounts (local and loosely classified) | WHEN type = 'Windows' and sub_type=('Local', 'Loosely') and privileged= TRUE AND machineType='Server' |
+| Windows workstation local admin accounts must be secured | Calculates the total number of privileged Windows workstation accounts (local and loosely classified) | WHEN type = 'Windows' and sub_type=('Local', 'Loosely') and privileged= TRUE AND machineType='Workstation' |
+| Windows Local Admin accounts on unclassified machine types must be secured | Calculates the total number of privileged Windows local unclassified accounts | WHEN type = 'Windows' and sub_type=('Local') and privileged= TRUE AND (machineType = null OR machineType doesn't exist) |
+| Windows Local Admin accounts on loosely connected machines must be secured | Calculates the total number of privileged Windows loosely unclassified accounts | WHEN type = 'Windows' and sub_type=('Loosely') and privileged= TRUE AND (machineType = null OR machineType doesn't exist) |
+| macOS admin accounts must be secured | Calculates the total number of privileged macOS admin accounts | WHEN type = 'Mac' and sub_type='Loosely' and privileged= TRUE |
+| *NIX admin accounts must be secured | Calculates the total number of privileged *NIX admin accounts | WHEN type = 'Unix' and sub_type='Loosely' and privileged= TRUE WHEN type = 'Unix' and sub_type='Password' and privileged= TRUE WHEN type = 'Unix' and sub_type='sshKey' and privileged= TRUE |
+| Domain accounts (non-privileged or unknown) should be secured | Calculates the total number of non-privileged and unknown Domain accounts | WHEN type = 'Windows' and sub_type='Domain' and privileged= FALSE WHEN type = 'Windows' and sub_type='Domain' and privileged IS NULL |
+| Windows server local accounts (non-privileged or unknown) should be secured | Calculates the total number non-privileged and unknown Windows server accounts of (local + loosely classified) | WHEN type = 'Windows' and sub_type=('Local', 'Loosely') and privileged= FALSE AND machineType='Server' WHEN type = 'Windows' and sub_type=('Local', 'Loosely') and privileged IS NULL AND machineType='Server' |
+| Windows workstation local accounts (non-privileged or unknown) should be secured | Calculates the total number of non-privileged and unknown Windows workstation accounts (local + loosely classified) | WHEN type = 'Windows' and sub_type=('Local', 'Loosely') and privileged= FALSE AND machineType='Workstation' WHEN type = 'Windows' and sub_type=('Local', 'Loosely') and privileged IS NULL AND machineType='Workstation' |
+| macOS accounts (non-privileged or unknown) should be secured | Calculates the total number of non-privileged and unknown macOS accounts | WHEN type = 'Mac' and sub_type='Loosely' and privileged= FALSE WHEN type = 'Mac' and sub_type='Loosely' and privileged IS NULL |
+| *NIX accounts (non-privileged or unknown) should be secured | Calculates the total number of non-privileged and unknown *NIX accounts | WHEN type = 'Unix' and sub_type='Password' and privileged= FALSE WHEN type = 'Unix' and sub_type='Password' and privileged IS NULL WHEN type = 'Unix' and sub_type='sshKey' and privileged= FALSE 'WHEN type = 'Unix' and sub_type='sshKey' and privileged IS NULL WHEN type = 'Unix' and sub_type='Loosely' and privileged= FALSE WHEN type = 'Unix' and sub_type='Loosely' and privileged IS NULL |
+| Database admin accounts must be secured | Calculates the total number of privileged database accounts of type: SQLServer, PostgreSQL, OracleDatabase, MySQL | WHEN type in (SQLServer, PostgreSQL,OracleDatabase, MySQL) and privileged= TRUE |
+| Database accounts with non-privileged access could be secured | Calculates the total number of non-privileged database accounts of type: SQLServer, PostgreSQL, OracleDatabase, MySQL | WHEN type in ( SQLServer, PostgreSQL,OracleDatabase, MySQL) and privileged= FALSE OR NULL |
+
+*   [Recommendation filter logic reference](/identity-protection-space/latest/en/content/risk-management/rec-logic)

@@ -1,0 +1,93 @@
+---
+title: "Certify user access"
+description: "This topic describes how to certify or revoke user access to resources during an identity certification campaign."
+---
+
+This topic describes how to certify or revoke user access to resources during an identity certification campaign.
+
+What is an identity certification campaign?
+--------------------------------------------------------
+
+An identity certification campaign enables your organization to define and run a periodic review of the access a group of users have to various resources. For example, your organization can create a monthly campaign to review users' access to finance applications, as well as to selected Safes or roles.
+
+Types of campaigns
+--------------------------------
+
+There are two types of campaigns.
+
+Campaign types| Type | What certifiers can do |
+| --- | --- |
+| Review access for individual users | Certify or revoke individual users' access to apps, Safes, and role memberships. |
+| Review access for roles and AD groups | Certify or revoke the ability of roles and AD groups in your organization to: * Access apps and Safes * Retain existing users, roles, or groups as members Certifying or revoking a role's or group's right to access a resource affects users in roles or groups that may be nested under parent roles or groups. Consider the following example scenario. Example Group A contains nested group B, and group B contains nested group C (A &gt; B &gt; C). Tom is a member of group C. If you revoke resource access for group A, then access is also automatically revoked for users in groups B and C. Tom loses whatever access he inherited as a member of group C. If you revoke access only for group C, then Tom still loses access but users in groups A and B are not affected. |
+
+Campaign cycles
+-----------------------------
+
+A campaign consists of one or more cycles. A cycle is a period of time during which you may review user access. If a campaign ends before you have reviewed all items, your administrator has configured the campaign to either continue or revoke users' access for the unreviewed items.
+
+What does a certifier do?
+--------------------------------------
+
+You are the certifier because you are the users' manager, or your organization specifically selected you to certify access. Your task as a certifier is to certify, revoke, or acknowledge access to resources for each user included in the campaign. You might have to do this on-demand, or at intervals configured by your organization.
+
+### Certifier actions
+
+As a certifier, it is important to understand how your actions affect each user in the campaign.
+
+Certifier actions | Action | Impact |
+| --- | --- |
+| Certify | Certifying confirms the following: * A user is permitted to access resources that the user was manually given access to by an administrator or as part of an access request. * A role or group is permitted to access apps and Safes, and may retain existing users, roles, or groups as members. |
+| Revoke | When a certifier revokes permission, the user, role, or group can no longer access associated resources or memberships in roles or groups. An administrator may configure Identity Compliance to revoke access when any of the following events take place: * The certifier saves a campaign cycle. * The certifier signs off on the campaign cycle. * On the scheduled date and time that the certifier selects when reviewing access permissions. |
+| Acknowledge | Certifiers see the Acknowledge option only if a user has access due to role or group membership. Clicking Acknowledge indicates that the certifier reviewed a specific resource for a user, but does not modify user access. |
+| Save | The certifier saves all decisions entered in the current campaign cycle session. After saving, the certifier can return to review access as many times as necessary until the cycle is completed. Saving does not complete the campaign cycle. |
+| Sign off | The certifier signs off to complete the campaign cycle. After signoff, all decisions that have not yet taken effect become operative. Decisions cannot be changed after signoff. |
+
+If you do not finish the campaign cycle in the time allowed, then users' access to resources where you did not yet make a decision either continues or is automatically revoked, depending on how your organization configured the campaign.
+
+### Resources for review
+
+You can review the following types of resources associated with each user, role, or group.
+
+Resource types| Resource type | Description |
+| --- | --- |
+| Applications | Web applications deployed to the user through CyberArk Identity. |
+| Safes | Privilege Cloud or PAM Safes and all of the permissions in each Safe. Your organization uses Safes to store and organize authorized user accounts. For example, your organization can create a Safe for each department such as Finance or HR, and store the accounts for that department in the relevant Safe. |
+| Roles | When you certify or revoke a user's membership in a role, consider the impact that decision has on the user's ability to access the resources associated with that role, such as applications, Safe permissions (Privilege Cloud only), and groups. |
+| Membership in roles or groups | For campaigns that review roles and groups, you can certify or revoke a role or group's membership in nested roles or groups. For example, suppose group A (parent group) contains nested group B. If you revoke group B's membership in group A, then users in group B can no longer access resources that group A can access. Likewise, you can re-certify group B to restore its users' access to resources that group A can access. |
+
+Certify access in an identity certification campaign
+------------------------------------------------------------------
+
+This procedure describes how to certify or revoke access for users, roles, and groups in a campaign.
+
+To certify or revoke access to resources:
+
+1.   Sign in to the Secure Access space, then go to Access Certification and open a campaign from the In progress tab to review.
+
+2.   Select a user, role, or group to review on the left. On the right, select the tab for the resource type you are reviewing (Applications, Safes, Users, Roles, or Groups). Review each resource and click Certify or Revoke as needed.
+
+You can also perform the following additional actions.
+
+Certification actions
+
+| Action | Description |
+| --- | --- |
+| Bulk certify, revoke, or acknowledge access for all resources in the list. | Click Bulk Actions &gt; Certify or acknowlege all or Revoke or acknowledge all. You can perform a bulk action on one user or multiple users. First select user A, select the resources to act on, then select user B and select resources for that user. Click Save when you're done. Decisions will be taken on all users and resources you selected. You can undo a bulk action before you save the campaign by clicking Undo bulk action. This action reverses decisions for all resources in the list. After you save the campaign, you cannot reverse any revocations that were triggered immediately. You can reverse other decisions until campaign sign-off. After sign-off, no decisions can be reversed. |
+| Schedule a date and time when the revocation will take place. | If your administrator allows you to schedule when the revoke action will become effective, you see a calendar icon next to the Revoke button. ![Image 1](https://docs.cyberark.com/secure-access-space/latest/en/content/access-certification/images/revoke-calendar.png) Click Revoke, then click the calendar icon to set the schedule. The date must be before the campaign cycle ends. For example, if the cycle ends on 12/31/2023, the revocation date must be before 12/31/2023. The revocation occurs within one hour of the scheduled time. For bulk actions, this date and time applies to all permissions in the action. If you do not select a date and time, the revocation goes into effect either when you save your changes or when you sign off on the campaign, depending on your campaign settings. |
+| Add a comment for each decision. | Add a comment containing information about the decision. For example, you can provide a reason why you revoked access. For bulk actions, one comment applies to all resources. Your organization might require a comment. To add a comment, click the comment button to the right of the decision buttons. ![Image 2](https://docs.cyberark.com/secure-access-space/latest/en/content/access-certification/images/ic-add-comment.png) |
+| View the certification history for a resource. | View the history for a resource, add a comment, and submit your decision directly from the history report. To view history, click the history button to the left of the decision buttons. ![Image 3](https://docs.cyberark.com/secure-access-space/latest/en/content/access-certification/images/ic-view-history.png) |
+| View inherited access for nested roles and groups | When you review roles and groups, you can view all of the permissions a lower-level role or group may inherit from a higher-level (parent) role or group by clicking View inherited access. Use this link to assess the impact your certification decisions may have on roles or groups that are nested under a parent. For example, suppose group A contains nested group B, and group B contains nested group C. If access is revoked for group A, then access is also revoked for groups B and C. If access is revoked only for group C, then groups A and B are not affected. |
+3.   Repeat the process for all resources for every user included in the campaign.
+
+Click Save to save your progress and return to the campaign later.
+
+4.   After you complete all decisions in the campaign, click Sign off to sign off on the campaign cycle.
+
+You might have to complete MFA challenges to verify your identity for audit purposes before you sign off.
+
+After sign-off, all decisions take effect and the cycle is complete. You can't change decisions after you sign off.
+
+View completed certification campaign cycles
+----------------------------------------------------------
+
+To view the certification campaign cycles that are complete, sign in to the Secure Access space, then go to Access Certification and open the Completed tab. You can search for a specific completed cycle or use the column headings to sort the table of completed cycles and view their details.

@@ -1,0 +1,234 @@
+---
+title: "Monitor user sessions"
+description: "This topic describes the session monitoring functionality in the Audit space."
+---
+
+This topic describes the session monitoring functionality in the Audit space.
+
+Overview
+----------------------
+
+Auditors, SOCs, and service administrators need a consolidated view of session information from all CyberArk service components that create sessions. The CyberArk Audit space centralizes session monitoring across all CyberArk services on the Shared Services platform to provide a comprehensive display of all sessions as a unified view. This enables enhanced auditing as well as incident-response investigation.
+
+*   Session monitoring currently supports SIA and SCA.
+
+*   In SCA,when a user connects to their cloud console with multiple roles, each role opens a separate session.
+
+[](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm) Main session monitoring view
+---------------------------------------------------------------------------------------------------------------------------------
+
+The following information is available for each session in the main view. You can customize the view by clicking the Settings icon and selecting which columns to display.
+
+User session general information| Item | Description |
+| --- | --- |
+| Status | The session status: * Active - A session that is currently in progress * Ended - A closed session that ended as expected * Failed - A session that was terminated with an error |
+| Risk score (SIA only) | The risk score of the session as detected by Identity Security Intelligence. A score between 1 - 100 that reflects the risk level of the session. * 70 - 100: High risk * 30 - 69: Medium risk * 0 - 29: Low risk * -- Indicates a session with no risk * This column can be hidden by customizing the table view. * The risk score is only available in SIA SSH sessions. |
+| Start date and time | The start date and time of the session, adjusted to the time zone of the user that performed the session. |
+| Session length | Session length from start time to end time. For SCA events, this value represents the amount of time from when the user started the session until SCA ended the session, based on the maximum session length allowed by the SCA policy. |
+| Service | The service that sent the event:SIA or SCA |
+| User | The username that was used to connect to the target. |
+| Target | The target address where the session was established. |
+| Protocol | The protocol used to establish the session (for example, SSH, RDP, Database). For SCA the protocol is always HTTPS. |
+| Access method | The method used to establish the session. * JIT - Access using zero standing privileges * Vaulted - Access using vaulted credentials (SIA only) |
+
+To refresh the view, click the Refresh icon above the table on the right.
+
+### Customize your view
+
+You can show and hide most of the columns in the session monitoring view, and you can add additional columns.
+
+To select the columns you want to see in your view, click the Settings icon in the table header row. A list of the available columns appears, where you can toggle the show/hide status for each individual column. You can also drag and change the order of the columns in the table.
+
+*   The Status and Start date and time columns can't be hidden.
+
+*   Columns that aren't shown by default in the main view can also be seen in the Session details tab for each session.
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm)Filter and search
+
+You can filter the session monitoring view by the parameters described below. Click Filter to set the parameters. You can select multiple filters.
+
+Session monitoring filter options| To filter by | Select from the following |
+| --- | --- |
+| Time range | * 24 hours * 7 days * 30 days * Custom - define a date and time range |
+| Status | * Active * Ended * Failed |
+| Risk score (SIA only) | Session risk score level * None (no risk score) * Low (score 0 - 29) * Medium (score 30 - 69) * High (score 70 - 100) |
+| Service | * SIA * SCA |
+| Access method | * JIT - access using zero standing privileges. * Vaulted - access using vaulted credentials. |
+| Protocol | SIA: * SSH * RDP * CLI * Database * Kubernetes SCA: * HTTPS |
+| Platform | * Amazon AWS * Microsoft Azure * Google Cloud * On Prem (SIA only) |
+
+You can search according to the parameters described in the table below. You must begin typing the exact term in the search field (partial search from the middle of a word isn't currently supported). Begin the search by clicking the Search icon or pressing Enter on your keyboard.
+
+Session monitoring search options| To search for: | Begin typing the exact value of the: |
+| --- | --- |
+| User | Username of the entity that performed the session |
+| Target | IP address or hostname of the entity that's the target of the session |
+| Session ID | ID of the session |
+| User on target | Username of the entity that performed the session |
+| Session length | Define the length of the session to search for. Time is in HH:MM:SS format, supporting from 00:00:00 to 99:59:59. * Longer than * Shorter than * Range - define a more specific session length using the From and To fields |
+| Source | IP address or hostname of the entity where the session originated |
+| Command | Command typed by the user during a session |
+| Error code | When the session ends in error, the system displays an error code that explains the reason for the error. |
+| End reason | The reason that the session ended. If the session ended unexpectedly, the error description is provided. |
+
+Drill down to session information
+-----------------------------------------------
+
+To drill down and see additional details for a specific session, click the row in the table. A split screen view appears with Session details and Commands tabs.
+
+### Session details
+
+In this tab, you can view the following additional session details:
+
+User session details| Item | Description |
+| --- | --- |
+| Session ID | A unique session identifier, in GUID syntax. |
+| Target | IP address or hostname of the entity that is the target of the session. |
+| Error code | When the session ends in error, the system displays an error code that explains the reason for the error. |
+| End reason | The reason that the session ended. If the session ended unexpectedly, the error description is provided. |
+| Access method | The method used to establish the session (JIT, Vaulted). |
+| Source | The source IP address from which the session was initiated. |
+| User on target | The username that was used to connect to the target. |
+| Platform | The platform that was used in the session. For example, AWS, Microsoft Azure, Google Cloud, or on-premises. |
+| Custom data | There may be additional fields in this tab, depending on the service. This data is dynamic. |
+
+### Commands
+
+In this tab, you can see all the session commands in a timeline view (the time of each event and the command that triggered the event), and search and filter required commands.
+
+For sessions with a detected risk, you can view the session's risk score. The session risk score is based on the riskiest activity within the session. You can see how many commands were executed, the risk score attributed to each command, and filter the view by the command risk level.
+
+Session monitoring for SIA only
+---------------------------------------------
+
+This section describes monitoring activities for SIA only.
+
+### CORA AI textual audits of RDP sessions - SIA only
+
+If configured to do so, CORA AI records Windows RDP session activity and generates a textual audit that enables the auditor to view the commands executed by a user during the RDP connection session. For information about the setting required for recording and generating RDP session textual audits, see the AI-based RDP session audit setting in Session settings.
+
+For information about viewing the CORA AI-generated textual audits of RDP sessions, see [View CORA AI textual audits of Windows RDP sessions](/audit/latest/en/content/audit/isp_session-activities).
+
+#### How does CORA AI work?
+
+CORA AI uses large language models (LLM) for text summarization and contextual understanding.
+
+The LLM is hosted in CyberArk's account on Amazon Bedrock. It operates statelessly, and no data is stored within the service.
+
+For more information, see CyberArk's [Responsible AI Policy](https://www.cyberark.com/trust/responsible-ai/).
+
+#### Data protection
+
+CORA AI textual audits does not use data for other customers’ benefit, does not share data with the LLM provider, and does not export any data out of the native environment.
+
+#### CyberArk’s AI Policy and CORA AI
+
+For more information about our AI policy, see CyberArk's [Responsible AI Policy](https://www.cyberark.com/trust/responsible-ai/) page. For more information about CORA AI , see [here](https://www.cyberark.com/press/cyberark-supercharges-identity-security-platform-with-cyberark-cora-ai/).
+
+#### Generative AI model
+
+This feature uses Generative AI services that may operate from a geographic region different from the one hosting your tenant. These services do not store or retain any customer data, and no customer data is used to train AI models.
+
+Processing locations may vary to ensure service availability and performance.
+
+The following Generative AI models are currently integrated with SIA-RDP:
+
+*   AWS Bedrock: [Nova Lite V1](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html)
+
+*   Google Vertex AI: [Gemini 2.0 Flash](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash?utm_source=chatgpt.com)
+
+#### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm)View CORA AI textual audits of Windows RDP sessions
+
+If SIA is configured to enable CORA AI to record and generate textual audits of RDP session activity, you can view the textual audits.
+
+For information about the setting required for recording and generating RDP session textual audits, see the AI-based RDP session audit setting in Session settings.
+
+1.   In the Session Monitoring view, click the required session row, select the Commands tab, and read the AI Summary disclaimer.
+
+The Commands tab displays a line for every action performed by the user during the selected session. Each line contains the time and description of the action.
+
+Each of the displayed actions is assigned the DPALLM01 audit code, which you can view in the in the Audit space Activities view.
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm)Play RDP session video recordings - SIA only
+
+You can play video recordings of RDP sessions in the main view when the setting is turned on in SIA.
+
+1.   In the SIA Settings page, set Recording &gt;RDP to On. For more information, see Recording setting.
+
+2.   In the Audit space, click Session monitoring.
+
+3.   In the main sessions view, hover over the RDP session, click More options, and select Play recording. Or in the session details view, click Play recording.
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm)Download RDP session video recordings
+
+You can download a video recording of RDP sessions in the main view when the setting is turned on in SIA.
+
+1.   In the SIA Settings page, set Recording &gt;RDP to On. For more details, see Recording.
+
+2.   In the Audit space, click Session monitoring. In the main sessions view, hover over the RDP session, click the More options button, and select Download recording, or in the session details view, click the Download recording button.
+
+The Download recording option is only enabled when the recording is available for the session.
+
+The file is saved in the default download folder.
+
+The session monitoring system stores session video recordings for at least one year after the session ends.
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm)Create CORA AI summaries of SSH sessions
+
+CORA AI analyzes the SSH session's activity and generates a textual summary that offers the auditor a quick overview of the nature and chronological order of the session actions.
+
+#### How does CORA AI work?
+
+CORA AI uses large language models (LLM) for text summarization and contextual understanding.
+
+The LLM is hosted in CyberArk's account on Amazon Bedrock. It operates statelessly, and no data is stored within the service.
+
+For more information, see CyberArk's [Responsible AI Policy](https://www.cyberark.com/trust/responsible-ai/).
+
+#### Data protection
+
+CORA AI SSH summary does not use data for other customers’ benefit, does not share data with the LLM provider, and does not export any data out of the native environment.
+
+#### CyberArk’s AI Policy and CORA AI
+
+For more information about our AI policy, see CyberArk's [Responsible AI Policy](https://www.cyberark.com/trust/responsible-ai/) page. For more information about CORA AI , see [here](https://www.cyberark.com/press/cyberark-supercharges-identity-security-platform-with-cyberark-cora-ai/).
+
+#### Get started with CORA AI summaries of SSH sessions
+
+1.   In the Session Monitoring view, click the required session row, select the AI Summary tab and read the AI Summary disclaimer.
+
+2.   Click Generate AI summary and when the AI summary appears, click Copy to clipboard to copy the summary text.
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm)Play SSH session recordings - SIA only
+
+You can play recordings of SSH sessions in the main view when the setting is turned on in SIA.
+
+1.   In the SIA Settings page, set Recording &gt;SSH to On. For more information, see Recording setting.
+
+2.   In the Audit space, click Session monitoring.
+
+3.   In the main sessions view, hover over the SSH session, click More options, and select Play recording. Or in the session details view, click Play recording.
+
+The session player screen appears and contains a video player and commands pane. This enables you to watch the session video and view the session commands. The commands are highlighted in the command pane as they are entered and run during the session.
+
+4.   Click a command from the commands pane to view the command at that point in the video.
+
+5.   Use the search bar to search for a command.
+
+6.   Click next \ previous activity to skip the video to the desired content.
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_session-activities.htm)Download SSH session text recordings
+
+You can download a text recording of SSH sessions in the main view when the setting is turned on in SIA.
+
+1.   In the SIA Settings page, set Recording &gt;SSH to On. For more details, see Recording.
+
+2.   In the Audit space, click Session monitoring. In the main sessions view, hover over the SSH session, click the More options button, and select Download text recording, or in the session details view, click the Download text recording button.
+
+The Download text recording option is only enabled when the text recording is available for the session.
+
+The file is saved in the default download folder.
+
+The text recording can be played on the CyberArk player found in the [CyberArk Marketplace](https://community.cyberark.com/marketplace/s/#a35Ht0000018sBeIAI-a39Ht000004GLU0IAO).
+
+The session monitoring system stores session text recordings for at least one year after the session ends.

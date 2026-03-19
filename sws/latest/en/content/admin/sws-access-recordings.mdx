@@ -1,0 +1,109 @@
+---
+title: "Monitor sessions"
+description: "This topic describes how SWS Auditors and administrators can access Secure Web Sessions recordings."
+---
+
+This topic describes how SWS Auditors and administrators can access Secure Web Sessions recordings.
+
+Overview
+----------------------
+
+Each Secure Web Sessions action is captured as a step-recording screenshot and encrypted locally at the client using a tenant-specific public key. All events are then saved in the CyberArk Identity cloud in an encrypted state. CyberArk does not possess the private key to decrypt any of the screenshots. Only the customer can determine who is assigned the SWS Auditor or Admin role and be provided with the key needed to access and decrypt screenshots during the auditor session.
+
+CyberArk recommends not to include any Personally Identifiable Information (PII). See CyberArk's data protection guidelines.
+
+Before you begin
+------------------------------
+
+*   You downloaded the CyberArk Mobile app. For more information, see [Download the CyberArk Mobile app](/sws/latest/en/content/setup/sws-setup-mobile-app).
+
+*   You were delegated the SWS Auditor or administrator role.
+
+Log into session recordings
+-----------------------------------------
+
+1.   In the CyberArk Identity portal, go to your Applications page, and select the Secure Web Sessions tile.
+
+2.   Scan the QR code with your CyberArk Mobile app to open the Secure Web Sessions portal.
+
+3.   In the Secure Web Sessions portal, go to the Recordings page.
+
+4.   Scan the QR code with your CyberArk Mobile app to open the Session Recordings page.
+
+View session recordings
+-------------------------------------
+
+After you scan your QR code, the Session Recordings page opens with the recordings you have permissions to access. Most recent recordings are displayed first and you can search by flagged sessions, application, users and time.
+
+A red icon indicates if a session recording is in-progress.
+
+<Frame>
+![Image 9](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/sws-in-progress-icon.png)
+</Frame>
+
+View application step recordings
+----------------------------------------------
+
+Click on an application session recording to view a drill-down of the steps that were recorded during a session.
+
+User actions, such as changing a value, navigating, mouse clicks, and key pressed, trigger a screenshot of the end-users’ browser along with relevant metadata.
+
+<Frame>
+![Image 10](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/sws-recording-details.png)
+</Frame>
+
+[](https://docs.cyberark.com/sws/latest/en/content/admin/sws-access-recordings.htm)Flag session recordings and steps
+----------------------------------------------------------------------------------------------------------------------------------
+
+You can flag session recordings, or specific steps within the time line of a session recording, to follow-up on specific items and easily navigate them.
+
+To flag a session recording:
+
+1.   In the Secure Web Sessions portal, go to the Recordings page.
+
+2.   Hover your mouse over a specific session, and click the flag icon.
+
+<Frame>
+![Image 11](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/flagsession.png)
+</Frame>
+
+To flag a specific step within a session:
+
+1.   In the Session Recordings page, click an application session recording to view the steps.
+
+2.   Click More options![Image 12](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/moreoptionsbutton.png)on a specific step, and click Flag.
+
+<Frame>
+![Image 13](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/flagellipsis_300x162.png)
+</Frame>
+
+After you flag step/s, a flag indicator is added for the session recording this step belongs to.
+
+### [](https://docs.cyberark.com/sws/latest/en/content/admin/sws-access-recordings.htm)Remove all flags from session recordings
+
+You can remove all flags from session recordings at once.
+
+1.   Go to the Session recordings page.
+
+2.   Filter the sessions to display Flagged only and click Search.
+
+3.   Click Remove all flags.
+
+<Frame>
+![Image 14](https://docs.cyberark.com/sws/latest/en/content/images/sws-auditor/removeflags.png)
+</Frame>
+
+When you remove flags from sessions, they are removed on the tenant level. When other auditors or admins log into the same tenant, they won't see these sessions as flagged anymore.
+
+Filter session recordings and steps
+-------------------------------------------------
+
+You can filter your session recordings and steps with the following filters:
+
+| Filter | Description |
+| --- | --- |
+| Time frame | Allows you to display sessions or steps according to set time filters. Options are: * Last 7 days * Last 30 days * Custom (from - to) |
+| Flag | Allows you to view only [flagged](/sws/latest/en/content/admin/sws-access-recordings) sessions or steps. |
+| Action types | Allows you to view steps according to specific user actions. |
+| Go to step | Allows you skip to a specific step in the recording. This can be useful if there are a large number of steps. |
+| Enlarge image | Displays the selected screenshot in full screen. You can navigate forwards or backwards between screenshots, and download them. |

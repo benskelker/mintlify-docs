@@ -1,0 +1,61 @@
+---
+title: "Manage access policies"
+description: "This topic describes how to manage your access policies."
+---
+
+This topic describes how to manage your access policies.
+
+Access policies define when specified users may access particular assets and for how long. There are access policies for cloud workspaces, virtual machines, and databases, and Entra group assignment.
+
+To manage your access policies, in the Administration space, click Access control policies. The User access policies page is displayed with an overview of each policy, including its status.
+
+*   To manage cloud console policies, you must be a CyberArk Cloud Security administrator (CS Admin role) or you must be a delegate (SCA Admin role) of the relevant workspace
+
+*   To manage Entra group assignment policies, you must be a CyberArk Cloud Security administrator (CS Admin role).
+
+*   To manage database policies and VM policies, you must be a Secure Infrastructure Access administrator (DpaAdmin role).
+
+If you don't have the relevant role, contact your CyberArk tenant administrator.
+
+[](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-manage.htm)View access policies
+---------------------------------------------------------------------------------------------------------------------
+
+The User access policies page displays infrastructure target (DB/VM) policies, as well as cloud console access policies and Entra group assignment policies.
+
+*   All infrastructures policies are displayed, but cloud console policies are displayed only if they apply to your delegated workspaces, including policies created by on-demand requests for user access.
+
+*   A single cloud console policy may contain rules that apply both to workspaces you’re delegated to and those you’re not. These "mixed" policies are visible on your Policies page, but you won’t be able to edit them—this is indicated by a pencil icon with a line through it (![Image 5](https://docs.cyberark.com/admin-space/latest/en/content/images/policy/policy-restricted_18x20.png)). However, if another user is delegated to all the workspaces included in the same policy, that user will be able to edit it.
+
+*   To show only policies you're allowed to edit, select Show only policies I can edit at the top of the list of policies. This filters the view to include all infrastructure target policies, along with any cloud console policies and Entra group assignment policies that you have access to edit.
+
+Policies created based on an on-demand access request can't be edited, so they're not displayed when Show only policies I can edit is selected.
+*   You can filter the table according to policy tags, identities, status, target category, and location type. You can also search for a specific policy using free text.
+
+The User access policy table includes the following information:
+
+Access policies page| Column | Description |
+| --- | --- |
+| Policy name | Name of the policy |
+| Status | Current status of the access policy: * Active - The policy is currently active and providing the defined permissions for identities that match. * Expired - The policy isn't currently active because the timeframe has ended. * Suspended - The policy is valid but isn't currently active because an admin paused it. * Error - (Cloud access policies only) The policy failed the validation process . For details, see Cloud access policy errors. * Validating - The policy is being validated. * Warning - (Cloud access policies only) The policy is valid, but some workspaces, resources, or roles defined in the policy are missing, rendering those parts of the policy invalid. For details, see Troubleshoot policy issues. |
+| Target category | Category defined in the policy: * Cloud console * DB * VM * Entra group assignment |
+| Location type | Where the target is located or how it is found: * AWS * Azure * Google Cloud * IP address or FQDN |
+| Created | When the policy was created |
+| Last updated on | When the policy was last modified |
+| Policy tags | Tags added to the policy |
+
+Manage access policy actions
+------------------------------------------
+
+On the User access policies page, click the ellipsis (![Image 6](https://docs.cyberark.com/admin-space/latest/en/content/images/icon-ellipsis-h_20x20.png)) at the end of the policy row to perform the listed actions.
+
+Access policy actions| Policy types | Available actions |
+| --- | --- |
+| All infrastructure target policies Entra group assignment policies Cloud console policies that apply only to workspaces that are delegated to you | * Open - Opens the policy in edit mode * Validate - Validates the policy * Suspend/Activate - Suspends/Activates the policy When you suspend a policy, end users defined in the policy can't connect to the target defined in the policy. You can reverse this by activating the suspended policy. * Delete - deletes the policy |
+| "Mixed" - Cloud console policies that apply both to workspaces you’re delegated to and those you’re not | Open - Opens the policy in view-only mode |
+
+Monitor Entra group assignment in the Entra audit logs
+--------------------------------------------------------------------
+
+In addition to the [Audit space](/audit/latest/en/content/audit/product-audits/isp-sca-audit) where you can audit events on the CyberArk platform, you can verify Entra group assignment changes and their propagation timing in the Entra ID audit logs. For details, see the [Microsoft Entra documentation.](https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-audit-logs)
+
+[Create access policies](/admin-space/latest/en/content/uap/policies-create)

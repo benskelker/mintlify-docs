@@ -1,122 +1,922 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "CyberArk Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "light": "#207ed7",
+    "primary": "#207ed7",
+    "dark": "#207ed7"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
+  "appearance": {
+    "default": "dark"
+  },
+  "fonts": {
+    "heading": {
+      "family": "DM Sans"
+    },
+    "body": {
+      "family": "DM Sans"
+    }
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
+        "tab": "Home",
+        "pages": [
+          "index"
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Spaces",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Spaces Sections",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              {
+                "group": "Secure Access",
+                "root": "secure-access-space/latest/en/content/access-certification/certify-a-campaign",
+                "pages": [
+                  {
+                    "group": "Access Certification",
+                    "pages": [
+                      "secure-access-space/latest/en/content/access-certification/certify-a-campaign"
+                    ]
+                  },
+                  {
+                    "group": "Apps and Secured Items",
+                    "pages": [
+                      "secure-access-space/latest/en/content/apps-and-secured-items/apps-and-secured-items",
+                      "secure-access-space/latest/en/content/apps-and-secured-items/enabletotp",
+                      "secure-access-space/latest/en/content/apps-and-secured-items/launch-apps",
+                      "secure-access-space/latest/en/content/apps-and-secured-items/manage-folders",
+                      "secure-access-space/latest/en/content/apps-and-secured-items/manage-secured-items",
+                      "secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps"
+                    ]
+                  },
+                  {
+                    "group": "Cloud Consoles",
+                    "pages": [
+                      "secure-access-space/latest/en/content/cloud-consoles/ar-apis",
+                      "secure-access-space/latest/en/content/cloud-consoles/ar-in-app-requests",
+                      "secure-access-space/latest/en/content/cloud-consoles/ar-view-approve-requests",
+                      "secure-access-space/latest/en/content/cloud-consoles/ar-view-requests",
+                      "secure-access-space/latest/en/content/cloud-consoles/connect-to-cloud-consoles-azure",
+                      "secure-access-space/latest/en/content/cloud-consoles/connect-to-cloud-consoles-gcp",
+                      "secure-access-space/latest/en/content/cloud-consoles/connect_to_cloud_consoles_aws",
+                      "secure-access-space/latest/en/content/cloud-consoles/request-temporary-cloud-access",
+                      "secure-access-space/latest/en/content/cloud-consoles/sas-cloudconsoles-lp"
+                    ]
+                  },
+                  {
+                    "group": "Infrastructure",
+                    "pages": [
+                      "secure-access-space/latest/en/content/infrastructure/sas-db-connect",
+                      "secure-access-space/latest/en/content/infrastructure/sas-inf-lp",
+                      "secure-access-space/latest/en/content/infrastructure/sas-linux-connect",
+                      "secure-access-space/latest/en/content/infrastructure/sas-manage-listed",
+                      "secure-access-space/latest/en/content/infrastructure/sas-windows-connect"
+                    ]
+                  },
+                  {
+                    "group": "Introduction",
+                    "pages": [
+                      "secure-access-space/latest/en/content/introduction/sas-developer-ref",
+                      "secure-access-space/latest/en/content/introduction/sas-get-started",
+                      "secure-access-space/latest/en/content/introduction/sas-what-is",
+                      "secure-access-space/latest/en/content/introduction/sas-whats-new"
+                    ]
+                  },
+                  {
+                    "group": "Videos",
+                    "pages": [
+                      "secure-access-space/latest/en/content/videos/video-library-infrastructure",
+                      "secure-access-space/latest/en/content/videos/video-library"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Administration",
+                "root": "admin-space/latest/en/content/admin-get-started/as-fedramp-compliance",
+                "pages": [
+                  {
+                    "group": "Get started",
+                    "pages": [
+                      "admin-space/latest/en/content/admin-get-started/as-fedramp-compliance",
+                      "admin-space/latest/en/content/admin-get-started/as-manage-users",
+                      "admin-space/latest/en/content/admin-get-started/as-signin-ispss",
+                      "admin-space/latest/en/content/admin-get-started/as-what-is-admin-preview",
+                      "admin-space/latest/en/content/admin-get-started/as-whats-new"
+                    ]
+                  },
+                  {
+                    "group": "CCE",
+                    "pages": [
+                      {
+                        "group": "AWS",
+                        "pages": [
+                          "admin-space/latest/en/content/cce/aws/aws-account-main",
+                          "admin-space/latest/en/content/cce/aws/aws-api-standard-overview",
+                          "admin-space/latest/en/content/cce/aws/aws-api-standard",
+                          "admin-space/latest/en/content/cce/aws/aws-main-connect-manage",
+                          "admin-space/latest/en/content/cce/aws/aws-organization-main",
+                          "admin-space/latest/en/content/cce/aws/aws-programmatic-api",
+                          "admin-space/latest/en/content/cce/aws/aws-programmatic-workflows",
+                          "admin-space/latest/en/content/cce/aws/aws-resolve-entity-issues",
+                          "admin-space/latest/en/content/cce/aws/aws-resources",
+                          "admin-space/latest/en/content/cce/aws/aws-standard-api-workflows",
+                          "admin-space/latest/en/content/cce/aws/aws-troubleshooting",
+                          "admin-space/latest/en/content/cce/aws/aws-view-environment"
+                        ]
+                      },
+                      {
+                        "group": "Azure",
+                        "pages": [
+                          "admin-space/latest/en/content/cce/azure/azure-add-entratenant-manual",
+                          "admin-space/latest/en/content/cce/azure/azure-add-managementgroup-manual",
+                          "admin-space/latest/en/content/cce/azure/azure-add-subscription-manual",
+                          "admin-space/latest/en/content/cce/azure/azure-api-manual",
+                          "admin-space/latest/en/content/cce/azure/azure-api-standard",
+                          "admin-space/latest/en/content/cce/azure/azure-entratenant-main",
+                          "admin-space/latest/en/content/cce/azure/azure-main-connect-manage",
+                          "admin-space/latest/en/content/cce/azure/azure-managementgroup-main",
+                          "admin-space/latest/en/content/cce/azure/azure-remove-entratenant-manual",
+                          "admin-space/latest/en/content/cce/azure/azure-remove-managementgroup-manual",
+                          "admin-space/latest/en/content/cce/azure/azure-remove-subscription-manual",
+                          "admin-space/latest/en/content/cce/azure/azure-resolve-entity-issues",
+                          "admin-space/latest/en/content/cce/azure/azure-resources",
+                          "admin-space/latest/en/content/cce/azure/azure-subscription-main",
+                          "admin-space/latest/en/content/cce/azure/azure-troubleshooting",
+                          "admin-space/latest/en/content/cce/azure/azure-view-environment"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Connector Management",
+                    "pages": [
+                      "admin-space/latest/en/content/connector-management/cm_api",
+                      "admin-space/latest/en/content/connector-management/cm_auto-upgrade-connector",
+                      "admin-space/latest/en/content/connector-management/cm_defineconnectoragent",
+                      "admin-space/latest/en/content/connector-management/cm_defineconnectorpools",
+                      "admin-space/latest/en/content/connector-management/cm_introduction",
+                      "admin-space/latest/en/content/connector-management/cm_manage-connector-pool",
+                      "admin-space/latest/en/content/connector-management/cm_managecmagent",
+                      "admin-space/latest/en/content/connector-management/cm_sign-in",
+                      "admin-space/latest/en/content/connector-management/cm_to_prerequisites",
+                      "admin-space/latest/en/content/connector-management/cm_troubleshooting",
+                      "admin-space/latest/en/content/connector-management/cm_upgrade-version",
+                      "admin-space/latest/en/content/connector-management/cm_upgrade_connector",
+                      "admin-space/latest/en/content/connector-management/cm_upgrade_troubleshooting"
+                    ]
+                  },
+                  {
+                    "group": "Developers",
+                    "pages": [
+                      "admin-space/latest/en/content/developers/access-policy-api",
+                      "admin-space/latest/en/content/developers/as-developers-lp",
+                      "admin-space/latest/en/content/developers/sai-api"
+                    ]
+                  },
+                  {
+                    "group": "Environment",
+                    "pages": [
+                      "admin-space/latest/en/content/environment/as-add-vanity-url",
+                      "admin-space/latest/en/content/environment/as-ai-prefs",
+                      "admin-space/latest/en/content/environment/as-domain-customization",
+                      "admin-space/latest/en/content/environment/as-license-consumption",
+                      "admin-space/latest/en/content/environment/as-manage-environment"
+                    ]
+                  },
+                  {
+                    "group": "Explore",
+                    "pages": [
+                      "admin-space/latest/en/content/hometileslps/lp-tile1",
+                      "admin-space/latest/en/content/hometileslps/lp-tile2"
+                    ]
+                  },
+                  {
+                    "group": "Secure AI",
+                    "pages": [
+                      "admin-space/latest/en/content/secureai/architecture",
+                      "admin-space/latest/en/content/secureai/crossproduct",
+                      "admin-space/latest/en/content/secureai/discoveryaws",
+                      "admin-space/latest/en/content/secureai/discoveryazure",
+                      "admin-space/latest/en/content/secureai/discoveryintro",
+                      "admin-space/latest/en/content/secureai/faqs",
+                      "admin-space/latest/en/content/secureai/introduction",
+                      "admin-space/latest/en/content/secureai/inventory",
+                      "admin-space/latest/en/content/secureai/registeragent",
+                      "admin-space/latest/en/content/secureai/scope"
+                    ]
+                  },
+                  {
+                    "group": "SIEM Integration",
+                    "pages": [
+                      "admin-space/latest/en/content/siem-integration/siem-export-3rd-party",
+                      "admin-space/latest/en/content/siem-integration/siem-export-main",
+                      "admin-space/latest/en/content/siem-integration/siem-export-ms-sentinel",
+                      "admin-space/latest/en/content/siem-integration/siem-export-qradar",
+                      "admin-space/latest/en/content/siem-integration/siem-export-splunk",
+                      "admin-space/latest/en/content/siem-integration/siem-import-qradar",
+                      "admin-space/latest/en/content/siem-integration/siem-import",
+                      "admin-space/latest/en/content/siem-integration/siem-manage-certificates"
+                    ]
+                  },
+                  {
+                    "group": "UAP",
+                    "pages": [
+                      "admin-space/latest/en/content/uap/policies-cloud-access",
+                      "admin-space/latest/en/content/uap/policies-create",
+                      "admin-space/latest/en/content/uap/policies-database",
+                      "admin-space/latest/en/content/uap/policies-group-assignment",
+                      "admin-space/latest/en/content/uap/policies-infra-vm",
+                      "admin-space/latest/en/content/uap/policies-lp",
+                      "admin-space/latest/en/content/uap/policies-manage"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Identity Protection",
+                "root": "identity-protection-space/latest/en/content/automation/ip-apis",
+                "pages": [
+                  {
+                    "group": "Automation",
+                    "pages": [
+                      "identity-protection-space/latest/en/content/automation/ip-apis"
+                    ]
+                  },
+                  {
+                    "group": "Blueprint",
+                    "pages": [
+                      "identity-protection-space/latest/en/content/blueprint/assess-security-posture",
+                      "identity-protection-space/latest/en/content/blueprint/build-roadmap",
+                      "identity-protection-space/latest/en/content/blueprint/navigate-access-todays-env",
+                      "identity-protection-space/latest/en/content/blueprint/program-development-guidance",
+                      "identity-protection-space/latest/en/content/blueprint/understand-attack-chain",
+                      "identity-protection-space/latest/en/content/blueprint/understand-risk-access-priv-controls",
+                      "identity-protection-space/latest/en/content/blueprint/use-case-best-practices",
+                      "identity-protection-space/latest/en/content/blueprint/videos"
+                    ]
+                  },
+                  {
+                    "group": "Blueprint Guidance",
+                    "pages": [
+                      "identity-protection-space/latest/en/content/blueprint-guidance/blueprint-guidance"
+                    ]
+                  },
+                  {
+                    "group": "Discovery",
+                    "pages": [
+                      {
+                        "group": "Discovery APIs",
+                        "pages": [
+                          "identity-protection-space/latest/en/content/discovery/discovery-apis/discovery-account-discovery"
+                        ]
+                      },
+                      "identity-protection-space/latest/en/content/discovery/discover-remediate-accounts",
+                      "identity-protection-space/latest/en/content/discovery/discover-remediate-cloud",
+                      "identity-protection-space/latest/en/content/discovery/discovery-accounts-discovery-manual-onboarding",
+                      "identity-protection-space/latest/en/content/discovery/discovery-accounts-discovery-onboarding-rules",
+                      "identity-protection-space/latest/en/content/discovery/discovery-solutions",
+                      "identity-protection-space/latest/en/content/discovery/discovery"
+                    ]
+                  },
+                  {
+                    "group": "Get started",
+                    "pages": [
+                      "identity-protection-space/latest/en/content/get-started/get-started-lp",
+                      "identity-protection-space/latest/en/content/get-started/ip-whats-new",
+                      "identity-protection-space/latest/en/content/get-started/what-is-identity-protection"
+                    ]
+                  },
+                  {
+                    "group": "ITDR",
+                    "pages": [
+                      {
+                        "group": "Alerts",
+                        "pages": [
+                          "identity-protection-space/latest/en/content/itdr/alerts/analyze-security-alerts",
+                          "identity-protection-space/latest/en/content/itdr/alerts/overview",
+                          "identity-protection-space/latest/en/content/itdr/alerts/supported-alerts"
+                        ]
+                      },
+                      {
+                        "group": "Get started",
+                        "pages": [
+                          "identity-protection-space/latest/en/content/itdr/get-started/overview-threat-detection-and-response"
+                        ]
+                      },
+                      {
+                        "group": "Integrations",
+                        "pages": [
+                          "identity-protection-space/latest/en/content/itdr/integrations/overview-integrations"
+                        ]
+                      },
+                      "identity-protection-space/latest/en/content/itdr/audit"
+                    ]
+                  },
+                  {
+                    "group": "Risk Management",
+                    "pages": [
+                      "identity-protection-space/latest/en/content/risk-management/rec-logic",
+                      "identity-protection-space/latest/en/content/risk-management/risk-management"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Audit",
+                "root": "audit/latest/en/content/audit/product-audits/audit_events_and_codes",
+                "pages": [
+                  {
+                    "group": "Audit",
+                    "pages": [
+                      {
+                        "group": "Product Audits",
+                        "pages": [
+                          "audit/latest/en/content/audit/product-audits/audit_events_and_codes",
+                          "audit/latest/en/content/audit/product-audits/isp-ar-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-byok-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-conjur-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-crdr-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-cv-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-dc-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-flows-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-identity-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-privcloud-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-sca-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-secretshub-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-sessionmon-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-sia-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-tdr-audit",
+                          "audit/latest/en/content/audit/product-audits/isp-wpm-audit"
+                        ]
+                      },
+                      "audit/latest/en/content/audit/audit-crdr",
+                      "audit/latest/en/content/audit/audit_cora-ai-bot",
+                      "audit/latest/en/content/audit/audit_whats_new",
+                      "audit/latest/en/content/audit/isp_activities-reports",
+                      "audit/latest/en/content/audit/isp_get-sessions-api",
+                      "audit/latest/en/content/audit/isp_microsoft_sentinel",
+                      "audit/latest/en/content/audit/isp_overview",
+                      "audit/latest/en/content/audit/isp_session-activities",
+                      "audit/latest/en/content/audit/isp_session-recording-api",
+                      "audit/latest/en/content/audit/isp_siem-integration-api",
+                      "audit/latest/en/content/audit/isp_siem-integration",
+                      "audit/latest/en/content/audit/isp_system-activities"
+                    ]
+                  },
+                  {
+                    "group": "Explore",
+                    "pages": [
+                      "audit/latest/en/content/hometileslps/lp-tile1",
+                      "audit/latest/en/content/hometileslps/lp-tile2",
+                      "audit/latest/en/content/hometileslps/lp-tile3",
+                      "audit/latest/en/content/hometileslps/lp-tile4",
+                      "audit/latest/en/content/hometileslps/lp-tile5"
+                    ]
+                  }
+                ]
+              }
             ]
           }
+        ],
+        "pages": [
+          "secure-access-space/latest/en/content/access-certification/certify-a-campaign"
+        ]
+      },
+      {
+        "tab": "Shared Services",
+        "groups": [
+          {
+            "group": "Shared Services Sections",
+            "pages": [
+              {
+                "group": "Overview & deployment",
+                "pages": [
+                  {
+                    "group": "Core Services",
+                    "pages": [
+                      {
+                        "group": "Get started",
+                        "pages": [
+                          "ispss-deployment/latest/en/content/coreservices/getstarted/userrolesassign"
+                        ]
+                      },
+                      {
+                        "group": "Users and Roles",
+                        "pages": [
+                          "ispss-deployment/latest/en/content/coreservices/usersroles/partnersetup"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Deployment",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/deployment/deploy-about-ispss-platform",
+                      "ispss-deployment/latest/en/content/deployment/deploy-check-your-deployment",
+                      "ispss-deployment/latest/en/content/deployment/deploy-configure-services",
+                      "ispss-deployment/latest/en/content/deployment/deploy-connect-to-services",
+                      "ispss-deployment/latest/en/content/deployment/deploy-developer",
+                      "ispss-deployment/latest/en/content/deployment/deploy-integrate-3rd-parties",
+                      "ispss-deployment/latest/en/content/deployment/deploy-map-user-groups-to-roles",
+                      "ispss-deployment/latest/en/content/deployment/deploy-plan-deployment",
+                      "ispss-deployment/latest/en/content/deployment/deploy-prepare-your-environment",
+                      "ispss-deployment/latest/en/content/deployment/deploy-system-network-req",
+                      "ispss-deployment/latest/en/content/deployment/deploy-upgrade",
+                      "ispss-deployment/latest/en/content/deployment/deploy-whatsnew"
+                    ]
+                  },
+                  {
+                    "group": "Developer",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/developer/developer-home"
+                    ]
+                  },
+                  {
+                    "group": "Get started",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/getstarted/geo-restrictions",
+                      "ispss-deployment/latest/en/content/getstarted/invite-users",
+                      "ispss-deployment/latest/en/content/getstarted/isp-platform-details",
+                      "ispss-deployment/latest/en/content/getstarted/isp-supported-browsers",
+                      "ispss-deployment/latest/en/content/getstarted/issp-data-centers"
+                    ]
+                  },
+                  {
+                    "group": "ISPSS",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/ispss/ispss-add-system-users-and-roles",
+                      "ispss-deployment/latest/en/content/ispss/ispss-api-authentication",
+                      "ispss-deployment/latest/en/content/ispss/ispss-collect-login-and-setup-details",
+                      "ispss-deployment/latest/en/content/ispss/ispss-installeruser-password",
+                      "ispss-deployment/latest/en/content/ispss/ispss-provision-users"
+                    ]
+                  },
+                  {
+                    "group": "PASIMP",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/pasimp/mfa-caching"
+                    ]
+                  },
+                  {
+                    "group": "Privilege Cloud",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-access-control-secure-zones",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-byok-intro",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-byok-rest-api",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-cyberark-integrations-lp",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-deploy-connectors-lp",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-deploy-psm-ssh",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-deploy-st",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-install",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-remote-access-lp",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-ss-platform-preparations",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-third-party-recommended-setup",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-connectors",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-diff",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-intro",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-limitations",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-post-upgrade",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-preparations",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-upgrade-step",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-what-happens",
+                      "ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss"
+                    ]
+                  },
+                  {
+                    "group": "Security",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/security/security fundamentals-ispss"
+                    ]
+                  },
+                  {
+                    "group": "Setup",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/setup/add-sia-to-isp",
+                      "ispss-deployment/latest/en/content/setup/cm_upgrade_connector",
+                      "ispss-deployment/latest/en/content/setup/dpa-connector-bp",
+                      "ispss-deployment/latest/en/content/setup/dpa-connector-tbs",
+                      "ispss-deployment/latest/en/content/setup/dpa-manage-sia-connectors",
+                      "ispss-deployment/latest/en/content/setup/dpa-sia-connectors-learn",
+                      "ispss-deployment/latest/en/content/setup/dpa_install-connector",
+                      "ispss-deployment/latest/en/content/setup/dpa_upgrade-connector",
+                      "ispss-deployment/latest/en/content/setup/ia_addusers",
+                      "ispss-deployment/latest/en/content/setup/manage-connectors",
+                      "ispss-deployment/latest/en/content/setup/secure-ai-agents",
+                      "ispss-deployment/latest/en/content/setup/setup_workflow_ispss",
+                      "ispss-deployment/latest/en/content/setup/setupsiaaccess"
+                    ]
+                  },
+                  {
+                    "group": "Web Services",
+                    "pages": [
+                      "ispss-deployment/latest/en/content/webservices/mfa caching ssh\u00a0keys"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Identity Administration",
+                "root": "identity-administration/latest/en/content/audit/audit-overview",
+                "pages": [
+                  {
+                    "group": "Audit",
+                    "pages": [
+                      "identity-administration/latest/en/content/audit/audit-overview"
+                    ]
+                  },
+                  {
+                    "group": "Core Services",
+                    "pages": [
+                      {
+                        "group": "Get started",
+                        "pages": [
+                          "identity-administration/latest/en/content/coreservices/getstarted/ispss-user-roles",
+                          "identity-administration/latest/en/content/coreservices/getstarted/userrolesassign"
+                        ]
+                      },
+                      {
+                        "group": "Users and Roles",
+                        "pages": [
+                          "identity-administration/latest/en/content/coreservices/usersroles/administrativerights",
+                          "identity-administration/latest/en/content/coreservices/usersroles/partnersetup",
+                          "identity-administration/latest/en/content/coreservices/usersroles/provision-with-scim"
+                        ]
+                      },
+                      "identity-administration/latest/en/content/coreservices/core-overview"
+                    ]
+                  },
+                  {
+                    "group": "Developer",
+                    "pages": [
+                      "identity-administration/latest/en/content/developer/developer-home"
+                    ]
+                  },
+                  {
+                    "group": "Get started",
+                    "pages": [
+                      "identity-administration/latest/en/content/getstarted/invite-users",
+                      "identity-administration/latest/en/content/getstarted/security-fundamentals"
+                    ]
+                  },
+                  {
+                    "group": "ISPSS",
+                    "pages": [
+                      "identity-administration/latest/en/content/ispss/ispss-add-system-users-and-roles",
+                      "identity-administration/latest/en/content/ispss/ispss-identity-admin-overview",
+                      "identity-administration/latest/en/content/ispss/ispss-provision-users"
+                    ]
+                  },
+                  {
+                    "group": "Release notes",
+                    "pages": [
+                      "identity-administration/latest/en/content/releasenotes/documentation-changelog",
+                      "identity-administration/latest/en/content/releasenotes/release-notes-previous-versions",
+                      "identity-administration/latest/en/content/releasenotes/releasenotes-home",
+                      "identity-administration/latest/en/content/releasenotes/releasenotes-latest"
+                    ]
+                  },
+                  {
+                    "group": "User Portal",
+                    "pages": [
+                      "identity-administration/latest/en/content/userportal/wpm-fetch-creds-enduser"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "CORA AI",
+                "root": "ai/latest/en/content/ai/coraai-chatbot",
+                "pages": [
+                  {
+                    "group": "AI",
+                    "pages": [
+                      "ai/latest/en/content/ai/coraai-chatbot",
+                      "ai/latest/en/content/ai/coraai-introduction",
+                      "ai/latest/en/content/ai/coraai-preferences",
+                      "ai/latest/en/content/ai/coraai-whats-new"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Identity Security Intelligence",
+                "root": "isi/latest/en/content/hometileslps/lp-tile1",
+                "pages": [
+                  {
+                    "group": "Explore",
+                    "pages": [
+                      "isi/latest/en/content/hometileslps/lp-tile1",
+                      "isi/latest/en/content/hometileslps/lp-tile2",
+                      "isi/latest/en/content/hometileslps/lp-tile3",
+                      "isi/latest/en/content/hometileslps/lp-tile4",
+                      "isi/latest/en/content/hometileslps/lp-tile5",
+                      "isi/latest/en/content/hometileslps/lp-tile6"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "CyberArk Blueprint",
+                "root": "cyberark-blueprint/latest/en/content/alignment-to-other-models",
+                "pages": [
+                  {
+                    "group": "Topics",
+                    "pages": [
+                      "cyberark-blueprint/latest/en/content/alignment-to-other-models",
+                      "cyberark-blueprint/latest/en/content/assess-security-posture",
+                      "cyberark-blueprint/latest/en/content/attack-chain",
+                      "cyberark-blueprint/latest/en/content/attack-scenarios",
+                      "cyberark-blueprint/latest/en/content/build-roadmap",
+                      "cyberark-blueprint/latest/en/content/build-your-plan",
+                      "cyberark-blueprint/latest/en/content/common-factors-influence-risk",
+                      "cyberark-blueprint/latest/en/content/cybersecurity-frameworks-regulatory-standards",
+                      "cyberark-blueprint/latest/en/content/endpoint-privilege-security",
+                      "cyberark-blueprint/latest/en/content/enterprise-security-policy",
+                      "cyberark-blueprint/latest/en/content/get-started",
+                      "cyberark-blueprint/latest/en/content/info-security-programs",
+                      "cyberark-blueprint/latest/en/content/measure-and-report-success",
+                      "cyberark-blueprint/latest/en/content/mitigate-risk",
+                      "cyberark-blueprint/latest/en/content/navigate-access-todays-env",
+                      "cyberark-blueprint/latest/en/content/not-all-access-equal",
+                      "cyberark-blueprint/latest/en/content/operating-models",
+                      "cyberark-blueprint/latest/en/content/operationalize-identity-security",
+                      "cyberark-blueprint/latest/en/content/organizational-change-management",
+                      "cyberark-blueprint/latest/en/content/overlapping-access",
+                      "cyberark-blueprint/latest/en/content/process-maturity-model",
+                      "cyberark-blueprint/latest/en/content/program-development-guidance",
+                      "cyberark-blueprint/latest/en/content/risk-based-prioritization",
+                      "cyberark-blueprint/latest/en/content/secrets-management",
+                      "cyberark-blueprint/latest/en/content/secure-standing-privilege",
+                      "cyberark-blueprint/latest/en/content/security-first-access-management",
+                      "cyberark-blueprint/latest/en/content/state-of-privilege-access-hierarchy",
+                      "cyberark-blueprint/latest/en/content/test-validate-program",
+                      "cyberark-blueprint/latest/en/content/understand-attack-chain",
+                      "cyberark-blueprint/latest/en/content/understand-risk-access-priv-controls",
+                      "cyberark-blueprint/latest/en/content/use-case-best-practices",
+                      "cyberark-blueprint/latest/en/content/whats-new"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Cross-Region Disaster Recovery",
+                "root": "cross-region-dr/latest/en/content/crdr/crdr-audit",
+                "pages": [
+                  {
+                    "group": "Cross-Region DR",
+                    "pages": [
+                      "cross-region-dr/latest/en/content/crdr/crdr-audit",
+                      "cross-region-dr/latest/en/content/crdr/crdr-best-practices",
+                      "cross-region-dr/latest/en/content/crdr/crdr-byok",
+                      "cross-region-dr/latest/en/content/crdr/crdr-faqs",
+                      "cross-region-dr/latest/en/content/crdr/crdr-how-it-works",
+                      "cross-region-dr/latest/en/content/crdr/crdr-overview",
+                      "cross-region-dr/latest/en/content/crdr/crdr-privcloud",
+                      "cross-region-dr/latest/en/content/crdr/crdr-services-main",
+                      "cross-region-dr/latest/en/content/crdr/crdr-setup",
+                      "cross-region-dr/latest/en/content/crdr/crdr-supported-regions",
+                      "cross-region-dr/latest/en/content/crdr/crdr-what-is"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "pages": [
+          "ispss-deployment/latest/en/content/coreservices/getstarted/userrolesassign"
+        ]
+      },
+      {
+        "tab": "Identity & Governance",
+        "groups": [
+          {
+            "group": "Identity & Governance Sections",
+            "pages": [
+              {
+                "group": "Identity",
+                "root": "identity/latest/en/content/coreservices/core-overview",
+                "pages": [
+                  {
+                    "group": "Core Services",
+                    "pages": [
+                      "identity/latest/en/content/coreservices/core-overview"
+                    ]
+                  },
+                  {
+                    "group": "Developer",
+                    "pages": [
+                      "identity/latest/en/content/developer/developer-home"
+                    ]
+                  },
+                  {
+                    "group": "Get started",
+                    "pages": [
+                      "identity/latest/en/content/getstarted/setup",
+                      "identity/latest/en/content/getstarted/welcome"
+                    ]
+                  },
+                  {
+                    "group": "Explore",
+                    "pages": [
+                      "identity/latest/en/content/hometileslps/lp-tile3"
+                    ]
+                  },
+                  {
+                    "group": "Release notes",
+                    "pages": [
+                      "identity/latest/en/content/releasenotes/releasenotes-home"
+                    ]
+                  },
+                  {
+                    "group": "User Portal",
+                    "pages": [
+                      "identity/latest/en/content/userportal/usingtabs"
+                    ]
+                  },
+                  {
+                    "group": "Videos",
+                    "pages": [
+                      "identity/latest/en/content/videos/video-library"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Secure Web Sessions",
+                "root": "sws/latest/en/content/admin/sws-access-recordings",
+                "pages": [
+                  {
+                    "group": "Admin",
+                    "pages": [
+                      "sws/latest/en/content/admin/sws-access-recordings",
+                      "sws/latest/en/content/admin/sws-manage-browser-extension"
+                    ]
+                  },
+                  {
+                    "group": "Get started",
+                    "pages": [
+                      "sws/latest/en/content/getstarted/sws-introduction-2"
+                    ]
+                  },
+                  {
+                    "group": "Guides",
+                    "pages": [
+                      "sws/latest/en/content/landingpages/sws-lp-developer",
+                      "sws/latest/en/content/landingpages/sws-lp-getstarted",
+                      "sws/latest/en/content/landingpages/sws-lp-setup",
+                      "sws/latest/en/content/landingpages/sws-lp-sws-admin",
+                      "sws/latest/en/content/landingpages/sws-lp-sws-auditor",
+                      "sws/latest/en/content/landingpages/sws-lp-sws-enduser"
+                    ]
+                  },
+                  {
+                    "group": "Setup",
+                    "pages": [
+                      "sws/latest/en/content/setup/sws-hardening",
+                      "sws/latest/en/content/setup/sws-setup-mobile-app"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "CyberArk IGA",
+                "root": "iga/latest/en/content/admin/admin",
+                "pages": [
+                  {
+                    "group": "Admin",
+                    "pages": [
+                      "iga/latest/en/content/admin/admin"
+                    ]
+                  },
+                  {
+                    "group": "Application Owner",
+                    "pages": [
+                      "iga/latest/en/content/application-owner/application-owner"
+                    ]
+                  },
+                  {
+                    "group": "Campaign Monitor",
+                    "pages": [
+                      "iga/latest/en/content/campaign-monitor/campaign-monitor"
+                    ]
+                  },
+                  {
+                    "group": "Integration",
+                    "pages": [
+                      "iga/latest/en/content/integration/integration"
+                    ]
+                  },
+                  {
+                    "group": "Release notes",
+                    "pages": [
+                      "iga/latest/en/content/release-notes/release-notes"
+                    ]
+                  },
+                  {
+                    "group": "Setup",
+                    "pages": [
+                      "iga/latest/en/content/setup/setup"
+                    ]
+                  },
+                  {
+                    "group": "User",
+                    "pages": [
+                      "iga/latest/en/content/user/user"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "pages": [
+          "identity/latest/en/content/coreservices/core-overview"
+        ]
+      },
+      {
+        "tab": "Developer",
+        "groups": [
+          {
+            "group": "Developer Tools",
+            "pages": [
+              {
+                "group": "Terraform",
+                "root": "istp/latest/en/content/istp/what-is istp",
+                "pages": [
+                  "istp/latest/en/content/istp/what-is istp"
+                ]
+              }
+            ]
+          }
+        ],
+        "pages": [
+          "istp/latest/en/content/istp/what-is istp"
         ]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Blog",
+          "href": "https://www.cyberark.com/resources/all-blog-posts",
+          "icon": "newspaper"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Contact",
+          "href": "https://www.cyberark.com/services-support/technical-support-contact/",
+          "icon": "envelope"
         }
       ]
     }
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "https://www.cyberark.com/"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://www.cyberark.com/services-support/technical-support-contact",
+        "label": "Support"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Request a Demo",
+      "href": "https://www.cyberark.com/request-demo/"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "youtube": "https://www.youtube.com/user/cyberarksoftware",
+      "linkedin": "https://www.linkedin.com/company/cyber-ark-software",
+      "x": "https://x.com/CyberArk",
+      "facebook": "https://www.facebook.com/CyberArk"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "robots": "noindex"
     }
   }
 }

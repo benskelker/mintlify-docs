@@ -1,0 +1,20 @@
+---
+title: "Secure AI agents with other CyberArk services"
+description: "This topic describes how you can use other CyberArk services to strengthen how you secure AI agents."
+---
+
+This topic describes how you can use other CyberArk services to strengthen how you secure AI agents.
+
+Secure Web Sessions
+---------------------------------
+
+Secure Web Sessions (SWS) prevents the use of AI browsers to access sensitive systems by enforcing security controls through a browser extension-based enforcement layer. This ensures that users cannot connect to critical enterprise applications using uncontrolled AI-powered browsers, and are instead forced to use secured, policy-governed browser environments. In addition, SWS enables session recording and real-time session control for high-risk activities within AI Builder platforms - such as creating new AI agents or modifying agent instructions. Since these actions are highly sensitive, SWS adds an additional security and governance layer, providing strong authentication, full audit, and Zero Trust enforcement over every privileged interaction.
+
+To learn more about Secure Web Sessions, see [Secure Web Sessions docs](/sws/latest/en/content/getstarted/sws-introduction-2).
+
+Secrets Manager
+-----------------------------
+
+CyberArk Secrets Manager provides a foundational security layer for AI agents by ensuring that all credentials, API keys, tokens, and non-human identities are securely stored, dynamically accessed, and never hardcoded into agent configurations. As AI agents increasingly interact with cloud services, SaaS platforms, databases, and internal APIs, CyberArk enforces least-privilege access, automated secret rotation, just-in-time credential retrieval, and full audit across the entire agent lifecycle. This eliminates credential sprawl, prevents secret leakage through prompts, code, or logs, and ensures that AI agents operate with tightly controlled, identity-based access - aligned with Zero Trust and enterprise compliance requirements.
+
+To learn more about Secrets Manager, see Secrets Manager docs.

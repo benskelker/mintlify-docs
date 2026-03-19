@@ -1,0 +1,26 @@
+---
+title: "Best practices for connector installation"
+description: "Each SIA connector must be installed on a customer-side machine, so it can enable secure communication between your users and your organizational assets. This section provides CyberArk's recommendations for best"
+---
+
+Each SIA connector must be installed on a customer-side machine, so it can enable secure communication between your users and your organizational assets. This section provides CyberArk's recommendations for best practices about installing connectors.
+
+*   Where to install SIA connectors
+
+You can install an SIA connector on an existing machine, though we recommend using a dedicated machine as the connector host. Each connector should reside on a separate machine.
+
+*   Time on connector host machines
+
+Ensure the time on every connector host machine is set correctly. The time zone is irrelevant, but the machine's time should be synchronized with an internet time server.
+
+*   Location of connector host machines
+
+To reduce the latency of the connection, we recommend that connector host machines be geographically as close as possible to their targets. For example, the same region, zone, country, or city. You should also take into account network latency.
+
+*   Assign connectors and define target sets
+
+Each connector must be assigned to a connector pool either implicitly or explicitly. The target set is defined in the connector pool. By assigning a connector to a pool, you can define the connector's target set.
+
+*   Number of connectors in a pool
+
+For load balancing and high availability, install at least two connectors in each connector pool. Add more connectors to the pool on demand.

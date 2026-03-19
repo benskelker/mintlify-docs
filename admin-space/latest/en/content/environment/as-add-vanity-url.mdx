@@ -1,0 +1,70 @@
+---
+title: "Add and manage personalized URLs for your tenant"
+description: "This topic describes how to create and manage tenant subdomains for your CyberArk tenant."
+---
+
+This topic describes how to create and manage tenant subdomains for your CyberArk tenant.
+
+Overview
+----------------------
+
+A tenant subdomain is a customized, easy-to-remember web address that typically includes a brand/organization name or relevant keywords.
+
+For example, company.myorg.cloud instead of &lt;tenant_id&gt;.myorg.cloud.
+
+Shorter, more intuitive URLs are easier for users to remember, type, and share.
+
+In addition to the original tenant URL, you can add up to 10 subdomains for your tenant. The first subdomain that you add is set as the default URL, meaning that regardless of the URL users use to access, CyberArk ISPSS, they will be automatically redirected to the default URL. To change the default URL, see [Change the default URL](/admin-space/latest/en/content/environment/as-add-vanity-url).
+
+*   There is no edit action; to change a subdomain, delete it and create a new one.
+
+*   When using REST APIs, make sure to use the original tenant URL.
+
+Add a tenant subdomain
+------------------------------------
+
+Adding a tenant subdomain may take up to 20 minutes. You can continue working during this time. While a subdomain is being added or deleted, you cannot add or delete another subdomain.
+
+To add a tenant subdomain:
+
+1.   In the Administration space, click My environment &gt;Environment management&gt;Domain customization.
+
+2.   On the Customize your tenant subdomain page, click Add tenant URL.
+
+3.   On the Add a tenant URL page, enter a subdomain in the following format:
+
+    *   Up to 14 characters
+
+    *   Unique
+
+    *   Can include numbers, letters, and hyphens
+
+    *   Can begin and end only with a letter/number
+
+    *   Cannot include two or more consecutive hyphens
+
+4.   Save your changes.
+
+[](https://docs.cyberark.com/admin-space/latest/en/content/environment/as-add-vanity-url.htm)Change the default URL
+---------------------------------------------------------------------------------------------------------------------------------
+
+The first subdomain that you add is automatically set as the default URL. You can set any subsequent subdomain that you add as the default after you've added it.
+
+You cannot explicitly set the original URL as default. The original URL will become the default only when there are no subdomains.
+
+To change the default URL, click the actions menu,and then click Set as default.
+
+<Frame>
+![Image 4](https://docs.cyberark.com/admin-space/latest/en/content/images/sh-vanity-url_500x149.jpg)
+</Frame>
+
+Delete a tenant subdomain
+---------------------------------------
+
+You can delete a tenant subdomain from the actions menu. You can delete only URLs that you created; you cannot delete the original URL.
+
+If the URL is set as the default URL, you need to first set another URL as default, and only then delete it.
+
+The only exception is if you are left with the original URL and a default subdomain. In this case, you can delete the default subdomain and the original URL becomes the default.
+
+As with adding a URL, the deletion process may take up to 20 minutes, during which you cannot add or delete another tenant subdomain.

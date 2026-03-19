@@ -1,0 +1,20 @@
+---
+title: "Learn about SIA connectors and connector pools"
+description: "This topic includes information about SIA connectors and connector pools."
+---
+
+This topic includes information about SIA connectors and connector pools.
+
+For information about managing SIA connectors, see [Manage SIA connectors and connector pools](/ispss-deployment/latest/en/content/setup/dpa-manage-sia-connectors)
+
+Behind the scenes
+-------------------------------
+
+*   [Linux](/ispss-deployment/latest/en/content/setup/dpa-sia-connectors-learn)
+*   [Microsoft Windows](/ispss-deployment/latest/en/content/setup/dpa-sia-connectors-learn)
+
+### Linux user for installation
+
+When you install a connector client, a Linux user called cyberark-dpa-connector is created on the host machine. The cyberark-dpa-connector user has very limited permissions, and is validated whenever any further installation processes (such as re-installation) are performed on the connector host. If the cyberark-dpa-connector user being used to re-install the connector client software doesn't pass validation, then the connector installation process is aborted.
+
+The cyberark-dpa-connector user is dedicated to the CyberArk SIA connector client software, and shouldn't be used for any other activities on the connector host machine. If you modify the cyberark-dpa-connector user configuration, you must delete it from the host or provide a different host machine if you want to re-install the connector client.

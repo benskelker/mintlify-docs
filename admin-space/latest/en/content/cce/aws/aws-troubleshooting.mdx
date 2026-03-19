@@ -1,0 +1,69 @@
+---
+title: "AWS troubleshooting"
+description: "This section describes issues you may encounter when adding or managing AWS organizations and accounts, and how you can correct the issue."
+---
+
+This section describes issues you may encounter when adding or managing AWS organizations and accounts, and how you can correct the issue.
+
+Issues
+--------------------
+
+### CCE service role deleted
+
+In CCE, you receive an issue notification that the CCE service role may have been deleted.
+
+Solution
+
+Recreate the CCE service role manually in the AWS console.
+
+The issue notification will contain the role name and External ID. You will use the role name and the External ID when creating the CCE service role.
+
+1.   In the AWS console, go to IAM &gt; Roles and click Create role.
+
+2.   In Step 1 Select trusted entity, select Custom trust policy.
+
+3.   Enter the statement for the trust policy, and then click Next.
+
+Copy to clipboard
+```
+{
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::871697792279:root"
+                ]
+            },
+            "Action": "sts:AssumeRole",
+            "Condition": {
+                "StringEquals": {
+                    "sts:ExternalId": "cyberark-<external id>"
+                }
+            }
+        }
+```
+
+    *   The CCE account ID, 871697792279, is hard coded and must not be changed.
+
+    *   Make sure to replace cyberark-&lt;external id&gt; with the ID that you received in the issue notification.
+
+4.   In Step 2 Add permissions, locate and select the following permission policies and then click Next:
+
+    *   AWSCloudFormationReadOnlyAccess
+
+    *   AWSOrganizationsReadOnlyAccess
+
+5.   In Step 3 Name, review, and create, enter the role name that you received in the issue notification.
+
+6.   Click Create role.
+
+### Duplicate resources
+
+If you add a single account to CCE, and later add an organization that contains this account, you will have duplicate resources.
+
+The single account has SIA and then you add an organization with the SIA service.
+
+Solution
+
+If you do not want duplicated resources, in the AWS entity issues page, you are prompted to remove the single account.
+
+For more information about resolving AWS entity issues, see [View and resolve AWS entity issues](/admin-space/latest/en/content/cce/aws/aws-resolve-entity-issues).

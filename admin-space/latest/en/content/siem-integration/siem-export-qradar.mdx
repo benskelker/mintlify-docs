@@ -1,0 +1,188 @@
+---
+title: "Integrate Audit with IBM QRadar"
+description: "This topic describes how to integrate IBM QRadar with Audit to view system and user activities in IBM QRadar."
+---
+
+This topic describes how to integrate IBM QRadar with Audit to view system and user activities in IBM QRadar.
+
+Overview
+----------------------
+
+You can integrate audit information such as system events and user activities with Microsoft Sentinel.
+
+To integrate Audit with IBM QRadar, you perform the following steps:
+
+<Frame>
+![Image 1](https://docs.cyberark.com/admin-space/latest/en/content/images/audit-siem-export/audit-siem-integr-wf.svg)
+</Frame>
+
+After you configure the authentication in Identity Administration and set up the integration in the Administration space, under My environment &gt; Integrations &gt; Export to SIEM, you call an Identity Administration OAuth 2 authentication API to generate an access token. This token is used in the SIEM integration APIs so that you can export the information from Audit to your SIEM application.
+
+You can create a script or plugin to automate the API calls. CyberArk provides an out-of-the-box plugin for IBM QRadar that you can download from the Marketplace.
+
+Watch the following video to see a demo of the integration process.
+
+[](https://docs.cyberark.com/admin-space/latest/en/content/siem-integration/siem-export-qradar.htm)Create and configure authentication in Identity Administration
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<Frame>
+![Image 2](https://docs.cyberark.com/admin-space/latest/en/content/images/audit-siem-export/audit-siem-integr-identadm-wf.svg)
+</Frame>
+
+### Step 1: Create and configure an OAuth2 server web app in Identity Administration
+
+1.   In Identity Administration, go to Apps & Widgets &gt; Web Apps, and click Add Web Apps.
+
+2.   In the Add Web Apps dialog, click the Custom tab, locate the OAuth2 Server web app, and click Add.
+
+You will use this web app as a template for the web app that you are creating.
+
+3.   Click Yes to add the web app.
+
+4.   In the Web Apps page, select the OAuth2 Server app that you just added.
+
+5.   In the OAuth2 Server page, enter the following information:
+
+    1.   In the Settings tab, in the Application ID field, enter AuditforIBMQRadar as the name of this web app.
+
+    2.   Select the Tokens tab, and in the Token Type field, select jwtRS256. Under Auth methods, make sure that the Client Creds authentication method is selected.
+
+    3.   Select the Scope tab, click Add, copy and paste the following text in the Name field, and then click Save.
+
+`isp.audit.events:read`
+    4.   Select the Advanced tab, copy and paste the following script, and then click Save.
+
+```
+setClaim('tenant_id', TenantData.Get("CybrTenantID"));
+setClaim('aud', 'cyberark.isp.audit');
+```
+
+### Step 2: Create a service user in Identity Administration
+
+In this step, you create the service user and connect it to the OAuth2 web app that you created in the previous step.
+
+1.   Go to Core Services &gt; Users, and click Add User.
+
+2.   In the Create CyberArk Cloud Directory User page, enter the information in the required fields.
+
+3.   In the Account area, in the Display name field, enter AuditforIBMQRadar.
+
+4.   In the Status area, select is OAuth confidential client, and then click Create User.
+
+5.   In the Users page, select the All Service Users set, and then locate and select the user that you just created.
+
+6.   In the User details page, select the Application Settings tab and then click Add.
+
+7.   Locate and select the OAuth2 Server web app, and click Save.
+
+8.   Enter your user name, and click OK.
+
+### Step 3: Set the service user permissions in Identity Administration
+
+1.   Go to Apps & Widgets &gt; Web Apps, and select the OAuth2 Server web app that you added.
+
+2.   Select the Permissions tab, locate the service user that you created, and select the following permissions:
+
+    *   Grant
+
+    *   View
+
+    *   Run
+
+    *   Automatically Deploy
+
+3.   Click Save.
+
+Add a SIEM integration in the Administration space
+----------------------------------------------------------------
+
+When you add a SIEM integration, you are creating the API key that you will use to call the SIEM integration APIs.
+
+Make sure you have completed all of the steps in [Create and configure authentication in Identity Administration](/admin-space/latest/en/content/siem-integration/siem-export-qradar) before adding a new SIEM integration.
+
+*   After you add an integration, you can't modify the name or the description. To make changes, you must delete the integration and add a new one.
+
+*   You can only have two Microsoft Sentinel SIEM integrations. If you want to add an integration, you must delete one of the existing integrations.
+
+1.   Go to the Administration space.
+
+2.   Select My environment &gt; Integrations &gt; Export to SIEM.
+
+3.   Click Create, and select Create SIEM integration.
+
+4.   Enter the name IBMQRadar, and an optional description.
+
+5.   Click Apply.
+
+An API key is created.
+
+Set up and automate SIEM integration using APIs
+-------------------------------------------------------------
+
+After you configure the authentication in Identity Administration and set up the integration in the Administration space, you call the following APIs:
+
+*   An Identity Administration OAuth 2 authentication API to generate an access token.
+
+*   A SIEM integration create query API. You will use the generated token, the API key, and the base URL to create a filtered query.
+
+*   A SIEM integration fetch data API. You will use the generated token, the API key, and the base URL to fetch and export audit data to your SIEM application.
+
+You can create a script or plugin to automate the export of your audit data to your SIEM application.
+
+You can call the APIs only once a minute.
+
+### Step 1: Generate an access token
+
+To generate an access token, you call the Integrate the CyberArk Identity client credentials flow API with the following parameters:
+
+API parameters| Parameter | Value |
+| --- | --- |
+| CyberArk Identity endpoint | Identity FDQN |
+| Scope | isp.audit.events:read |
+
+Example:
+
+`https://\{identity_fqdn\}/OAuth2/Token/\{WEB_APP_ID\}`
+
+### Step 2: Call the Audit SIEM integration APIs
+
+Use the values from the CyberArk Identity client credentials token API response and the SIEM integration API key to call the SIEM integration APIs. For more information about the SIEM integration APIs, see [SIEM integrations API](/audit/latest/en/content/audit/isp_siem-integration-api).
+
+1.   From the CyberArk Identity client credentials token API response, copy the following parameters to the Audit SIEM integration API header:
+
+Parameters from API response| Parameter | Value |
+| --- | --- |
+| access_token | $(token) |
+| token_type | Bearer |
+2.   In the Administration space, go to My environment &gt; Integrations &gt; Export to SIEM, and click the SIEM integration that you added.
+3.   Copy the following parameters to the SIEM integration API:
+    *   API base URL: AUDIT_API_BASE_URL
+
+    *   API key
+
+The following example has parameters from both the CyberArk Identity client credentials token API response and the SIEM integration.
+
+`curl --location 'https://$(audit_integration_endpoint)/api/audits/stream/$(some path)'`--header 'Content-Type: application/json'--header 'Authorization: Bearer $(access_token)'--header 'x-api-key: $(api key)'-d $(payload)
+
+4.   Click Close.
+
+### Step 3: Automate the Audit SIEM integration API
+
+Use a script or plugin to automate the process of querying and exporting the Audit system events and activities to IBM QRadar.
+
+Configure IBM QRadar
+----------------------------------
+
+### Step 1: Download the extension in the IBM App Exchange
+
+1.   In the IBM App Exchange, search for the CyberArk Audit & QRadar extension and then select the extension.
+
+2.   Click Download, and then click Close.
+
+### Step 2: Install the extension on IBM QRadar
+
+1.   Go to the IBM QRadar Admin Console, and click Extensions Management.
+
+2.   Click Add, locate the CyberArk Audit & QRadar extension zip file that you downloaded, and then click Add.
+
+3.   Click Install, and then click OK.

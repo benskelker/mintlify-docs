@@ -1,0 +1,118 @@
+---
+title: "Create Entra group assignment policies"
+description: "This topic explains how to create policies that enable users with zero standing privileges (ZSP) for Entra groups to get membership to an Entra group through SCA."
+---
+
+This topic explains how to create policies that enable users with zero standing privileges (ZSP) for Entra groups to get membership to an Entra group through SCA.
+
+Entra group assignment policies allow for dynamic and temporary assignment of users to Entra groups within your Microsoft Entra ID directories. This means users can be granted access to specific M365 services or applications only when they need it, and for a limited access window, without the need to manage the different roles in the access policy.
+
+Notes and limitations
+-----------------------------------
+
+*   Currently group assignment policies support only assignment of the following types of Entra groups:Office365 groups, security groups, and groups whose source is cloud.
+
+*   To create and manage Entra group assignment policies, you must be a CyberArk Cloud Security administrator (CS Admin role).
+
+Microsoft Entra ID workspaces delegates (SCA Admin role) don't have permission to create and manage Entra group assignment policies.
+
+*   On-demand access requests for Entra group membership are not supported
+
+*   Secure Web Session recording is not supported for sessions initiated via Entra group assignment policies.
+
+Before you start
+------------------------------
+
+*   Make sure that SCA is ready to work with your Entra ID directory instance:
+
+| Step | Description |
+| --- | --- |
+| 1 | Onboard and discover the Entra ID directory | Before you create an Entra group assignment policy make sure that the Entra ID directory you want to set up policies for has been onboarded to CyberArk Once a day, Cloud Visibility runs a scheduled discovery to detect any changes to the structure of the onboarded environment. If you recently made changes to your environment's structure, you can manually run an on-demand discovery using the SCA API (`/policies/discovery`). This way, you'll be able to create policies as soon as the manual scan is finished, instead of waiting for the scheduled daily discovery. For more information about onboarding Entra ID, see the docs for onboarding Azure. |
+| 2 | Scan the Entra ID directory from SCA | For Entra ID directories that are already onboarded to CyberArk, SCA runs scheduled scans twice a day to detect resources, roles, permissions, and groups. If you don't want to wait for the scheduled scans, you can manually run on-demand scans directly from the Create policy wizard interface or using the [Rescan API (`/cloud/rescan`).](https://docs.cyberark.com/docs-WT2/sca/en/Content/Automation/sca-API-cloud.htm) When you use the SCA API, you can select which workspaces to scan. |
+*   A cloud provider web app must be defined for the Entra ID directory. If there isn't one, define it before you create the policy. For details, see Create a web app for Microsoft Entra ID.
+
+Create an Entra group assignment policy
+-----------------------------------------------------
+
+This section describes how to create a Entra group assignment policy from the Administration space UI.
+
+*   You can create up to 200 assignments in a single policy.
+
+*   To create policies using the API, see [Access control policies API](https://api-docs.cyberark.com/uap-schema-api/).
+
+### Start creating a policy
+
+1.   In the Administration space, go to Access control policies&gt;User access.
+
+2.   In the User access policies page, click Create policy and select Group assignment.
+
+### Step 1: Define the general details
+
+1.   Provide the following details:
+
+General details information| Element | Description |
+| --- | --- |
+| Policy name | Give the policy a meaningful and unique name. |
+| Description | (Optional) Add a short, meaningful description about the policy you are creating |
+| Directory name | Relevant only for Entra groups (Read only) |
+| Policy timeframe | Determines the life span of the policy. Select from one of the following: Time zone -The time zone that applies to the timeframe. The start and end times are fixed to the selected time zone. Users in other time zones will see the equivalent local times. * Never expires * Date range - * From - The date and time the policy becomes active * To- The date and time the policy expires Example: If the policy's timeframe is set from Jan 10, 9:00 AM to Jan 15, 5:00 PM, Eastern Time (ET), the equivalent in Pacific Time (PT) would be Jan 10, 6:00 AM to Jan 15, 2:00 PM. |
+| Policy tags | Customized tags to help identify the policy and those similar to it. Press Enter after each tag to add another tag. * Maximum number of characters per tag- 50 * Maximum number of tags per policy - 20 |
+2.   Click Next.
+
+### Step 2: Select Entra groups
+
+In this step, you select the Entra groups that the identities in the policy can join.
+
+1.   If no groups have been selected yet, click Select groups. Otherwise click Add groups.
+
+2.   From the list on the left, select an Entra ID directory. The groups in the directory are displayed.
+
+If the details you see in the Create policy wizard aren't up to date, you can trigger an on-demand scan for resources and roles by clicking the Scan again button.
+
+If you don't see the workspace on the left, this means that the workspace hasn’t yet been discovered by CyberArk. You can either wait for the next scheduled discovery, or you can trigger a full discovery and scan using the SCA API (`/policies/discovery`).
+
+When the scan is complete (depending on the size of your onboarded workspaces, this may take some time), refresh your view to see the most up-to-date resources.
+
+For more information about availability of the resources, see our [SCA Common FAQs page](https://community.cyberark.com/s/article/SCA-Common-FAQs) in the CyberArk Technical Community:
+
+    *   [How soon after onboarding workspaces to Cloud Visibility can I see them in SCA and start setting up cloud access policies?](https://community.cyberark.com/s/article/SCA-Common-FAQs#Onboarding)
+
+    *   [Is there a way to manually discover and scan onboarded workspaces?](https://community.cyberark.com/s/article/SCA-Common-FAQs#Discovery)
+
+10,000 Entra groups can be available and searchable in the Policy creation/edit wizard.
+
+3.   Select the Entra groups that should be included in this policy, and click Select.
+
+For more details about a roles in each Entra group, click the ellipsis (![Image 6](https://docs.cyberark.com/admin-space/latest/en/content/images/icon-ellipsis-h_20x20.png)) to the right of the group, and select Group role details.
+4.   Repeat these steps if you want to add groups from other directories.
+
+5.   Click Next.
+
+### Step 3: Select identities
+
+In this step, you select identities (users, groups, roles) that are allowed join the selected groups based on this policy.
+
+1.   On the Identities page, click Add identities.
+
+2.   For each identity you want to add to the policy, start typing the name of the identity in the search bar, and select it in the list.
+
+You can narrow down the search results by selecting the type of identity and the source of the identity on the left. To prevent circular membership, the target group itself cannot be selected as an entitled identity.
+3.   Click Add to policy.
+
+### Step 4: Define the policy conditions
+
+This part of the policy determines session length and access times.
+
+To configure conditions enter the requested information as described in the following table.
+
+Conditions information| Field | Description |
+| --- | --- |
+| Maximum session length | The maximum length of time a session can be open based on this policy. The session automatically closes and is disconnected when the session expires. * Unit: hours * Default value: 1 * Allowed values: 1 - 12 |
+| Select the days | The days of the week to allow access. |
+| Select the timeframe | The time of day to allow access * All day - access is available all day on the selected days * Specific time - access is available during the specified hours (relative to Policy time zone) on the selected days; For example, 9:00 AM to 5:00 PM, Eastern Time (ET) is equivalent to 6:00 AM to 2:00 PM, Pacific Time (PT). |
+
+### Step 5: [](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-group-assignment.htm)Create and activate the policy
+
+At the bottom of the page, click Create policy. The policy is created and activated, and is displayed in the User access policies page with a Validating (![Image 7](https://docs.cyberark.com/admin-space/latest/en/content/uap/images/policy-status-validating_19x20.png)) status. When the validation completes successfully, the status changes to Active (![Image 8](https://docs.cyberark.com/admin-space/latest/en/content/uap/images/policy-status-active_20x20.png)).
+
+[Manage access policies](/admin-space/latest/en/content/uap/policies-manage)

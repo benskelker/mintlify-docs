@@ -1,0 +1,36 @@
+---
+title: "Import logon events for Threat Detection and Response"
+description: "This topic describes how to configure Splunk to forward logon events."
+---
+
+This topic describes how to configure Splunk to forward logon events.
+
+Overview
+----------------------
+
+You can set up your system to send logon events from a Security Information and Event Management (SIEM) system to enable the suspected credential theft and unmanaged privileged account detections. For more information about these detections, see the [Threat Detection and Response](/identity-protection-space/latest/en/content/itdr/get-started/overview-threat-detection-and-response) documentation.
+
+To receive alerts for a detected event, configure the SIEM system to forward syslogs of logon events for use in threat detection and response. For instructions, check the documentation of your SIEM system.
+
+Make sure you use mutual authentication and TLS-secured communication when sending logon events to ensure secure data transmission.
+
+Currently only the Splunk SIEM system is supported.
+
+Configure the Splunk to forward logon events
+----------------------------------------------------------
+
+To establish a connection between Threat Detection and Response and the Splunk heavy forwarder, you must perform the following steps:
+
+### Step 1: Download required certificates
+
+1.   Sign in to the Administration space.
+
+2.   In the left pane, go to My environment, then select Integrations &gt; Import data from SIEM.
+
+3.   In Section A, click the download buttons to download the Client Certificate file and the Certificate Authority (CA) file.
+
+The Client Certificate file also contains a private key.
+
+### Step 2: Configure the output data and the target address
+
+On the Import data from SIEM page, go to Section B and follow the onscreen instructions from steps 1-5 to configure the Splunk heavy forwarder to send logon data.

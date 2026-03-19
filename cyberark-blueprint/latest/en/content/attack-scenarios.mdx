@@ -1,0 +1,46 @@
+---
+title: "Attack scenarios"
+description: "This topic describes examples of real world attack scenarios."
+---
+
+This topic describes examples of real world attack scenarios.
+
+Workforce compromise leads to widespread ransomware
+-----------------------------------------------------------------
+
+A malicious actor sent out a widespread phishing campaign against a target organization, hoping that at least a small percentage of workforce identities would fall for the trap. In being successful with at least one workforce identity, the malicious actor was able to gain administrative rights on the workforce user’s workstation. With local administrator rights, impersonating the workforce user, the malicious actor was able to then access a local hash from an IT admin who had recently logged into the system, and was able to subsequently impersonate that IT administrator without knowing their password, a technique known as pass-the-hash. With widespread administrative access to all Windows domain-joined systems, the malicious actor was able to deploy ransomware across the entire workforce’s machines and their Windows Server infrastructure. This attack scenario mirrors that of many recent ransomware breaches.
+
+Workforce compromise leads to complete identity and network takeover
+----------------------------------------------------------------------------------
+
+A malicious actor purchased compromised workforce user credentials on the dark web, which were still valid, and used those credentials to MFA spam the workforce user until they accepted the authentication to the VPN service (a technique known as MFA fatigue). Once on the intranet, the malicious actor discovered PowerShell scripts on a network drive, which contained administrative credentials to the organization’s PAM service. With administrative access to the PAM service, the bad actor was able to access all the organization’s secrets, including the administrative accounts to their Domain, MFA provider, Identity Provider, and Cloud Providers. With all of this privileged access to enterprise resources, they were able to exfiltrate secrets and data from the network. This attack scenario mirrors that of the [Uber PAM breach in 2022](https://www.cyberark.com/resources/blog/unpacking-the-uber-breach).
+
+IT admin compromise leads to complete identity takeover and ransom
+--------------------------------------------------------------------------------
+
+A malicious actor targeted an IT admin and impersonated them through a vishing (voice phishing) attack, enabling them to compromise organization’s standard workforce credentials and reset the MFA enrollment of that IT admin. Using that IT admin’s standing privileged access to high-risk security tools, such as their Identity Provider, the malicious actor was able to use the super admin rights to compromise additional downstream access to the Domain Controller and Cloud Service Provider accounts. With the Domain and Cloud Providers compromised, the malicious actor was capable of exfiltrating sensitive data from the network and then encrypting all the hypervisor systems and virtual machines, leaving the organization trapped from recovering. This attack scenario mirrors that of the [MGM breach in 2023](https://www.cyberark.com/resources/blog/the-mgm-resorts-attack-initial-analysis).
+
+Third-Party support compromise leads to widespread identity provider compromise
+---------------------------------------------------------------------------------------------
+
+A malicious actor targeted a Support Engineer for an Identity as a Service (IDaaS) provider and was able to steal their standard credentials (either via spear-phishing or another social engineering tactic) and was able to compromise their workstation with command-and-control tools, enabling them to monitor the endpoint as well as exfiltrate data at will. The malicious actor was able to access the IDaaS providers’ support case system, scour HAR files from support cases, and extract session cookies from those files. Using these session cookies, they were able to access the IDaaS provider’s own customers’ IdPs using administrative access, enabling them to perform a variety of unknown malicious actions within those customer environments. This attack scenario mirrors that of the [Okta breach in 2023](https://www.cyberark.com/resources/blog/piecing-together-the-attack-on-oktas-support-unit).
+
+Developer compromise leads to data exfiltration
+-------------------------------------------------------------
+
+A malicious actor targeted a developer after obtaining session cookies for their communications channel on the dark web and re-used the valid session cookie to impersonate the developer. They socially engineered the IT Support Team to reset the user’s MFA configuration and were able to completely impersonate the developer’s access to enterprise resources, including their source code repository. After a failed attempt at extorting the company, they released 780GB of proprietary company data. This attack mirrors that of the [EA breach in 2021](https://therecord.media/hackers-leak-full-ea-data-after-failed-extortion-attempt).
+
+CI/CD pipeline compromise leads to software supply chain attack
+-----------------------------------------------------------------------------
+
+A malicious actor compromised the CI/CD pipeline of a widely-used IT management tool. While the initial compromise into the vendor’s organization is unknown, it likely was the result of a compromise of privileged access; otherwise, access to the CI/CD pipeline would not have been possible. The malicious actor introduced a trojanized update by subtly altering the software's source code during the development phase, allowing the introduction of malware that installed back doors undetected to downstream customers. The malicious actor was able to distribute these compromised updates seamlessly to numerous organizations globally, including critical infrastructure sectors and government entities. They leveraged these back doors to gain high-level access within the affected networks. This access enabled them to perform extensive reconnaissance, escalate privileges to high-value targets, and move laterally across the network infrastructure. This attack scenario mirrors that of the [SolarWinds attack in 2021](https://www.cyberark.com/resources/blog/the-anatomy-of-the-solarwinds-attack-chain).
+
+Code testing software compromise leads to software supply chain attack
+------------------------------------------------------------------------------------
+
+A malicious actor compromised the CI/CD pipeline of a code testing software tool, likely exploiting privileged access vulnerabilities. They manipulated a Bash Uploader script by inserting malicious code, which was then downloaded by developers across numerous organizations, enabling the export of sensitive data to an external server controlled by the attackers. This breach allowed them to conduct espionage, escalate privileges, and infiltrate further into the customer infrastructures. By leveraging these back doors, the attackers maintained persistent access and manipulated identity controls, effectively gaining control over the networks and posing a significant security threat. This attack scenario mirrors that of the [Codecov attack in 2021](https://www.cyberark.com/resources/blog/breaking-down-the-codecov-attack-finding-a-malicious-needle-in-a-code-haystack).
+
+Machine identity secrets leaked through Git repositories
+----------------------------------------------------------------------
+
+A malicious actor scanned public git repositories looking for machine identity secrets that were accidentally left in source code in clear-text. Developer, IT, Engineering, and Application teams use a variety of highly privileged CI/CD tools, including source code repository and management tools such as GitHub, GitLab, and CircleCI, among others. Builders and coders often leave hard-coded secrets in the source code files of their software code or CI/CD instruction sets (for example, manifest, playbook, yaml file, and so on). Depending on the privacy settings of the Git service, these hard-coded credentials may be accidentally leaked publicly, whereby malicious actors can steal them. These source code repositories act as credential aggregators, enabling lateral and vertical movement to other downstream enterprise resources, and ultimately execute a variety of abuse of privileges. This attack scenario mirrors [North Carolina State University researchers’ findings](https://www.cyberark.com/resources/blog/github-repositories-leak-thousands-of-secrets-study-shows#:~:text=The%20North%20Carolina%20State%20University,and%20API%20tokens%2C%20and%20thousands) after scanning billions of GitHub files.

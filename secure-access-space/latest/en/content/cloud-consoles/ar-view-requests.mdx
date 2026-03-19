@@ -1,0 +1,55 @@
+---
+title: "View and manage your on-demand access requests"
+description: "This topic describes how to manage on-demand access requests that are configured to use the in-platform approval channel."
+---
+
+This topic describes how to manage on-demand access requests that are configured to use the in-platform approval channel.
+
+You can view these requests in the Secure Access space and check their current status. If you change your mind about a request that has not yet been handled, you can cancel it.
+
+You will be able to view your access requests if you have been granted the Access request applicant role. Note that this role enables you to access the page. The right to create requests depends on whether you have been assigned permission to do so. For more information about how users can be configured with permission to create requests, see [Request on-demand access to cloud services](/secure-access-space/latest/en/content/cloud-consoles/request-temporary-cloud-access).
+
+If you don't see your cloud console requests, check with your administrator that Secure Cloud Access (SCA) has been set up to use the in-platform approval channel. For more information about setting up the in-platform approval channel in SCA, see Set up on-demand access.
+
+To complete these tasks using APIs, see [Access request APIs](/secure-access-space/latest/en/content/cloud-consoles/ar-apis).
+
+View your requests
+--------------------------------
+
+1.   In the Secure Access space, go to Access requests&gt;My requests – Cloud.
+
+Each request goes through a series of stages, which are reflected in the Status column. A request may be pending approval, move into pending fulfillment, and ultimately be fulfilled. In some cases, it may be rejected or expire before it is approved.
+
+2.   Use the filter and search functionality to locate a specific request. For example, you can filter the view to see only pending requests, or you could search for a specific target address, approver name, or comment from an approver.
+
+Once the My requests page is open, it is not automatically updated. So, to get the most up-to-date statuses, click Refresh to update the page, or adjust the filters.
+
+Cancel a request
+------------------------------
+
+If you have submitted a request and it has not yet been handled, you can cancel that request.
+
+1.   Hover over a request, to display the More options button (three dots).
+
+2.   Select Cancel request and click Yes to confirm.
+
+Troubleshooting
+-----------------------------
+
+[You can’t submit a new access request, or the request fails without clear feedback](/secure-access-space/latest/en/content/cloud-consoles/ar-view-requests)
+
+#### Possible cause
+
+Each user can have only a limited number of open requests at one time. Open requests include requests that are pending or already approved. If you’ve reached this limit, the system blocks new requests.
+
+#### Resolution
+
+1.   Review your existing access requests.
+
+2.   Close or cancel requests you no longer need, or wait for existing requests to expire or be completed.
+
+3.   Try submitting the request again.
+
+#### Additional information
+
+The maximum number of open requests per user is enforced by the system and may change over time.

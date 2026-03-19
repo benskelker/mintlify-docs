@@ -1,0 +1,52 @@
+---
+title: "FedRAMP compliance"
+description: "This topic describes how CyberArk Administration space complies with Federal Risk and Authorization Management Program (FedRAMP) requirements."
+---
+
+This topic describes how CyberArk Administration space complies with Federal Risk and Authorization Management Program (FedRAMP) requirements.
+
+FedRAMP requirements
+----------------------------------
+
+FedRAMP is a U.S. government program that sets security standards for cloud services used by federal agencies. To attain FedRAMP compliance, CyberArk services are audited and are confirmed to comply with the FedRAMP security requirements to protect government data and systems in cloud environments.
+
+For more information about FedRAMP, see [https://www.fedramp.gov/program-basics/](https://www.fedramp.gov/program-basics/).
+
+FedRAMP environments
+----------------------------------
+
+The services that are a part of your CyberArk tenant are hosted in different regions based on pods. A tenant is the logical unit that separates subscriber organizations from each other within CyberArk. Every operation that you perform applies to that tenant alone.
+
+Only CyberArk tenants provisioned in the FedRAMP GovCloud region are covered by FedRAMP authorization. Non-GovCloud environments are not FedRAMP authorized. Customers requiring FedRAMP compliance should ensure their tenant is provisioned in the FedRAMP environment or contact their CyberArk account manager.
+
+The FedRAMP region is AWS GovCloud America West (us-gov-west-1) and is available only in the United States.
+
+CyberArk services that are FedRAMP-compliant
+----------------------------------------------------------
+
+The following CyberArk services are part of the CyberArk Identity Security Platform Shared Services (ISPSS) environment and are supported in FedRAMP environments:
+
+*   Identity Administration for user identity and permissions management
+
+*   Administration space for managing the CyberArk environment and specifically connector pools and connectors
+
+*   Privilege Cloud for user credential and resource access management
+
+*   Secure Infrastructure Access (SIA) for access to resources
+
+*   Audit service for auditing user and machine actions within the CyberArk environment
+
+Set up your FedRAMP environment
+---------------------------------------------
+
+The following documentation enables you to set up your CyberArk environment on ISPSS:
+
+*   ISPSS Deployment
+
+Administration space - FedRAMP functionality support
+------------------------------------------------------------------
+
+The following table presents the main functionality available in the Administration space on ISPSS that is FedRAMP-compliant and those functions that are not available in a FedRAMP environment:
+
+Administration space FedRAMP support| FedRAMP support | Services |
+| --- | --- |

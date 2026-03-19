@@ -1,0 +1,43 @@
+---
+title: "Analyze user behavior with UBA"
+description: "This topic describes User Behavior Analytics (UBA). UBA aggregates CyberArk Identity usage data to provide both a high-level and a detailed view of the user behavior information, such as:"
+---
+
+This topic describes User Behavior Analytics (UBA). UBA aggregates CyberArk Identity usage data to provide both a high-level and a detailed view of the user behavior information, such as:
+
+*   Number of users and devices
+
+*   User login locations
+
+*   User activities
+
+*   Active Directory or LDAP connector information
+
+Tracking these activities over time helps in recognizing regular behavioral patterns, establishing baseline user profiles, and detecting unusual activities that may indicate a security or data breach, such as access attempts from a foreign country or an unknown device.
+
+The following workflow diagram illustrates how to set up UBA in CyberArk Identity:
+
+<Frame>
+![Image 4](https://docs.cyberark.com/identity/latest/en/content/analytics/analyticsimg/uba-workflow.png)
+</Frame>
+
+This workflow does not include scenarios such as privilege risk configurations and adjusting the model weights.
+
+[](https://docs.cyberark.com/identity/latest/en/content/hometileslps/lp-tile3.htm)Overview of user risk
+---------------------------------------------------------------------------------------------------------------------
+
+The user risk associated with a single UBA event generally indicates that a legitimate user did not initiate an access attempt. This real-time risk assessment is specific to each sign-in and application access event. In contrast, the CyberArk Identity User Portal compiles and aggregates these individual risk assessments over time, thus providing a comprehensive view of the user’s risk profile. This aggregated risk reflects long-term trends and signifies a persistent threat, suggesting that the user account might be compromised. A high risk evaluation in the CyberArk Identity User Portal implies that the user has consistently demonstrated anomalous behavior within the system over time and should be carefully monitored.
+
+For more information on configuring UBA to determine a user's risk level, see Configure risk-based access control.
+
+In this section:
+
+Configure CyberArk Identity User Behavior Analytics settings
+
+Establish user risk learning
+
+Get data
+
+Examine the data
+
+Configure response automation

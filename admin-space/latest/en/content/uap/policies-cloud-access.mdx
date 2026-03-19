@@ -1,0 +1,182 @@
+---
+title: "Create policies for cloud console access"
+description: "This topic describes how to create and manage policies that provide users with just-in-time access to cloud consoles."
+---
+
+This topic describes how to create and manage policies that provide users with just-in-time access to cloud consoles.
+
+To manage cloud console policies, you must be a CyberArk Cloud Security administrator (CS Admin role) or you must be a delegate for the workspace you're creating the access policy for (SCA Admin role).
+
+If you don't have a relevant role, contact your administrator.
+
+Before you start
+------------------------------
+
+*   Make sure that your cloud structure is up-to-date in SCA:
+
+| Step | Description |
+| --- | --- |
+| 1 | Onboard and discover cloud workspaces in Cloud Visibility | Before you create a policy make sure that the workspaces you want to set up policies for have been onboarded in Cloud Visibility. Once a day, Cloud Visibility runs a scheduled discovery to detect any changes to the structure of your cloud environments, for example, new or deleted accounts in an onboarded AWS organization. If you recently made changes to your environment's structure, you can manually run an on-demand discovery using SCA's Discovery API (`/policies/discovery/`). This way, you'll be able to create policies immediately, instead of waiting for the scheduled daily discovery. For more information about onboarding workspaces, see the SCA docs. |
+| 2 | Scan workspaces from SCA | For cloud workspaces that are onboarded to Cloud Visibility, SCA runs scheduled scans twice a day directly on your cloud environments for roles and permissions, and in the case of Microsoft Entra ID), for Azure resources (resource groups, and resources). If you don't want to wait for the scheduled scans, you can manually run on-demand scans directly from the Create policy wizard interface or using the [Rescan API (`/cloud/rescan`).](https://docs.cyberark.com/docs-WT2/sca/en/Content/Automation/sca-API-cloud.htm) When you use the SCA API, you can select which workspaces to scan. |
+*   A cloud provider app must be defined for the onboarded workspace. If there isn't one, define it now. For details, see the relevant Create web app section for your cloud provider.
+
+*   Prerequisites per cloud provider:
+
+| Cloud provider | Prerequisites |
+| --- | --- |
+| AWS | * AWS IAM - Make sure that at least one assumable IAM role exists in the AWS account that you want to define access to. * AWS IAM Identity Center - * Make sure that at least one permission set is defined in the accounts that you want to define access to. * A user mapping between CyberArk and cloud users must be established before a connection can occur. Policies that contain non-mapped identities can't be validated. For details, see the [Identity Administration](/identity-administration/latest/en/content/ispss/ispss-add-system-users-and-roles) docs. |
+| Azure | For Microsoft Entra ID, a user mapping between CyberArk and cloud users must be established before a connection can occur. Policies that contain non-mapped identities can't be validated. |
+| GCP | A user mapping between CyberArk and cloud users must be established before a connection can occur. Policies that contain non-mapped identities can't be validated. |
+
+Create a cloud console policy
+-------------------------------------------
+
+This section describes how to create a cloud console policy from the Administration space UI.
+
+*   You can create up to 200 assignments in a single policy.
+
+*   To create policies using the API, see [Access control policies API](https://api-docs.cyberark.com/uap-schema-api/).
+
+### Start creating a policy
+
+1.   In the Administration space, go to Access control policies&gt;User access.
+
+2.   In the User access policies page, click Create policy and select Cloud console access.
+
+### Step 1: Define the general details
+
+1.   Provide the following details:
+
+General details information| Element | Description |
+| --- | --- |
+| Policy name | Give the policy a meaningful and unique name. |
+| Description | (Optional) Add a short, meaningful description about the policy you are creating |
+| Cloud provider | Select what you want to grant access to. This list shows cloud providers based on the workspaces that you are delegated to. * AWS IAM - Grants access to perform tasks on AWS IAM resources, using IAM roles * AWS IAM Identity Center- Grants access to perform tasks in AWS accounts through AWS IAM Identity Center, using permission sets * Google Cloud - Grants access to perform tasks in Google Cloud, using GCP roles * Azure resource - Grants access to perform tasks on Azure resources (management groups, subscriptions, resource groups, and resources), using Azure resource roles * Microsoft Entra ID - Grants access to perform tasks in Microsoft Entra ID, using Microsoft Entra roles |
+| Directory name | Relevant only for Entra groups (Read only) |
+| Policy timeframe | Determines the life span of the policy. Select from one of the following: Time zone -The time zone that applies to the timeframe. The start and end times are fixed to the selected time zone. Users in other time zones will see the equivalent local times. * Never expires * Date range - * From - The date and time the policy becomes active * To- The date and time the policy expires Example: If the policy's timeframe is set from Jan 10, 9:00 AM to Jan 15, 5:00 PM, Eastern Time (ET), the equivalent in Pacific Time (PT) would be Jan 10, 6:00 AM to Jan 15, 2:00 PM. |
+| Policy tags | Customized tags to help identify the policy and those similar to it. Press Enter after each tag to add another tag. * Maximum number of characters per tag- 50 * Maximum number of tags per policy - 20 |
+2.   Click Next.
+
+### Step 2: [](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-cloud-access.htm)Select cloud roles
+
+*   [AWS account](/admin-space/latest/en/content/uap/policies-cloud-access)
+*   [AWS IAM Identity Center](/admin-space/latest/en/content/uap/policies-cloud-access)
+*   [Google Cloud](/admin-space/latest/en/content/uap/policies-cloud-access)
+*   [Azure resource](/admin-space/latest/en/content/uap/policies-cloud-access)
+*   [Entra ID](/admin-space/latest/en/content/uap/policies-cloud-access)
+
+In this step, you select accounts and the cloud roles you want to include in the AWS IAM policy.
+
+1.   From the list on the left, select an AWS account. The account's standard AWS predefined cloud roles and your organization's custom assumable roles are displayed.
+
+2.   Select the cloud roles you want to include in the policy, and click Select.
+
+For more details about a role in the list, click the vertical ellipsis (![Image 1](https://docs.cyberark.com/admin-space/latest/en/content/images/icon_ellipsis-v.png)) to the right of the role, and select Role details.
+
+3.   Repeat the above steps for each account you want to include in the policy.
+
+4.   Click Next.
+
+In this step, you select permission sets you want to include in the AWS IAM Identity Center policy.
+
+When you create an access policy for an AWS account managed by AWS IAM Identity Center, the policy will work only if you create an IAM policy with the same name and path in each AWS account affected by the policy (where AWS assigns the permission set created by the policy).
+
+1.   Click Select accounts and permission sets.
+
+2.   From the dropdown, select the relevant organization.
+
+Then select one or more accounts that you want to define access to, and click Next.
+
+3.   Select one or more permission sets you want to give users for the accounts you selected, and click Add.
+
+For more details about a permission set in the list, click the horizontal ellipsis (![Image 2](https://docs.cyberark.com/admin-space/latest/en/content/images/icon-ellipsis-h_20x20.png)) to the right of the permission set, and select View permissions.
+
+4.   If you want to add different permission sets for other accounts, click Add permission sets and repeat the above steps.
+
+5.   When you're done adding permission sets, click Next.
+
+In this step, you select the roles you want to include in the Google Cloud policy.
+
+1.   From the list on the left, select a Google project. The roles defined in the project are displayed.
+
+2.   Select the roles you want to include in the policy, and click Select.
+
+    *   You can filter the list by role type and Google Cloud package to narrow down the listed roles.
+
+    *   For more details about a role in the list, click the vertical ellipsis (![Image 3](https://docs.cyberark.com/admin-space/latest/en/content/images/icon_ellipsis-v.png)) to the right of the role, and select Role details.
+
+3.   Repeat the above steps for each project you want to include in the policy.
+
+4.   Click Next.
+
+In this step, you select the roles you want to include in the Azure resource policy.
+
+1.   From the list on the left, select an Azure resource. You can define policy on the following levels:
+
+    *   Management group
+
+    *   Subscription
+
+    *   Resource group
+
+    *   Resource
+
+The roles that apply to the selected resource are displayed.
+
+2.   Select the roles you want to apply to the resource, and click Select.
+
+For more details about a role in the list, click the vertical ellipsis (![Image 4](https://docs.cyberark.com/admin-space/latest/en/content/images/icon_ellipsis-v.png)) to the right of the role, and select Role details.
+
+3.   Repeat the above steps for each resource you want to include in the policy.
+
+4.   Click Next.
+
+In this step, you select the roles you want to include in the Entra ID policy.
+
+1.   From the list on the left, select an Entra ID directory. The roles defined in the directory are displayed.
+
+2.   Select the roles you want to include in the policy, and click Select.
+
+For more details about a role in the list, click the vertical ellipsis (![Image 5](https://docs.cyberark.com/admin-space/latest/en/content/images/icon_ellipsis-v.png)) to the right of the role, and select Role details.
+
+3.   Repeat the above steps for each Entra ID directory you want to include in the policy.
+
+4.   Click Next.
+
+### Step 3: Select identities
+
+In this step, you select identities (users, groups, roles) that can access the cloud console with the selected roles.
+
+1.   On the Identities page, click Add identities.
+
+2.   For each identity you want to add to the policy, start typing the name of the identity in the search bar, and select it in the list.
+
+You can narrow down the search results by selecting the type of identity and the source of the identity on the left.
+
+3.   When you have selected the identities you want, click Add to policy.
+
+4.   Click Next.
+
+### Step 4: Define the policy conditions
+
+This part of the policy determines session length and access times.
+
+To configure conditions enter the requested information as described in the following table.
+
+Conditions information| Field | Description |
+| --- | --- |
+| Maximum session length | The maximum length of time a session can be open based on this policy. The session automatically closes and is disconnected when the session expires. * Unit: hours * Default value: 1 * Allowed values: 1 - 12 * Each IAM role has its own session duration. If the policy's session duration is longer than the role's session duration, the resulting session will be limited by the role's session duration. Coordinate with your AWS administrator to ensure alignment. * If multiple policies apply to the same role, the session duration is determined by the longer of the two—yet the IAM role’s session duration always determines the limit. |
+| Select the days | The days of the week to allow access. |
+| Select the timeframe | The time of day to allow access * All day - access is available all day on the selected days * Specific time - access is available during the specified hours (relative to Policy time zone) on the selected days; For example, 9:00 AM to 5:00 PM, Eastern Time (ET) is equivalent to 6:00 AM to 2:00 PM, Pacific Time (PT). |
+
+The user will be able to connect to the console at any time during this access window, and can stay connected for the full length of the session, even if the access window closes in the middle of the session.
+
+For example, say the session length defined in a policy is 3 hours. If a user connected on Monday at 16:45 and the policy access window ends on Monday at 17:00, the user will be able to remain connected for their full 3-hour session, even though the access window closed 15 minutes after the session started.
+
+<Frame>
+![Image 6](https://docs.cyberark.com/admin-space/latest/en/content/images/policy/policy-windows-session-timeline.png)
+</Frame>
+
+### Step 5: [](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-cloud-access.htm)Create and activate the policy
+
+At the bottom of the page, click Create policy. The policy is created and activated, and is displayed in the User access policies page with a Validating (![Image 7](https://docs.cyberark.com/admin-space/latest/en/content/uap/images/policy-status-validating_19x20.png)) status. When the validation completes successfully, the status changes to Active (![Image 8](https://docs.cyberark.com/admin-space/latest/en/content/uap/images/policy-status-active_20x20.png)).

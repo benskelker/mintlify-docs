@@ -1,0 +1,64 @@
+---
+title: "Discover and remediate accounts"
+description: "This topic provides an overview of how to scan to discover accounts in the Identity Protection space, under Discovery & remediations. This overview explains the types of accounts you can discover, the mechanisms used to"
+---
+
+This topic provides an overview of how to scan to discover accounts in the Identity Protection space, under Discovery & remediations. This overview explains the types of accounts you can discover, the mechanisms used to scan for them, and the workflow for analyzing and onboarding discovered accounts.
+
+Account discovery is the process of scanning your organization's endpoints to identify unmanaged privileged accounts and their dependencies. Once they are discovered, you can view the accounts in the Identity Protection space, under Discovery & remediations. They can then be analyzed and either onboarded for secure lifecycle management or discarded if not needed. Discovery is a key part of establishing visibility and control over privileged access.
+
+[](https://docs.cyberark.com/identity-protection-space/latest/en/content/discovery/discover-remediate-accounts.htm)Required role
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+You must be assigned to one of the following roles in order to run an account discovery scan:
+
+*   Privilege Cloud Administrators
+
+*   Privilege Cloud Administrators Basic
+
+*   Privilege Cloud Administrators Lite
+
+For more details about the requirements to run account discovery scans, see Permissions for account discovery scans.
+
+Supported account types
+-------------------------------------
+
+Our account discovery mechanisms can identify the following types of accounts:
+
+*   Discovered accounts: Privileged accounts found in your environment but not yet onboarded. These appear in the Discovered Accounts list for review. These include:
+    *   Windows domain and local accounts
+
+    *   Unix local accounts
+
+    *   macOS accounts from administrators or root groups
+
+    *   Accounts from MSSQL Server databases
+
+    *   Accounts from Oracle databases
+
+    *   Accounts from Postgres SQL databases
+
+    *   Accounts from MySQL databases
+
+*   Account dependencies: Services or systems that rely on an account’s credentials. These dependencies are automatically updated and onboarded as part of the account management process. These include:
+
+    *   Windows services
+
+    *   Scheduled tasks
+
+    *   IIS application pools
+
+    *   IIS directory security (anonymous access)
+
+    *   Com+ applications
+
+*   Onboarded accounts: Accounts managed in a CyberArk Safe. These no longer appear in the Discovered Accounts list.
+
+Discovery mechanisms
+----------------------------------
+
+We support two mechanisms for scanning and discovering accounts:
+
+### Discovery service
+
+*   Scans domain and local Windows/*nix machines.

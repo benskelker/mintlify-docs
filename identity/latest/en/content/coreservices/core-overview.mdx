@@ -1,0 +1,44 @@
+---
+title: "Identity Administration portal Overview"
+description: "This topic describes key functionality available in the Identity Administration portal."
+---
+
+This topic describes key functionality available in the Identity Administration portal.
+
+CyberArk Identity provides a secure platform for managing application access, endpoints, and your network infrastructure. CyberArk Identity also offers adaptive analytics, auditing of user activity, and built-in and custom reports. These features are managed through the Identity Administration portal.
+
+Authenticate users
+--------------------------------
+
+CyberArk Identity authenticates users from either the built-in CyberArk Cloud Directory or an external directory service. You use directory service features to perform common tasks such as adding, modifying, and deleting user accounts for applications or mobile device management.
+
+You can also connect to an existing external directory service, instead of, or in addition to, using the CyberArk Cloud Directory. If you use an external directory service (for example, Active Directory), you add, modify, or delete users using the appropriate tools provided by that directory service. For more information, see Add users from an external directory service.
+
+Authorize users
+-----------------------------
+
+CyberArk Identity leverages role-based access control (RBAC) to authorize access to applications, network infrastructure, shared accounts, and user devices. Refer to Assign users to roles for more information.
+
+Policies and policy-based authentication
+------------------------------------------------------
+
+Roles and policies allow fine-grained control over what different users can do and where multi-factor authentication (MFA) is required. Depending on the services you use, policies let you control operation and behavior in the following categories.
+
+| Category | Description |
+| --- | --- |
+| Mobile device policies | Control device management and enrollment. Note that the policy API exposes access to capabilities that are specific to particular manufacturers, for example, iOS and Samsung. |
+| Account security policies | Manage account security, including password reset and password requirements such as length and complexity. The policy engine also supports setting and enforcing multifactor authentication, that is, requiring users to provide additional authentication, such as a code retrieved from a text message or email. |
+| Application policies | Specify whether users are allowed to add applications to their devices. |
+| Authentication | Policies also enable you to define complex authentication rules and profiles to implement multi-factor authentication through SMS, voice call, security question, email, single-tap one-time passcode, or automated push notification to mobile devices. |
+
+Refer to Manage policy sets for more information.
+
+Reporting
+-----------------------
+
+The reporting component provides built-in reports that allow you to obtain detailed information about users, applications, devices, and other objects you manage through the identity service. You can also design and build custom reports to include any information stored in the underlying database. Refer to Manage reports for more information.
+
+Access requests
+-----------------------------
+
+You can define request and approval work flows for access to applications. Refer to Manage application access requests for more information.

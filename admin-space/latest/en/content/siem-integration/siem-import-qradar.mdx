@@ -1,0 +1,44 @@
+---
+title: "Integrate QRadar to forward logon events"
+description: "This topic describes how to configure IBM QRadar to forward logon events to Threat Detection and Response and manage related certificates in the SIEM integrations page."
+---
+
+This topic describes how to configure IBM QRadar to forward logon events to Threat Detection and Response and manage related certificates in the SIEM integrations page.
+
+Overview
+----------------------
+
+You can configure the SIEM integrations page to add new SIEM integrations, create and manage certificates, and view integration health. For more information, see [Manage SIEM integration certificates](/admin-space/latest/en/content/siem-integration/siem-manage-certificates).
+
+QRadar integration uses certificate-based authentication and field-level configuration rather than a text-based input file. This allows secure, TLS-protected communication between Threat Detection and Response and the QRadar SIEM server.
+
+Configure QRadar to forward logon events
+------------------------------------------------------
+
+To establish a connection between Threat Detection and Response and your QRadar system, complete the following steps.
+
+### Step 1: Prepare the certificates
+
+1.   Sign in to the Administration space.
+
+2.   In the left pane, go to My environment, then select Integrations &gt; Import data from SIEM.
+
+3.   Click Integrate with Qradar.
+
+4.   In Section A, download the Client Certificate and Certificate Authority (CA) files.
+
+The Client Certificate file includes a private key used for mutual authentication.
+5.   Save the files to a secure location for later use in QRadar.
+
+### Step 2: Configure the destination and log source in WinCollect
+
+1.   On the Integrate QRadar with Threat Detection and Response (WinCollect mTLS over Syslog) page, follow the onscreen instructions from Step 2 - Step 4 to complete the setup.
+
+Monitor integration health
+----------------------------------------
+
+The SIEM integrations page displays all active integrations and their current status. Use the Last message received timestamp to confirm that data is successfully transmitted.
+
+If a certificate becomes inactive or revoked, create a new certificate and repeat the configuration process to restore communication.
+
+[Import logon events for Threat Detection and Response](/admin-space/latest/en/content/siem-integration/siem-import)

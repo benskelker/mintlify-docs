@@ -1,0 +1,65 @@
+---
+title: "Grant users access to Administration"
+description: "This topic describes how to grant users access to the Administration space and to the capabilities within the Administration space."
+---
+
+This topic describes how to grant users access to the Administration space and to the capabilities within the Administration space.
+
+Overview
+----------------------
+
+By default, ISPSS System Administrators have access to the Administration space. As such, you must be a member of the System Administrator role in ISPSS to perform this task.
+
+Users that are members of the Administration role have access to the Administration space and its capabilities.
+
+For the list of rights relevant to the Administration role, see [Administration space administrative rights](/identity-administration/latest/en/content/coreservices/usersroles/administrativerights).
+
+If you want to maintain least privilege and limit users' access to specific capabilities, for example, to domain customization only, then you can create custom roles with specific rights. For details, see [Create a custom role](/admin-space/latest/en/content/admin-get-started/as-manage-users).
+
+[](https://docs.cyberark.com/admin-space/latest/en/content/admin-get-started/as-manage-users.htm)Add a member to the Administration role
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To give users access to Administration, you need to add them as members of the Administration role.
+
+To add a member to the role
+
+1.   From the navigator, go to Identity Administration.
+2.   In the left pane, under Core Services, click Roles.
+3.   From the list of roles, click Administration.
+
+4.   Click Members, and then click Add.
+
+5.   In the Add Members dialog box, start typing the user name, Active Directory/LDAP group name, or an existing role.
+
+Entries matching the string you type are displayed.
+
+6.   Select the check box associated with the user, group, or role you want to add, then click Add.
+
+7.   Save your changes.
+
+[](https://docs.cyberark.com/admin-space/latest/en/content/admin-get-started/as-manage-users.htm)Create a custom role
+-----------------------------------------------------------------------------------------------------------------------------------
+
+1.   From the navigator, go to Identity Administration.
+2.   In the left pane, under Core Services, click Roles, and then click Add Role.
+3.   In the Add Role dialog box, enter the required information, and save the role.
+    *   The name of the role must be unique.
+    *   Static roles require you to manually add members. Dynamic roles evaluate membership based on object attributes. You can create this logic with JavaScript.
+
+4.   On the role details page, click Administrative Rights, and then click Add.
+
+5.   On the Add Rights dialog box, select the specific rights for this role, and then click Add. For details, see [Administration space administrative rights](/identity-administration/latest/en/content/coreservices/usersroles/administrativerights).
+
+Remove members from the Administration role
+---------------------------------------------------------
+
+When you remove users or Active Directory/LDAP groups from a role, any administrative rights or applications assigned to that role no longer apply to those users.
+
+1.   In Identity Administration, click Core Services &gt; Roles.
+2.   From the list of roles, click the role you want to edit.
+3.   On the role details page, click Members.
+4.   Select the members you want to remove.
+
+5.   From the Actions drop-down menu, click Delete.
+
+6.   Save your changes.

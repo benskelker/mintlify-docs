@@ -1,0 +1,26 @@
+---
+title: "Onboard accounts using remediation rules"
+description: "This topic describes how to create and manage predefined rules that automatically onboard newly discovered accounts."
+---
+
+This topic describes how to create and manage predefined rules that automatically onboard newly discovered accounts.
+
+Automatic analysis and account management reduces the time spent on reviewing discovered accounts, onboarding discovered accounts, offboarding legacy accounts, and prevents human errors that may occur during account management.
+
+Overview
+----------------------
+
+Following the account discovery process, discovered accounts are displayed in the Discovered accounts list and can be reviewed and onboarded manually, as described in [Onboard accounts manually](/identity-protection-space/latest/en/content/discovery/discovery-accounts-discovery-manual-onboarding).
+
+To avoid the manual analysis and onboarding steps, you can define rules to automatically onboard accounts to a dedicated platform and Safe based on predefined account criteria.
+
+Use the discovery rule builder to define advanced rule sets for automatic onboarding of discovered accounts. Onboarding rules use account properties and the Boolean expressions If/Then and ElseIf/Then to identify specific discovered accounts and onboard them to specified Safes.
+
+Discovered accounts that do not comply with any of the defined onboarding rules remain in the Discovered Accounts list, where you can review them and determine their destination, or delete them from the list.
+
+[](https://docs.cyberark.com/identity-protection-space/latest/en/content/discovery/discovery-accounts-discovery-onboarding-rules.htm)Choose discovered accounts for running your system rule sets
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+When you define a new rule set or edit an existing rule set, this triggers a rerun of all rule sets on discovered accounts. At this time you can choose to rerun the system rule sets on either existing discovered accounts or only on future discovered accounts, starting from the next discovery scan. All system rules are run, including the newly added/edited rule set.
+
+The time required to rerun all rule sets on existing discovered accounts varies, depending on the number of discovered accounts in your system. In systems with a large number of discovered accounts, we recommend to consider rerunning updated rule sets after you have completed all your planned rule set updates.

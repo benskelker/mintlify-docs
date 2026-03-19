@@ -1,0 +1,99 @@
+---
+title: "Manage security risks"
+description: "This topic describes how to use the Risk Management dashboard to identify security vulnerabilities and evaluate potential threats."
+---
+
+This topic describes how to use the Risk Management dashboard to identify security vulnerabilities and evaluate potential threats.
+
+Overview
+----------------------
+
+Organizations with a large number of accounts may find it hard to keep track of what they have. Where is each account located? How many of the accounts are privileged? Have all the accounts been onboarded to CyberArk so that their standing access credentials remain secure? Risk Management helps you analyze what accounts you have and where the potential risks are.
+
+Product and region support
+----------------------------------------
+
+*   Currently, Risk Management supports Privilege Cloud customers who are using the modern [Discovery service](/identity-protection-space/latest/en/content/discovery/discovery)
+
+*   Risk Management is available by default for Privilege Cloud administrators
+
+*   For AWS region availability, see [AWS region support](/ispss-deployment/latest/en/content/getstarted/issp-data-centers).
+
+Access Risk Management
+------------------------------------
+
+In the CyberArk Identity Security Platform, in the Identity Protection space go to the Risk management &gt;Dashboard.
+
+View security risk findings
+-----------------------------------------
+
+After discovering your organization's accounts, CyberArk performs a risk analysis based on the CyberArk Blueprint.
+
+### Discovered accounts
+
+The CyberArk Discovery service scans your environment for accounts. The detected Privilege Cloud accounts are consolidated and displayed in the Discovered Accounts widget on the Risk Management page.
+
+This widget shows the discovered accounts, highlighting the number of accounts that are pending remediation and require customer review. Critical accounts should be onboarded to the CyberArk platform, while non-essential accounts should be removed from the system.
+
+The widget groups the discovered accounts into the following categories:
+
+*   Domain
+
+*   Windows (server and workstation)
+
+*   macOS
+
+*   *NIX
+
+Each category includes accounts with varying levels of access: privileged, non-privileged, and those with an unknown status, and helps pinpoint where privileged accounts are primarily located:
+
+| Access level | Description |
+| --- | --- |
+| Privileged | Accounts that grant elevated privileges, enabling users to manage critical systems, applications, and confidential data. |
+| Non-privileged | Standard user accounts that do not have elevated privileges. |
+| Unknown | Accounts that are not recognized or managed by the organization's identity and access management protocols. Each account should be individually assessed to determine whether it is privileged or non-privileged and remediated accordingly. |
+
+This breakdown provides valuable insights for remediation planning, and supports the development of a security roadmap aimed at strengthening your organization’s overall security posture.
+
+### Account remediation and onboarding
+
+All of the discovered accounts go into a queue for remediation, and those that are deemed risky are onboarded to CyberArk for protection.
+
+The Progress over time widget enables you to track the onboarding progress of accounts to CyberArk.
+
+At any time, you can view the percentage of discovered accounts that have been onboarded to CyberArk, as well as the number of accounts still pending remediation. Over time, the expectation is that the number of onboarded accounts should increase the accounts pending remediation are handled and their number decreases, until all relevant accounts are onboarded, managed, and secured.
+
+You can filter the graph to track trends in account onboarding and remediation during a specific timeframe.
+
+[](https://docs.cyberark.com/identity-protection-space/latest/en/content/risk-management/risk-management.htm)Extend coverage
+------------------------------------------------------------------------------------------------------------------------------------------
+
+To extend security coverage, Identity Protection identifies account types that haven't yet been scanned and displays them in the Extend coverage widget, as a recommendation to scan them.
+
+To run a recommended scan, click Scan, configure a scan definition, and start the scan.
+
+If you’re not interested in scanning a particular account type, you can dismiss the recommendation by clicking More options (![Image 1](https://docs.cyberark.com/identity-protection-space/latest/en/content/images/icon_ellipsis-v.png)) &gt; Don't show again. If, after 90 days, this recommendation still applies, it will be displayed again in the widget.
+
+Implement recommendations to reduce risk
+------------------------------------------------------
+
+Based on your discovered account data, the Recommendations to reduce risk widget displays high-priority security issues for review, and provides actionable remediation steps. The issues are based on the CyberArk Blueprint which outlines the requirement for a secure environment according to CyberArk standards. For more information, see [Use case best practices](/identity-protection-space/latest/en/content/blueprint/use-case-best-practices).
+
+The Recommendations to reduce risk widget displays how often each issue occurs in your environment, which control family the issue belongs to, and the potential MITRE attack techniques you might encounter if the issue is not resolved. For details about the filter logic behind the accounts listed for each recommendation, see [Recommendation filter logic reference](/identity-protection-space/latest/en/content/risk-management/rec-logic).
+
+To help prioritize remediation efforts, issues are sorted by descending severity by default.
+
+You can filter issues by severity, and export the data in CSV format for offline review.
+
+When you click an issue, the following information is available:
+
+| Tab | Description |
+| --- | --- |
+| Description | A detailed description of what the recommendation is about and an explanation about the use case. |
+| Significance | How and why it is important to follow this recommendation - describes what poses a risk, how malicious actors take advantage of this vulnerability, and the negative consequences of leaving the issue unmitigated. |
+| Remediation | Actionable steps to remediate the issues that are listed under this recommendation, and reduce risks. Select one of the following: * Automate the onboarding of accounts to CyberArk Privilege Cloud (recommended): Directs you to the Discovery rules page in Privilege Cloud to review the existing rules, potentially modify them (if needed),or create new rules. For more information, see [Onboard accounts automatically using discovery rules](/identity-protection-space/latest/en/content/discovery/discovery-accounts-discovery-onboarding-rules). * Manually review accounts and onboard to CyberArk Privilege Cloud:Directs you to the Discovered accounts page with the relevant filters applied, allowing you to review each account’s context and manually onboard the accounts to CyberArk. For more information, see [Analyze and onboard accounts manually](/identity-protection-space/latest/en/content/discovery/discovery-accounts-discovery-manual-onboarding) |
+
+Risk Management API
+---------------------------------
+
+Use the Risk Management API to incorporate risk management capabilities directly into your automated workflows. For details, see [Risk Management APIs](https://api-docs.cyberark.com/identity-protection/docs/risk-management-api).

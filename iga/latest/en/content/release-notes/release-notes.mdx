@@ -1,0 +1,799 @@
+---
+title: "What's new in CyberArk IGA (powered by Zilla)"
+description: "This topic provides a running list of release notes for CyberArk IGA, including enhancements, new features, and resolved issues for each release."
+---
+
+This topic provides a running list of release notes for CyberArk IGA, including enhancements, new features, and resolved issues for each release.
+
+February 11, 2026 release (26.2.3)
+-----------------------------------------------
+
+### Provisioning Update
+
+CyberArk IGA now enables you to configure provisioning and deprovisioning lifecycle actions for SaaS applications with REST APIs directly in the user interface. This provides easier, more accurate, and consistent management over access changes in business applications that support REST-based integration.
+
+### Access review campaign update
+
+CyberArk IGA now includes the Permission Structure Review access review type that introduces a structured way to validate and attest to permission-granting models before running user access review campaigns.
+
+This capability enables organizations to review roles, groups, profiles, and permission sets to confirm that the access each permission structure provides is appropriate, complete, and aligned with current policies. Permission models vary across organizations do reviewing these structures first ensures accuracy and consistency.
+
+By certifying permission structures in advance, reviewers can focus user access reviews solely on whether user membership is appropriate. This approach supports stronger governance and audit readiness by enabling regular, evidence-based reviews of permission structures before evaluating user access assignments.
+
+### Integration update
+
+CyberArk IGA now provides a connector to integrate with CyberArk PAM Privilege Cloud. This integration:
+
+*   Discovers all safes and related metadata from Privilege Cloud.
+
+*   Evaluates and resolves user, role and group assignments to safes for permission structure and access reviews.
+
+*   Provides complete visibility of who has direct and indirect access to each safe.
+
+This integration currently supports up to 2,500 safes. If your deployment has more than 2,500 safes, contact your account team to find a solution with product management.
+
+January 13, 2026 release (26.1.2)
+----------------------------------------------
+
+### Integration update
+
+CyberArk IGA now includes AWS Redshift–specific drivers in the PO Box. This enhancement allows you to deploy the PO Box on AWS Redshift and synchronize data from Redshift into CyberArk IGA.
+
+This update expands database integration support for environments using AWS Redshift.
+
+November 17, 2025 release (25.11.3)
+------------------------------------------------
+
+### Integration update
+
+CyberArk IGA now supports collecting user permissions for document libraries in SharePoint.
+
+This enhancement gives organizations deeper visibility into user access at the document library level, helping improve access governance and audit readiness.
+
+### Comply update
+
+Resolved an issue where users experienced infrequent sign-in freezes. This fix ensures smoother and more consistent access to the platform.
+
+October 13, 2025 release (25.10.2)
+-----------------------------------------------
+
+### Provisioning update
+
+*   CyberArk IGA now includes enhancements to the IGA integrated apps that let users override account properties and map user metadata to collect and display custom attributes.
+
+*   CyberArk IGA now provides out-of-the-box provisioning capabilities for the following integrations: GitHub, Google Cloud Platform (GCP), AWS Organizations, Jira, ServiceNow, Snowflake, and CyberArk Identity. Once trust is established, IGA can automatically create and deactivate accounts, manage group memberships, and assign or remove permissions (where applicable). This enhancement helps streamline access lifecycle management across your cloud environments.
+
+September 22, 2025 release (25.9.4)
+------------------------------------------------
+
+### Integration update
+
+CyberArk IGA now provides improved handling of service principals when integrating with Microsoft Entra ID and Azure Cloud Subscriptions.
+
+When Discover Child Apps is enabled, the integration:
+
+*   Captures the Display Name as the Account Name.
+
+*   Includes Scope with permissions in the format RoleName:Scope
+
+*   Syncs the Account Type as Service
+
+These updates ensure consistent parent-child application structures.
+
+September 8, 2025 release (25.9.2)
+-----------------------------------------------
+
+### Integration update
+
+In the Snowflake integration, CyberArk IGA now collects roles that are not directly assigned to users but are inherited through nested role hierarchies. This enhancement improves visibility into user access based on inherited role memberships.
+
+September 2, 2025 release (25.9.1)
+-----------------------------------------------
+
+### Integration updates
+
+*   Enhancement to no code framework: IGA will extend support to sync attributes which are not part of IGA's core schema for users. This functionality enables users to sync the attributes as a metadata collection.
+
+*   Okta integration now supports resource sets. Users can see resource sets which are assigned to roles. This enables organizations to extend visibility to users' access to resource sets. Resource sets are listed under the accounts and permission tabs.
+
+### Comply updates
+
+*   Fixed an intermittent issue that prevented users from uploading ZIP files as campaign evidence.
+
+*   Fixed an issue that caused errors when custom comments was configured and require comments for review revocations was enabled.
+
+### Provisioning update
+
+Enhanced audit logging for mover rule updates.
+
+August 25, 2025 release (25.8.4)
+---------------------------------------------
+
+### Integration updates
+
+*   New OOTB API integration: AuditBoard
+
+*   Added a Consider Email Address Unique Besides Unique Identifier Attribute (Yes/No) support configuration in the Workday Custom Report API integration that defaults to No
+
+### Comply update
+
+Resolved an issue where users were periodically unable to download the completed campaign PDF report
+
+### Provisioning updates
+
+*   Added logs for provisioning policy execution to our centralized logging service
+
+*   Added a provisioning guardrails feature that protects against directory misconfiguration that triggers high numbers of lifecycle events exceeding a customer-defined threshold
+
+August 18, 2025 release (25.8.3)
+---------------------------------------------
+
+### Integration update
+
+*   Enhanced FreshService integration to fetch complete group lists with iteration over the groups endpoint using captured workspace ids (resourceIDs).
+
+August 14, 2025 release (25.8.2.1)
+-----------------------------------------------
+
+### Platform update
+
+*   When you click any help link in CYberArk IGA, you are redirected to the CyberArk documentation site and can access role-based product documentation.
+
+August 11, 2025 release (25.8.2)
+---------------------------------------------
+
+### Comply update
+
+*   Fixed issue with campaign generation in user access reviews when last transfer date selections were made.
+
+### Integration update
+
+*   The Entra ID integration now syncs custom roles assigned to users or groups.
+
+July 29, 2025 Release (25.7.4)
+-------------------------------------------
+
+### Integrations updates
+
+*   New OOTB ZUS Integration: Binance
+
+*   CyberArk PAM integration now correctly reflects users with group-based safe access as group members with access.
+
+*   Added support for Azure GCC tenants in Entra ID integration.
+
+*   Fixed an issue with NetSuite Planning and Budgeting ZUS sync where not all the group members were being assigned the group roles.
+
+*   Enhanced Coupa API integration to capture approvers' approval limits.
+
+### Zilla Comply update
+
+*   When configuring user transfer reviews, an additional option has been added to allow the selection of specific dates and date ranges.
+
+### Platform update
+
+*   Updated UniversalID-based auto-mapping logic to ignore case sensitivity when linking application accounts to directory users.
+
+July 21, 2025 Release (25.7.3)
+-------------------------------------------
+
+### Integrations Updates
+
+*   New OOTB API Integration: UiPath
+
+*   Updated Ring Central (org sync) OOTB API Integration to resolve a sync error.
+
+*   Support additional provisioning capabilities in Active Directory, including provisioning and de-provisioning group memberships.
+
+*   SharePoint collector now fetches sensitivity labels for document libraries.
+
+### Zilla Provisioning Updates
+
+*   Added more audit logging for updates to provisioning policies.
+
+*   Fixed minor bug where account reconciliation process was not properly recognizing fulfilled requests.
+
+July 16, 2025 Release (25.7.2)
+-------------------------------------------
+
+### Integrations Updates
+
+*   SharePoint collector now fetches sites and document libraries, including sensitivity labels for sites as metadata.
+
+*   Fixed malformed Content-Type headers in getUsers API call that caused 400 errors in BambooHR API Integration.
+
+*   Added config key to identify user uniquely in Workday (Custom Reports) application. This configuration requires assistance from Customer Support.
+
+*   On Premise AD Sync now has search filter configurations for user and group.
+
+### Platform Updates
+
+*   Extended the capability in Settings &gt; User Management to assign and revoke Zilla's out-of-the-box administrative roles, including: Admin, Read-Only Admin and Compliance Admin.
+
+*   CSV syncs now support collecting resource permissions where permissions are across different columns.
+
+### Zilla Provisioning Updates
+
+*   Support revoking all user access on a lifecycle event.
+
+*   Support additional provisioning capabilities in Active Directory, including adding and revoking group memberships.
+
+July 8, 2025 Release (25.7.1)
+------------------------------------------
+
+### Integrations Updates
+
+*   SharePoint collector now fetches sites and document libraries, including sensitivity labels for sites as metadata.
+
+*   New OOTB API Integration: Mulesoft
+
+### Zilla Comply Update
+
+*   The Shared Owner Review setting in Access Reviews is being sunset. To ensure a smooth transition and minimize any disruption to your workflows, we’re providing a grace period starting Monday, July 7, during which this feature will remain available upon request. You may continue to enable "Allow Shared Owner Reviews" in Campaign settings during this time - please contact Support if you are actively using this setting.
+
+We’re actively developing enhanced Multi-Step Reviews, which will replace the Shared Owner Review setting and which is designed to support a broader set of review workflows.
+
+June 30, 2025 Release (W-13)
+-----------------------------------------
+
+### Integrations Updates
+
+*   Added support for server certificate handling via configs: trustCertificate (sensitive) and verifyCertificate (defaults to Yes) for all PO Box API applications.
+
+*   Added tenant-level option to expose no-code API integration configuration UI to App Admins. Also enabled access in the PO Box. Initially rolled out for Ally to support self-service setup and testing.
+
+*   Fixed an issue with the LucidChart API integration where it was always requiring re-authentication.
+
+*   NetSuite Planning and Budgeting ZUS integration updated to support their updated HTML pages.
+
+*   Updated Ring Central (org sync) OOTB API Integration to resolve a sync error.
+
+June 23, 2025 ( W-12)
+----------------------------------
+
+#### Integrations Updates
+
+*   New OOTB API Integration: Cato Networks
+
+*   Updated GitHub OAuth scope for removing organization members from write:org to admin:org; users must re-authenticate to grant the new scope.
+
+*   Fixed issue where the No Code platform failed when encountering an empty array in the Group Policies API response for certain users.
+
+June 16, 2025 Release (W-11)
+-----------------------------------------
+
+#### Integrations Updates
+
+*   New OOTB ZUS Integration: Haruko
+
+*   AWS Organisations OOTB integration now supports deployments in AWS Accounts in China.
+
+*   Ring Central (org sync) now has OOTB API Integration.
+
+June 9, 2025 Release (W-10)
+----------------------------------------
+
+#### Zilla Comply Update
+
+*   The Allow Self-Review campaign setting now defaults to No and will reassign to the review monitor.
+
+#### Integrations Updates
+
+*   New OOTB API Integration: Adyen
+
+*   New OOTB ZUS Integration: GoCD
+
+*   AWS API Integration now optionally fetches IAM Roles as Permission Sets and brings in Permission Boundary information for an IAM Role based on new configurations. This configuration requires assistance from Customer Support.
+
+June 2, 2025 Release (W-9)
+---------------------------------------
+
+#### Platform Update
+
+*   Small updates to the Zilla user interface have been made to better to align with CyberArk products.
+
+#### Integrations Updates
+
+*   Updates made to OneLogin API integration to capture Privileges.
+
+*   BeyondTrust now has OOTB integration for self hosted deployments via PO Box.
+
+*   Workday (Custom Reports) now brings in last termination date.
+
+#### Zilla Comply Update
+
+*   Resolved an issue where campaign reminders could be manually sent to readiness task owners when the campaign was already completed.
+
+#### Zilla Secure Update
+
+*   Added a new out of the box security policy that detects and can alert when an in-active account's last login date is after a termination date.
+
+#### Zilla AI Profiles TM Update
+
+*   The profiles page loads significantly faster for customers with a large number of profile grants.
+
+May 27, 2025 Release (W-8)
+---------------------------------------
+
+#### Integrations Updates
+
+*   AWS API Integration enhancement to sync and show Service control policies (SCP) applied at the account level.
+
+*   AWS API Integration to sync Last Login for IAM and SSO users.
+
+*   AWS API Integration now auto populates ownership from management account to auto synced child account(s) in Zilla based on a configuration.
+
+*   Resolved Onelogin API Integration sync error while capturing privileges.
+
+*   Entra ID API Integration customization to support vendor name extraction from user's display name. This configuration requires assistance from Customer Support.
+
+#### Platform Update
+
+*   Read only admins can now see, but not act on, the Profiles module.
+
+*   Policy filters are now operating correctly when certain filter conditions were applied.
+
+#### Zilla Secure Updates
+
+*   OOTB policy enhancement to support AWS new feature of Centralized root access for member accounts (released in Nov 2024 AWS updates).
+
+#### Zilla AI Profiles TM Update
+
+*   Increased performance of profile generation process, shortening the time it takes to generate profiles.
+
+May 19, 2025 Release (W-7)
+---------------------------------------
+
+#### Integrations Updates
+
+*   New ZUS Integration : NetSuite Planning and Budgeting
+
+*   Updated Snowflake API integration to treat Snowflake Roles as Permission Sets in Zilla.
+
+*   Enhanced Coupa API integration to introduce optional configuration to sync additional fields as permissions into Zilla.
+
+#### Platform Update
+
+*   Changed the authentication sub-processor to CyberArk Identity. See https://support.zillasecurity.com/hc/en-us/articles/28280940579735-Log-In-to-Zilla for login details.
+
+May 9, 2025 Release (W-6)
+--------------------------------------
+
+#### Integrations Updates
+
+*   Update made to the Delinea Platform Console integration, to deliver even more reliable and accurate user data.
+
+*   OOTB ZUS Sync for Box updated to support their updated HTML.
+
+*   Okta API integration is now capable of filtering okta groups by providing appropriate expressions in the support config. This configuration requires assistance from Customer Support.
+
+#### Zilla Comply Update
+
+*   After campaign completion, added a notification message to the Report tab to inform the user that the report page is in the process of being generated.
+
+May 5, 2025 Release (W-5)
+--------------------------------------
+
+#### Integrations Updates
+
+*   Delinea Secret Server API integration now successfully distinguishes between same folder names across different paths.
+
+*   1Password ZUS integration now supports multiple domains.
+
+*   AWS IAM Reader Role name is now configurable in Zilla.
+
+*   Improved the permission labels for Netsuite applications to be more human readable.
+
+#### Zilla Comply Updates
+
+*   When a segregation of duties (SOD) violation exists for access that is pre-approved using an active profile, it is now properly displayed in the access review with the associated SOD flag.
+
+*   Users can no longer be assigned more than 5,000 review items in one task, if more than 5,000 items are assigned another task for the user will be created.
+
+April 28, 2025 Release (W-4)
+-----------------------------------------
+
+#### Integrations Updates
+
+*   New ZUS Integration : Calendly
+
+*   The Zilla ZUS extension now sports the new logo with "A CyberArk Company" tagline.
+
+#### Zilla AI Profiles TM Update
+
+*   AI profiles will now generate profile grants based on user access to application resources, like Github repositories or SharePoint sites, deepening its ability to discover and recommend common access amongst an enterprise's users.
+
+April 21, 2025 Release (W-3)
+-----------------------------------------
+
+#### Integrations Updates
+
+*   New feature added to support Azure Resource Management (ARM) subscriptions using new config field "Sync Classic Administrators?".
+
+*   Delinea Platform Console now support syncing Inactive members, full domain value, capturing "Everybody" group memberships and excludes displaying nested permissions directly for the user.
+
+#### Zilla Comply Update
+
+*   Due dates have been added back to the tasks page.
+
+April 14, 2025 Release (W-2)
+-----------------------------------------
+
+#### Zilla Comply Update
+
+*   Periodically, uploaded review evidence would not appear in the evidence tab, but would be included in the evidence package, has been resolved.
+
+#### Zilla PO Box / ZUS in the Cloud Update
+
+*   Hubspot ZUS in the Cloud sync updated to support their updated login page.
+
+April 8, 2025 Release (W-1)
+----------------------------------------
+
+#### Integrations Update
+
+*   Buildkite ZUS sync updated to support group memberships sync against their updated page.
+
+#### Zilla Comply Update
+
+*   When generic campaign settings are modified in preview mode, the user is no longer prompted for regeneration.
+
+#### Zilla PO Box / ZUS in the Cloud Update
+
+*   Now add and maintain multiple PO Boxes in Zilla and tag applications against individual PO Boxes.
+
+March 31, 2025 Release (V-13)
+------------------------------------------
+
+#### Integrations Updates
+
+*   New API integration: CyberArk Identity Security Platform
+
+*   New API integration: Delinea Platform Console
+
+*   Onelogin API Integration can now capture privileges.
+
+#### Zilla Comply Update
+
+*   Resolved an issue where it was sometimes observed that completing a campaign required the final reports to be generated by Zilla.
+
+#### Zilla Platform Updates
+
+*   All credential values are now fully obfuscated, previously the last three characters were displayed.
+
+*   Sensitive input fields are now masked by default when typing in.
+
+*   Resolved an issue where manually mapping accounts against a large user population could generate an error, but completed successfully.
+
+March 24, 2025 Release (V-12)
+------------------------------------------
+
+#### Integrations Update
+
+*   Rubrik now has an OOTB API Integration via their GraphQL APIs.
+
+March 17, 2025 Release (V-11)
+------------------------------------------
+
+#### Integrations Update
+
+*   ApprovalMax OOTB ZUS Integration now brings the role and user status information.
+
+#### Zilla Comply Updates
+
+*   Resolved an issue where campaign due dates were displayed one day later for some customers.
+
+*   Resolved an issue where empty review tasks were incorrectly being counted in campaign summary progress.
+
+#### Zilla Platform Update
+
+*   Added support for Zilla Security email communications to now be sent from a customer defined domain and custom reply-to address. Reach out to Zilla Support (support@zillasecurity.com) for more information.
+
+#### Zilla Provisioning Update
+
+*   Users can now initiate emergency terminations from the Zilla Provisioning dashboard with the click of a button.
+
+March 10, 2025 Release (V-10)
+------------------------------------------
+
+#### Integrations Update
+
+*   AWS sync now bring in tags connected to a s3 bucket as resource metadata.
+
+#### Zilla Comply Updates
+
+*   The ability to include/exclude custom defined user types (such as "Template" accounts) in an Access Review has been resolved.
+
+*   Campaign readiness tasks now require the checklist to be fully completed in order to add an application into the review. This is to ensure application data is the most current before including in the campaign.
+
+*   Under certain scenarios, notifications were being sent before the access review campaign was started. This has now been resolved.
+
+#### Zilla Platform Updates
+
+*   The Universal Id, Total Items and Completed Items optional columns have been removed from the tasks page.
+
+*   Clicking any help link within the Zilla Security application opens the new Help Center where users can access documentation and contact Support all in one place.
+
+March 3, 2025 Release (V-9)
+----------------------------------------
+
+#### Integrations Updates
+
+*   AWS integrations now bring in customer managed policy JSON information.
+
+*   Buildkite now has an OOTB API integration built on top of their GraphQL based APIs.
+
+*   Snowflake now has an OOTB API integration that works out of PO Box.
+
+#### Zilla Platform Update
+
+*   Resolved an issue where deleting a permission from an application profile now works correctly.
+
+February 24, 2025 Release (V-8)
+--------------------------------------------
+
+#### Integrations Updates
+
+*   Entra ID Directory Sync now allows to configure which attributes(s) should be considered as universalId(s) in Zilla.
+
+*   Splunk Cloud ZUS sync updated to support their updated html.
+
+*   DocuSign ZUS sync updated to support their changed URL.
+
+#### Zilla Comply Updates
+
+*   It was observed that some users were seeing empty tasks on their tasks listing. This has been resolved.
+
+*   Slack notifications are now included in campaign readiness reminders.
+
+#### Zilla Platform Update
+
+*   Infrequent login freeze issues has been resolved.
+
+#### Zilla Provisioning Update
+
+*   Added support for "Wait for Account" action to accommodate waiting for existing inbound customer provisioning steps to complete before proceeding with outbound provisioning.
+
+February 18, 2025 Release (V-7)
+--------------------------------------------
+
+#### Integrations Update
+
+*   Miro ZUS Sync now supports their updated URLs.
+
+#### Zilla Comply Updates
+
+*   When a Zilla admin is viewing the tasks page, the default filter is now always to show their own tasks, previously the last selection was persisted.
+
+*   Some users were not able to see their review readiness tasks on the task page has been resolved.
+
+February 11, 2025 Release (V-6)
+--------------------------------------------
+
+#### Integrations Updates
+
+*   Avalara API Integration now creates additional permissions of type role to bring in user roles.
+
+*   Integration audit log language updated to be consistent.
+
+*   DocuSign logo updated in the product.
+
+*   Snowflake API sync now brings in default role and owner role for a user.
+
+#### Zilla PO Box / ZUS in the Cloud Update
+
+*   ZUS in the Cloud AWS deployment now supports cross account secrets access.
+
+February 3, 2025 Release (V-5)
+-------------------------------------------
+
+#### Integrations Updates
+
+*   Infinite scroll issue resolved for Outreach ZUS integration.
+
+*   Envoy ZUS sync updated to work against their changed HTML.
+
+*   Box external users ZUS sync updated to work against their changed HTML.
+
+*   Buildkite groups ZUS sync updated to work against their changed HTML.
+
+#### Zilla Comply Update
+
+*   The Change action dialogue in access reviews is now a free-form only text field where a reviewer can input what needs to change for access. The display no longer contains a drop-down list of all the respective application permissions.
+
+#### Zilla Platform Update
+
+*   Resolved an issue where sometimes Slack notifications did not get sent for access review campaigns.
+
+#### Zilla Provisioning Updates
+
+*   Access requests are now auto-approved when the access requested matches the user's profile grant.
+
+*   Managers can now request additional access for a new employee during the onboarding process for new or moving users. Any requested permissions that are part of profiles will automatically be approved.
+
+*   Added new Awaiting Verification access request status that will be applied until Zilla can verify access directly with the target application. After Zilla confirms the access request was completed successfully, the status will change to Fulfilled.
+
+January 21, 2025 Release (V-3)
+-------------------------------------------
+
+#### Integrations Updates
+
+*   New ZUS Integration: ApprovalMax
+
+*   Updated Avalara API sync to work against Avalara production servers.
+
+*   Snyk ZUS Integration now flexibly allows to fetch members from either organization or group members page based on url specified in app config.
+
+#### Zilla Comply Update
+
+*   When using Zilla Profiles in Access Reviews, the profile evidence report now includes the user who last approved the profile grant and when.
+
+January 14, 2025 Release (V-2)
+-------------------------------------------
+
+#### Integrations Update
+
+*   Infinite scroll issue resolved for Outreach ZUS integration.
+
+#### Zilla Comply Update
+
+*   Resolved an issue preventing campaign launch email and messaging notifications from being sent out.
+
+#### Zilla Platform Update
+
+*   Filtering of Permissions, Groups, and Resources on the Applications page now utilize search bars to filter for specific objects. Note that only exact matches are returned.
+
+#### Zilla AI Profiles TM Update
+
+*   Customers can now leverage any user metadata attribute in profiles to produce better profiles using unique data in their organization like job code or employee type, for example.
+
+January 8, 2025 Release (V-1)
+------------------------------------------
+
+#### Integrations Update
+
+*   Updated 1Password ZUS pagination to support 1Password's updated UI.
+
+#### Zilla Comply Update
+
+*   The Get Ready tab for a campaign with Campaign Readiness enabled now loads properly.
+
+#### Zilla Platform Update
+
+*   Improved Performance for Account to User Mapping for Applications.
+
+December 30, 2024 Release (U-13)
+---------------------------------------------
+
+#### Integrations Updates
+
+*   Azure DevOps API Integration now shows groups and group memberships information.
+
+*   Updated the FreshService API Integration to support multiple workspaces.
+
+*   Infinite Scroll support under ZUS for JFrog, Buildkite, Bitwarden.
+
+#### Zilla Comply Update
+
+*   Access Reviews: Updated automatic review comments when preventing self-review assignment to reflect Zilla as the actor.
+
+December 23, 2024 Release (U-12)
+---------------------------------------------
+
+#### Integrations Updates
+
+*   ZUS now supports automatic pagination for group membership pages for Adobe and Expensify.
+
+*   Zoom API Integration now supports the new server to server OAuth authentication mechanism introduced by Zoom.
+
+#### Zilla Comply Update
+
+*   Resolved an issue where some customers experienced issues saving review items.
+
+December 17, 2024 Release (U-11)
+---------------------------------------------
+
+#### Integrations Updates
+
+*   New API integration: Cloudflare
+
+*   Sync config description changed for Blackline integration to indicate that API Key can be specified in the password field.
+
+*   Google Workspace API sync now syncs service account members of a group.
+
+*   Azure DevOps API sync now brings all groups and its group members.
+
+*   Okta API sync now brings authentication factor only for active accounts.
+
+#### Zilla Comply Updates
+
+*   When using Profiles and limiting an Access Review to contain just privileged permissions, the summary count for pre-approved and not pre-approved permissions is now correctly displayed.
+
+*   Access Reviews are now generated when using the “Assign Reviews for Accounts to Account Owner” campaign setting to include just Service accounts. Review items that have no account owner are set to the Unassigned bucket.
+
+*   Updated Access Review Campaign reports to include the user's display name in specific cases where the user record did not have a first and last name.
+
+#### Zilla Platform Update
+
+*   Resolved six medium severity vulnerabilities discovered in an external Pentest.
+
+#### Zilla PO Box / ZUS in the Cloud Updates
+
+*   Fix to ZUS in the Cloud syncs to ensure that there is a wait before entering text to prevent race conditions.
+
+*   On Premise AD PO BOX sync now allows the app to be synced as a directory.
+
+December 9, 2024 Release (U-10)
+--------------------------------------------
+
+#### Integrations Updates
+
+*   Updated our CrowdStrike API integration to skip users without roles to ensure a successful sync.
+
+*   Threads app is no longer supported in the product since Shopify acquisition.
+
+*   FreshService syncs requesters by default.
+
+*   Slack sync updated to ensure sync succeeds without running into rate limiting when fetching channels as resources.
+
+*   Outreach OOTB ZUS integration fixed to bring in accounts and last login information.
+
+#### Zilla Comply Update
+
+*   Zilla is now displayed as the actor for automated review actions (for example: escalations, assignment, profile approval, etc.) in the comment history and audit logs.
+
+#### Zilla Platform Updates
+
+*   Improved the page response time when loading a large number of applications on the Applications page.
+
+*   Filtering audit logs by date has been fixed and no longer timeout.
+
+#### Zilla PO Box / ZUS in the Cloud Updates
+
+*   Oracle 9i integration support via PO BOX.
+
+*   Updated the Hubspot authentication recipe to match their updated selectors.
+
+December 2, 2024 Release (U-9)
+--------------------------------------------
+
+#### Integrations Updates
+
+*   New API integration: Qualys
+
+*   FreshService OOTB API Integration now supports the option of optionally syncing Requesters and requester group membership. The default behavior is to include requesters as Zilla users, and requester group membership.
+
+*   FreshService OOTB integration now supports bringing in workspaces as resources and workspace permissions as resource permissions.
+
+*   Updated the Oracle HCM app's configuration field Oracle HCM REST Endpoint to Oracle HCM SCIM Hostname.
+
+#### Zilla Comply Update
+
+*   Campaign monitors can now complete campaign readiness tasks from the Campaign Get Ready tab before adding applications to the campaign.
+
+#### Zilla Platform Update
+
+*   Resolved one critical severity vulnerability discovered in an external Pentest.
+
+November 26, 2024 Release (U-8)
+---------------------------------------------
+
+#### Zilla Comply Updates
+
+*   In Access Review notifications, resolved an issue to allow escalation custom messages to be saved as blank.
+
+*   When selecting the users to include in a review for a supervisor campaign, a new Last Transfer Date filter has been added to support a user transfer review process. The available filter options include transfers in the previous week, previous month, and previous 3 months.
+
+#### Zilla Platform Updates
+
+*   Account groups are no longer duplicated in the permissions columns in the display.
+
+*   Read-Only admin role has been updated to no longer show the archive / activate application and regeneration completed campaign reports buttons.
+
+November 20, 2024 Release (U-7)
+---------------------------------------------
+
+#### Integrations Update
+
+*   New API integration: Twilio Segment
+
+#### Zilla Platform Updates

@@ -1,0 +1,62 @@
+---
+title: "Operationalize identity security"
+description: "This topic describes how to operationalize identity security. This is the act of continuous delivery and continuous execution, with clearly defined roles and responsibilities, to ensure that every identity and their"
+---
+
+This topic describes how to operationalize identity security. This is the act of continuous delivery and continuous execution, with clearly defined roles and responsibilities, to ensure that every identity and their access to enterprise resources is proactively secured.
+
+There are four tenets of operationalizing identity security:
+
+*   [Cradle-to-grave identity lifecycle management](/cyberark-blueprint/latest/en/content/operationalize-identity-security)
+
+*   [Security at inception of enterprise resources](/cyberark-blueprint/latest/en/content/operationalize-identity-security)
+
+*   [Ongoing discovery across the full identity spectrum](/cyberark-blueprint/latest/en/content/operationalize-identity-security)
+
+*   [Defined RACI matrix to support processes](/cyberark-blueprint/latest/en/content/operationalize-identity-security)
+
+Cradle-to-grave identity lifecycle management[](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/operationalize-identity-security.htm)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+From the moment a new identity needs to exist, whether a workforce, IT, developer, or machine identity, it’s automatically protected with the appropriate intelligent privilege controls. This is a security-first approach to the classic joiner, mover, or lever process.
+
+For human identities, when your Human Resources Information System (HRIS), such as Workday or Success Factors, is used to onboard or offboard a human being to the organization, it can be automatically provisioned into CyberArk Identity with role-based access based on the identity’s defined role or function in the organization. That role-based access control extends into the CyberArk Identity Security Platform to grant appropriate access to workforce applications via SCIM/API provisioning (outbound provisioning) and privileged resources via the relevant intelligent privilege control service and access policy.
+
+Furthermore, for human identities, automatic identity governance certification campaigns should be run on a recurring basis against your high-risk SaaS applications, cloud environments, elastic cloud workloads, and long-lived systems. Revoke access to enterprise resources from human identities when they attest that they no longer require it and automatically revoke access when an identity changes to a role which no longer requires access.
+
+For machine identities, any time a developer or application owner requires a new workload which requires secrets, their request to create a new machine identity should coincide with an automated onboarding of the machine identity to the appropriate secrets management service within CyberArk.
+
+Inversely, any time an identity no longer exists, whether from leaving the organization or from decommissioning a workload, its access should automatically be revoked, and the identity terminated.
+
+Security at inception of enterprise resources[](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/operationalize-identity-security.htm)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Security at inception is the concept of protecting new enterprise resources and privileged access from the moment that they’re created, through the use of automation and orchestration services. This provides continuous proactive integration of intelligent privilege controls to new enterprise resources. By using services like Terraform or Ansible to provision new enterprise resources such as cloud service provider accounts, elastic cloud resources, and long-lived systems, organizations can tap into the same automated playbooks and instruction files and add additional tasks to onboard them to the relevant identity security service.
+
+New cloud service provider accounts should be onboarded to Secure Cloud Access and Secrets Hub to enable human access to cloud native services and secrets management for cloud native workloads. New elastic cloud workloads and long-lived systems should be onboarded to Dynamic Privileged Access for federated human access, and any built-in local admin accounts or build image local accounts should be onboarded to Privilege Cloud or Self-Hosted PAM. Any self-service access requests for privileged access to existing systems should also be protected automatically through similar automated processes to ensure proactive security.
+
+This approach ensures that organizations adopt and maintain a proactive security posture, rather than a reactive one, constantly dealing with a state of technical and security debt.
+
+Ongoing discovery across the full identity spectrum[](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/operationalize-identity-security.htm)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+While the approach of proactively protecting resources with the security at inception is vital to long-term success, organizations must also account for the identification and capture of identities and privileged access that is created out of band of the security-integrated processes. To assume that no identity, account, or resource will ever be created out of band is naïve, and to prepare yourself for the edge cases that may exist, organizations should implement ongoing discovery across the full spectrum of identities to capture any outstanding access that requires protection.
+
+Defined RACI matrix to support processes[](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/operationalize-identity-security.htm)
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Another critical element of successfully operationalizing your identity security program is developing a RACI matrix. RACI is an acronym that refers to roles and the functional tasks that people are either responsible for, accountable for, consulted with, or informed of. The “matrix” refers to the chart that visualizes the relationship between the various roles and tasks. The program RACI should be signed off by all the leadership stakeholders involved to ensure that everyone is aligned and agrees.
+
+When a RACI matrix is not defined, this can lead to inefficient processes, causing internal service disruption, functional delays, and poor internal customer and end-user experience. It’s recommended that organizations define an identity security program RACI matrix for all operational tasks and continue to update it as new ones arise or are discovered.
+
+This [Excel document](https://lp.cyberark.com/rs/316-CZP-275/images/Roles_Responsibilities_and_Staffing-RACI_Matrix.xlsx) contains a sample RACI matrix for a PAM-oriented Identity Security program that can be used as a skeleton upon which to build your own. Simply place an R, A, C, I, or any appropriate combination in each of the applicable roles for each activity. Each activity should have at least one individual accountable while there may be shared responsibilities depending on the activity.
+
+*   Responsible: The person or function that performs the work or executes the task. There must be one “R” in every row, no more and no less.
+
+*   Accountable: The person or function ultimately liable for the work or decision being made. Use this letter when appropriate, but not to excess – only when an important decision or task is at hand. There can be from zero to one “A” in each row, but no more than one.
+
+*   Consulted: Anyone who should be providing their input in decision-making processes related to the task. A “C” is typically a subject matter expert or a functional leader whose team will be affected by the decision or action. There can be from zero to multiple “C’s” in each row as appropriate.
+
+*   Informed: Anyone who must be told or updated after a decision is made or task is completed. There can be as many “I’s” as are appropriate in each row.
+
+As you develop your own RACI matrix, be sure to ask yourself, what are all the standard operating procedures, functions, and activities that encompass your program or initiative? If you’re leveraging automation to help execute tasks, be sure to include that as one of the functional roles to and mark it as “R” for those tasks.

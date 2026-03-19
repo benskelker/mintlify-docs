@@ -1,0 +1,175 @@
+---
+title: "Remove a Microsoft Entra tenant manually"
+description: "This topic describes how to manually remove a Microsoft Entra tenant from the CCE environment."
+---
+
+This topic describes how to manually remove a Microsoft Entra tenant from the CCE environment.
+
+Remove a Microsoft Entra tenant
+---------------------------------------------
+
+Make sure that you have the Microsoft Entra tenant onboarding ID. You received this ID when you added the Microsoft Entra tenant.
+
+1.   Get the ID token (Bearer token).
+
+2.   Call the following API to remove the Microsoft Entra tenant.
+
+`DELETE https://&lt;subdomain&gt;.cloudonboarding.cyberark.cloud/api/azure/manual/\{id\}`
+3.   Delete the CCE resources that you created in the Azure Cloud Shell:
+
+    *   Delete the CCE service principal using the following command:
+
+```
+az ad sp delete --id $CCE_PRINCIPAL_ID
+```
+To get the CCE service principal ID use the following command:
+
+`az ad sp show --id $CCE_APP_ID --query id --output tsv`
+    *   Delete the CCE app using the following command:
+
+```
+az ad app delete --id <CCE_APP_ID>
+```
+To get the CCE app ID use the following command:
+
+`az ad app list --filter "displayname eq 'CyberArk-CCE-app'" --query [].appId --output tsv`
+
+4.   Delete the service resources that you created in the Azure Cloud Shell:
+
+    *   [SIA](/admin-space/latest/en/content/cce/azure/azure-remove-entratenant-manual)
+    *   [CDS](/admin-space/latest/en/content/cce/azure/azure-remove-entratenant-manual)
+    *   [SCA](/admin-space/latest/en/content/cce/azure/azure-remove-entratenant-manual)
+
+    *   Delete the SIA service principal using the following command:
+
+`az ad sp delete --id $SIA_PRINCIPAL_ID`
+To get the SIA service principal ID use the following command:
+
+`az ad sp show --id $SIA_APP_ID --query id --output tsv`
+    *   Delete the SIA app using the following command:
+
+`az ad app delete --id &lt;SIA_APP_ID&gt;`
+To get the SIA app ID use the following command:
+
+`az ad app list --filter "displayname eq 'CyberArk-SIA-app'" --query [].appId --output tsv`
+
+    1.   Get the CyberArk tenant ID:
+
+        1.   In your CyberArk tenant, click the profile icon, and then click About.
+
+        2.   Under Tenant details, copy the ID.
+
+    2.   Set the following parameters:
+
+```
+export TENANT_ID="<cyberark-tenant-id>"
+export ENTRA_ID="<root-mg-id-of-tenant>" # Root management group of the tenant
+export MANAGEMENT_GROUP_ID="<mg-id>" # For 'management-group' resources onboarding, if entra onboarding then the same as Entra id
+export SUBSCRIPTION_ID="<subscription-id>" # Optional, For 'subscription' resources onboarding
+
+POSTFIX="${TENANT_ID##*-}-${ENTRA_ID##*-}"
+ENTRA_APP_DISPLAY_NAME="cyberark-cds-app-entra-${POSTFIX}"
+RESOURCES_APP_DISPLAY_NAME="cyberark-cds-app-resource-${POSTFIX}"
+
+# Assignee scopes
+ENTRA_ASSIGNEE_SCOPE="/providers/Microsoft.Management/managementGroups/${ENTRA_ID}"
+
+# Set RESOURCES_ASSIGNEE_SCOPE based on deployment type:
+#If onboarding at management-group level:
+RESOURCES_ASSIGNEE_SCOPE="/providers/Microsoft.Management/managementGroups/${MANAGEMENT_GROUP_ID}"
+#If onboarding at subscription level:
+RESOURCES_ASSIGNEE_SCOPE="/subscriptions/${SUBSCRIPTION_ID}"
+
+# Generate role names with the same postfix convention
+ENTRA_ROLE_DISPLAY_NAME="CyberArk-CDS-ENTRA-ROLE-${POSTFIX}"
+RESOURCES_ROLE_DISPLAY_NAME="CyberArk-CDS-RESOURCES-ROLE-${POSTFIX}"
+
+
+ENTRA_APP_ID=$(az ad app list --filter "displayname eq '${ENTRA_APP_DISPLAY_NAME:0:63}'" --query [].appId --output tsv)
+
+RESOURCES_APP_ID=$(az ad app list --filter "displayname eq '${RESOURCES_APP_DISPLAY_NAME:0:63}'" --query [].appId --output tsv)
+
+
+ENTRA_SP_OBJECT_ID=$(az ad sp show --id "$ENTRA_APP_ID" --query id -o tsv)
+RESOURCES_SP_OBJECT_ID=$(az ad sp show --id "$RESOURCES_APP_ID" --query id -o tsv)
+```
+    3.   Get the app registration and service principal IDs using the following commands:
+
+`ENTRA_APP_ID=$(az ad app list --filter "displayname eq '$\{ENTRA_APP_DISPLAY_NAME:0:63\}'" --query [].appId --output tsv)` `RESOURCES_APP_ID=$(az ad app list --filter "displayname eq '$\{RESOURCES_APP_DISPLAY_NAME:0:63\}'" --query [].appId --output tsv)` `ENTRA_SP_OBJECT_ID=$(az ad sp show --id "$ENTRA_APP_ID" --query id -o tsv)` `RESOURCES_SP_OBJECT_ID=$(az ad sp show --id "$RESOURCES_APP_ID" --query id -o tsv)`
+    4.   Get the role assignments using the following commands:
+
+`az role assignment delete --assignee "$ENTRA_SP_OBJECT_ID" --role "$ENTRA_ROLE_DISPLAY_NAME" --scope "$ENTRA_ASSIGNEE_SCOPE"` `az role assignment delete --assignee "$RESOURCES_SP_OBJECT_ID" --role "$RESOURCES_ROLE_DISPLAY_NAME" --scope "$RESOURCES_ASSIGNEE_SCOPE"`
+    5.   Delete the custom roles and the role definition scopes using the following commands:
+
+You can continue the app deletion process only if the resource role isn't blocked.
+
+If Azure returns either of the following messages, do not delete the role and role assignments:
+
+        *   RoleDefinitionHasAssignments
+
+        *   Existing role assignments
+
+```
+az role definition delete \
+  --name "${ENTRA_ROLE_DISPLAY_NAME}" \
+  --scope "/providers/Microsoft.Management/managementGroups/${ENTRA_ID}"
+```
+
+```
+az role definition delete \
+  --name "${RESOURCES_ROLE_DISPLAY_NAME}"  \
+  --scope "/providers/Microsoft.Management/managementGroups/${ENTRA_ID}"
+```
+
+    6.   Delete the CDS service principals using the following commands:
+
+`az ad sp delete --id "$ENTRA_SP_OBJECT_ID"` `az ad sp delete --id "$RESOURCES_SP_OBJECT_ID"`
+    7.   Delete the CDS apps using the following commands:
+
+`az ad app delete --id "$ENTRA_APP_ID"` `az ad app delete --id "$RESOURCES_APP_ID"`
+
+    1.   Get the CyberArk tenant ID:
+
+        1.   In your CyberArk tenant, click the profile icon, and then click About.
+
+        2.   Under Tenant details, copy the ID.
+
+    2.   Set the following parameters:
+
+```
+ENTRA_ID=$(az account show | jq -r '.tenantId')
+SCA_TENANT_ID="<tenant id>"
+SHORT_SCA_TENANT_ID="${SCA_TENANT_ID##*-}"
+SHORT_ENTRA_ID="${ENTRA_ID##*-}"
+UNIQUE_ID="$SHORT_SCA_TENANT_ID-$SHORT_ENTRA_ID"
+
+SCA_AZURE_ENTRA_ROLE_SCOPE="/providers/Microsoft.Management/managementGroups/$ENTRA_ID"
+SCA_AZURE_RESOURCE_ROLE_SCOPE="/providers/Microsoft.Management/managementGroups/$ENTRA_ID"
+
+SCA_AZURE_ENTRA_APP_ROLE_ASSIGNMENT_SCOPE="/providers/Microsoft.Management/managementGroups/$ENTRA_ID"
+SCA_AZURE_RESOURCE_APP_ROLE_ASSIGNMENT_SCOPE="/providers/Microsoft.Management/managementGroups/$ENTRA_ID"
+
+SCA_AZURE_ENTRA_ROLE_DISPLAY_NAME="cyberark-sca-role-entra-${UNIQUE_ID}"
+SCA_AZURE_RESOURCE_ROLE_DISPLAY_NAME="cyberark-sca-role-resource-${UNIQUE_ID}"
+
+SCA_AZURE_ENTRA_APP_DISPLAY_NAME="cyberark-sca-app-entra-${UNIQUE_ID}"
+SCA_AZURE_RESOURCE_APP_DISPLAY_NAME="cyberark-sca-app-resource-${UNIQUE_ID}"
+```
+    3.   Get the app registration and service principal IDs using the following commands:
+
+`SCA_AZURE_ENTRA_APP_ID=$(az ad app list --filter "displayName eq '$SCA_AZURE_ENTRA_APP_DISPLAY_NAME'" --query "[0].appId" -o tsv)` `SCA_AZURE_RESOURCE_APP_ID=$(az ad app list --filter "displayName eq '$SCA_AZURE_RESOURCE_APP_DISPLAY_NAME'" --query "[0].appId" -o tsv)` `SCA_AZURE_ENTRA_APP_SP_ID=$(az ad sp show --id "$SCA_AZURE_ENTRA_APP_ID" --query id -o tsv)` `SCA_AZURE_RESOURCE_APP_SP_ID=$(az ad sp show --id "$SCA_AZURE_RESOURCE_APP_ID" --query id -o tsv)`
+    4.   Get the SCA role assignments using the following commands:
+
+`SCA_AZURE_ENTRA_APP_ROLE_ASSIGNMENT_ID=$(az role assignment list --assignee "$SCA_AZURE_ENTRA_APP_SP_ID" --role "$SCA_AZURE_ENTRA_ROLE_DISPLAY_NAME" --scope "$SCA_AZURE_ENTRA_APP_ROLE_ASSIGNMENT_SCOPE" --query "[0].id" --output tsv)` `SCA_AZURE_RESOURCE_APP_ROLE_ASSIGNMENT_ID=$(az role assignment list --assignee "$SCA_AZURE_RESOURCE_APP_SP_ID" --role "$SCA_AZURE_RESOURCE_ROLE_DISPLAY_NAME" --scope "$SCA_AZURE_RESOURCE_APP_ROLE_ASSIGNMENT_SCOPE" --query "[0].id" --output tsv)`
+    5.   Delete the SCA role assignment using the following commands:
+
+`az role assignment delete --ids "$SCA_AZURE_ENTRA_APP_ROLE_ASSIGNMENT_ID"` `az role assignment delete --ids "$SCA_AZURE_RESOURCE_APP_ROLE_ASSIGNMENT_ID"`
+    6.   Delete the SCA role using the following commands:
+
+`az role definition delete --name "$SCA_AZURE_ENTRA_ROLE_DISPLAY_NAME"` `az role definition delete --name "$SCA_AZURE_RESOURCE_ROLE_DISPLAY_NAME"`
+    7.   Delete the SCA service principals using the following command:
+
+`az ad sp delete --id "$SCA_AZURE_ENTRA_APP_SP_ID"` `az ad sp delete --id "$SCA_AZURE_RESOURCE_APP_SP_ID"`
+    8.   Delete the SCA apps using the following commands:
+
+`az ad app delete --id "$SCA_AZURE_ENTRA_APP_ID"` `az ad app delete --id "$SCA_AZURE_RESOURCE_APP_ID"`

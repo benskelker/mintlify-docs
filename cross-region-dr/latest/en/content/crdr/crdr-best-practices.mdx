@@ -1,0 +1,23 @@
+---
+title: "CRDR best practices"
+description: "This topic describes the best-practice operational steps to take during a CRDR event."
+---
+
+This topic describes the best-practice operational steps to take during a CRDR event.
+
+Best practices
+----------------------------
+
+*   Enable a bypass flow for emergencies so users can access credentials during a DR event. See [Configure the bypass solution](/cross-region-dr/latest/en/content/crdr/crdr-setup) for more information.
+
+If you do not want to use the bypass flow solution, you can assign Show password permissions to critical accounts in advance.
+
+*   Keep audit evidence such as reports, logs, and session recordings for compliance.
+
+*   Review and filter Audit events after a DR event. See [View Audit events that took place during a CRDR incident](/cross-region-dr/latest/en/content/crdr/crdr-audit) for more information.
+
+*   After a DR event, rotate passwords that were viewed by account users. Perform the following steps:
+
+    1.   In the Audit space, filter for the Retrieve password audit code, PAM295. See [Privileged account access Audit codes](/audit/latest/en/content/audit/product-audits/isp-privcloud-audit) and [Audit filter and search](/audit/latest/en/content/audit/isp_system-activities) for more information.
+
+    2.   In Privilege Cloud, rotate the relevant account passwords.

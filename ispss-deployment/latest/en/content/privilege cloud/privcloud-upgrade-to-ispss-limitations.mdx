@@ -1,0 +1,18 @@
+---
+title: "Upgrade to Privilege Cloud on Shared Services: Limitations"
+description: "This section describes functionality changes and non-supported features following the upgrade to Privilege Cloud on Shared Services."
+---
+
+This section describes functionality changes and non-supported features following the upgrade to Privilege Cloud on Shared Services.
+
+### [](https://docs.cyberark.com/ispss-deployment/latest/en/content/privilege%20cloud/privcloud-upgrade-to-ispss-limitations.htm)Active Directory
+
+| Domain | Description |
+| --- | --- |
+| Active directory groups and users must be using SID | SID refers to the unique identifier per LDAP group/user. Any active directory that is not based on SID cannot be used for the upgrade to ISPSS. |
+| Local CyberArk user with external authentication methods is replaced with a new user that does not have the user's history | Any local CyberArk user that is created within the legacy system Privilege Cloud Portal with external authentication methods (LDAP, SAML, Radius, etc.) is not migrated due to lack of SID. A new user is created based on the AD user, but there is no linked history, and therefore no audit capabilities. |
+| AD groups must be defined for supported scope and type | ![Image 4](https://docs.cyberark.com/ispss-deployment/latest/en/content/images/privilege%20cloud/upgrade-ad-group-scope-type_400x346.png) Ensure AD groups are defined for supported scope and type: * Group scope: Global or Universal * Group type:Security |
+| Non-supported Authentication mechanisms for Windows connections | The following authentication methods are not supported for PSM following upgrade to the ISPSS: * QR code * DUO * FIDO2 |
+| Network Level Authentication (NLA) | Customers who enforce NLA when connecting to Windows accounts via PSM should ensure the following: * The PSM must be installed on an indomain machine. * The PSM should be joined to the domain that houses the AD that is integrated into Identity Administration. This enables authentication to both the machine and to the Shared Services platform. * The first authentication challenge must be defined as a textual password. |
+| PSM Logon UI | If the user changed their password after the first login, they will need to connect to the platform in order to change their password again at a later time. |
+| eDirectories are not supported | N/A |

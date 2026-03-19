@@ -1,0 +1,14 @@
+---
+title: "Add a Microsoft Entra tenant manually"
+description: "This topic describes how to manually add a Microsoft Entra tenant to the CCE environment and deploy service resources in the Azure Cloud Shell."
+---
+
+This topic describes how to manually add a Microsoft Entra tenant to the CCE environment and deploy service resources in the Azure Cloud Shell.
+
+If you are migrating existing cloud entities from a CyberArk service, you must delete the service resources from the cloud environment before adding them to CCE.
+
+If you added a subscription for a Proof of Concept (POC) and are now adding a Microsoft Entra tenant that includes this standalone subscription, you will have duplicated resources.
+
+In the Azure environment page, the subscription with the duplicated resources will be flagged as Needs attention. This indicates there is an issue with this subscription that needs your attention. For more information, see [View and resolve Azure entity issues](/admin-space/latest/en/content/cce/azure/azure-resolve-entity-issues).
+
+When you add a Microsoft Entra tenant, all the subscriptions in the Microsoft Entra tenant are also added.
