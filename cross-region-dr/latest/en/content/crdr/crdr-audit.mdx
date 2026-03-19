@@ -1,0 +1,57 @@
+---
+title: "Audit"
+description: "This topic describes how a CRDR incident impacts Audit functionality."
+---
+
+This topic describes how a CRDR incident impacts Audit functionality.
+
+DR mode
+---------------------
+
+When a CRDR incident occurs, CyberArk's SRE team will activate DR mode, moving the tenant to the DR region.
+
+When in DR mode:
+
+*   A banner at the top of the page indicates that DR mode is active.
+
+*   Because services have limited functionality, Audit data is captured only for the functionality that is available in these services. See [Privilege Cloud](/cross-region-dr/latest/en/content/crdr/crdr-privcloud) and Identity Administration disaster recovery for more information.
+
+*   You can view and search only the Audit data stored in the DR region.
+
+### Audit limitations during DR mode
+
+*   The Activities reports page is unavailable.
+*   Audit activity generated before the DR incident is unavailable during DR mode.
+
+*   Because the DR region is read-only, SIEM configuration and session monitoring are unavailable.
+
+Failback to main region
+-------------------------------------
+
+After the CyberArk SRE team completes the failback to the main region, Audit data synchronization begins. The process can take up to 24 hours. When the DR mode banner disappears, synchronization is complete.
+
+[](https://docs.cyberark.com/cross-region-dr/latest/en/content/crdr/crdr-audit.htm)View Audit events that took place during a CRDR incident
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+In the Audit Activities page, the ![Image 4](https://docs.cyberark.com/cross-region-dr/latest/en/content/images/crdr-audit-event-icon.png) icon indicates if the event took place during DR mode.
+
+You can view Audit events that occurred in DR mode during a specific time period by creating a report.
+
+For more information about Audit system activities during a CRDR incident, see [CRDR Audit events](/audit/latest/en/content/audit/product-audits/isp-crdr-audit).
+
+### Create a report and filter for DR events
+
+1.   In the Audit Space, go to System activities &gt; Activities reports , and click Create report.
+
+2.   In the Create a report popup, enter the required information and click Apply.
+
+3.   Open the downloaded .csv file, locate the Is DR column, and filter for Is DR TRUE.
+
+Resolve missing audit data
+----------------------------------------
+
+Perform one or more of the following actions if you are missing audit data:
+
+*   Check if the DR mode banner still appears indicating that the synchronization is still in process.
+
+*   Confirm that the tenant is back in the main region.

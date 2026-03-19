@@ -1,0 +1,81 @@
+---
+title: "Privilege Cloud"
+description: "This topic describes how a Devent impacts Privilege Cloud functionality."
+---
+
+This topic describes how a Devent impacts Privilege Cloud functionality.
+
+Privilege Cloud functionality during a DR event
+-------------------------------------------------------------
+
+During a DR event, CyberArk's SRE team activates DR mode and moves your CyberArk environment to the [designated DR region](/cross-region-dr/latest/en/content/crdr/crdr-supported-regions) that supports only essential target access and audit functionality.
+
+During a DR event:
+
+*   The Privilege Cloud user portal is down. Users can view their accounts and show passwords in the Secure Access space.
+
+*   Secrets management is not supported, for both the classic CPM solution and the SaaS Secrets Rotation service.
+
+*   Privilege Cloud functions such as account discovery, target access, session recording, and others are blocked.
+
+The following diagram shows the available functions and access interfaces in regular operations vs. during a DR event.
+
+[![Image 3](https://docs.cyberark.com/cross-region-dr/latest/en/content/images/crdr-privcloud-dr.png)](https://docs.cyberark.com/cross-region-dr/latest/en/content/images/crdr-privcloud-dr.png)
+
+User permissions
+------------------------------
+
+*   Users retain their permissions to the same Safes and accounts.
+
+*   Only users with Secure Access roles can access the Secure Access user portal instead of Privilege Cloud user portal
+
+*   Only users who have show password permissions will be able to view the passwords of their targets
+
+*   Users who can regularly access their targets as part of workflow frameworks or limited access will not be able to display their targets' passwords, unless you have [configured the bypass solution](/cross-region-dr/latest/en/content/crdr/crdr-setup).
+
+View accounts, retrieve passwords, and access your targets
+------------------------------------------------------------------------
+
+The following table describes users' access functionality
+
+Access behavior in regular functionality vs DR event| Operational scenario | Access behavior |
+| --- | --- |
+| Regular functionality | * Users can access the Privilege Cloud user portal to perform administrative and managerial actions, to review assigned accounts, and to connect to assigned targets. * Only users with the Show password permission can show their targets' passwords. * Users with Secure Access role/permission can access the Secure Access space |
+| DR event | * A banner appears at the top of your work space to indicate that DR mode is active. * Users with Secure Access role/permission and were able to access the Secure Access space in regular mode can also access the Secure Access space in a DR event. * If [Bypass configuration is enabled](/cross-region-dr/latest/en/content/crdr/crdr-setup), all users, disregarding Show password permissions in the regular functionality, are able to display their target password. The CRDR Bypass option takes effect only in case of a DR event. Bypass enables all users to display their targets' passwords in the Secure Access space during a DR event only. When returning to regular operational mode, the Show password permission is revoked. Only users who were assigned this permission for regular operational mode will retain this ability. |
+
+To access your targets:
+
+1.   Access the Secure Access space to view assigned accounts (targets). Use the same authentication URL to access the Secure Access space.
+
+2.   Select the required account and click Show password. You can show your accounts' passwords if:
+
+    *   Bypass is enabled in your system (all users can show their passwords during the DR event only)
+
+    *   You have the Show password permission assigned to you
+
+3.   Employ a native tool such as RDP, SSH password client, or other industry-standard tool, to access the target.
+
+Secrets rotation
+------------------------------
+
+In regular operational mode, CyberArk automatically rotates account secrets based on the customer’s defined policies. During a DR event, the secrets rotation functionality is suspended. After the DR event is concluded and the system returns to regular operational mode, CyberArk resumes secrets rotation according to the defined secrets policies.
+
+Audit logs and review
+-----------------------------------
+
+*   Audit review is available
+
+*   All actions in the DR site are logged in the DR site audit
+
+*   On return to regular operational mode, the DR audits are replicated to the main site and logged in the Audit service
+
+For details, see [CRDR Audit](/cross-region-dr/latest/en/content/crdr/crdr-audit).
+
+Unsupported Privilege Cloud functions
+---------------------------------------------------
+
+*   Access to the Privilege Cloud user portal and all related administration tasks
+
+*   Privilege Cloud secrets rotation updates
+
+*   Privilege Cloud access to session recordings

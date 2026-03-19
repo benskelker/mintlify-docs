@@ -1,0 +1,64 @@
+---
+title: "Navigate access in today’s environments"
+description: "This topic provides an overview of navigating access for four different types of identities: workforce, IT, developers, and machine identities, highlighting their roles, environments, and associated risks."
+---
+
+This topic provides an overview of navigating access for four different types of identities: workforce, IT, developers, and machine identities, highlighting their roles, environments, and associated risks.
+
+One key aspect of aligning holistic identity security controls to their practical implementation is to understand what navigating access for the spectrum of identities actually looks like. Who are these identities? Where do they work from? What types of environments do they have access to?
+
+Workforce
+-----------------------
+
+Workforce users consist of standard employees, temporary contractors, application administrators, and high-risk users. The nature of workforce access has evolved as organizations introduce new environments and malicious actors enhance their attack methods, resulting in an increased focus on workforce users who administer applications such as HR systems or on C-level executives with access to sensitive data.
+
+Workforce users perform the majority of their duties from a corporate- or vendor-issued workstation, whether in a corporate office or remote location. That workstation will commonly contain a variety of passwords, credentials, and privileges that enable the workforce user to access their downstream enterprise resources. This includes items such as the browser password store, session cookies, LSASS processes, and local admin rights.
+
+The workforce user seeks access to endpoints, applications, and data for their daily tasks. Depending on their specific function, a workforce user may access high-risk SaaS applications, general workforce SaaS applications, non-enterprise web applications, and self-hosted web applications. High-risk SaaS applications include applications with sensitive data such as CRM tools or accessing HRIS systems as an administrator. Workforce SaaS applications include productivity applications such as Microsoft Office 365 and Google Workspace or other standard tools such as communications, expense management, project management, and request system services. Non-enterprise web applications include non-SSO integrated web applications which use freestanding personal credentials, often stored in web browsers or password managers, such as community portals for various third-party software, personal source code repositories, or personal cloud storage platforms. Self-hosted web applications are enterprise web applications that organizations have chosen to still host within their own datacenters, and typically include homegrown web applications and corporate wiki sites, among other services.
+
+The access pattern for workforce users means that there is a wide variety of privileges that could be used throughout the day. Workforce users are the largest user population within most organizations, and as such they collectively pose a large area of risk that malicious actors target, making them an identity to protect, inclusive of the identity, their workstation, and their enterprise resources.
+
+IT admins
+-----------------------
+
+IT admins consist of traditional IT, third-party vendors and contractors, cloud operations, application admins, and security operations. This role has evolved beyond traditional on-premise infrastructure roles, and now includes administrators working with cloud services, managing DevOps tools, and operating cybersecurity services.
+
+IT users perform the majority of their duties from a corporate- or vendor-issued workstation, whether in a corporate office or remote location. That workstation will commonly contain a variety of passwords, credentials, and privileges, which enable the IT user to access their downstream enterprise resources. This includes items such as the browser password store, session cookies, LSASS processes, RDCM tools, IT scripts, and local admin rights.
+
+The IT group not only requires access to what the workforce does, but can also alter workloads and data, thus introducing higher risk and complexity. They access a wide variety of privileged environments, including high-risk SaaS applications, cloud service providers, and long-lived systems. High-risk SaaS applications include cybersecurity tools such as identity security, ITDR, and vulnerability management services, and automation and CI/CD tools such as Terraform and Ansible. Access in the cloud consists of both cloud native services such as serverless compute functions and container services, and elastic cloud workloads such as virtual machines and databases. Long-lived system access consists of domain-based privileges, such as Domain Admin or Server Admin access, as well as infrastructure access such as Windows and *NIX servers, databases, and other networking or infrastructure devices.
+
+The access pattern for IT Admin roles means that they have very high levels of privilege, a very wide scope of influence, and access across the entire enterprise, making them a critical risk identity to secure, including the identity, their workstation, and their enterprise resources.
+
+Developers
+------------------------
+
+Developers include a broad spectrum of “builder” and “coder” functions, including software development teams, DevSecOps, engineering teams, AI/ML engineers, and data scientists. Developer roles have evolved beyond traditional waterfall software development, and now include DevOps and agile builders, site reliability engineers, and application architects.
+
+Developers perform the majority of their duties from a corporate- or vendor-issued workstation, whether in a corporate office or remote location. That workstation will commonly contain a variety of passwords, credentials, workload source code, and privileges, which enable the developer to access their downstream enterprise resources. This includes items such as the browser password store, session cookies, LSASS processes, RDCM tools, software development tools, and local admin rights.
+
+Developers not only require access to what the workforce does, but they have similar access to their IT counterparts. Developers can alter workloads, data, applications, and code repositories. Their ability to modify code and their always-on access to the cloud introduce significant risks and complexities. They access a wide variety of privileged environments, including high-risk SaaS applications, cloud service providers, and long-lived systems. High-risk SaaS applications include automation and CI/CD tools such as Terraform and Ansible and development tools such as Data Dog and Postman. Access in the cloud consists of both cloud native services such as serverless compute functions and container services used to build and deploy, and elastic cloud workloads such as virtual machines and databases. Long-lived system access is typically reserved for emergency access to infrastructure like Windows and *NIX Servers, database instances and static workloads like mainframe or java applications.
+
+A unique differentiation between IT and Developer identities is that Developers have access and control over the source code of the workloads and pipelines that they develop. This means that they also act as the protector of those machine identity workloads, requiring that they implement a variety of application security checks and procedures, inclusive of secrets management for machine identities. Protecting the Developers and their workloads is critical to protecting against software supply chain attacks like that of SolarWinds.
+
+The access pattern for Developers means that they have very high levels of privilege and very wide scope of influence access across the entire enterprise, making them a critical risk identity to secure, inclusive of the identity, their workstation and their enterprise resources.
+
+Machines
+----------------------
+
+Machine identities consist of a variety of third-party commercial or open-source software workloads and in-house homegrown workloads. Whether built, bought, or borrowed, these workloads cover a wide variety of functions, including security tools, business applications, automation and CI/CD tools, cloud native services, dynamic and ephemeral workloads, and static OS-based workloads.
+
+These machine identities access various enterprise resources, including devices, data, apps and infrastructure, with different levels of risk. As the number of machine identities continues to increase, the complexity of how to manage the secrets they use to access one another, and their target resources increases as well.
+
+*   Security tools include services such as vulnerability scanners and discovery engines which leverage highly privileged accounts to scan enterprise resources and systems.
+
+*   Business applications include workloads such as robotic process automation or ITSM automation, which need privileged secrets to help run your business.
+
+*   Automation and CI/CD tools include services such as infrastructure-as-code automation and continuous integration/continuous delivery (CI/CD) platforms, both which often require high-privilege, high-scope of influence access.
+
+*   Cloud native services are the services that run natively within your Cloud Service Providers, such as serverless code functions, container platforms or memory caching services, all of which require various secrets to authenticate to downstream targets.
+
+*   Dynamic, ephemeral applications are the modern workloads that are typically homegrown and built and deployed in containerized or microservice architectures, with a key hallmark of these workloads being their ability to dynamically and quickly scale up or down based on load.
+
+*   Static, OS-based applications are the typically homegrown workloads on running Windows or *NIX servers or on mainframes, which require access to a variety of secrets depending on the nature of the application.
+
+The access pattern for machine identities means that they often have very high levels of privilege, a very wide scope of influence, and access to mission-critical or sensitive data across the entire enterprise.

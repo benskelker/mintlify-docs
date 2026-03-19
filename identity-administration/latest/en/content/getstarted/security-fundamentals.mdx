@@ -1,0 +1,84 @@
+---
+title: "Security fundamentals for Identity Administration"
+description: "Overview ----------------------"
+---
+
+Overview
+----------------------
+
+Compromising a user's identity is a central objective for any attacker, and Identity Administration is designed to help improve your organization’s ability to streamline and manage access to applications and resources. As with any security solution, it is essential to secure Identity Administration to ensure the controls you have implemented are not circumvented by an attacker.
+
+The controls described in this document are the minimal requirements for protecting your corporate applications and resources. Consolidated by our team, these controls reflect our experience in implementing industry best practices when supporting our customers. The requirements are also based on analysis of various reports made by companies that experienced a security incident and other research data generally available in the industry.
+
+It is imperative that you follow as many of these steps as possible in your environment, recognizing there may be other methods that you might want to use based on your organization’s expertise. Review your CyberArk services and deployments regularly to ensure it complies with industry best practices, including those outlined in this topic. For questions or assistance with designing and implementing these controls or support in reviewing your deployment, contact your CyberArk or partner representative.
+
+Requirements for securing your CyberArk deployment
+----------------------------------------------------------------
+
+### Secure access with MFA
+
+The use of multi-factor authentication (MFA) against IT and business resources is table stakes foundational security. Strong MFA controls help mitigate the risk of credential theft, [prevent phishing attacks](https://cyberark.my.site.com/s/article/Best-Practices-for-Defending-your-Organization-Against-Phishing-Attacks-with-CyberArk), guard against Authentication Intercept and Tampering Manipulation (AITM) and Man-in-the-Middle (MITM) attacks, and stop account takeovers. See the list below for multi-factor authentication best practices:
+
+*   All users should use MFA wherever possible, such as VPN, server and workstation login, Identity Administration portals, and other sensitive resources. If possible, use [AAL3 authentication factors](https://www.cyberark.com/mfa-calculator/) such as hardware based FIDO2 or Passkeys, which are resistant to phishing, SIM swapping, social engineering, and MFA bombing attacks.
+
+*   For sensitive web applications managed by CyberArk’s single sign-on, that contain healthcare or financial data, or accessing the self-hosted CyberArk Password Vault, it is strongly recommended to enable application-level access policies to help mitigate against malicious insiders or stolen session cookies to the Identity Administration User Portal session.
+
+*   If you are using the CyberArk Identity mobile app, elevate security by enabling MFA number matching to help mitigate MFA fatigue attacks. To prevent unauthorized access to the CyberArk Identity mobile app, enable app lock settings to require biometrics to open the CyberArk Identity mobile app and approve push notifications.
+
+*   When using CyberArk for MFA, configure the policy to require users to set up authentication factors at login. Run the built-in compliance reports to help identify which users have not configured their factors and build a plan to enroll them.
+
+*   Consider going [passwordless](https://www.cyberark.com/resources/blog/considering-passwordless-heres-how-to-do-it) to minimize the chances for password theft, prevent unauthorized access, reduce password related helpdesk tickets, and improve the user experience. See Configure passwordless authentication for more information.
+
+A single passwordless factor may not comply with NIST (National Institute of Standards and Technology) or other security requirements. Use the AAL (Authenticator Assurance Levels) indicator on the Authentication Profile, or the AAL calculator, to help determine which factors to use.
+
+*   Leverage CyberArk’s Identity Verification functionality to help verify the identity of helpdesk callers and prevent vishing. Enable CyberArk’s self-service password reset service to help minimize the risks associated with password reset and reduce the number of helpdesk tickets related to password reset.
+
+*   If enforcing strong factors on all users is not possible, create different MFA policies for each role. Require stronger authentication factors, such as FIDO2, and enforce more stringent access policies, such as allow access only from whitelisted IP addresses, for high-risk users belonging to roles such as IT, executives, human resources, and finance.
+
+If you are not licensed for MFA, at minimum configure the following settings:
+
+*   Block access from known bad IP ranges.
+
+*   Enable CAPTCHA to help mitigate brute force attempts and minimize helpdesk requests for account unlock. Typically set this to a lower number than the account lockout threshold.
+
+*   Enable security image to help mitigate phishing attempts, by identifying fake login pages that do not display the user’s security image.
+
+*   Configure temporary lock out after multiple failed logins attempts, to help mitigate brute force attempts, and minimize helpdesk requests for account unlock. Typically set this at a higher number than the CAPTCHA threshold, but lower than the account lockout threshold.
+
+### Exercise good password hygiene
+
+Exercising good password hygiene complements MFA in enhancing overall security for IT and business resources. While MFA provides a layered defense against unauthorized access, good password hygiene focuses on strengthening the first line of defense—the passwords themselves—to further mitigate the risk of credential theft or lateral and vertical movement. Consider the following password hygiene recommendations:
+
+*   While 8-character passwords meet NIST requirements, it is recommended to use at least 12 characters in length. Using passphrases with at least three random words, for example “Correct!-Horse-Battery-Staple4”, can help make it easier to remember a 12 character or more password. The longer the better.
+
+*   Use a password or passphrase generator to help when signing up or changing passwords.
+
+*   Do not use easily guessed words such as your organization name, part of your name, name of a pet or family member, or the name of a month. Do not use common weak passwords such as “qwertyuiop”, “12345678”, and “password” or reuse personal passwords with your CyberArk login password.
+
+*   Include complexities such as requiring at least one special character, one number, and one upper case letter.
+
+*   Over 24 billion passwords have been reported to be sold on the dark web. Avoid using past passwords when changing your passwords.
+
+*   At least 921 passwords are stolen per second. Set a maximum password age of 90 days or less to help minimize the risk of stolen passwords being used to access Identity Administration or other resources in your organization.
+
+*   For web applications that do not support single sign-on, use an [enterprise grade password manager](https://cyberark.my.site.com/s/article/Securing-Workforce-Web-Application-Credentials-with-CyberArk-Workforce-Password-Management) to help ensure secure encrypted storage, prevent password theft, and share with other users securely.
+
+*   Use a different password for each website and resource to prevent lateral movement if one of your credentials is compromised.
+
+*   Do not share passwords unsecurely.
+
+### Restrict session expiration time
+
+Session expiration timeout must reflect the purpose and nature of the application and keep the right balance between security and usability. Users should be able to comfortably complete operations without being frequently disrupted. On the other hand, the longer the timeout, the higher the chances of session compromise and potentially longer time of compromise. We recommend keeping the timeout as short as possible. Sessions expiration should not exceed 12 hours. See Customize user session options for more information.
+
+### Enforce least privileged administration
+
+Reducing the number of privileged accounts or the extent of their privileges reduces the overall privileged account attack surface. This is true for the enterprise and for each solution implemented, including CyberArk. The core principle of this control is that there should only be a few CyberArk administrators, and they should only possess limited privileges, unless elevated through a strong approval process.
+
+Minimal requirements:
+
+*   Reduce the number of administrator accounts.
+
+*   Delegate least privileged administration by creating roles with limited administrative rights such as read-only.
+
+*   If applicable, delegate least privileged administration by organizing users and applications into CyberArk organizations and appointing organization administrators.

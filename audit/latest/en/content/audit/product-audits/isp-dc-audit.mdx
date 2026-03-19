@@ -1,0 +1,43 @@
+---
+title: "Discovery & Context audit events"
+description: "This topic describes the audit events and codes related to Discovery & Context."
+---
+
+This topic describes the audit events and codes related to Discovery & Context.
+
+Audit events by component and activity
+----------------------------------------------------
+
+Audit events and codes are available for the components and activities listed below.
+
+Discovery & Context audit events by component and activity| Component | Activity |
+| --- | --- |
+| Secrets | * Create * Delete * View (Query) |
+| AI agents | * Create * Delete * View (Query) |
+| Workloads | * Create * Delete * View (Query) |
+
+Audit codes
+-------------------------
+
+The following sections describe the audit codes according to functionality.
+
+Secrets inventory audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| DSC0001 | Info (Success) | A user uploaded secrets using the `AddReplaceSecrets` API. |
+| DSC0000 | Failure | A user could not upload secrets using the `AddReplaceSecrets` API. |
+| DSC0002 | Info (Success) | A user deleted secrets using the `DeleteSecrets` API. |
+| DSC0003 | Failure | A user could not delete secrets using the `DeleteSecrets` API. |
+
+AI agent inventory audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| DSC0017 | Info (Success) | A user uploaded AI agents using the `AddReplaceAIAgents` API. |
+| DSC0016 | Failure | A user could not upload AI agents using the `AddReplaceAIAgents` API. |
+| DSC0018 | Info (Success) | A user deleted AI agents using the `DeleteAIAgents` API. |
+| DSC0019 | Failure | A user could not delete AI agents using the `DeleteAIAgents` API. |
+
+Workload inventory audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| DSC0025 | Info (Success) | A user uploaded workloads using the `AddReplaceWorkloads` API. |
+| DSC0024 | Failure | A user could not upload workloads using the `AddReplaceWorkloads` API. |
+| DSC0022 | Info (Success) | A user deleted workloads using the `DeleteWorkloads` API. |
+| DSC0023 | Failure | A user could not delete workloads using the `DeleteWorkloads` API. |

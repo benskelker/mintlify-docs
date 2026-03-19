@@ -1,0 +1,127 @@
+---
+title: "Step 3: Perform post-upgrade steps"
+description: "Your CyberArk users have been moved to the CyberArk Identity Security Platform Shared Services, where they can be viewed and managed in the Identity Administration user portal."
+---
+
+Your CyberArk users have been moved to the CyberArk Identity Security Platform Shared Services, where they can be viewed and managed in the Identity Administration user portal.
+
+CyberArk sends you a notification email that the upgrade has been completed, and requests that you perform the following finalization steps:
+
+#1 Sign in to Identity Administration
+---------------------------------------------------
+
+1.   Sign in to the ISPSS user portal using the link https://&lt;subdomain&gt;.cyberark.cloud and initial user provided in the CyberArk email. Note that [the initial user password was updated in the pre-update steps](/ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-setup-ispss).The Privilege Cloud Portal opens automatically.
+
+2.   Click the navigator and select Identity Administration.
+
+The navigator also enables access to all other shared services
+
+#2 Check and adjust user roles
+--------------------------------------------
+
+As part of the upgrade, all your users that are assigned to predefined LDAP groups are assigned to relevant user roles in Identity Administration, according to the role mapping performed in the planning stage. Users may also have manually assigned permissions, and these will result in additional roles assigned to that user.
+
+1.   After the upgrade, access Identity Administration and check user role assignment to verify users have the necessary user permissions.
+
+2.   After the upgrade, you may need to re-assign permissions that were defined manually before the upgrade.
+
+3.   Roles are not only assigned per LDAP user group but also specifically per each user. Therefore, when removing a user from a specific LDAP group, access Identity Administration and manually remove the specific role from the user, to cancel the related permissions.
+
+To learn about user roles and how to manage them:
+
+*   See [Check user roles](/ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-check-roles).
+
+*   View the following videos to learn about roles:
+
+Default roles
+
+<Frame>
+![Image 1: Video Thumbnail](https://embed-ssl.wistia.com/deliveries/c2c6839468cc0d4854c305a9c2c02764.webp?image_crop_resized=640x360)
+</Frame>
+
+1:33
+
+Create a role
+
+<Frame>
+![Image 2: Video Thumbnail](https://embed-ssl.wistia.com/deliveries/d8267a2f8b9efd6833db621fad7d4eb8.webp?image_crop_resized=640x360)
+</Frame>
+
+0:54
+
+#3 Request CyberArk cloud directory users (local users) to reset their password
+---------------------------------------------------------------------------------------------
+
+As part of the upgrade, the CyberArk local users that were originally defined in your Privilege Cloud Standard system have been  upgraded to the new Privilege Cloud ISPSS, where they are now defined as CyberArk cloud directory users. However, the following scenarios may occur:
+
+*   Users were not defined with their email address. Ensure all CyberArk cloud directory users have a correct and updated email address.
+
+*   Due to security considerations, users are now defined in the system without a password, and are required to reset their password.
+
+Before handling CyberArk cloud directory users, view the following video to learn about the CyberArk cloud directory.
+
+Request CyberArk cloud directory users to reset their password:
+
+<Frame>
+![Image 3: Video Thumbnail](https://embed-ssl.wistia.com/deliveries/cffd2b681e9596bcbc137ea518b23d05.webp?image_crop_resized=640x360)
+</Frame>
+
+2:37
+
+1.   In Identity Administration, access Core Services&gt;Users and check the Users list for the following users types:
+
+    *   Source column: displays CyberArk Cloud Directory users
+
+    *   Email column: is empty
+
+The upgrade may have caused the addition of a suffix to the user name, so that it is now JohnDoe@[identitydomain].com. This is now the formal name of the user in the ISPSS environment.
+
+2.   Check the roles assigned to the CyberArk cloud directory users during the  upgrade, and verify each user has a correct email address.
+
+For each user:
+
+    *   Click the user to access the user's details and add the relevant email address.
+
+    *   Click Roles to check the Privilege Cloud role assigned to the user. See [Users' Privilege Cloud roles in ISPSS](/ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-diff)
+
+    *   Click Save to save all changes and return to the user list.
+
+3.   Invite the CyberArk cloud directory users.
+
+In the Users list, sort the Status column and review all users that display Not Invited. Select the checkbox of each Not Invited user and select Actions&gt;Send email invite for user portal setup.
+
+See detailed steps in the following video:
+
+<Frame>
+![Image 4: Video Thumbnail](https://embed-ssl.wistia.com/deliveries/14250d1dcf598db39df16ee0b0998a93.webp?image_crop_resized=640x360)
+</Frame>
+
+1:24
+
+[](https://docs.cyberark.com/ispss-deployment/latest/en/content/privilege%20cloud/privcloud-upgrade-to-ispss-post-upgrade.htm)#4 Add groups and users from cloud directories and external IDPs (Optional)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Access Identity Administration to add users from additional authentication directories, such as cloud authentication solutions (Azure AD, Google Workspace) or external identity providers.
+
+See [Add groups and users](/ispss-deployment/latest/en/content/privilege cloud/privcloud-upgrade-to-ispss-add-groups-users).
+
+[](https://docs.cyberark.com/ispss-deployment/latest/en/content/privilege%20cloud/privcloud-upgrade-to-ispss-post-upgrade.htm)#5 Reconfigure the Secure Tunnel
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.   Before you access the Secure Tunnel, access the Identity Administration portal and reset the InstallerUser password. See [Set the Installeruser password](/ispss-deployment/latest/en/content/ispss/ispss-installeruser-password)
+
+2.   On the Secure Tunnel server:
+
+Click the desktop shortcut to the Secure Tunnel configuration tool,
+
+-Or-
+
+Open the Secure Tunnel configuration tool from the installation folder.
+
+3.   On the Authenticate to Privilege Cloud page, enter the Customer ID provided to you in the Welcome to CyberArk Identity Security Platform email and the installeruser name (installeruser@&lt;suffix&gt;)
+
+4.   In the Configure on-premise components page, check the listed components, and clear the rows that are no longer needed. To clear/remove a row, click the Trash icon next to the legacy components that is no longer relevant.
+
+Examples for legacy components that are no longer required:LDAP, RADIUS
+
+5.   If you had MFA rules set up in Privilege Cloud Standard, you will need to unlock the MFA rules.

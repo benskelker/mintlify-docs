@@ -1,0 +1,35 @@
+---
+title: "Create policies for virtual machine access"
+description: "This topic describes how to create a recurring access policy to provide secure, zero standing privileges access to your organizational assets."
+---
+
+This topic describes how to create a recurring access policy to provide secure, zero standing privileges access to your organizational assets.
+
+To manage database policies and VM policies, you must be a Secure Infrastructure Access administrator (DpaAdmin role).
+
+If you don't have this role, contact your CyberArk platform administrator.
+
+Start creating a policy
+-------------------------------------
+
+1.   In the Administration space, go to Access control policies&gt;User access.
+
+2.   On the User access policies page, click Create policy and select Virtual machine access.
+
+### Step 1: [](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-infra-vm.htm)Define the general details
+
+1.   Provide the following details:
+
+General details information| Element | Description |
+| --- | --- |
+| Policy name | Give the policy a meaningful and unique name. Recommended:Use a simple naming convention such as &lt;application/project&gt;&lt;environment&gt;. For example, my-app production. |
+| Description | (Optional) Add a short, meaningful description about the policy you are creating |
+| Location type | VM location. Click the drop-down and select one of the following: * AWS * Azure * Google Cloud * IP address or FQDN |
+| Directory name | Relevant only for Entra groups (Read only) |
+| Policy timeframe | Determines the life span of the policy. Select from one of the following: Time zone -The time zone that applies to the timeframe. The start and end times are fixed to the selected time zone. Users in other time zones will see the equivalent local times. * Never expires * Date range - * From - The date and time the policy becomes active * To- The date and time the policy expires Example: If the policy's timeframe is set from Jan 10, 9:00 AM to Jan 15, 5:00 PM, Eastern Time (ET), the equivalent in Pacific Time (PT) would be Jan 10, 6:00 AM to Jan 15, 2:00 PM. When you define Date range for a policy, users won't have any access to the assets associated with the policy after the last date (unless they are included in another policy that was defined for these targets). Best practice is to use this option only for time-limited projects. |
+| Policy tags | Customized tags to help identify the policy and those similar to it. Press Enter after each tag to add another tag. * Maximum number of characters per tag- 50 * Maximum number of tags per policy - 20 |
+2.   Click Next.
+
+### Step 2: [](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-infra-vm.htm)Specify targets
+
+In this step, you specify the targets you want to include in the policy.

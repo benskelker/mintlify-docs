@@ -1,0 +1,90 @@
+---
+title: "Secure AI agents"
+description: "This topic contains a high-level overview about the secure AI agents capability."
+---
+
+This topic contains a high-level overview about the secure AI agents capability.
+
+AI agents are secured using an identity-first approach that starts with visibility. Discover AI agents across SaaS, cloud, and developer environments and view them in the Discovery & Context dashboard with ownership, purpose and status. When you decide to secure specific agents, register them to the registered agents inventory, establish an AI agent identity, and route access to tools and databases through the AI Agents Gateway via the Secure Infrastructure Access MCP server. Policies enable least privilege and zero standing privileges so access is granted only for the task and then revoked. Audits link the initiating human user to the AI agent identity, tool activity, and target resources.
+
+Discover AI agents to gain context
+------------------------------------------------
+
+Discover agents in your environments, including AWS Bedrock and Microsoft Copilot Studio, to understand which AI agents are in your environment. View them in the Discovery & Context dashboard with ownership. purpose and status. This gives you a reliable picture of who owns each agent which you can use to prioritize which agents to secure.
+
+Secure access to databases and tools with least privilege
+-----------------------------------------------------------------------
+
+Once you have a view of the agents in your environments, secure AI agent access to databases by registering selected ones to the inventory and assigning an AI agent identity and provision secure OAuth 2.1 credentials. The AI Agents Gateway is used as an enforcement point between AI agents and the tools they use when accessing the database. The gateway provides agents with secure access to resources that are connected through the Secure Infrastructure Access MCP server. It leverages the identity security controls provided by the CyberArk Identity Security Platform, including zero standing privileges enabling least privilege access.
+
+Registered AI agents inventory
+--------------------------------------------
+
+AI agents are registered to secure their access to databases using Secure Infrastructure Access MCP. Manage registered entries over time in the registered agents inventory with ownership and identity attributes. Audits capture who initiated the agent (human user), which AI agent identity acted, which tools ran, and which resource (database) was touched.
+
+Understand key terms
+----------------------------------
+
+This section describes secure AI agents terms and concepts.
+
+| Term | Description |
+| --- | --- |
+| AI agent | An application or service (for example, Claude, Gemini, Copilot, or a custom app) that uses AI to perform tasks and may require access to specific tools or data sources. |
+| AI Agents Gateway | The AI Agents Gateway is the control point. When an AI agent accesses a configured tool in an MCP server, it must connect through the AI Agents Gateway. |
+| MCP server (Model Context Protocol Server) | MCP server is a service endpoint that the AI agent connects to via the AI Agents Gateway using the Model Context Protocol. MCP servers expose tools they support. This protocol facilitates the exchange of context and commands between the agent and its target tools. For the initial release, the supported MCP server endpoint is for Secure Infrastructure Access (SIA). |
+| Tools | In the context of AI and the Model Context Protocol (MCP), tools are predefined interfaces that allow an AI model to interact with the external world beyond its internal knowledge. Essentially, they act as executable functions that an AI model can discover, select, and invoke to perform specific, real-world actions or retrieve current, dynamic information. |
+| Register | Registering an AI agent with the secure AI Agents Gateway, configuring details, and obtaining the necessary credentials for connection. |
+| Lifecycle states | Each agent appears in one of these states: * Pending connection — Registered but not yet connected to the AI Agents Gateway. * Active — Fully configured and operational. * Suspended — Temporarily disabled. The agent cannot communicate through this gateway URL until resumed; other endpoints configured for the agent are unaffected. * Error — A system issue (for example, invalid credentials) prevents operation. * Delete - Deletes the AI agent from the gateway. It doesn't remove it from the client. |
+
+Onboarding
+------------------------
+
+A secure runtime flow is enforced where every user prompt sent to the AI agent is routed through the AI Agents Gateway before reaching the Secure Infrastructure Access MCP server. This architecture enables granular visibility and control, automatically capturing comprehensive audit logs for all runtime activities—including MCP session initialization, tool discovery, and specific tool execution commands. Furthermore, the system ensures full governance by logging all administrative inventory operations—such as agent creation, editing, suspension, and deletion—directly into the CyberArk Audit, providing a unified and immutable audit trail for both configuration and usage.
+
+Before you can successfully connect an AI agent (such as Microsoft Copilot) to your internal data, you must establish the secure infrastructure layer. The Secure AI Gateway relies on CyberArk Secure Infrastructure Access to perform the actual connection to your target systems.
+
+### The role of the AI Agents Gateway
+
+The AI Agents Gateway is the identity & policy enforcer for the agent, while Secure Infrastructure Access acts as the secure conduit. The AI Agents Gateway authenticates the agent and the user.
+
+Secure Infrastructure Access executes the authorized commands (like SQL queries) against your internal databases or cloud resources without ever exposing credentials to the AI model.
+
+### Required onboarding sequence
+
+To ensure a successful setup, you must complete these steps in the following order:
+
+1.   Deploy & configure Secure Infrastructure Access.
+
+    1.   Onboard your CyberArk Secure Infrastructure Access (SIA) tenant.
+
+    2.   Deploy the necessary Secure Infrastructure Access connectors in your environment to reach your target assets (Databases), so that your internal assets are accessible via our zero standing privilege framework.
+
+For details, see [Install a connector](/ispss-deployment/latest/en/content/setup/dpa_install-connector).
+
+See also, [Best practices for connector installation](/ispss-deployment/latest/en/content/setup/dpa-connector-bp) and [SIA connector pools and connectors.](/ispss-deployment/latest/en/content/setup/manage-connectors)
+
+2.   Define Secure Infrastructure Access access policies for each database to support zero standing privileges and configure MCP resources.
+
+    *   The Secure Infrastructure Access MCP server includes the run_query and list_databases tools to allow agents to access databases. In Secure Infrastructure Access, connect the required database resources, then create an access policy for each resource.
+
+For details, see Manage database access with zero standing privileges.
+
+The result is that the AI Agents Gateway can then see these resources and list them for your AI agents.
+
+3.   Register and connect the AI agent.
+
+    1.   Log in to your CyberArk Administration tenant and click Secure AI agents.
+
+For details, see [Secure AI agents access](/admin-space/latest/en/content/secureai/registeragent).
+
+    2.   Register your agent (e.g., "Finance Copilot") to generate its secure identity.
+
+    3.   Copy the credentials into your agent's configuration to finalize the handshake.
+
+The result is that the agent is Active and can securely query the tools exposed by Secure Infrastructure Access.
+
+If you attempt to connect an AI agent without first deploying Secure Infrastructure Access and configuring MCP tools, the agent will successfully connect to the AI Agents Gateway but will have 0 tools available and will be unable to perform any actions.
+
+<Frame>
+![Image 1](https://docs.cyberark.com/admin-space/latest/en/content/images/saionboarding.png)
+</Frame>

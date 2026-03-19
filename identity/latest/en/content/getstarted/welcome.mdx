@@ -1,0 +1,88 @@
+---
+title: "Welcome to CyberArk Identity"
+description: "This topic provides an overview of CyberArk Identity, service hosting locations, and service status."
+---
+
+This topic provides an overview of CyberArk Identity, service hosting locations, and service status.
+
+System overview
+-----------------------------
+
+CyberArk Identity is composed of the following services, web portals for administrators and users, and mobile applications users can install on their iOS and Android devices.
+
+<Frame>
+![Image 5](https://docs.cyberark.com/identity/latest/en/content/coreservices/getstarted/images/systemarchitecture.png)
+</Frame>
+
+[](https://docs.cyberark.com/identity/latest/en/content/getstarted/welcome.htm)CyberArk Identity component locations
+----------------------------------------------------------------------------------------------------------------------------------
+
+The services that are a part of your CyberArk Identity tenant are hosted in different regions based on pods. A tenant is the logical unit that separates subscriber organizations from each other within CyberArk Identity. When you sign in to CyberArk Identity, you sign in to a specific tenant. Every operation that you perform applies to that tenant alone.
+
+To find your pod, click your username, then click About. Note the pod in the About window.
+
+<Frame>
+![Image 6](https://docs.cyberark.com/identity/latest/en/content/coreservices/getstarted/images/aboutmenu-pods.png)
+</Frame>
+
+See [https://aws.amazon.com/about-aws/global-infrastructure/regions_az/](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) for more detail about AWS infrastructure.
+
+The following table details datacenter locations for each pod.
+
+Datacenter locations| Pod | Region | Disaster recovery region |
+| --- | --- | --- |
+| US East |
+| 1001 | Virginia | Ohio |
+| 1002 | Virginia | Ohio |
+| 1003 | Virginia | Ohio |
+| 1004 | Virginia | Ohio |
+| 1005 | Virginia | Ohio |
+| 1006 | Virginia | Ohio |
+| 1007 | Virginia | Ohio |
+| 1008 | Virginia | Ohio |
+| 1009 | Virginia | Ohio |
+| 1010 | Virginia | Ohio |
+| 1011 | Virginia | Ohio |
+| 1012 | Virginia | Ohio |
+| 3001 | Virginia | Ohio |
+| 3002 | Virginia | Ohio |
+| US West |
+| 1101 | Oregon | California |
+| 1102 | Oregon | California |
+| 1103 | Oregon | California |
+| 1104 | Oregon | California |
+| 1110 | Oregon | California |
+| South America |
+| 1403 | São Paulo | N. Virginia |
+| EMEA |
+| 1201 | Frankfurt | Milan |
+| 1202 | London | Frankfurt |
+| 1203 | London | Frankfurt |
+| 1204 | Milan | Frankfurt |
+| 1205 | Dubai | Milan |
+| 1206 | Israel | Milan |
+| 1207 | Zurich | Milan |
+| 1208 | Frankfurt | Milan |
+| 3201 | Frankfurt | Paris |
+| 1404 | Cape Town | Frankfurt |
+| APAC |
+| 1301 | Singapore | Tokyo |
+| 1302 | Sydney | Singapore |
+| 1303 | Tokyo | Milan |
+| 1304 | Mumbai | Singapore |
+| 1306 | Sydney | Tokyo |
+| 1308 | Tokyo | Milan |
+| 1310 | Singapore | Sydney |
+| 1312 | Jakarta | Sydney |
+| 1313 | Mumbai | Singapore |
+| 3301 | Sydney | Tokyo |
+| 3302 | Singapore | Tokyo |
+| Canada |
+| 1401 | Canada (Central) | Milan |
+| 1402 | Canada (Central) | Milan |
+| 3401 | Canada (Central) | Milan |
+
+CyberArk Identity status
+--------------------------------------
+
+Refer to the [CyberArk Identity trust page](https://trust.idaptive.com/) for more information about pod status, incidents, and hotfixes.

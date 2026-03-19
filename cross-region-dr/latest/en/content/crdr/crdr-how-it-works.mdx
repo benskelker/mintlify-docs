@@ -1,0 +1,80 @@
+---
+title: "How CRDR works"
+description: "This topic describes the CRDR failover and failback flow, and the user access flow when a Cross-Region Disaster Recovery (CRDR) event occurs."
+---
+
+This topic describes the CRDR failover and failback flow, and the user access flow when a Cross-Region Disaster Recovery (CRDR) event occurs.
+
+CRDR operation and failover flow
+----------------------------------------------
+
+Each main site region is paired with a designated Disaster Recovery (DR) site region. See [CRDR supported regions](/cross-region-dr/latest/en/content/crdr/crdr-supported-regions) for more information.
+
+CRDR keeps the main site and DR site synchronized, continuously replicating identities, permissions, and secrets.
+
+CyberArk's SREs continuously monitor all regions. When a regional issue is detected, the failover process is initiated in accordance with CyberArk's operational processes. To maintain user access, users are redirected to log in to the secondary site.
+
+[![Image 4](https://docs.cyberark.com/cross-region-dr/latest/en/content/images/crdr-architecture.png)](https://docs.cyberark.com/cross-region-dr/latest/en/content/images/crdr-architecture.png)
+
+The following services are supported during a CRDR event:
+
+*   Identity Administration
+
+*   Secure Access space
+
+*   Audit
+
+*   Bring Your Own Key (BYOK)
+
+See [Services supported by CRDR incidents](/cross-region-dr/latest/en/content/crdr/crdr-services-main) for more information.
+
+After the main AWS region is restored, SREs work with AWS to confirm stability and then traffic is redirected back to the main site.
+
+User flow during a CRDR event
+-------------------------------------------
+
+When users log in using the URL of the main site, they are automatically redirected to the DR site. A banner at the top of the page indicates the system is in DR mode.
+
+<Frame>
+![Image 5](https://docs.cyberark.com/cross-region-dr/latest/en/content/images/crdr-banner.png)
+</Frame>
+
+When in DR mode, users can:
+
+*   Log in using the same credentials and permissions
+
+*   Use the Secure Access Space to retrieve passwords
+
+Users with access permissions to the Secure Access space in regular operational mode will also be able to access it during a DR event.
+
+During a DR event, all Audit activity is logged. For more information about Audit functionality in DR mode and viewing Audit activity after the event has ended, see [Audit](/cross-region-dr/latest/en/content/crdr/crdr-audit).
+
+View the user flow in the following video:
+
+j1r62ntkst
+
+<Frame>
+![Image 6: Video Thumbnail](https://embed-ssl.wistia.com/deliveries/38b73da6f37d191c963dca55a43c8403.webp?image_crop_resized=640x319)
+</Frame>
+
+Click for sound
+
+1:22
+
+External Identity Providers (IdP) and access continuity
+---------------------------------------------------------------------
+
+If you sign in using an external third-party Identity Provider (IdP) or MFA for authentication, the authentication process depends on that provider’s availability.
+
+In rare cases, such as an AWS regional outage affecting your IdP or its services, sign-ins may be temporarily disrupted even if our platform is fully operational.
+
+To maintain access in these situations, we recommend setting up a local “break-glass” user account in Identity Administration. This provides an emergency way to access your environment if the external IdP becomes unavailable.
+
+Limitations in DR mode
+------------------------------------
+
+*   Session brokering features such as PSM and SIA are not supported. See [configure the bypass solution](/cross-region-dr/latest/en/content/crdr/crdr-setup) for more information.
+
+*   Workflow features including ticketing, dual control, OTP, and reason codes are unavailable. See [configure the bypass solution](/cross-region-dr/latest/en/content/crdr/crdr-setup) for more information.
+
+*   Write operations such as onboarding accounts, creating Safes, rotating credentials, and running discoveries are not supported.

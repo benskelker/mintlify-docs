@@ -1,0 +1,43 @@
+---
+title: "Common factors that influence identity-related risk"
+description: "This topic identifies and explains common factors that influence identity-related risk, including the level of privilege, scope of influence, and ease of compromise."
+---
+
+This topic identifies and explains common factors that influence identity-related risk, including the level of privilege, scope of influence, and ease of compromise.
+
+Risk can be defined in many ways depending on the context and situation. There are many factors that influence risk and the methods of calculating risk, such as data classification, data sensitivity, and monetary impact. However, for the purposes of developing a common language surrounding identity-centric risk and accelerating security outcomes, CyberArk defines risk as a combination of three factors: level of privilege, scope of influence, and ease of compromise.
+
+<Frame>
+![Image 3](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/resources/images/blueprint-images/digital-pb3.jpg)
+</Frame>
+
+Level of privilege
+--------------------------------
+
+Level of privilege refers to the type of privileged actions the identity can perform against a given resource. Specific privileges and entitlements vary from system to system, but generally consist of a spectrum of privileges that include Read-Only, Read-Write, Service-Level Administrator, Modify User Permissions, and Full Administrator permissions. Read-Only access is the least risky permission because the identity can only read data and not modify it, as opposed to Modify User Permissions which would allow an identity to escalate their (or others) privileges as a result of being able to modify permissions. Naturally, Full Administrator permissions would be the highest level of risk. The higher the level of privilege, the higher the level of risk the identity poses.
+
+Scope of influence
+--------------------------------
+
+Scope of influence (also referred to as the blast radius) refers to the number or percentage of systems an identity or account can access, either directly or indirectly – a singular resource, ten resources, 10% of resources, or 100% of resources. The larger the scope of influence, the higher the level of risk that the identity poses.
+
+When you think about scope of influence, it’s important to remember how interconnected and hierarchical IT and enterprise resources can be. You’ll often need to think about access in terms of a specific-resource type (for example, only access to Windows Servers) or more broadly to multiple types of resources, even all resources (for example, access to all elastic workloads on the cloud and all cloud native services). Another way of thinking about this is “downstream” or “inherited” access, with the privileges an identity has against a given resource, is there subsequent access that the resource itself would then provide to other systems?
+
+In this scenario, the nature of administrative privileges means that an identity with a large scope of influence can impact a wide swath of other systems, such as administrative access to an automation service like Terraform, which has downstream administrative permissions to other IT systems for infrastructure-as-code automation.
+
+Ease of compromise
+--------------------------------
+
+Ease of compromise refers to how easy or challenging it is for a malicious actor to compromise an identity, inclusive of common attack patterns, technical vulnerabilities related the identity, access or resource that can exploited, poor internal processes that expose the identity, and/or a lack of minimum effective controls applied.
+
+1.   Example 1: Domain admin login to workstations
+
+Take a Domain Administrator account with administrative privileges to all the servers and workstations in the environment. Such an account would have a very high scope of influence, a very high level of privilege, and, if used from an unprotected workstation, a moderate to high ease of compromise. This is due to the fact that the workstations of the workforce tend to be the main landing place for malicious actors and as a result of how Windows authentication works, a Domain Administrator privileged account that logged into a workstation would leave credential residue in the form of a hash that could be exploited by a bad actor. This scenario would result in a relatively high ease of compromise.
+
+2.   Example 2: SMS MFA for IdP-based freestanding access to cloud service providers
+
+An organization that leverages SMS-based MFA for identity provider federated access into Cloud Service Providers would be considered to have a relatively high ease of compromise because SMS-based MFA is considered weak and easily bypassed via TTPs such as SIM swap fraud, phishing attacks, and SS7 interception. Furthermore, using freestanding permissions for these identities means that the permissions can be immediately exploited by bad actors. Any identity, including those administrator-type users of the Cloud Service Providers, would be particularly vulnerable to attacks.
+
+3.   Example 3: Manual onboarding processes for privileged accounts
+
+An organization that uses a standard server build image will commonly set the built-in administrator account such as the Windows Administrator (SID-500) or UNIX Root (UID0) to a default password (even if they rename the default username). Having a manual process to identify that new servers have been created, and thus require their privileged accounts to be protected post-creation, results in a delay in time-to-protection, giving malicious actors an extended window in which to potentially compromise those accounts. This same scenario applies to other personal privileged accounts created for various IT and developer identities too.

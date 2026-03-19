@@ -1,0 +1,92 @@
+---
+title: "Privilege Cloud audit events"
+description: "This topic describes the Privilege Cloud audit events and codes."
+---
+
+This topic describes the Privilege Cloud audit events and codes.
+
+In addition to the Privilege Cloud audit codes that are displayed in the Audit space, more Privilege Cloud events can be viewed in the Privilege Cloud[User and Safe Activities report](/privilege-cloud-shared-services/latest/en/content/privilege cloud/privcloud-reports) or sent to your SIEM solution. See [Manage audits](/privilege-cloud-shared-services/latest/en/content/privilege cloud/privcloud-audit-action-codes) in the Privilege Cloud documentation.
+
+Audit events by component and activity
+----------------------------------------------------
+
+Audit events and codes are available for the components and activities listed below.
+
+Privilege Cloud audit events by component and activity| Component | Activity |
+| --- | --- |
+| Privileged account management | * View * Create * Store * Move * Delete |
+| Approval workflow | * View Open * Confirm * Reject * Hide * Delete |
+| Privileged account access | * Open * Close * List * Retrieve * Find * Remove |
+| Safe and member management | * Add * Update * Delete * Clear * Compress * Remove |
+| User group and location management | * Add * Update * Store * Clear * Delete |
+| Application management | * Add * Delete |
+| User login | * Login status * Authentication |
+| Master policy audits | * Change |
+| Report management | * Add * Run * Send * Hide * Edit * Delete |
+| Privileged account auto-detection | * Add * Update, * Archive * Start * End * Delete |
+| Privileged account discovery and provisioning activities |  |
+| Component authentication activities |  |
+| Bulk operation activities |  |
+| IP Allowlist management |  |
+
+[](https://docs.cyberark.com/audit/latest/en/content/audit/product-audits/isp-privcloud-audit.htm)Audit codes
+---------------------------------------------------------------------------------------------------------------------------
+
+The following tables present Privilege Cloud audit codes grouped by functionality.
+
+### Privileged account management
+
+Privileged account management audit codes| Audit code | Description |
+| --- | --- |
+| PAM24 | CPM Change Password |
+| PAM31 | CPM Reconcile Password |
+| PAM38 | CPM Verify Password Failure |
+| PAM44, 45 | Store File (Unauthorized) |
+| PAM46, 47 | Delete File (Unauthorized) |
+| PAM50 | Store File |
+| PAM51 | Retrieve File succeeded |
+| PAM52 | Delete File |
+| PAM57 | CPM Change Password Failure |
+| PAM60 | CPM Reconcile Password Failure |
+| PAM88 | Set Password |
+| PAM89 | Set Password (Incorrect Password) |
+| PAM105 | Add File Category |
+| PAM106 | Update File Category |
+| PAM107 | Delete File Category |
+| PAM121, PAM123 | Move File |
+| PAM122 | Undelete File |
+| PAM124, PAM125 | Rename File |
+| PAM126 | Unlock File |
+| PAM130 | CPM Disable Password Failure |
+| PAM132, 133 | Add Safe Event (Unauthorized ) |
+| PAM134, 135 | Get Safe Events List (Unauthorized ) |
+| PAM136 | CPM Release Password |
+| PAM137 | CPM Release Password Failure |
+| PAM138, PAM140 | Rename Folder |
+| PAM139, PAM141 | Move Folder |
+| PAM152, 153 | Add Folder (Unauthorized) |
+| PAM154, 155 | Delete Folder (Unauthorized) |
+| PAM158, 159 | Move/Rename Folder (Unauthorized) |
+| PAM160, 161 | Move File (Unauthorized) |
+| PAM162, 163 | Undelete File (Unauthorized) |
+| PAM164, 165 | Rename File (Unauthorized) |
+| PAM166, 167 | Unlock File (Unauthorized) |
+| PAM187 | Add Folder |
+| PAM188 | Delete Folder |
+| PAM189 | Delete Folder (Has Unexpired Files) |
+| PAM198 | Delete Folder (Has Locked Files) |
+| PAM205 | Store File (Wrong Key) |
+| PAM272 | Delete Folder (Folder not Empty) |
+| PAM294 | Store password |
+| PAM333 | Add Privileged Command failed on account |
+| PAM334 | Add Privileged Command succeeded |
+| PAM336 | Delete Privileged Command failed on account |
+| PAM337 | Delete Privileged Command succeeded |
+| PAM338 | Add Privileged Command failed on policy |
+| PAM340 | Add Privileged Command succeeded |
+| PAM341 | Delete Privileged Command failed |
+| PAM343 | Delete Privileged Command succeeded |
+| PAM350 | Update Privileged Command failed on account |
+| PAM351 | Update Privileged Command |
+| PAM352 | Update Privileged Command failed on policy |
+| PAM354 | Update Privileged Command |

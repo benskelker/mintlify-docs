@@ -1,0 +1,123 @@
+---
+title: "ISPSS service-specific roles | CyberArk"
+description: "ISPSS user roles ----------------"
+---
+
+ISPSS user roles
+----------------
+
+This topic presents the service-specific roles that are available for each service on ISPSS.
+
+Users can access a specific CyberArk service only if assigned a role with access permissions to that service. Built-in roles are available per service to define the access levels for each user in that service. Roles can be assigned to a group of users or to a single user.
+
+Assign multiple service-specific roles to each group/user to enable them to access those services.
+
+Users can access their services through the Services picker.
+
+ISPSS license consumption and lifecycle information
+-----------------------------------------------------------------
+
+For information about license management:
+
+*   In the Administration space, view [license consumption details](/admin-space/latest/en/content/environment/as-license-consumption)
+
+*   In the Administration space, view [license lifecycle information](/admin-space/latest/en/content/environment/as-license-consumption)
+
+[](https://docs.cyberark.com/identity-administration/latest/en/content/coreservices/getstarted/ispss-user-roles.htm)Privilege Cloud roles and user licenses
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+As part of your Privilege Cloud system, you may have purchased different types of user licenses, or you may have expanded your initial system package to include new user license types.
+
+User license options:
+
+*   Privileged Basic User
+
+*   Privileged Standard Lite User (This license is discontinued in 2025. Existing licenses purchased before 2025 remain valid)
+
+*   Privileged Standard User
+
+*   Privileged External User
+
+User license to role mapping and how this determines the users' license
+
+Each of these user licenses types is mapped to a Privilege Cloud role in Identity Administration. As a result, the role not only defines the user's permissions within Privilege Cloud, it also maps the user to the user license that he will use.
+
+The role name reflects the license type that is used. If you purchased multiple license types, each role appears multiple instances, where each instance reflects the user license that the role consumes. For example, the Privilege Cloud Administrators  role consumes the Privileged Standard User license while Privilege Cloud Administrators Basic consumes the Privileged Basic User license.
+
+Adjust group/user permissions to the role license
+
+In some cases, a specific license may not be used for certain actions. In this case, access the group/user permissions and cancel the right to perform any action that would abuse the assigned license.
+
+The Privileged Basic User license is not licensed to perform PSM connections in all role types.
+
+Any user assigned to a role using the Privileged Basic User license should not be permitted to perform PSM connections.
+
+To avoid license violations, remove the Use account permissions the user has on Safes.
+
+Available roles in Identity Administration portal
+
+The Identity Administration roles display only the relevant licenses configured in your ISPSS tenant. The following image presents an example of possible role and license options.
+
+Automatic license release when deleting/modifying a Privilege Cloud user
+
+When you delete a user, revoke a role, or change the user's role, the service-specific licenses are updated according to [the Privilege Cloud license management policy](/privilege-cloud-shared-services/latest/en/content/privilege cloud/privcloud-user-roles-licenses).
+
+Privilege Cloud built-in roles
+--------------------------------------------
+
+The following table describes the Privilege Cloud built-in roles.
+
+| Role | Description |
+| --- | --- |
+| Privilege Cloud Administrators | Administrators set up and manage Privilege Cloud and have full audit permissions, similar to Privilege Cloud Auditors. |
+| Privilege Cloud Auditors | Auditors can access audits, reports, and session recordings. |
+| Privilege Cloud Safe Managers | Safe managers can create and delete safes, and manage user permissions to access safes. |
+| Privilege Cloud Users | Users can view and connect to their privileged accounts. |
+| Privilege Cloud External Vendors | Vendors can view and connect to their privileged accounts through CyberArk's Remote Access service. When they are invited from the Remote Access service, they are automatically defined as users in the Identity Administration service and are assigned to the Privilege Cloud External Vendor role. By default, vendors are assigned to the External vendor role, and consume the license type Privileged External User. However, you can configure the system so that external vendors are assigned to the Privilege Cloud User role, which consumes Privileged Standard User licenses. For details, see Change vendor license consumption. |
+| Privilege Cloud Session Risk Managers | Session Risk Managers can access audits, reports, and session recordings, along with permissions to terminate and suspend sessions. |
+| Privilege Cloud Session Admin | Session Administrators can create, delete, and manage account permissions and Safe properties for Privileged Session Manager Safes. |
+
+Secrets Manager - SaaS roles
+------------------------------------------
+
+You can add users, roles and Active Directory (AD) groups to the built-in Secrets Manager - SaaS roles. When you add roles and groups, their structure is replicated in Conjur. The following table describes the built-in roles:
+
+| Role | Description |
+| --- | --- |
+| Secrets Manager - Secrets Manager - SaaS Admin | Members of this role are added to the Conjur_Cloud_Admins Conjur group, and they have the following privileges: * Load policies to the data branch. For more information, see Policy Tree. * Configure Conjur authenticators By default, members of this group have access to all resources and functionality, including secrets synced to Secrets Manager - SaaS from your PAM solution and dynamic secrets. We recommend to follow the principle of least privilege and delegate permissions to Secrets Manager - SaaS users and groups. |
+| Secrets Manager - Secrets Manager - SaaS - User | Members of this role are added to the Conjur_Cloud_Users group, and they are standard Secrets Manager - SaaS users. In Secrets Manager - SaaS, a Secrets Manager - SaaS admin grants members of this group permissions to perform tasks. |
+
+Secrets Hub
+-------------------------
+
+The following table describes the Secrets Hub built-in roles.
+
+Secrets Hub built-in users| Role | Description |
+| --- | --- |
+| Secrets Manager - Secrets Hub Admin | Members of this role have full access to Secrets Hub and can manage sync policies for PAM Safes that the SecretsHub service user is a member of, regardless of the user’s own permissions on those Safes. Grant this role only to trusted users. |
+| Secrets Manager - Secrets Hub Users | Members of this role have full access to Secrets Hub with the following exceptions: * They can manage sync policies only for PAM Safes that they are members of. * They cannot onboard secrets to PAM from the Secrets Hub UI. |
+
+Cloud Visibility
+------------------------------
+
+The following table describes the Cloud Visibility built-in roles.
+
+CEM built-in roles| Role | Description |
+| --- | --- |
+| CEMAdmin | Static role. Users can onboard and manage cloud environments, configure integrations, and delegate cloud workspaces. |
+| CEMUser | Static role. Users can view the dashboard and investigate all the available widgets (insights, findings, cloud identities, exposure, permissions, and recommendations). |
+| CEMAPIAdmin | Static role. Users can perform all available API operations including onboarding and delegating cloud workspaces. This role should only be assigned to tenant owners and administrators. |
+| CEMAPIUser | Static role. Users can perform API operations that don't require admin privileges. |
+
+Secure Cloud Access
+---------------------------------
+
+The following table describes the Secure Cloud Access built-in roles.
+
+SCA built-in roles| Role | Description |
+| --- | --- |
+| CS Admin | Static role. Users with this role have: * Full access permissions to the public SCA APIs. * Full access permissions to the SCA service to manage all functionality, policies, access request settings, and integrations. |
+| SCA Admin | Static role. Assigned automatically when a user is assigned as a delegate to a workspace. Users with this role have: * Access permissions to the public SCA APIs for their delegated workspaces * Access permissions to the SCA service to manage policies and integrations for their delegated workspaces. Policy and access request management (read only)may also be available based on workspace delegation. |
+| SCAUserReadOnly | Static role. Users have read-only permissions for the SCA user interface to allow viewing policies, access request settings, and integrations. |
+| SCAApiFullAccess | Static role. Users have full access permissions for SCA APIs. Not relevant for tenants whose user access policies are in the Administration space |
+| SCAApiReadOnly | Static role. Users have read-only permissions for SCA APIs. Not relevant for tenants whose user access policies are in the Administration space |

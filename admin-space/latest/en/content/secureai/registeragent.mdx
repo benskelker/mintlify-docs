@@ -1,0 +1,27 @@
+---
+title: "Secure AI agents access"
+description: "This topic describes how to register and connect your AI agents to secure access to databases."
+---
+
+This topic describes how to register and connect your AI agents to secure access to databases.
+
+Step 1: Register your new AI agent
+------------------------------------------------
+
+1.   Log in to your CyberArk Administration tenant.
+
+2.   From the main menu, click Secure AI agents.
+
+3.   On the AI agents page, click Register AI agent.
+
+4.   Provide the agent details as described in the following table:
+
+| Field | Description |
+| --- | --- |
+| Agent name | Enter a unique name for the agent (at least two characters). The name must be unique within your tenant (2–256 characters). You can use letters, numbers, spaces, hyphens, and underscores. |
+| Agent type | Select a predefined type (for example, Claude, Copilot), or choose Custom. Predefined agents come with vendor redirect URLs. Selecting Custom enables you to provide your own HTTPS redirect URL. |
+| Redirect URL | The redirect URL is a specific, pre-registered web address on the AI agent's platform where CyberArk Identity securely sends the user's browser back to after they have successfully signed in and approved the connection, which allows the agent to receive the security approval and finalize the handshake. Other - Provide at least one valid HTTPS URL where the agent expects to receive the OAuth 2.1 authorization code.(e.g., https://…/oauth/callback). You can add up to 10 URLs, each up to 2,048 characters. Wildcards and fragments aren’t supported. |
+| Description | Add a short description for this AI agent. Up to 500 characters. Use plain text to describe the purpose or role of this AI agent. |
+| Owners | Choose the business or technical user responsible for the AI agent. (e.g., HR, IT). You can select users and roles from CyberArk Identity, including identities from Cloud Directory, Federated Directory Service, Active Directory, Microsoft Entra ID, Google Directory and LDAP. Owners are informational and do not grant permissions. 1. Click Add owners. 2. Search by User or Role. You can use filters to narrow results by User or Role, or by Identity source. 3. Select one or more identities. You can select up to 10 identities from CyberArk Identity. 4. Click Ok. |
+| Tags | Add up to 10 key-value tags to help organize or filter AI agents. Each tag can be 1–30 characters long, using letters, numbers, hyphens, or underscores. |
+5.   Click Save and continue to configuration.

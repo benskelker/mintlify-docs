@@ -1,0 +1,44 @@
+---
+title: "Azure troubleshooting"
+description: "This section describes issues you may encounter when adding or managing Azure Microsoft Entra tenant and subscriptions, and how to correct the issue."
+---
+
+This section describes issues you may encounter when adding or managing Azure Microsoft Entra tenant and subscriptions, and how to correct the issue.
+
+Issues
+--------------------
+
+### Unable to view the management group hierarchy or any subscriptions
+
+The Microsoft Entra tenant administrator may not see the subscriptions and management groups in the tenant. The management group page will be empty.
+
+Solution
+
+Enable an Access management setting to view the entire hierarchy.
+
+1.   Go to [portal.azure.com.mcas.ms](https://portal.azure.com.mcas.ms/#view/Microsoft_AAD_IAM/TenantProperties.ReactView) in the Microsoft Azure portal, and make sure you are in the correct directory.
+
+2.   In the Access management for Azure resources area, make sure Yes is selected. If this setting is unavailable, you don't have the permissions to change this setting. Send a request to an Azure administrator to change this setting.
+
+### Duplicate resources
+
+You will have duplicate resources in any of the following scenarios:
+
+*   If you add a management group to CCE, and later add a Microsoft Entra tenant that contains this management group.
+*   If you add a subscription to CCE, and later add a Microsoft Entra tenant that contains this subscription.
+
+*   If you add a subscription to CCE, and later add a management group that contains this subscription.
+
+The single subscription has SIA and then you add a Microsoft Entra tenant with the SIA service.
+
+Solution
+
+If you do not want duplicated resources, in the Azure entity issues page, you are prompted to remove the single subscription or management group.
+
+### The CCE app can't access required Azure resources
+
+This can happen when the CCE app was deleted, leaving an orphaned or invalid role assignment.
+
+Solution
+
+Recreate the CCE app and reassign the required Azure role. For detailed instructions, see [Create the CCE app](/admin-space/latest/en/content/cce/azure/azure-add-entratenant-manual).

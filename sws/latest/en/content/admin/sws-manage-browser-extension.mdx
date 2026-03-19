@@ -1,0 +1,53 @@
+---
+title: "Deploy the browser extension"
+description: "This topic describes how to deploy the Secure Web Sessions browser extension on your company users endpoints."
+---
+
+This topic describes how to deploy the Secure Web Sessions browser extension on your company users endpoints.
+
+Overview
+----------------------
+
+The Secure Web Sessions browser extension is used to capture the user activities within an application session.
+
+The Secure Web Sessions extension is validated by the service as a required authentication factor before providing access to the intended application. If it is not there or disabled, this access is prevented.
+
+Before you begin
+------------------------------
+
+The Secure Web Sessions browser extension is supported in the following browsers:
+
+*   Google Chrome (any version released in the last six months)
+
+*   Microsoft Edge (chromium) version 107.0.1418.42 (Official build) (64-bit)
+
+Download the Secure Web Sessions browser extension
+----------------------------------------------------------------
+
+The SWS browser extension can be downloaded from Chrome Web Store or from Microsoft Edge Add-ons.
+
+| Download source | Link |
+| --- | --- |
+| Chrome Web Store | [https://chrome.google.com/webstore/detail/cyberark-secure-web-sessi/ohfinlfcbaehgokpmkjcmkgdcbgamgln?hl=en&authuser=1](https://chrome.google.com/webstore/detail/cyberark-secure-web-sessi/ohfinlfcbaehgokpmkjcmkgdcbgamgln?hl=en&authuser=1) |
+| Microsoft Edge Add-ons | [https://microsoftedge.microsoft.com/addons/detail/cyberark-secure-web-sessi/gmfjibhpaliafbemoifjjdkmgaknhohb](https://microsoftedge.microsoft.com/addons/detail/cyberark-secure-web-sessi/gmfjibhpaliafbemoifjjdkmgaknhohb) |
+
+Deploy the extension on managed devices and browsers so that you can upgrade and manage the browser in-line with your Enterprise company standards, as well as prevent removal by the user from their endpoint.
+
+### Browser extension indicators
+
+When the Secure Web Sessions extension is installed on your web browser, an extension icon ![Image 6](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/sws-extension.png) is added. When a step recording begins, the icon changes to ![Image 7](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/sws-recording-shield2.png).
+
+Download SWS extension logs for an application session
+--------------------------------------------------------------------
+
+You can download logs, and copy the session ID, via the SWS extension for better supportability and troubleshooting of SWS extension browser level actions.
+
+You can also enable verbose logging for capturing additional information. This might include Personal Identifiable Information (PII) not recorded by default in SWS logs.
+
+If you're using the EPM integration, you can download the session logs for integration actions.
+
+To download the SWS extension logs or SWS - EPM integration logs, click the extension icon and click Download log.
+
+<Frame>
+![Image 8](https://docs.cyberark.com/sws/latest/en/content/images/sws-admin/sws_extension_settings.png)
+</Frame>

@@ -1,97 +1,286 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Welcome to the CyberArk Documentation"
+mode: "custom"
 ---
 
-## Setting up
+import { SearchBar } from "./snippets/search-bar.jsx";
 
-Get your documentation site up and running in minutes.
-
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
-
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
+<div className="not-prose">
+  <section
+    className="relative overflow-hidden py-20"
+    style={{
+      backgroundImage:
+        "url('https://docs.cyberark.com/portal/latest/en/resources/portal/images/portal-header.svg')",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    }}
   >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+      <h1 className="text-4xl font-semibold text-gray-950 sm:text-5xl">
+        CyberArk Identity Security Platform
+      </h1>
+      <p className="mx-auto mt-4 max-w-3xl text-base text-gray-700 sm:text-lg">
+As the established leader, CyberArk offers the most complete Identity Security Platform to secure all identities from end-to-end.
+
+      </p>
+      <div className="mx-auto mt-8 max-w-2xl">
+        <SearchBar placeholder="Search CyberArk docs" />
+      </div>
+    </div>
+
+  </section>
+
+<section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div>
+    <h2 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">
+      Quick Start
+    </h2>
+    <p className="mt-3 max-w-4xl text-base leading-7 text-gray-600 dark:text-gray-400">
+      Start with the main spaces and shared services included in this preview.
+    </p>
+  </div>
+  <Steps>
+    <Step title="Start with a core space">
+      Open [Secure
+      Access](/secure-access-space/latest/en/content/introduction/sas-what-is),
+      [Administration](/admin-space/latest/en/content/admin-get-started/as-what-is-admin-preview),
+      [Identity
+      Protection](/identity-protection-space/latest/en/content/get-started/what-is-identity-protection),
+      or [Audit](/audit/latest/en/content/audit/isp_overview).
+    </Step>
+    <Step title="Review shared services">
+      Use [Overview &
+      deployment](/ispss-deployment/latest/en/content/deployment/deploy-about-ispss-platform),
+      [Identity
+      Administration](/identity-administration/latest/en/content/coreservices/core-overview),
+      and [CORA AI](/ai/latest/en/content/ai/coraai-introduction) for
+      ISPSS-focused setup and service guidance.
+    </Step>
+    <Step title="Browse identity and developer docs">
+      Continue into
+      [Identity](/identity/latest/en/content/coreservices/core-overview), [Secure
+      Web Sessions](/sws/latest/en/content/getstarted/sws-introduction-2), [CyberArk
+      IGA](/iga/latest/en/content/setup/setup), or
+      [Terraform](/istp/latest/en/content/istp/what-is istp).
+    </Step>
+  </Steps>
+</section>
+
+<section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div>
+    <h2 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">
+      Introducing our new Spaces
+    </h2>
+    <p className="mt-3 max-w-4xl text-base leading-7 text-gray-600 dark:text-gray-400">
+      Spaces in the CyberArk Identity Security Platform unify and centralize
+      services and tools into streamlined, role-focused experiences.
+    </p>
+  </div>
+  <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-2">
+    <a
+      href="/secure-access-space/latest/en/content/introduction/sas-what-is"
+      className="group block overflow-hidden rounded-2xl border border-gray-200 bg-transparent no-underline hover:border-primary dark:border-[#27272a] dark:hover:border-primary"
+    >
+      <div className="flex h-56 items-center justify-center overflow-hidden bg-gray-50 p-4 dark:bg-gray-800">
+        <img
+          src="https://docs.cyberark.com/portal/latest/en/resources/portal/images/secure-access-space.svg"
+          alt="Secure Access"
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="m-0 mb-2 text-base font-semibold text-gray-900 dark:text-white">
+          Secure Access
+        </h3>
+        <p className="m-0 mb-6 text-sm text-gray-600 dark:text-gray-400">
+          Connect to your resources securely.
+        </p>
+        <div className="flex flex-row items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-primary">
+          <span>Read guide</span>
+          <span aria-hidden="true">&gt;</span>
+        </div>
+      </div>
+    </a>
+    <a
+      href="/admin-space/latest/en/content/admin-get-started/as-what-is-admin-preview"
+      className="group block overflow-hidden rounded-2xl border border-gray-200 bg-transparent no-underline hover:border-primary dark:border-[#27272a] dark:hover:border-primary"
+    >
+      <div className="flex h-56 items-center justify-center overflow-hidden bg-gray-50 p-4 dark:bg-gray-800">
+        <img
+          src="https://docs.cyberark.com/portal/latest/en/resources/portal/images/admin-space.svg"
+          alt="Administration"
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="m-0 mb-2 text-base font-semibold text-gray-900 dark:text-white">
+          Administration
+        </h3>
+        <p className="m-0 mb-6 text-sm text-gray-600 dark:text-gray-400">
+          Set up, configure, and manage your identity security environment.
+        </p>
+        <div className="flex flex-row items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-primary">
+          <span>Read guide</span>
+          <span aria-hidden="true">&gt;</span>
+        </div>
+      </div>
+    </a>
+    <a
+      href="/identity-protection-space/latest/en/content/get-started/what-is-identity-protection"
+      className="group block overflow-hidden rounded-2xl border border-gray-200 bg-transparent no-underline hover:border-primary dark:border-[#27272a] dark:hover:border-primary"
+    >
+      <div className="flex h-56 items-center justify-center overflow-hidden bg-gray-50 p-4 dark:bg-gray-800">
+        <img
+          src="https://docs.cyberark.com/portal/latest/en/resources/portal/images/intelligence-space.svg"
+          alt="Identity Protection"
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="m-0 mb-2 text-base font-semibold text-gray-900 dark:text-white">
+          Identity Protection
+        </h3>
+        <p className="m-0 mb-6 text-sm text-gray-600 dark:text-gray-400">
+          Discover unmanaged identities and reduce risks with CyberArk&apos;s
+          Blueprint.
+        </p>
+        <div className="flex flex-row items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-primary">
+          <span>Read guide</span>
+          <span aria-hidden="true">&gt;</span>
+        </div>
+      </div>
+    </a>
+    <a
+      href="/audit/latest/en/content/audit/isp_overview"
+      className="group block overflow-hidden rounded-2xl border border-gray-200 bg-transparent no-underline hover:border-primary dark:border-[#27272a] dark:hover:border-primary"
+    >
+      <div className="flex h-56 items-center justify-center overflow-hidden bg-gray-50 p-4 dark:bg-gray-800">
+        <img
+          src="https://docs.cyberark.com/portal/latest/en/resources/portal/images/audit-space.svg"
+          alt="Audit"
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="m-0 mb-2 text-base font-semibold text-gray-900 dark:text-white">
+          Audit
+        </h3>
+        <p className="m-0 mb-6 text-sm text-gray-600 dark:text-gray-400">
+          View a centralized audit trail.
+        </p>
+        <div className="flex flex-row items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-primary">
+          <span>Read guide</span>
+          <span aria-hidden="true">&gt;</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div>
+    <h2 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">
+      Shared Services
+    </h2>
+    <p className="mt-3 max-w-4xl text-base leading-7 text-gray-600 dark:text-gray-400">
+      Core ISPSS and platform service documentation included in this preview.
+    </p>
+  </div>
+  <CardGroup cols={3}>
     <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+      title="Overview & deployment"
+      icon="rocket"
+      href="/ispss-deployment/latest/en/content/deployment/deploy-about-ispss-platform"
+    >
+      Deploy and set up ISPSS services for user management, secrets rotation,
+      and target access.
+    </Card>
+    <Card
+      title="Identity Administration"
+      icon="users"
+      href="/identity-administration/latest/en/content/coreservices/core-overview"
+    >
+      Authenticate user identities and authorize access to features and platform
+      services.
+    </Card>
+    <Card
+      title="CORA AI"
+      icon="sparkles"
+      href="/ai/latest/en/content/ai/coraai-introduction"
+    >
+      Gain insights, enhance security, and simplify administration with
+      integrated AI capabilities.
+    </Card>
+    <Card
+      title="Identity Security Intelligence"
+      icon="chart-bar"
+      href="/isi/latest/en/content/hometileslps/lp-tile1"
+    >
+      Analyze data to assess and mitigate security breaches or other malicious
+      activity.
+    </Card>
+    <Card
+      title="CyberArk Blueprint"
+      icon="book-open"
+      href="/cyberark-blueprint/latest/en/content/get-started"
+    >
+      Achieve impactful security outcomes with CyberArk's best practice
+      framework.
+    </Card>
+    <Card
+      title="Cross-Region Disaster Recovery"
+      icon="globe"
+      href="/cross-region-dr/latest/en/content/crdr/crdr-what-is"
+    >
+      Ensure business continuity during a regional outage.
+    </Card>
+  </CardGroup>
+</section>
 
-## Create beautiful pages
+<section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div>
+    <h2 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">
+      Developer Experience
+    </h2>
+    <p className="mt-3 max-w-4xl text-base leading-7 text-gray-600 dark:text-gray-400">
+      Build seamless, scalable automation across your identity security and
+      secure access workflows.
+    </p>
+  </div>
+  <CardGroup cols={2}>
+    <Card title="API" icon="code" href="https://api-docs.cyberark.com/">
+      Integrate with CyberArk APIs to extend and customize your workflows.
+    </Card>
+    <Card
+      title="Terraform"
+      icon="server"
+      href="/istp/latest/en/content/istp/what-is istp"
+    >
+      Automate cloud infrastructure provisioning with Terraform by HashiCorp.
+    </Card>
+  </CardGroup>
+</section>
 
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+  <section className="mx-auto my-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div>
+      <h2 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">
+        Access and Identity
+      </h2>
+      <p className="mt-3 max-w-4xl text-base leading-7 text-gray-600 dark:text-gray-400">
+        Preview the retained identity-focused documentation sets.
+      </p>
+    </div>
+    <CardGroup cols={3}>
+      <Card title="Identity" icon="fingerprint" href="/identity/latest/en/content/coreservices/core-overview">
+        Secure and manage identities with SSO, adaptive MFA, and lifecycle management.
+      </Card>
+      <Card title="Secure Web Sessions" icon="globe" href="/sws/latest/en/content/getstarted/sws-introduction-2">
+        Record, audit, and protect all user activity within web applications.
+      </Card>
+      <Card title="CyberArk IGA" icon="users" href="/iga/latest/en/content/setup/setup">
+        Automate user access review compliance and lifecycle management for identities.
+      </Card>
+    </CardGroup>
+  </section>
+</div>

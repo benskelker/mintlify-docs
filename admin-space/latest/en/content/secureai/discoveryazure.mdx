@@ -1,0 +1,153 @@
+---
+title: "Discover AI agents in Azure"
+description: "This topic describes how to deploy scanners and view discovered Microsoft Copilot agents in the Discovery & Context unified inventory and dashboard, complete with trends, risk analysis, and recommended remediation steps."
+---
+
+This topic describes how to deploy scanners and view discovered Microsoft Copilot agents in the Discovery & Context unified inventory and dashboard, complete with trends, risk analysis, and recommended remediation steps.
+
+Overview
+----------------------
+
+Use this capability to find AI agents in your cloud and review them in Discovery & Context. You need to deploy a scanner in each selected Azure subscription. The scanner is used to discover supported agent types and sends results to Discovery & Context for inventory and insights.
+
+Before you begin
+------------------------------
+
+Prepare access, identity, and Azure services so discovery runs successfully.
+
+[Identity Administration](/admin-space/latest/en/content/secureai/discoveryazure)
+
+*   You know your CyberArk Identity tenant name. Your tenant name is taken from the Identity Administration User Portal from your account settings About page.
+
+[Azure environment setup](/admin-space/latest/en/content/secureai/discoveryazure)
+
+You can deploy the resources using either Azure terminal or your local machine.
+
+Use a dedicated environment for scanner deployment. Make sure the scanner deployment in a new, dedicated environment that is created and used only for this process.
+
+Use Azure terminal:
+
+You can use the Azure terminal (for example, Azure Cloud Shell) to deploy the resources.
+
+As part of the deployment, code is pushed to a Function App. This might require you to sign in again with an App Service audience so the Azure CLI can obtain a valid token for the Function App SCM (Kudu) site.
+
+Run the following code:
+
+Copy to clipboard````bash`
+az logout
+
+az login --scope "https://appservice.azure.com/.default"
+
+Use a local machine:
+
+Make sure the following tools are installed:
+
+*   Azure CLI (az) - [](https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
+
+[https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest](https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
+
+*   Azure CLI authentication - Ensure you're authenticated to your target Azure subscription.
+
+[Azure permissions](/admin-space/latest/en/content/secureai/discoveryazure)
+
+You must sign in with an account that has the Global Administrator or Privileged Role Administrator role so you can grant admin consent for the Application.Read.All API permission.
+
+Step 1: [](https://docs.cyberark.com/admin-space/latest/en/content/secureai/discoveryazure.htm)Create a CyberArk Identity service user for scanner
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Create a new service user to allow the scanner to authenticate with the Discovery & Context service.
+
+As a best practice, we recommend creating a separate identity for each scanner (one per Azure account). Give each identity a meaningful name, such as the Azure subscription ID it is associated with.
+
+1.   In Identity Administration, Go to Core Services&gt;Users.
+
+2.   Click Add User and complete the following fields:
+
+    *   Login name
+
+    *   Display name
+
+    *   Password
+
+As a best practice, we recommend creating a separate user for each scanner (one per Azure subscription). Give each user a meaningful name, such as the Azure subscription ID it is associated with.
+
+3.   In the Status checklist, select the Is OAuth confidential client checkbox.
+
+4.   The Is Service User check box should be selected.
+
+5.   Click Create User.
+
+Step 2: Add the service user to the Discovery & Context role
+--------------------------------------------------------------------------
+
+Assign the newly created service user to the Discovery & Context role that enables them to authenticate the discovery job.
+
+1.   In Identity Administration, go to Core Services&gt;Roles.
+
+2.   Select the role with the name Discovery & Context Azure Communication.
+
+3.   Go to the Members tab.
+
+4.   Search for the user you created and add them to the role.
+
+Service users are not displayed in the list of active users as they do not access the Identity Administration User Portal. To view service users, click All Users or All Service Users.
+
+Step 3: Download and run the scanner in Azure
+-----------------------------------------------------------
+
+This task describes how to automatically depoy the scanner to Azure.
+
+1.   Open a terminal, or use Azure Cloudshell to connect to your target Azure subscription.
+
+2.   Download the scanner from [Marketplace](https://community.cyberark.com/marketplace/s/#software-aK4Vy00000001FRKAY-). From the components list, make sure you select the Microsoft Azure scanner.
+
+The zip folder includes the following files:
+
+    *   deploy.sh - Automated deployment script
+
+    *   main.bicep - Bicep template to deploy relevant resources
+
+    *   cyberarkscanner-fa.zip - A zip containing the scanner script and the required dependencies and configurations.
+
+3.   Run the deployment script.
+
+Copy to clipboard`./deploy.sh`
+4.   When prompted, provide the following details:
+
+| Value | Description |
+| --- | --- |
+| Resource group name | The name for the resource group that will be created to include the deployed resources. |
+| Function app name | The name for the function to be created. |
+| Storage account name | The name for the function's storage. |
+| App service plan name | The name for the function's compute SKU resource. |
+| Key vault name | The name for the key vault secrets holder. |
+| Application insights name | The name for the telemetry resource to be created. |
+| Service user username | The username of the service user you've created. |
+| Service user password | The password of the service user you've created. |
+| Service user subdomain | The subdomain of your tenant. |
+5.   The scan runs immediately if tenant details are entered. The scanner is then planned to run every 12 hours.
+
+Step 4: Monitor scan status in Azure
+--------------------------------------------------
+
+| Scan | Location in Azure |
+| --- | --- |
+| Status and logs of function invocations | In the Scanner function, go to Invocations tab to see the status and logs for each invocation. |
+| Function invocations metric | In the created function, go to the Metrics tab, and select On-Demand Function Execution Count. |
+| Function logs | Query the traces table under the Logs tab in the created function. |
+| Live logging | View current logs under the Log stream tab in the created function. |
+
+Step 5: View discovered AI agents in Discovery & Context dashboard
+--------------------------------------------------------------------------------
+
+For details, see Analyze the AI agent inventory and remediate risks
+
+Uninstall the scanner
+-----------------------------------
+
+1.   Delete the resource group.
+
+Copy to clipboard`az group delete -n &lt;RESOURCE_GROUP&gt; --yes`
+2.   Remove the app registration.
+
+Copy to clipboard`az ad app delete --id &lt;APP_ID_OR_OBJECT_ID&gt;`

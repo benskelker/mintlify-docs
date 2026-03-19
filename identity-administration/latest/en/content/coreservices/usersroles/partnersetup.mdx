@@ -1,0 +1,42 @@
+---
+title: "Set up federation with external identity providers"
+description: "This section describes how to set up federation with external identity providers (IdPs) such as Microsoft Entra ID, Okta, or another CyberArk tenant. Federation enables integration of your CyberArk tenant with other"
+---
+
+This section describes how to set up federation with external identity providers (IdPs) such as Microsoft Entra ID, Okta, or another CyberArk tenant. Federation enables integration of your CyberArk tenant with other identity sources with single sign-on (SSO) for your users across different applications and platforms. When you set up federation, you can leverage the authentication and authorization policies of IdPs or enhance CyberArk with third-party solutions and services.
+
+Here are some scenarios where you might want to federate with an external IdP.
+
+| Use case | Description |
+| --- | --- |
+| SSO for internal users | You can enable users to sign in to CyberArk using an IdP such as Microsoft Entra ID, Ping, or Okta for SSO. |
+| Passwordless or multi-factor (MFA) authentication | You can use a third-party solution for passwordless or MFA authentication to sign in to CyberArk. |
+| Business-to-business log in | You can support collaboration and integration with external partners or customers who use IdPs that differ from your organization. In this use case, you share your CyberArk tenant with your business partners. Your CyberArk tenant (which hosts the services and applications) serves as the IdP. Your business partners access the tenant and its associated resources and applications by passing a SAML token obtained from their IdP service. This use case applies to any IdP (AD FS or other types of IdPs). |
+| Managed service provider (MSP) access | Sometimes you might need to enable your MSP to log in to your CyberArk tenant with SSO so that different users from the MSP can access your tenant. |
+| Third-party solution integration | You can extend CyberArk with additional features by integrating third-party solutions or services such as identity proofing. |
+
+Before you begin
+------------------------------
+
+*   You need group attribute values and IdP metadata to finish the configuration.
+
+*   Ensure your SAML file includes the required elements.
+
+The following attributes are consumed by federations with other Cloud customers.
+
+Additional attributes are supported and can be configured with the external IdP SAML configuration. These can also be configured on the Service Provider side with the B2B application template.
+
+Mandatory and optional attributes| Attributes |
+| --- |
+| Mandatory | `userprincipalname` |
+| Optional | `DisplayName`, `Description`, `EmailAddress`, `HomeNumber`, `LoginName`, `MobileNumber`, `Group`and `OfficeNumber` |
+
+For example:
+
+`setAttribute("userprincipalname", LoginUser.Get("userprincipalname"));`
+
+In this section:
+
+Federate with an external IdP using SAML
+
+Federate with an external IdP using OIDC

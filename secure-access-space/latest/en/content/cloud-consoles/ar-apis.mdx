@@ -1,0 +1,162 @@
+---
+title: "Access request APIs"
+description: "You can use REST APIs to perform tasks related to finding and handling access requests. This topic presents some examples of common workflows. For more comprehensive details, see the Access request [REST API"
+---
+
+You can use REST APIs to perform tasks related to finding and handling access requests. This topic presents some examples of common workflows. For more comprehensive details, see the Access request [REST API documentation](https://api-docs.cyberark.com/access-request-api/docs/get-started).
+
+API tasks for approvers
+-------------------------------------
+
+This section includes workflows for a designated approver.
+
+### Find requests pending my approval
+
+Scenario: You are a designated approver and you want to see which requests are waiting for your approval.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = APPROVER
+
+    *   state = PENDING
+
+    *   results = UNKNOWN
+
+### Find requests that I have rejected
+
+Scenario: You are a designated approver and you want to see which requests you have rejected.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = APPROVER
+
+    *   state = PENDING
+
+    *   results = UNKNOWN
+
+3.   If you want to locate requests over a specific period (for example, during November 2025), add:
+
+    *   createdAt ge 2025-11-01
+
+    *   createdAt le 2025-11-30
+
+### Find requests where I missed the approval date
+
+Scenario: You are a designated approver and you want to see if there are requests that were waiting for your approval but you didn't get to them in time.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = APPROVER
+
+    *   state = EXPIRED
+
+    *   results = UNKNOWN
+
+### Handle a request
+
+Scenario: You are a designated approver and you want to see which requests are waiting for your approval, and then to approve or reject them.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = APPROVER
+
+    *   state = PENDING
+
+    *   results = UNKNOWN
+
+3.   From the results, make a note of the `requestID` of the request that you want to handle.
+
+4.   Call the `POST/workflows/requests/\{requestId\}/finalize` API, using the `requestID` from the results of the previous call.
+
+5.   To handle the request, do one of the following:
+
+    *   Enter the following values to approve the request:
+
+        *   result = APPROVED
+
+        *   finalizationReason = \{your reason for the approval\}
+
+    *   Enter the following values to reject the request:
+
+        *   result = REJECTION
+
+        *   finalizationReason = \{your reason for the rejection\}
+
+API tasks for requesters
+--------------------------------------
+
+This section includes workflows for someone who has entered requests.
+
+### Find my requests
+
+Scenario: You have entered requests and you want to see them all.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = CREATOR
+
+3.   If you want to locate requests over a specific period (for example, during November 2025), add:
+
+    *   createdAt ge 2025-11-01
+
+    *   createdAt le 2025-11-30
+
+### Find my rejected requests
+
+Scenario: You have entered requests and you want to see which ones have been rejected.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = CREATOR
+
+    *   results = REJECTED
+
+### Find my overdue requests
+
+Scenario: You have entered requests and you want to see which ones are expired, without being approved or rejected.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = CREATOR
+
+    *   state = EXPIRED
+
+    *   results = UNKNOWN
+
+### Cancel a request
+
+Scenario: You have entered requests and you want to cancel one of them.
+
+1.   Call the `GET/workflows/requests` API.
+
+2.   Use the following filters:
+
+    *   requestRole = CREATOR
+
+3.   If you want to locate requests over a specific period (for example, during November 2025), add:
+
+    *   createdAt ge 2025-11-01
+
+    *   createdAt le 2025-11-30
+
+4.   From the results, make a note of the `requestID` of the request that you want to handle.
+
+5.   Call the `POST/workflows/requests/\{requestId\}/cancel` API, using the `requestID` from the results of the previous call.
+
+6.   Enter the following values:
+
+    *   cancelReason = \{your reason for the cancellation\}

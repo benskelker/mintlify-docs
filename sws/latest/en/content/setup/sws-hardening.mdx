@@ -1,0 +1,46 @@
+---
+title: "Hardening guidelines"
+description: "As with any security solution, it is essential to secure Secure Web Sessions (SWS) to ensure the controls you have implemented are not circumvented by a malicious actor. The controls described here are the minimal"
+---
+
+As with any security solution, it is essential to secure Secure Web Sessions (SWS) to ensure the controls you have implemented are not circumvented by a malicious actor. The controls described here are the minimal requirements for protecting your SWS deployment. It is imperative that you follow these steps in your environment or alternative methods that are as effective as the following based on your organization's expertise.
+
+*   Apply all reasonable measures to make sure your endpoint machines are hardened.
+
+    *   It is recommended to follow industry standards like Benchmarks by [Center for Internet Security](https://www.cisecurity.org/) (see the “Microsoft Windows Desktop” and/or “Microsoft Windows Server” sections at the [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks/) page).
+
+    *   One of the most important steps is to remove your end-users from the local Administrators user groups.
+
+*   Ensure the Chrome browser is managed. See [Start managing Chrome browser](https://support.google.com/chrome/a/answer/188446) for more details.
+
+    *   Apply all reasonable measures to make your Chrome browser is hardened on your endpoint machines.
+
+    *   It is recommended to follow industry standards like [Google Chrome CIS Benchmark](https://www.cisecurity.org/benchmark/google_chrome/).
+
+    *   Disable Chrome Developer Tools. For more information, see [Developer Tools Availability](https://chromeenterprise.google/policies/) .
+
+    *   Disable the Print option in the Browser menu. For more information, see [Set Chrome policies for users or browsers](https://support.google.com/chrome/a/answer/2657289?hl=en&visit_id=637763727679713261-158335836&rd=1).
+
+    *   Disable 'Save Page as' option from Chrome menu. For more information, see [Set Chrome policies for users or browsers.](https://support.google.com/chrome/a/answer/2657289?hl=en&visit_id=637763727679713261-158335836&rd=1)
+
+*   Ensure that CyberArk SWS Extension (ID [ohfinlfcbaehgokpmkjcmkgdcbgamgln](https://chrome.google.com/webstore/detail/cyberark-secure-web-sessi/ohfinlfcbaehgokpmkjcmkgdcbgamgln?)) is automatically installed and activated in the Chrome browser.
+
+*   Ensure that all other Chrome Apps and Extensions approved in your environment are installed as well, and no additional Extensions can be installed by user.
+
+*   Ensure that CyberArk SWS Extension cannot be disabled or uninstalled. For more information, see [Managing Extensions in Your Enterprise](https://support.google.com/chrome/a/answer/9296680) and [Set Chrome app and extension policies (Windows)](https://support.google.com/chrome/a/answer/7532015).
+
+*   If allowed in your environment, protect the following end-user’s objects from being modified by any program but Chrome browser.
+
+    *   %LOCALAPPDATA%\Google\Chrome\User Data\ directory
+
+    *   HKCU\SOFTWARE\Google\Chrome Registry Key
+
+*   It is recommended to utilize some third-party software to prevent modification of the objects listed at [Stop managing Chrome browser](https://support.google.com/chrome/a/answer/9844476) by a malicious program or user.
+
+*   Ensure that your environment does not allow unapproved HTTPS proxy/sniffer/ or alike software.
+
+*   Additional security measures/hardening may be applied following your organization standards.
+
+CyberArk is unable to provide comprehensive answers as to what the impact on CyberArk products may be for each applied security measure/hardening. These were not tested and may cause different behaviors in different environments. Some may even break CyberArk functionality. It is suggested that its tested extensively in advance in a development or testing environment first.
+
+*   [Hardening guidelines](/sws/latest/en/content/setup/sws-hardening)

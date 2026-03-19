@@ -1,0 +1,193 @@
+---
+title: "Create policies for database access"
+description: "This topic describes how to create a recurring access policy to provide secure, zero standing privileges access to your organizational databases."
+---
+
+This topic describes how to create a recurring access policy to provide secure, zero standing privileges access to your organizational databases.
+
+To manage database policies, you must be a Secure Infrastructure Access administrator (DpaAdmin role)
+
+If you don't have this role, contact your CyberArk platform administrator.
+
+Start creating a policy
+-------------------------------------
+
+1.   In the Administration space, go to Access control policies&gt;User access.
+
+2.   On the User access policies page, click Create policy and select Database access.
+
+### Step 1: Define the general details
+
+1.   Provide the following details:
+
+General details information| Element | Description |
+| --- | --- |
+| Policy name | Give the policy a meaningful and unique name. |
+| Description | (Optional) Add a short, meaningful description about the policy you are creating |
+| Location type | IP address or the FQDN This is a static value that cannot be changed. |
+| Directory name | Relevant only for Entra groups (Read only) |
+| Policy timeframe | Determines the life span of the policy. Select from one of the following: Time zone -The time zone that applies to the timeframe. The start and end times are fixed to the selected time zone. Users in other time zones will see the equivalent local times. * Never expires * Date range - * From - The date and time the policy becomes active * To- The date and time the policy expires Example: If the policy's timeframe is set from Jan 10, 9:00 AM to Jan 15, 5:00 PM, Eastern Time (ET), the equivalent in Pacific Time (PT) would be Jan 10, 6:00 AM to Jan 15, 2:00 PM. |
+| Policy tags | Customized tags to help identify the policy and those similar to it. Press Enter after each tag to add another tag. * Maximum number of characters per tag- 50 * Maximum number of tags per policy - 20 |
+2.   Click Next.
+
+### Step 2: Define the targets
+
+In this step, specify the targets you want to include in the policy and determine the permissions for each.
+
+*   A policy can have no more than 1000 items (instances and databases). If you need more, you can create an additional policy.
+
+*   Each database in a policy can have no more than 50 custom roles or Active Directory groups.
+
+*   A custom role name or Active Directory group name can contain no more than 50 characters.
+
+1.   Click Add database targets to add a database target to the policy and select one of the following database types.
+
+    *   [SQL Server](/admin-space/latest/en/content/uap/policies-database)
+    *   [MongoDB](/admin-space/latest/en/content/uap/policies-database)
+    *   [Oracle](/admin-space/latest/en/content/uap/policies-database)
+    *   [PostgreSQL](/admin-space/latest/en/content/uap/policies-database)
+    *   [MySQL](/admin-space/latest/en/content/uap/policies-database)
+    *   [MariaDB](/admin-space/latest/en/content/uap/policies-database)
+    *   [Db2](/admin-space/latest/en/content/uap/policies-database)
+
+For SQL Server targets, permissions are determined by the target's defined authentication method, as follows:
+
+    *   For ephemeral domain users, permissions are defined based on the Active Directory groups that you enter for the policy. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with an Active Directory authentication method.
+
+        2.   Enter at least one Active Directory group.
+
+    *   For ephemeral local users, permissions are defined based on the selected roles in the policy. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with a local user authentication method.
+
+        2.   Select one or more of the displayed fixed roles, enter custom roles, or do both.
+
+        3.   To define permissions on a database level, do the following for each database you want to include in the policy:
+
+            1.   Click Add database.
+
+            2.   Enter the name of the relevant database.
+
+            3.   Select one or more of the displayed fixed roles, enter custom roles, or do both.
+
+
+Zero standing privileges (ZSP) access to Azure SQL databases is supported only for an instance. Setting permissions and access to a specific database within an instance is not supported.
+
+For MongoDB targets, ephemeral local user permissions are defined based on the selected roles in the policy. Do the following for each instance you want to include in the policy:
+
+    1.   Click Add instance and select an instance with a local user authentication method.
+
+    2.   To define permissions for the instance, select one or more of the displayed built-in roles.
+
+    3.   To define permissions on a database level, do the following for each database you want to include in the policy:
+
+        1.   Click Add database.
+
+        2.   Enter the name of the relevant database.
+
+        3.   Select one or more of the displayed built-in roles, enter custom roles, or do both.
+
+For Oracle targets, the permissions are determined by the roles, either predefined or custom, that you enter for the policy.
+
+Do the following for each database you want to include in the policy:
+
+    1.   Click Add database and select one of the displayed databases.
+
+    2.   Select at least one of the displayed predefined roles or enter at least one custom role.
+
+For PostgreSQL targets, permissions are determined by the target's defined authentication method, as follows:
+
+    *   For ephemeral local users, permissions are defined based on the selected roles in the policy. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with a local user authentication method.
+
+        2.   Enter at least one role.
+
+    *   For ephemeral RDS IAM credentials, permissions are defined based on the selected user, either a predefined IAM user or a custom user. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with IAM credential authentication method.
+
+        2.   Select a user from the displayed users or enter a custom user.
+
+For MySQL targets, permissions are determined by the target's defined authentication method, as follows:
+
+    *   For ephemeral local users, permissions are defined based on the selected roles in the policy. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with a local user authentication method.
+
+        2.   Enter at least one role.
+
+    *   For ephemeral RDS IAM credentials, permissions are defined based on the selected user, either a predefined IAM user or a custom user. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with IAM credential authentication method.
+
+        2.   Select a user from the displayed users or enter a custom user.
+
+For MariaDB targets, permissions are determined by the target's defined authentication method, as follows:
+
+    *   For ephemeral local users, permissions are defined based on the selected roles in the policy. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with a local user authentication method.
+
+        2.   Enter at least one role.
+
+    *   For ephemeral RDS IAM credentials, permissions are defined based on the selected user, either a predefined IAM user or a custom user. Do the following for each instance you want to include in the policy:
+
+        1.   Click Add instance and select an instance with IAM credential authentication method.
+
+        2.   Select a user from the displayed users or enter a custom user.
+
+For Db2 targets, the permissions are determined by the Active Directory groups that you enter for the policy.
+
+Do the following for each database you want to include in the policy:
+
+    1.   Click Add database and select one of the displayed databases.
+
+    2.   Enter one or more Active Directory groups for the database.
+
+2.   Click Add to return to the Database targets page.
+
+3.   Do one of the following:
+
+    *   To add another database target to the policy, click Add database targets.
+
+    *   To continue to the next step, click Next.
+
+### Step 3: [](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-database.htm)Select identities
+
+In this step, you select identities (users, groups, roles) that can access the target with the selected roles.
+
+1.   On the Identities page, click Add identities.
+
+2.   For each identity you want to add to the policy, start typing the name of the identity in the search bar, and select it in the list.
+
+You can narrow down the search results by selecting the type of identity and the source of the identity on the left.
+
+    *   SIA supports the use of directory security groups that are integrated with CyberArk Identity.
+
+    *   If you haven't connected Active Directory you won't get results when you search for groups.
+
+3.   When you have selected the identities you want, click Add to policy.
+
+4.   Click Next.
+
+### Step 4: [](https://docs.cyberark.com/admin-space/latest/en/content/uap/policies-database.htm)Define the policy conditions
+
+This part of the policy determines session length and access times.
+
+To configure conditions enter the requested information as described in the following table.
+
+Conditions information| Field | Description |
+| --- | --- |
+| Maximum session length | The maximum length of time a session can be open based on this policy. The session automatically closes and is disconnected when the session expires. * Unit: hours * Default value: 2 * Allowed values: 1 - 24 |
+| Set maximum idle time | If enabled, the session automatically closes and is disconnected if there is no user activity for the defined amount of time. * Unit: minutes * Default value: 10 * Allowed values: 1 - 120 |
+| Select the days | The days of the week to allow access. |
+| Select the timeframe | The time of day to allow access * All day - access is available all day on the selected days * Specific time - access is available during the specified hours (relative to Policy time zone) on the selected days; For example, 9:00 AM to 5:00 PM, Eastern Time (ET) is equivalent to 6:00 AM to 2:00 PM, Pacific Time (PT). |
+
+When the access window is limited to a specific time frame, users can only connect to their targets during the specified time regardless of the maximum session length. For example, if the access window is from 13:00 to 15:00 and a user connects to the target at 14:00, the session will close after an hour even if you defined the maximum session length as 2 hours.
+
+### Step 5: Create and activate the policy
+
+At the bottom of the page, click Create policy. The policy is created and is displayed in the User access policies page.

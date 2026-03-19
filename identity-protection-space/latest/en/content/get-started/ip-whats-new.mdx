@@ -1,0 +1,113 @@
+---
+title: "What's new"
+description: "New additions to the Identity Protection space are released and announced on a varying cadence. Occasionally, new versions that include only performance, stability and bug fixes, and do not require customer actions, are"
+---
+
+New additions to the Identity Protection space are released and announced on a varying cadence. Occasionally, new versions that include only performance, stability and bug fixes, and do not require customer actions, are released without an announcement.
+
+January 26, 2026
+------------------------------
+
+Threat detection and response now includes new workforce sign-in detections that help identify high-risk authentication activity earlier and with greater accuracy. These detections analyze sign-in behavior, velocity, and geographic context to help security teams detect potential credential misuse, brute-force attempts, and compromised accounts. The new detections include:
+
+*   Consecutive failed sign-in – Detects repeated failed sign-in attempts within a defined timeframe, indicating potential brute-force or credential abuse activity.
+
+*   Impossible travel sign-in – Detects sign-ins that exceed realistic travel velocity thresholds, highlighting physically implausible access patterns.
+
+*   New country sign-in – Detects sign-ins from countries a user has not previously accessed from, flagging potentially suspicious or unauthorized activity.
+
+November 24, 2025
+-------------------------------
+
+### Insights on database accounts
+
+Risk Management now provides visibility into unsecured database accounts that may pose potential security risks. These insights help customers strengthen their database security posture and ensure both privileged and non-privileged accounts are properly managed within the platform.
+
+The visibility currently covers the following databases: MySQL, Oracle, PostgreSQL, and Microsoft SQL Server.
+
+New Recommendations Introduced:
+
+*   Database admin accounts must be secured – Highlights administrative database accounts with elevated privileges that are not properly managed or protected.
+
+*   Database accounts with non-privileged access should be secured – Identifies database accounts that, while not privileged, still pose security risks if left unsecured.
+
+November 19, 2025
+-------------------------------
+
+### Palo Alto Cortex integration for Threat Detection and Response
+
+You can now integrate Palo Alto Cortex with CyberArk Identity Security Platform to enhance identity threat detection and response. This integration ingests Cortex-generated risk scores for identities, allowing CyberArk to correlate external threat data with user behavior and automate protective actions in real time.
+
+Key benefits include:
+
+*   Enriching identity context with Palo Alto Cortex risk signals
+
+*   Improving threat correlation across internal and external sources
+
+*   Automating responses to changing external risk levels
+
+For details about configuration, see Integrate Palto Alto Cortex with Threat Detection and Response.
+
+November 10, 2025
+-------------------------------
+
+### Threat detection and response: Enhanced inbound SIEM integrations with streamlined certificate management
+
+You can now configure inbound SIEM integrations in a single, redesigned interface that centralizes certificate management for Splunk and IBM QRadar. These integrations enable suspicious credential theft and unmanaged privileged account detections to receive event data from external SIEM tools, enhancing detection accuracy. For details, see Suspected credential theft alerts, Unmanaged privileged account alerts.
+
+You can now create, rename, and revoke integration certificates directly in the interface to maintain secure connectivity and stronger audit control. The new Last message received indicator provides real-time visibility into inbound data flow and integration health. Existing Splunk configurations continue to function without changes. For more information, see [Manage SIEM integration certificates](/admin-space/latest/en/content/siem-integration/siem-manage-certificates).
+
+November 5, 2025
+------------------------------
+
+### Discovery: "Privileged" tag enhancement
+
+The "Privileged" tag for discovered Unix accounts now reflects data from additional indicators: Local account privileges have been escalated using the sudoers file, unless a sudo-replacement solution is used.
+
+To learn more, see Analyze discovered accounts.
+
+October 20, 2025
+------------------------------
+
+### Enhanced recommendations and custom tags in Risk Management
+
+We’ve introduced the following new capabilities for customers using Risk Management:
+
+*   Deeper visibility into identity risks
+
+    *   Accounts with expired credentials: Identify privileged and non-privileged accounts that haven’t rotated credentials in over 90 days. Review, rotate, or remove them as needed.
+
+    *   Abandoned accounts: Gain visibility into disabled or unused accounts in your organization. Review and clean them up to reduce standing risks.
+
+*   Custom views with tags
+
+To help prioritize what matters most, you can now use tags to filter and focus on specific categories of issues.
+
+September 30, 2025
+--------------------------------
+
+### Database discovery and automated onboarding
+
+We’re excited to announce a new capability in our discovery SaaS, which extends support to databases. This enhancement enables teams to seamlessly uncover, secure, and onboard database accounts with greater efficiency. Security teams can now accelerate onboarding at scale, reduce manual effort, and ensure database credentials are continuously rotated and tightly controlled.
+
+Key highlights:
+
+*   Targeted scanning: Run discovery scans using a CSV list of targets containing access details.
+
+*   Dynamic credential utilization: The scan automatically fetches relevant vaulted credentials at runtime, based on target data.
+
+*   Centralized discovery flow: Accounts identified during scans are routed into the Discovered Accounts area, making it simple to review and vault them together with other discoveries.
+
+*   Automated remediation rules: Define onboarding rules to automatically vault and manage discovered accounts.
+
+*   End-to-end coverage: From discovery → onboarding → rotation and access services, database accounts are fully managed in one streamlined workflow.
+
+Supported databases:
+
+*   MSSQL Server
+
+*   Oracle
+
+*   MySQL
+
+*   PostgreSQL

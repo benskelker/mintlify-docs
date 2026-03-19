@@ -1,0 +1,90 @@
+---
+title: "Request on-demand access to cloud services"
+description: "This topic describes how to make an on-demand request for access to a cloud console that you don't yet have access to, or an on-demand request for elevated permissions to a console you already have access to."
+---
+
+This topic describes how to make an on-demand request for access to a cloud console that you don't yet have access to, or an on-demand request for elevated permissions to a console you already have access to.
+
+On-demand requests for Entra group membership are not supported.
+
+Overview
+----------------------
+
+If you need to access a cloud console that doesn't appear in your Secure Access space or if you need additional permissions to perform a task in a cloud console that does appear in your Secure Access space, you can make a one-time request for temporary access.
+
+Request on-demand access to a cloud console
+---------------------------------------------------------
+
+### Step 1: Sign in to the Secure Access space
+
+Sign in to the Secure Access space, and go to the Apps and Secured items page.
+
+### Step 2: Create the request
+
+*   If you don't see a tile for the cloud console that you need to access:
+
+    1.   Click Add and select Catalog or imported app.
+
+    2.   In the App Catalog, click the DevOps category and search for the cloud console app that you need.
+
+Search by app name, not by cloud provider.
+    3.   Next to the relevant app, click Request.
+
+*   If you see a tile for the cloud console that you need to access:
+
+    1.   Click the tile.
+    2.   If the role, permission set, or scope that you need isn't listed, click Request access.
+
+### Step 3: Enter the request details
+
+In this step, you provide the details of what you need access to and why you need access.
+
+1.   Enter the general details:
+
+General request details| Detail | Description |
+| --- | --- |
+| Reason | Give a reason why you need this access. |
+| Ticket number | If you see this field, enter the ticket number in the access request (optional) This may speed up the approval process. |
+| Priority | If you see this field, assign a level of importance to your request |
+2.   Enter the app details:
+
+    *   [AWS](/secure-access-space/latest/en/content/cloud-consoles/request-temporary-cloud-access)
+    *   [Azure](/secure-access-space/latest/en/content/cloud-consoles/request-temporary-cloud-access)
+    *   [Google Cloud](/secure-access-space/latest/en/content/cloud-consoles/request-temporary-cloud-access)
+
+App details| Item | Description |
+| --- | --- |
+| AWS IAM | Account | (Read only) The AWS account you selected. |
+| Cloud role | Provide the available role. |
+| AWS IAM Identity Center | Account | Provide the name or ID of the account. |
+| Permission set | Provide the name of the permission set. |
+
+App details| Item | Description |
+| --- | --- |
+| Azure resource roles | Tenant | (Read only) The name of the Azure tenant. |
+| Scope | Provide the scope name. |
+| Resource | Provide the resource name. |
+| Resource role | Provide the resource role name. |
+| Microsoft Entra ID | Tenant | (Read only) The name of the Azure tenant. |
+| Entra ID role | Provide the Entra ID role name. |
+
+App details| Item | Description |
+| --- | --- |
+| Resource level | Provide the name of the organization, folder, or project. |
+| Resource name | Provide the name of the resource. |
+| Role | Provide the role name. |
+
+3.   Define the access window:
+
+App details| Item | Description |
+| --- | --- |
+| Time zone | Select a time zone from the drop-down list. |
+| Date | Select the date when you want to access the app. |
+| Time | Define when you want to access the app, or for how long: * To define a specific time of day, use the From and To fields. * To define a general session length without specifying the time of day, select an option from the Session Length field. |
+4.   Click Send request. You will receive a confirmation email that your request was received.
+
+When the request is handled, you will receive an additional email with your request details notifying you whether your request was approved or rejected.
+
+When your request is approved, you can connect to your cloud console through the app, during the requested access window. For more details about connecting to your cloud console, see the relevant section under [Access cloud consoles](/secure-access-space/latest/en/content/cloud-consoles/sas-cloudconsoles-lp).
+
+If Secure Access space has been configured to work using the CyberArk in-platform approval channel, you can view the status of your requests. For details, see [View and manage your on-demand access requests](/secure-access-space/latest/en/content/cloud-consoles/ar-view-requests).

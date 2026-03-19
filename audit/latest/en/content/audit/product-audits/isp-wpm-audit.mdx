@@ -1,0 +1,73 @@
+---
+title: "Workforce Password Management audit events"
+description: "This topic describes the Workforce Password Management audit events and codes."
+---
+
+This topic describes the Workforce Password Management audit events and codes.
+
+Audit events by component and activity
+----------------------------------------------------
+
+Audit events and codes are available for the components and activities listed below.
+
+Workforce Password Management audit events by component and activity| Component | Activity | Event name |
+| --- | --- | --- |
+| Folders |
+|  | Share folder to user or role | Folder sharing permission |
+| SaaS applications |
+|  | Import | Import application |
+|  | Clone | Clone application |
+|  | Export | Export application |
+|  | Update | Update application |
+|  | Import account through CSV | Import source web applications |
+|  | Add | Add custom web applications from the Identity Security platform |
+|  | custom web applications from Identity Security platform | Delete custom web applications from the Identity Security platform |
+|  | Application credentials change | Application credentials was changed |
+|  | Add or remove permissions to applications | Application permissions |
+|  | Update provisioning details in application | Application provisioning update |
+|  | Change shared application permission | Shared app permission change |
+|  | Add TOTP to admin added apps | TOTP for Apps |
+| Secured Items |
+|  | Add or view secured item | Secured items |
+|  | Permission change for secured item | Secured item permission change |
+|  | Credentials change for secured items | Secured item credentials change |
+|  | Add secured item through import option | Secured items imported |
+| Transfer of Ownership |
+|  | Transfer ownership | Transfer of ownership for shared folders |
+|  | Transfer ownership of items | Transfer of ownership |
+|  | Target user does not exist for transfer | Target user does not exist for transfer |
+|  | File storage limit exceeded | File storage limit exceeded |
+|  | Folder limit exceed | Add folder after limit exceeded |
+| WPM-other |
+|  | User failed to fetch creds from Privileged Vault | Failed to fetch credentials from Privileged Vault |
+
+Audit codes
+-------------------------
+
+The following table describes the Workforce Password Management audit codes according to functionality.
+
+Workforce Password Management audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| IDP1207 | Approve | Share folder to user or role |
+| IDP6003 | Install | Application was imported |
+| IDP6005 | Create | Application was cloned |
+| IDP6008 | Download | Application was exported |
+| IDP6022 | Upgrade | Application was updated |
+| IDP6012 | Create | Account was imported through CSV |
+| IDP6014 | Create | Custom web app was added from the Identity Security platform |
+| IDP6015 | Delete | Custom web app was deleted from the Identity Security platform |
+| IDP6017 | Rotate | Application credentials were changed |
+| IDP6018 | Approve | Application permissions were added or removed |
+| IDP6021 | Edit | Provisioning details in the application were updated |
+| IDP1011 | Edit | Shared application permission was changed |
+| IDP2015 | Password | TOTP was added to an admin-added application |
+| IDP9001 | Execute | Secured item was created |
+| IDP9003 | Edit | Sharing permission of secured items was changed |
+| IDP9002 | Edit | Secured items credentials were changed |
+| IDP6013 | Create | Secured item was added through the import option |
+| IDP1103 | Upgrade | Ownership was transferred for a shared folder |
+| IDP1104 | Upgrade | Item was shared and recipient set as owner |
+| IDP1105 | Deny | Target user for transfer does not exist |
+| IDP1106 | Deny | File storage limit exceeded for the target user |
+| IDP7001 | Deny | Folder creation attempted after folder limit was exceeded |
+| IDP1107 | Deny | User failed to fetch creds from Privileged Vault |

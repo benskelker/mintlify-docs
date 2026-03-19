@@ -1,0 +1,162 @@
+---
+title: "What's new"
+description: "New Audit versions are released and announced in a varying cadence. Occasionally, new versions that include only performance, stability and bug fixes, and do not require customer actions, are released without an"
+---
+
+New Audit versions are released and announced in a varying cadence. Occasionally, new versions that include only performance, stability and bug fixes, and do not require customer actions, are released without an announcement.
+
+January 21, 2026
+------------------------------
+
+### Search audit events using service data properties
+
+You can now search and filter audit events using service data properties - properties that are specific to individual CyberArk services.
+
+*   Use Filter by and the service data value search field to search across all available event fields in the Activities view and when creating reports.
+
+*   Add new columns to your table view based on service data.
+
+*   Field suggestions are tailored to your environment and update automatically as new data becomes available.
+
+### Updated Privilege Cloud audit codes
+
+[Privilege Cloud audit codes](/audit/latest/en/content/audit/product-audits/isp-privcloud-audit) are updated.
+
+August 4, 2025
+----------------------------
+
+### Encryption Key Provider (EKP) integration with Audit
+
+[Encryption Key Provider (EKP) audit events](/audit/latest/en/content/audit/product-audits/isp-byok-audit) enable you to track the configuration and status of the feature known as EKP or Bring Your Own Key (BYOK). Encryption Key Provider (EKP) audit events are sent to the ISPSS Audit space for viewing and analysis together with events from other ISPSS services.
+
+July 15, 2025
+---------------------------
+
+### IP Allowlist is now available in Privilege Cloud audits
+
+[IP Allowlist action code](/audit/latest/en/content/audit/product-audits/isp-privcloud-audit) is added to the Privilege Cloud audit events.
+
+March 30, 2025
+----------------------------
+
+### Privilege Cloud integration with Audit
+
+As part of our ongoing commitment to provide a unified Identity Security Platform, audit events from Privilege Cloud are now sent to the ISPSS Audit space. This enables auditors to view Privilege Cloud audit events alongside events from other services.
+
+Key benefits include:
+
+*   Unified experience: Use a consistent interface across all services for a streamlined auditing experience.
+
+*   CSV export: Quickly export audit logs to CSV files for easy analysis and sharing.
+
+*   Agentless SIEM integration: Share CyberArk audit events directly with your organization's SIEM without the need for an on-premises agent. Secure Tunnel is no longer required for Privilege Cloud SIEM integration.
+
+[Privilege Cloud audit codes](/audit/latest/en/content/audit/product-audits/isp-privcloud-audit) are now available in the Audit space.
+
+February 24, 2025
+-------------------------------
+
+### Session Monitoring displays risk score for SSH sessions
+
+Session Monitoring now displays the session risk score for SSH sessions run with SIA technology.
+
+Auditors can now view a session’s risk score, filter sessions by their score level, and view the risky commands in the session. See the risk score information in [Main session monitoring view](/audit/latest/en/content/audit/isp_session-activities).
+
+For more information about risk detection, see Privileged Risky Activity detection.
+
+January 8, 2025
+-----------------------------
+
+### Play RDP and SSH session recordings
+
+You can play recordings of RDP and SSH sessions in an embedded player in Session Monitoring.
+
+For SSH sessions, you can play the recordings alongside a timeline of the session commands and navigate to specific commands in the session.
+
+For more information, see [Play RDP session video recordings - SIA only](/audit/latest/en/content/audit/isp_session-activities) and [Play SSH session recordings - SIA only](/audit/latest/en/content/audit/isp_session-activities).
+
+December 30, 2024
+-------------------------------
+
+### Use CORA AI to generate session summaries for SSH sessions
+
+CORA AI analyzes the SSH session's activity and generates a textual summary that offers the auditor a quick overview of the nature and chronological order of the session actions.
+
+For details, see [Create CORA AI summaries of SSH sessions](/audit/latest/en/content/audit/isp_session-activities).
+
+November 11, 2024
+-------------------------------
+
+### AI in Audit
+
+AI generates audit events. These events are shown in the Activities page with an icon containing a message and a [link](https://www.cyberark.com/trust/responsible-ai/) to learn more about AI. For details, see [View system activities](/audit/latest/en/content/audit/isp_system-activities).
+
+Also, the Cora AI chatbot is available to help you use the Audit functionality. For more information, see [CyberArk CORA AI chatbot](/audit/latest/en/content/audit/audit_cora-ai-bot).
+
+October 9, 2024
+-----------------------------
+
+### Session monitoring filter
+
+The Session Monitoring filter has been updated. Click Filter to display the available filters. You can select multiple filters to refine your search.
+
+For details, see [Filter and search](/audit/latest/en/content/audit/isp_session-activities).
+
+### Download text recordings of SSH sessions
+
+You can download a text recording of SSH sessions in the main view when the setting is turned on in SIA.
+
+For details, see [Download SSH session text recordings](/audit/latest/en/content/audit/isp_session-activities).
+
+August 26, 2024
+-----------------------------
+
+### Get sessions API
+
+The Get sessions API retrieves sessions and their details from Session Monitoring.
+
+You can filter the sessions you want to receive using the search parameter.
+
+For details, see [Get sessions API](/audit/latest/en/content/audit/isp_get-sessions-api).
+
+March 31, 2024
+----------------------------
+
+### Download RDP session recordings
+
+Session monitoring now provides a video recording of RDP sessions for download.
+
+In the session monitoring view or through the API, you can download a video recording of the RDP session to review the events of the selected session.
+
+Currently, you can only download recording sessions for RDP sessions.
+
+For details, see [Download RDP session video recordings](/audit/latest/en/content/audit/isp_session-activities).
+
+February 6, 2024
+------------------------------
+
+### Integrate Audit with third-party SIEM applications
+
+You can now integrate Audit with any third-party SIEM application.
+
+For more information, see [Integrate Audit with third-party SIEM applications](/admin-space/latest/en/content/siem-integration/siem-export-3rd-party).
+
+May 31, 2023
+--------------------------
+
+### Create offline audit reports using the Audit space
+
+You can now create activity reports in the Audit space and download them for offline review.
+
+Offline reports are useful for showing compliance, passing external audits, showing reports to management, and more.
+
+The reports now contain audit information for all CyberArk services that are available in the Audit space: Dynamic Privileged Access (now called Secure Infrastructure Access), Secure Cloud Access, Cloud Entitlements Management, Conjur Cloud, and Secrets Hub.
+
+March 26, 2023
+----------------------------
+
+### New session monitoring view
+
+The Audit space now provides a unified view for monitoring user sessions. Session monitoring provides a comprehensive display of user events per session to enable enhanced auditing and incident-response investigation.
+
+Session monitoring is currently available for the Dynamic Privileged Access (now called Secure Infrastructure Access) and Secure Cloud Access services.

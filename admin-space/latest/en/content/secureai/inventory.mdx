@@ -1,0 +1,51 @@
+---
+title: "View and manage AI agents"
+description: "This topic describes how to view and manage your registered AI agents."
+---
+
+This topic describes how to view and manage your registered AI agents.
+
+Understand the inventory
+--------------------------------------
+
+Use the inventory to view each AI agent’s current connection status with the AI Agents Gateway—such as Pending connection, Active, Suspended, or Error.
+
+The inventory table lists your registered AI agent’s key details, including status, type, MCP servers, tools, and ownership, so you can review and manage your registered agents in one place.
+
+You can search and filter to efficiently manage registered AI agents.
+
+View detailed information
+---------------------------------------
+
+Select any AI agent from the inventory table to open the details pane, which displays detailed information about that specific agent. This view includes additional details not displayed in the main table
+
+Use the split view to quickly review configuration details, monitor activity, or access related actions while maintaining visibility of the full inventory.
+
+| Field | Description |
+| --- | --- |
+| Agent name | The agent's display name. |
+| Type | Predefined (e.g. Claude, Copilot) or user-defined agent type. |
+| Owner | Business or technical user responsible for the agent. |
+| Tags | Up to 10 tags that categorize the agent. |
+| Description | Optional free-text description. |
+| Configured MCP servers | The SIA. Secure Infrastructure Access MCP server that provides the secure access layer required for AI agents to connect to databases through CyberArk’s infrastructure. |
+| Status | The current state of the AI agent. Pending connection - Identity was created; waiting for administrator to copy credentials and initiate the final connection handshake. Active - The agent is currently authenticated and connected to the AI Agents Gateway. Suspended - Temporarily suspended for the AI Agents Gateway only. The status changes from Active to Suspended, and the agent cannot communicate via this gateway URL until resumed. Other endpoints configured for the agent are unaffected. Error - The last connection attempt failed or a connected session dropped due to a problem. |
+| Created by / Created at | User and timestamp when the agent was created. |
+| Updated at | Timestamp of the most recent update. |
+| Updated by | The user that most recently modified the agent’s record in the AI Agents Gateway. |
+| Tools | Displays the Secure Infrastructure Access MCP tools available to the agent (for example, run database queries). |
+| Last used | When the agent last performed an operation via its MCP server. |
+
+Manage AI agents
+------------------------------
+
+Use the action menu in each row to manage your agents.
+
+All actions are subject to RBAC permissions and are fully audited for traceability.
+
+| Action | Description |
+| --- | --- |
+| Edit | Use edit to update Name, Owner, Tags, or Description. You cannot change the agent type or its credentials here |
+| Suspend | Temporarily suspend the AI agent for the AI Agents Gateway only. The status changes from Active to Suspended, and the agent cannot communicate through this gateway URL until resumed; other endpoints configured for the agent are unaffected. |
+| Resume | Reactivate a suspended AI agent to active status. |
+| Delete | Permanently remove an AI agent. You can only delete agents in suspended or pending connection status. The AI agent isn't removed from the client. Deletion is irreversible. |

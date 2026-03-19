@@ -1,0 +1,45 @@
+---
+title: "Generate activity reports"
+description: "This topic describes how to generate activity reports."
+---
+
+This topic describes how to generate activity reports.
+
+Overview
+----------------------
+
+Use the Activities reports page in the Audit space to generate and download system events to a CSV file for offline viewing. System events include user access, user activities, and the time and date of these activities.
+
+Create a report
+-----------------------------
+
+1.   On the Activities reports page, click Create report.
+
+2.   Enter the following information to generate a report for download as a CSV file:
+
+Report details
+
+| Item | Description |
+| --- | --- |
+| Report name | Add a report name. The name has a 50 character limit. |
+| Time range | Range of dates for the report. * Last 3 days * Last 7 days * Last 30 days * Custom - define the date and time range. * A report is limited to 40,000 rows. If your date range is too broad, the report may not capture all the data. This is indicated by a warning icon (![Image 5](https://docs.cyberark.com/audit/latest/en/content/audit/images/report-download-hazard_26x25.png)) next to the download button of your report. |
+| [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_activities-reports.htm)Actions | Select the system events you want to view in your report. |
+| Service name | Select the services you want to include in your report. |
+| Filter by | Select the option to filter your search for system events. Enter text to further filter your search. The search is case-sensitive. |
+3.   Click Apply to generate your report.
+
+You can create more reports while your current report is in progress. However, a maximum of ten reports can be generated concurrently for a region.
+4.   The audit report is saved in the browser's default download location, and contains a selection of the columns from the system activities page. For details, see [View system activities](/audit/latest/en/content/audit/isp_system-activities). The CSV output is sorted by timestamp in ascending order.
+
+View information about Activities reports
+-------------------------------------------------------
+
+The reports page shows you all the reports that you have generated in the last 30 days with a Download button to save the report to your local machine for offline viewing.
+
+The page displays details about each report, such as the report name, file size, date generated, date available until, and the report status.
+
+Information about the reports| Item | Description |
+| --- | --- |
+| Report data | The number of filters applied to the report. You can hover over the filter text to view the actions and time range applied. |
+| Available until | The date at which the report is no longer available. Generated reports are available for 30 days. |
+| Status | The report status: * In progress - The report is pending and not yet available. * Download - The report is successfully created. Click Download to download the CSV file locally for offline review or for outside inspection. * After a report is created, it is not automatically shown in the report list. Click the refresh icon to show the latest reports. * A warning icon (![Image 6](https://docs.cyberark.com/audit/latest/en/content/audit/images/report-download-hazard_26x25.png)) next to the Download button indicates a report with partial results due to a large date range. * The report is saved to the browser's default download location, and contains a selection of the columns from the system activities page. For details, see [View system activities](/audit/latest/en/content/audit/isp_system-activities). The CSV output is sorted by timestamp in ascending order. * Failed - The report was terminated with an error. You can hover over the status icon to view the error code. |

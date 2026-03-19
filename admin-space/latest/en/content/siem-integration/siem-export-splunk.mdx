@@ -1,0 +1,91 @@
+---
+title: "Integrate Audit with Splunk"
+description: "This topic describes how to integrate the Splunk with Audit, to view and monitor system and user activities in Splunk."
+---
+
+This topic describes how to integrate the Splunk with Audit, to view and monitor system and user activities in Splunk.
+
+Overview
+----------------------
+
+You can integrate audit information such as system events and user activities with Splunk. CyberArk supports the Splunk integration using the CyberArk Audit for Splunk add-on.
+
+To integrate Audit with Splunk, you perform the following steps:
+
+<Frame>
+![Image 4](https://docs.cyberark.com/admin-space/latest/en/content/images/audit-siem-export/audit-splunk-integr-wf.svg)
+</Frame>
+
+The Splunk integration uses AWS IoT authentication. As a result, the CyberArk Audit Splunk add-on is not available in regions that do not support AWS IoT.
+
+These regions are:
+
+*   Italy eu-south-1 (Milan)
+
+*   Indonesia ap-southeast-3 (Jakarta)
+
+*   Israel il-central-1 (Tel Aviv)
+
+Step 1: [](https://docs.cyberark.com/admin-space/latest/en/content/siem-integration/siem-export-splunk.htm)Download and install the CyberArk Audit for Splunk add-on
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.   Download the CyberArk Audit for Splunk add-on using one of the following methods:
+
+    *   Go to [Splunkbase](https://splunkbase.splunk.com/app/6608), download and install the add-on.
+
+    *   Go to Splunk Enterprise, search for CyberArk Audit for Splunk, and install the add-on.
+
+2.   Restart your Splunk application when prompted.
+
+Step 2: Create the Splunk integration in the Administration space
+-------------------------------------------------------------------------------
+
+Before you begin, make sure you [Download and install the CyberArk Audit for Splunk add-on](/admin-space/latest/en/content/siem-integration/siem-export-splunk).
+
+*   After you add an integration, you can't modify the name or the description. To make changes, you must delete the integration and add a new one.
+
+*   You can have a maximum of two Splunk integrations. If you want to add an integration, you must delete one of the existing integrations.
+
+1.   Log in to the Administration space.
+
+2.   Go to Integrations &gt; Export to SIEM.
+
+3.   Select Integrate with Splunk.
+
+4.   In the Integrate CyberArk Audit with Splunk page, enter a name for the integration and an optional description.
+
+5.   Click Create.
+
+Step 3: Configure the Splunk add-on in Splunk
+-----------------------------------------------------------
+
+1.   In Splunk, open the CyberArk Audit for Splunk application.
+
+You are prompted to enter the certificate and private key.
+
+2.   In the Administration space, in the Integrate CyberArk Audit with Splunk page, use the copy button on the right side of the Certificate and Private key fields to copy each value and paste it in Splunk.
+
+Make sure that you use the copy button to copy the field values.
+
+If you need to send the values to another user, paste the values in Notepad or a similar application to correctly transfer the information.
+3.   In Splunk, click Save.
+
+The Splunk Add Data page appears.
+
+4.   In the Import audit information from CyberArk services area, enter the required information. Go to the Integrate CyberArk Audit with Splunk page to copy and paste the following values:
+
+    *   Auth endpoint
+
+    *   Device name (In the Integration page, this is the Integration name)
+
+    *   API region
+
+    *   API endpoint
+
+Make sure to accurately enter all of the required information and use the copy button to copy the field values. You will receive an error if one of the fields is missing or incorrect and you will have to enter all of the information again.
+
+5.   To set a dedicated index for the audit information, select More settings, and in the Index field select the destination index, and then click Save.
+
+6.   Use the Splunk search application to validate the integration. Search for an Audit field, for example, applicationCode, actionType, etc.
+
+7.   In the Administration space, close the Integrate CyberArk Audit with Splunk page.

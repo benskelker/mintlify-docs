@@ -1,0 +1,43 @@
+---
+title: "CRDR FAQs"
+description: "This topic contains FAQs about impacted services during a CRDR event."
+---
+
+This topic contains FAQs about impacted services during a CRDR event.
+
+FAQs
+------------------
+
+[Q. How do users access a target when it's under a proxy?](/cross-region-dr/latest/en/content/crdr/crdr-faqs)
+
+A. During a CRDR event, only Show password is supported. This means that users will need to connect to targets using native tools such as RDP.
+
+Take into consideration that users may require network access to targets if they do not have existing access.
+
+[Q. How will I know if there is a CRDR event?](/cross-region-dr/latest/en/content/crdr/crdr-faqs)
+
+A. You will see a banner at the top of the CyberArk page that tells you the tenant's region is in DR mode.
+
+<Frame>
+![Image 3](https://docs.cyberark.com/cross-region-dr/latest/en/content/images/crdr-banner.png)
+</Frame>
+
+[Q. What happens if users only have connect permissions?](/cross-region-dr/latest/en/content/crdr/crdr-faqs)
+
+A. Use the bypass solution. See [configure the bypass solution](/cross-region-dr/latest/en/content/crdr/crdr-setup) for more information.
+
+[Q. What happens for users that use workflows such as ticketing systems, providing a reason, dual control, or one-time password?](/cross-region-dr/latest/en/content/crdr/crdr-faqs)
+
+A. These workflows are not supported. Use the bypass solution. See [configure the bypass solution](/cross-region-dr/latest/en/content/crdr/crdr-setup) for more information.
+
+[Q. Which capabilities are supported during a CRDR event?](/cross-region-dr/latest/en/content/crdr/crdr-faqs)
+
+A. See [Cross-Region Disaster Recovery (CRDR) overview](/cross-region-dr/latest/en/content/crdr/crdr-overview).
+
+[Q. Which regions does CRDR support?](/cross-region-dr/latest/en/content/crdr/crdr-faqs)
+
+A. See [CRDR supported regions](/cross-region-dr/latest/en/content/crdr/crdr-supported-regions).
+
+[Q. Are there any dependencies between Bring Your Own Key (BYOK) and CRDR?](/cross-region-dr/latest/en/content/crdr/crdr-faqs)
+
+A. BYOK is not required for CRDR. However, if you use BYOK and store the key in AWS KMS, you must create a replica of the key so that during a CRDR event, the system uses the key from the DR site. See [Bring Your Own Key (BYOK) solution](/cross-region-dr/latest/en/content/crdr/crdr-byok)for more information.

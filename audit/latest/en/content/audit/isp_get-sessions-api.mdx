@@ -1,0 +1,143 @@
+---
+title: "Get sessions API"
+description: "This method retrieves sessions and their details."
+---
+
+This method retrieves sessions and their details.
+
+You can use this API to retrieve a list of session recordings and then use it to automate the download of the recording files, using the [Get recording file download URL API](/audit/latest/en/content/audit/isp_session-recording-api).
+
+The list sessions endpoint supports an enhanced filter mechanism. For more information about how to use the filter to get a more accurate sessions search, see [List sessions filter support](/audit/latest/en/content/audit/isp_get-sessions-api).
+
+Get sessions API base URLs
+----------------------------------------
+
+There are two types of base URLs:
+
+*   Session Monitoring API URL
+
+Copy to clipboard`https://&lt;subdomain&gt;.sessionmonitoring.cyberark.cloud/`
+*   Session Monitoring portal URL
+
+Copy to clipboard`https://&lt;subdomain&gt;.cyberark.cloud/audit/session-monitoring/`
+
+Copy to clipboard`&lt;session_monitoring_api_url&gt;/api/sessions/&lt;session_id&gt;/`
+
+[Edit this hyperlink to point it to the desired swagger yaml file.](https://docs.cyberark.com/audit/latest/en/content/yaml/getsessions.json)
+
+Session Data Service 0.1.0 OAS 3.0
+----------------------------------
+
+[../yaml/getsessions.json](https://docs.cyberark.com/audit/latest/en/content/yaml/getsessions.json)
+
+Session Data API
+
+### [default](/audit/latest/en/content/audit/isp_get-sessions-api)
+
+GET
+
+[/api/sessions/\{session_id\}/activities](/audit/latest/en/content/audit/isp_get-sessions-api)
+
+Retrieve Activities Of Session
+
+GET
+
+[/api/sessions/\{session_id\}](/audit/latest/en/content/audit/isp_get-sessions-api)
+
+Retrieve Sessions With Id Matching Given Session Id
+
+GET
+
+[/api/sessions](/audit/latest/en/content/audit/isp_get-sessions-api)
+
+Retrieve List Of Sessions
+
+#### Schemas
+
+ActivitiesOutput
+
+ActivityOutput
+
+ApiBasicError
+
+SessionEventOutput
+
+SessionsOutput
+
+[](https://docs.cyberark.com/audit/latest/en/content/audit/isp_get-sessions-api.htm)List sessions filter support
+------------------------------------------------------------------------------------------------------------------------------
+
+This section includes information about [supported filters](/audit/latest/en/content/audit/isp_get-sessions-api) and [supported filter operations](/audit/latest/en/content/audit/isp_get-sessions-api), and gives [examples of API requests](/audit/latest/en/content/audit/isp_get-sessions-api).
+
+Filtering is accomplished using the search parameter.
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_get-sessions-api.htm)Supported filters
+
+The following table gives detailed information about the API's supported filters.
+
+Supported filter details| Filter | Type | Supported functions | Filters sessions by |
+| --- | --- | --- | --- |
+| sessionId | string | equals | Session ID |
+| duration |  | greater than or equal to, less than or equal to | Session duration |
+| startTime | date (YYYY-mm-dd) time (HH:MM:SS | greater than or equal to, less than or equal to | Session start time |
+| applicationCode | string | in | Application code |
+| accessMethod | string | in | Access method |
+| protocol | string | in | Protocol |
+| platform | string | in | Platform |
+| sessionStatus | string | in | Session status |
+| endReason | string | startswith | End reason |
+| errorCode | string | startswith | Error code |
+| targetUsername | string | startswith | Target username |
+| target | string | startswith | Target address |
+| source | string | startswith | Source address |
+| User | string | startswith | User |
+| IsRecording | true / false | equals | Recording exists |
+
+### [](https://docs.cyberark.com/audit/latest/en/content/audit/isp_get-sessions-api.htm)Supported filter operations
+
+The following table gives detailed information about the API's supported filter operations.
+
+| Name | Operation |
+| --- | --- |
+| eq | equals |
+| ge | greater than or equal to |
+| le | less than or equal to |
+| in | equal to one of the specified options |
+| startswith | starts with |
+
+The supported logical operator is And.
+
+[](https://docs.cyberark.com/audit/latest/en/content/audit/isp_get-sessions-api.htm)Examples
+----------------------------------------------------------------------------------------------------------
+
+This section includes examples of requests using the API.
+
+Example 1
+
+Copy to clipboard`api/sessions?search=applicationCode IN SIA,SCA AND isRecording eq true`
+
+This request retrieves sessions that match the following criteria:
+
+*   Sessions where the application code is either SIA or SCA
+
+*   Sessions with recordings
+
+Example 2
+
+Copy to clipboard`api/sessions?search=sessionDuration GE 00:20:00 AND startTime GE 2023-10-01T11:50:00Z`
+
+This request retrieves sessions that match the following criteria:
+
+*   Sessions with duration longer than 20 minutes
+
+*   Sessions started since 2023-10-01T11:50:00Z
+
+Example 3
+
+Copy to clipboard`api/sessions?search=protocol in SSH,RDP  AND user startswith “some_user@”`
+
+This request retrieves sessions that match the following criteria:
+
+*   Sessions with either SSH or RDP protocols
+
+*   Sessions initiated by any user with a username that starts with “some_user@”

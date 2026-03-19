@@ -1,0 +1,83 @@
+---
+title: "Bring your own key (BYOK) for data encryption"
+description: "This topic describes the Bring Your Own Key (BYOK)solution that enables supported services on ISPSS to access your AWS KMS key to encrypt your organization's secrets."
+---
+
+This topic describes the Bring Your Own Key (BYOK)solution that enables supported services on ISPSS to access your AWS KMS key to encrypt your organization's secrets.
+
+CyberArk BYOK supported services include:
+
+*   Privilege Cloud - Standing access secrets and Privilege Cloud (PSM) recorded sessions are encrypted with the customer key.
+
+*   EPM - EPM secrets are encrypted with the customer key.
+
+BYOK for encrypting organizational data
+-----------------------------------------------------
+
+One of CyberArk's security principles is that data (user secrets) of BYOK-supported services, that is stored in the ISPSS backend, is encrypted at all times. By default, this is done using the CyberArk AWS KMS key. CyberArk encrypts the data at the time of storage, and then decrypts it using the same encryption key following a user request to display or retrieve it.
+
+With BYOK, you define your own encryption key and replace the default CyberArk encryption key. The solution is based on enabling BYOK supported services to access your encryption key and use it to encrypt the service-related data.
+
+BYOK enables you to:
+
+*   Fully control the encryption key used to encrypt BYOK-supported services data: You are responsible for hosting, managing access (enable/disable), and revoking the encryption key within CyberArk ISPSS.
+
+*   Control CyberArk access to your encryption key to encrypt your users' data within BYOK-supported services. At any time you can disable or revoke BYOK, to stop CyberArk access to your encryption key and effectively block access to your encrypted data.
+
+*   Rotate your encryption key at any time, based on your organizational policy, and update the encryption key used by BYOK-supported services.
+
+Supported encryption key services
+-----------------------------------------------
+
+BYOK is based on use of AWS Key Management Services (KMS) and AWS Identity and Access Management (IAM):
+
+*   [AWS KMS](https://aws.amazon.com/kms/) provides centralized control over the cryptographic keys used to protect your data.
+
+*   [AWS Identity and Access Management (IAM)](https://docs.aws.amazon.com/iam/index.html) enables you to control which users can access your AWS resources and KMS.
+
+Ownership and responsibility
+------------------------------------------
+
+*   You are solely responsible for hosting, managing, and rotating your encryption key within AWS KMS service.
+
+*   You control CyberArk access to your encryption key.
+
+*   You can revoke CyberArk access to your encryption key at any time, effectively blocking CyberArk access to your encrypted data and blocking your users' access to BYOK-supported services data.
+
+*   Key rotation is your responsibility. You can use automatic KMS rotation (once a year) or manually generate a new KMS key when required.
+
+*   You can audit and track CyberArk access to your encryption key through CloudWatch and AWS logs.
+
+*   If you revoke access to your encryption key, or if you change the encryption key without updating the ISPSS configuration, your system data is locked and cannot be decrypted without access to the original encryption key.
+
+Considerations
+----------------------------
+
+*   Customers with Secrets Manager - SaaS:
+
+When Privilege Cloud secrets are synchronized to Secrets Manager SaaS (formerly Conjur Cloud), they remain securely encrypted. However, because Secrets Manager SaaS does not support Bring Your Own Key (BYOK), the secrets are no longer encrypted using your AWS Key Management Service (KMS) key and are instead protected by Secrets Manager SaaS’s managed encryption.
+
+Warning guidelines
+--------------------------------
+
+When employing BYOK, the customer is solely responsible for safeguarding the encryption key.
+
+In case CyberArk does not have access to your key, for example, in case of deletion, loss, or alteration of the key, you will not be able to access your encrypted data.
+
+CyberArk does not store a copy of your encryption key, does not maintain any alternate means of accessing your encrypted data, and will not be able to recover your encrypted data.
+
+The Bring Your Own Key service is subject to the "Bring Your Own Key" provision in [CyberArk's SaaS Terms of Service](https://www.cyberark.com/SaaS-Terms-of-Service.pdf).
+
+BYOK audits
+-------------------------
+
+All actions performed in configuring and managing BYOK activity in your system are logged in Cyberark Audit service. See [Encryption Key Provider audit events](/audit/latest/en/content/audit/product-audits/isp-byok-audit).
+
+CRDR support
+--------------------------
+
+Cross-Region Disaster Recovery (CRDR) ensures CyberArk services remain available if an AWS region goes down. It provides a backup in another region so customers can keep accessing critical credentials and authentication. CRDR adds resilience on top of existing high availability within each region.
+
+In case of a disaster event, the DR site uses the replica KMS key to extract and use encrypted customer data during the failover period.
+
+See dedicated setup flow for enabling BYOK in a CRDR environment.

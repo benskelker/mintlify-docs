@@ -1,0 +1,52 @@
+---
+title: "The identity attack chain"
+description: "This topic describes the identity-centric attack chain. In order to build an effective cybersecurity program that mitigates risk and defends your organization against attacks, you need to understand of how malicious"
+---
+
+This topic describes the identity-centric attack chain. In order to build an effective cybersecurity program that mitigates risk and defends your organization against attacks, you need to understand of how malicious actors are attempting to compromise your company.
+
+Overview
+----------------------
+
+At CyberArk, we think like the attacker, and when we dissect the attack chain across breaches, we consistently see a dominant attack path, and it is centered around identities. So, as security practitioners, you need to put intelligent privilege controls in place, to mitigate the risks associated with that attack chain.
+
+This is why the control recommendations in the CyberArk Blueprint for Identity Security Success are centered around three guiding principles. These three guiding principles are the most prevalent risk families that occur as part of the identity attack chain used by malicious actors. These principles include preventing identity compromise, stopping lateral and vertical movement, and limiting privilege escalation and abuse.
+
+Let’s look at that attack chain to better understand what bad actors are doing and how you should be thinking about stopping them.
+
+[![Image 2: Diagram showing where attacks happen, as described in the text below](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/resources/images/blueprint-images/digital-pb1_thumb_0_0.jpg)](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/resources/images/blueprint-images/digital-pb1.jpg)
+
+Step 1: Malicious actor establishes entry
+-------------------------------------------------------
+
+Let’s start off with our malicious actor, whether internal or external to your organization. They’ll use a variety of techniques to gain access to the organization or leverage their existing knowledge and access to establish a foothold.
+
+Step 2: Identity compromise
+-----------------------------------------
+
+The first thing most attackers will do after establishing their entry is attempt to compromise an identity, whether they are a member of the general workforce, IT role, developer, or machine identity. The prevention of this common first step is also the first guiding principle, identity compromise. When you think about how to prevent this step, it’s important to consider how you can ensure that methods of authentication that can be used for impersonation (passwords, keys, session cookies) both for human and non-human identities, are kept out of harm’s way. You also want to cut back on the credential residue that exists across workstations, servers, workloads, and source code repositories, while also preventing adversaries, both internal and external, from gaining access to the keys to the kingdom or to sensitive data. You can accomplish these goals through security concepts and controls such as single sign-on, adaptive MFA, credential and session isolation, web browser protection, and so forth.
+
+Step 3: Lateral and vertical movement
+---------------------------------------------------
+
+Assuming that our bad actor found some identity of use, their next step is to attempt to circumnavigate the environment, a step referred to as lateral and vertical movement. Stopping this step is the second guiding principle. Here you need to think about how to stop an adversary from moving across the organization’s resources, whether laterally from within a risk tier (workstation to workstation or server to server) or crossing vertically into another risk tier or environment (workstation to cloud service provider or workstation to DevOps tool). It’s also helpful to understand the [web of access](/cyberark-blueprint/latest/en/content/overlapping-access) that exists today, which could be used to traverse your organization’s resources.
+
+The attacker can also go further with this step and use it to gain access to even more identities. They can go from compromising a workforce user’s workstation to a developer’s workstation, and subsequently compromise that developer’s downstream access to enterprise resources.
+
+However, by implementing role-based access controls, limiting the scope of influence that identities have within an environment, and leveraging controls like just-in-time access, you can work towards the fulfillment of the second guiding principle and add an additional layer of security.
+
+Step 4: Privilege escalation and abuse
+----------------------------------------------------
+
+With sufficient privileges, our bad actor can now begin abusing those privileges, either to take action directly or to elevate their privileges in order to carry out their end goal, a step known as privilege escalation and abuse. Limiting privilege escalation and abuse is Blueprint’s third guiding principle. As security practitioners, you need to examine how you can drive down the number and capability of identities with privilege, to reduce the attack surface, while also looking at ways to control how users gain privilege, to limit the opportunities for escalation. Ultimately, you want to prevent access from being abused, or at the very least, identify instances where it has been.
+
+Enforcing least privilege, zero standing privileges, identity threat detection, and leveraging controls that incorporate continuous authentication and adaptive response are examples of ways that we’d look to limit an attacker’s power should they ever make it to this step.
+
+That said, there may also be situations where an attacker jumps straight to escalation or abuse once they’ve compromised their initial identity, which often occurs when strong identity controls have not been properly implemented.
+
+Step 5: Actions on objectives
+-------------------------------------------
+
+Now, with this access, a malicious actor is able to execute their endgame. Their actions on objectives will likely vary from attacker to attacker and victim to victim, but commonly include objectives such as data exfiltration, establishing backdoor persistence, ransomware distribution, service disruption, supply chain spread, brand damage, and much more.
+
+Looking at access in this way gives us a valuable rule of thumb to help make decisions on when, where, and how to move forward. Always ask yourself, “Will this security control and use case help me prevent identity compromise, stop lateral and vertical movement, or limit privileged escalation and abuse against important resources to my organization?” If it doesn’t, you may want to consider prioritizing something else.

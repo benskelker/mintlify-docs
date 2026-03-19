@@ -1,0 +1,21 @@
+---
+title: "Control access using secure zones (ISPSS)"
+description: "This topic describes the secure zones mechanism that controls user and machine access to the ISPSS environment based on IP address."
+---
+
+This topic describes the secure zones mechanism that controls user and machine access to the ISPSS environment based on IP address.
+
+When applying secure zones, only users and machines from specific IP addresses are allowed to sign in to the ISPSS user portal and connect to target resources. When a user signs in, the application checks the user’s source IP against the allowed list and blocks access from potentially malicious sources.
+
+Configure secure zones
+------------------------------------
+
+1.   Access the Identity Administration user portal, and Configure the required IP address as instructed in Define secure zones.
+
+2.   Configure all IP addresses according to the following categories:
+
+To ensure full system functionality, enter all IP address categories in the following table.
+Required IP addresses for secure zones| Components | IP address definition |
+| --- | --- |
+| IP allowlist | All IP addresses that are authorized to access the ISPSS user portal, for example, your organization's IP range(s). See Configure an IP allowlist. |
+| Privilege Cloud on-premises components | For the following on-premises components, add the internet-facing outbound IP addresses, such as the network gateway or proxy: * PSM when used for native access * PSM for SSH * SecureTunnel |

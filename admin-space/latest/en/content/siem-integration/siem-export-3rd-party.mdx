@@ -1,0 +1,170 @@
+---
+title: "Integrate Audit with third-party SIEM applications"
+description: "This topic describes how to integrate third-party SIEM applications with Audit so that you can monitor system activities in a SIEM application."
+---
+
+This topic describes how to integrate third-party SIEM applications with Audit so that you can monitor system activities in a SIEM application.
+
+Overview
+----------------------
+
+You can integrate audit information such as system events and activities with a third-party SIEM application.
+
+To integrate Audit with a third-party SIEM application, you perform the following steps:
+
+<Frame>
+![Image 5](https://docs.cyberark.com/admin-space/latest/en/content/images/audit-siem-export/audit-siem-integr-wf.svg)
+</Frame>
+
+After you configure the authentication in Identity Administration and set up the integration in the Administration space, under My environment &gt; Integrations &gt; Export to SIEM, you call an Identity Administration OAuth 2 authentication API to generate an access token. This token is used in the SIEM integration APIs so that you can export the information from Audit to your SIEM application.
+
+You can create a script or plugin to automate the API calls. CyberArk provides out-of-the-box plugins for Microsoft Sentinel and IBM QRadar that you can download from the Marketplace.
+
+[](https://docs.cyberark.com/admin-space/latest/en/content/siem-integration/siem-export-3rd-party.htm)Create and configure authentication in Identity Administration
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<Frame>
+![Image 6](https://docs.cyberark.com/admin-space/latest/en/content/images/audit-siem-export/audit-siem-integr-identadm-wf.svg)
+</Frame>
+
+### Step 1: Create and configure an OAuth2 server web app in Identity Administration
+
+1.   In Identity Administration, go to Apps & Widgets &gt; Web Apps, and click Add Web Apps.
+
+2.   In the Add Web Apps dialog, click the Custom tab, locate the OAuth2 Server web app, and click Add.
+
+You will use this web app as a template for the web app that you are creating.
+
+3.   Click Yes to add the web app.
+
+4.   In the Web Apps page, select the OAuth2 Server app that you just added.
+
+5.   In the OAuth2 Server page, enter the following information:
+
+    1.   In the Settings tab, in the Application ID field, enter a name for this web app.
+
+    2.   Select the Tokens tab, and in the Token Type field, select jwtRS256. Under Auth methods, make sure that the Client Creds authentication method is selected.
+
+    3.   Select the Scope tab, click Add, copy and paste the following text in the Name field, and then click Save.
+
+Copy to clipboard`isp.audit.events:read`
+    4.   Select the Advanced tab, copy and paste the following script, and then click Save.
+
+Copy to clipboard
+```
+setClaim('tenant_id', TenantData.Get("CybrTenantID"));
+setClaim('aud', 'cyberark.isp.audit');
+```
+
+### Step 2: Create a service user in Identity Administration
+
+In this step, you create the service user and connect it to the OAuth2 web app that you created in the previous step.
+
+1.   Go to Core Services &gt; Users, and click Add User.
+
+2.   In the Create CyberArk Cloud Directory User page, enter the information in the required fields.
+
+3.   In the Status area, select is OAuth confidential client, and then click Create User.
+
+4.   In the Users page, select the All Service Users set, and then locate and select the user that you just created.
+
+5.   In the User details page, select the Application Settings tab and then click Add.
+
+6.   Locate and select the OAuth2 Server web app, and click Save.
+
+7.   Enter your user name, and click OK.
+
+### Step 3: Set the service user permissions in Identity Administration
+
+1.   Go to Apps & Widgets &gt; Web Apps, and select the OAuth2 Server web app that you added.
+
+2.   Select the Permissions tab, locate the service user that you created, and select the following permissions:
+
+    *   Grant
+
+    *   View
+
+    *   Run
+
+    *   Automatically Deploy
+
+3.   Click Save.
+
+Add a SIEM integration in the Administration space
+----------------------------------------------------------------
+
+When you add a SIEM integration, you are creating the API key that you will use to call the SIEM integration APIs.
+
+Make sure you have completed all of the steps in [Create and configure authentication in Identity Administration](/admin-space/latest/en/content/siem-integration/siem-export-3rd-party) before adding a new SIEM integration.
+
+*   After you add an integration, you can't modify the name or the description. To make changes, you must delete the integration and add a new one.
+
+*   You can only have two third-party SIEM integrations. If you want to add an integration, you must delete one of the existing integrations.
+
+1.   Go to the Administration space.
+
+2.   Select My environment &gt; Integrations &gt; Export to SIEM.
+
+3.   Click Create, and select Create SIEM integration.
+
+4.   Enter a name for the SIEM integration and an optional description.
+
+5.   Click Apply.
+
+An API key is created.
+
+Set up and automate SIEM integration using APIs
+-------------------------------------------------------------
+
+After you configure the authentication in Identity Administration and set up the integration in the Administration space, you call the following APIs:
+
+*   An Identity Administration OAuth 2 authentication API to generate an access token.
+
+*   A SIEM integration create query API. You will use the generated token, the API key, and the base URL to create a filtered query.
+
+*   A SIEM integration fetch data API. You will use the generated token, the API key, and the base URL to fetch and export audit data to your SIEM application.
+
+You can create a script or plugin to automate the export of your audit data to your SIEM application.
+
+You can call the APIs only once a minute.
+
+### Step 1: Generate an access token
+
+To generate an access token, you call the Integrate the CyberArk Identity client credentials flow API with the following parameters:
+
+The following two parameters are mandatory.
+
+API parameters| Parameter | Value |
+| --- | --- |
+| CyberArk Identity endpoint | Identity FDQN |
+| Scope | isp.audit.events:read |
+
+Example:
+
+Copy to clipboard`https://\{identity_fqdn\}/OAuth2/Token/\{WEB_APP_ID\}`
+
+### Step 2: Call the Audit SIEM integration APIs
+
+Use the values from the CyberArk Identity client credentials token API response and the SIEM integration API key to call the SIEM integration APIs. For more information about the SIEM integration APIs, see [SIEM integrations API](/audit/latest/en/content/audit/isp_siem-integration-api).
+
+1.   From the CyberArk Identity client credentials token API response, copy the following parameters to the Audit SIEM integration API header:
+
+Parameters from API response| Parameter | Value |
+| --- | --- |
+| access_token | $(token) |
+| token_type | Bearer |
+2.   In the Administration space, go to My environment &gt; Integrations &gt; Export to SIEM, and click the SIEM integration that you added.
+3.   Copy the following parameters to the SIEM integration API:
+    *   API base URL: AUDIT_API_BASE_URL
+
+    *   API key
+
+The following example has parameters from both the CyberArk Identity client credentials token API response and the SIEM integration.
+
+Copy to clipboard`curl --location 'https://$(audit_integration_endpoint)/api/audits/stream/$(some path)'`--header 'Content-Type: application/json'--header 'Authorization: Bearer $(access_token)'--header 'x-api-key: $(api key)'-d $(payload)
+
+4.   Click Close.
+
+### Step 3: Automate the Audit SIEM integration API
+
+Use a script or plugin to automate the process of querying and exporting the Audit system events and activities to your SIEM application.

@@ -1,0 +1,43 @@
+---
+title: "State of privilege and access hierarchy"
+description: "This topic discusses the different types of privileged access states and how to implement appropriate intelligent privilege controls for identities and resources within an organization."
+---
+
+This topic discusses the different types of privileged access states and how to implement appropriate intelligent privilege controls for identities and resources within an organization.
+
+Overview
+----------------------
+
+When you're building an identity security strategy to implement the appropriate intelligent privilege control to the right identity and the right resource, it’s important to understand the concept that is different types of “privileged access states”. State is in reference to the identity’s state, either in relation to its access or privilege, being secure or unsecure, and/or existing at all. These states have a direct relation on mitigating the risk of identity-related attacks, but there’s a lot of nuance in navigating these states, which is worth being familiar with.
+
+Types of privileged access states
+-----------------------------------------------
+
+There are four levels of these privilege access states: unsecured standing privilege, secure standing privilege, just-in-time access, and zero standing privilege.
+
+<Frame>
+![Image 3](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/resources/images/blueprint-images/digital-pb6.jpg)
+</Frame>
+
+*   Unsecured standing privilege is the highest level of risk state to be in. The privileges granted to identities are freestanding in perpetuity with no security controls being applied other than basic authentication. This could be an identity being granted access to enterprise systems with nothing more than their personal workstation account or a secondary account, and having no additional control to mitigate the risk of identity compromise, lateral or vertical movement, and privilege escalation or abuse.
+
+*   Secure standing privilege is the next level up in terms of privilege security. The privileges granted to identities are also freestanding in perpetuity, but some form of intelligent privilege controls are applied to mitigate those risks. This is typically in the form of MFA, credential management via a vaulting service, some form of session protection, auditing and threat detection, and response controls. While the privilege is still standing, how you interact with the privilege and the enterprise resources is protected in such a way that it mitigates the risks of identity compromise, lateral or vertical movement, and privilege escalation or abuse.
+
+*   Just-in-time access further mitigates risk by removing the access from existing in perpetuity. The privileges may continue to exist downstream on the enterprise resource, but the identity no longer has freestanding access to the resource. Just-in-time access is paired with intelligent privilege controls, such as MFA, session management, session protection, auditing, and threat detection and response. While the privilege may exist, the access does not, and access being granted just at the time of need further mitigates the risks of identity. compromise, lateral or vertical movement, and privilege escalation or abuse.
+
+*   Zero standing privilege is the pinnacle of this model, where not only is the access just-in-time, but so are the entitlements. The privileges don’t exist on the enterprise resource until the time of need. This is paired with intelligent privilege controls such as MFA, session management, session protection, auditing, and threat detection and response. The session itself is also time-bound based on security policy. In this case, neither the privilege nor the access exists in perpetuity, mitigating the most amount of risk in comparison to the other approaches.
+
+A pragmatic approach to privileged states and intelligent privilege controls
+------------------------------------------------------------------------------------------
+
+It's critical to remember that not all enterprise resources can support zero standing privilege or just-in-time privileges. Implementing these approaches to protect identities is often limited by the enterprise resource and use case we’re trying to protect. It’s important to remember that there are two overarching types of authentication schemes: non-federated and federated.
+
+Non-federated schemes are for scenarios like passwords of last resort, such as built-in local admin accounts, which can only be protected with secure standing privilege controls. They are the emergency, break-glass type accounts that have to exist in perpetuity. The identity provider, authentication, and authorization are all local to the enterprise resource, and this means that implementing just-in-time or zero standing privileges is not possible in this situation.
+
+For federated access, all three levels can be explored as options for protection. In some cases, organizations will choose to either incrementally move from one level to another, or skip levels entirely based on the internal access models they’ve developed and the appetite for change.
+
+For example, an organization which grants identities direct privileged access to enterprise resources using their personal Active Directory account (accounts also used to access their workstation and email) may choose to go directly to zero standing privilege. This is because the level of effort to implement secure standing privilege controls would exceed that of zero standing privilege, because secure standing privilege controls require an account to be managed and protected by CyberArk, and this can’t be done for primary personal accounts – a secondary account would need to be used. While this is a valid approach, and one that would mitigate risk, the effort required to operationalize it would far exceed simply analyzing the privileged access and moving to a zero standing privilege model with the personal primary accounts of those identities.
+
+However, if the organization leveraged personal secondary accounts (a second privileged account that’s used to access sensitive enterprise resources) then the level of effort required to protect them with secure standing privilege controls is less than moving directly to a state of zero standing privilege. This is because you can immediately discover, onboard, manage, and protect those secondary accounts without impacting the users of those accounts and there’s no need to analyze permissions or access to build new zero standing privilege access policies. The same can be said for shared or functional accounts, those owned by a line of business group to enable its users to access enterprise resources without needing to provision a secondary account for each person (sometimes referred to as pooled accounts). Going directly to a just-in-time or zero standing privilege model may cause too large a change in the user experience and result in pushback from the identities that you’re trying to protect.
+
+In either of these situations, organizations should continue to strive to get to a place of zero standing privilege wherever possible, but because identity security is a journey, it’s okay to be pragmatic and realistic, and to mitigate risk as quickly as possible.

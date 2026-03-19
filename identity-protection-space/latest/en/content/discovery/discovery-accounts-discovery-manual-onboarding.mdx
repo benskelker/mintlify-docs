@@ -1,0 +1,48 @@
+---
+title: "Onboard accounts manually"
+description: "This topic describes how to manually onboard accounts to a Privilege Cloud Safe, after you have reviewed the list of discovered accounts."
+---
+
+This topic describes how to manually onboard accounts to a Privilege Cloud Safe, after you have reviewed the list of discovered accounts.
+
+Manually onboard discovered accounts
+--------------------------------------------------
+
+To onboard multiple accounts at once, ensure you select accounts of the same type and subtype.
+
+1.   Review the discovered accounts, as described in Analyze discovered accounts.
+
+2.   In the discovered accounts list, select the required account(s) and click Onboard.
+
+You can select up to 100 accounts of the same type and subtype.
+3.   Fill in the following account details:
+
+| Field | Description |
+| --- | --- |
+| Safe | Select an existing Safe or [create a new Safe](/privilege-cloud-shared-services/latest/en/content/privilege cloud/privcloud-manage-safes). A Safe appears in the Safe list only when you: * Are a member of the Safe * Have the Add accounts permission Internal Safes are not displayed. |
+| Assign Platform | Select one of the existing platforms. |
+| Password | Define the account password in one of the following ways: * Automatically reset password. Privilege Cloud automatically generates new passwords and syncs the target. * Set a default password. Set a password and confirm it. This sets the passwords for the accounts in Privilege Cloud; it does not reset actual passwords on target systems. For more information about synchronizing passwords, see [Manage accounts](/privilege-cloud-shared-services/latest/en/content/privilege cloud/privcloud-manage-accounts) in the Privilege Cloud documentation. |
+4.   After selecting a platform (when onboarding a single account), you will see that expected properties (mandatory or optional) for the account are pre-filled with values, based on data from the discovered account.
+    *   You can edit these values or add new ones.
+
+    *   Mandatory properties must have values, before you can onboard the account.
+
+    *   If a property contains an error, a red icon appears next to it. Hover over the icon to view the error message.
+
+These options are available only for onboarding a single account.
+
+5.   Click Onboard. The account is added to the Accounts View.
+
+Remove discovered accounts
+----------------------------------------
+
+1.   Review the discovered accounts, as described in Analyze discovered accounts.
+
+2.   In the accounts list, remove accounts in one of the following ways:
+
+Account removal options| Option | Step |
+| --- | --- |
+| Remove selected discovered accounts | Removes only selected accounts from the current discovered accounts list. In the discovered accounts list, select the required account(s) and click Remove from list. You can select up to 100 accounts. |
+| Remove all discovered accounts | Removes all accounts currently displayed in the discovered accounts list. 1. Click the More actions button (in the shape of three dots) in the upper right corner, under your name. 2. From the drop-down, select Remove all accounts. |
+
+The removed accounts are removed from the current list and may appear again in a future list after the next scan.

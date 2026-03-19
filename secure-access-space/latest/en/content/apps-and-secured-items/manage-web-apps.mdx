@@ -1,0 +1,178 @@
+---
+title: "Manage web apps"
+description: "This topic describes how to add web apps to the Secure Access space and share credentials to your business applications with other users. You can add web applications either directly from the Secure Access space or with"
+---
+
+This topic describes how to add web apps to the Secure Access space and share credentials to your business applications with other users. You can add web applications either directly from the Secure Access space or with Land & Catch.
+
+The following information applies to all web apps that you add to the Secure Access space:
+
+*   The app appears in the Secure Access space, CyberArk Identity Browser Extension, and CyberArk Identity mobile app.
+
+*   Credentials can be auto-filled.
+
+*   After you share an app, users cannot change the app icon, URL, name, or description.
+
+If you are unable to save an application, check to see if you are trying to save text in combination with special characters, for example, `SRC=` or `onerror=`. Such combinations are unacceptable.
+
+[](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps.htm)Add web apps from the App Catalog
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+You can add applications to your Secure Access space if your system administrator has granted you permission. Any applications you add also display in the CyberArk Identity mobile app on your enrolled mobile device.
+
+If CyberArk Identity is configured to store application credentials in CyberArk PAM - Self-Hosted, then application credentials are stored and fetched from the PAM - Self-Hosted Vault.
+
+To add applications from the App Catalog:
+
+1.   Open the Secure Access space and click Add catalog or imported app.
+The App Catalog window opens. The left pane has two tabs:
+
+| Tab | Description |
+| --- | --- |
+| Search | Use this tab to display the applications in CyberArk Identity App Catalog by category or search for a specific application. |
+| Recommended | Applications assigned to you by your IT department that are optional. If there are apps available to you in the Recommended tab, you can use the search bar to search for a specific app. |
+2.   Click Add for the application you want to add, then click Yes in the pop-up window to confirm your selection.
+
+You can select multiple applications before you close the App Catalog window. If you do, you are returned to the Apps page and must click each application individually to enter your credentials for each application. Go to Update your user identity for a web app to complete the procedure for each application.
+
+3.   Click Close.
+4.   In the General tab, enter the following details for the application:
+
+| Application Settings | Description |
+| --- | --- |
+| Tags | (Optional) Refer to [Create and assign a tag](/secure-access-space/latest/en/content/apps-and-secured-items/launch-apps) |
+| Notes | (Optional) Enter application information that you want to keep track of, or information you want to share with other users (if application sharing is enabled). Users that you share your application with cannot delete or modify the content you add to this field. |
+| User Identity (User Name and Password) | Refer to Update your user identity for a web app. These credentials may be different than the user name and password you use to sign in to the Secure Access space. |
+| Refer to [Share business application credentials](/secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps), for information about sharing applications with other users. |
+5.   Click Save to complete the application configuration.
+
+The application is now listed on your Apps page.
+
+Add custom web apps
+---------------------------------
+
+A custom web app can be any web app that is not in the App Catalog and is not imported using a .csv file. It can be a commercial web app or an app that your company developed in-house.
+
+To add a custom web app:
+
+1.   Open the Secure Access space and click Add &gt; Custom app.
+
+2.   Enter the app URL, name, and description, then click Save.
+
+The URL must use HTTP or HTTPS. If the App Catalog already contains an app with the same hostname or URL, you can select it from the dropdown.
+
+3.   On the Application Settings - General tab, enter your app Username and Password, along with any tags, folders, and notes you want to use. Click Save.
+
+Import app accounts
+---------------------------------
+
+You can import accounts and notes from a third-party password manager or a comma-separated value (.csv) file to WPM. For instructions, see Import accounts.
+
+Add a different account to your user portal for the same app
+--------------------------------------------------------------------------
+
+1.   Go to the web site of an app that you want to add to the user portal, then log in with your credentials.
+
+If the Browser Extension matches the domain to a site in your User Portal it asks if you would like to update your existing account or add a new account for that app.
+
+2.   Click Add.
+3.   Enter the name of the site as you want it to appear in your User Portal.
+
+The default name is the site with your username appended. This is useful if you have multiple accounts with the same service provider. For example:
+
+Facebook &lt;your_username&gt;
+
+4.   (Optional) Click More, then enter a description or upload a custom app icon.
+5.   Click Yes to add the app to your User Portal.
+
+Update credentials for an existing app in your Secure Access space
+--------------------------------------------------------------------------------
+
+1.   Go to the web site of an app that you want to update in the User Portal, then sign in with your updated credentials.
+
+If the Browser Extension matches the domain to a site in your Secure Access space, it asks if you would like to update your existing account or add a new account for that app.
+
+2.   Click Update to update the credentials for the app in your User Portal.
+
+[](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps.htm)Edit application attributes in your Secure Access space
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+You can edit the following attributes for applications that you added with the Land and Catch feature.
+
+Your administrator must enable this through a policy setting. Your administrator might allow you to edit any or all of these attributes.
+
+*   Name
+
+*   Description
+
+*   Logo
+
+*   URL
+
+Editing these attributes gives you flexibility to edit the application so it displays in the User Portal as you expect. In addition, it enables you to fix the URL if necessary. For example, Land and Catch might have captured a registration URL for a new account, but going forward you need a sign in URL.
+
+To edit application attributes
+
+1.   Click Application Settings on the application that you want to edit.
+2.   Hover over the area that you want to edit, then click the edit icon.
+
+This is applicable for the logo, name, and description attributes.
+
+The maximum size and dimensions for the logo image is 1 MB, 1024 x 1024.
+
+For example, hover over the application name to rename it.
+
+<Frame>
+![Image 1](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/l&c-editname.png)
+</Frame>
+
+3.   Edit the URL, if necessary.
+
+URL is a required field, and the value must be a valid URL, including the protocol. For example, https://www.example.com, not www.example.com.
+
+4.   Click Save when you are finished editing.
+
+[](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps.htm)Share business application credentials
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+This section describes how to share user password application credentials with other CyberArk Identity users. You can share these credentials for applications that are:
+
+*   Added manually from CyberArk Identity App Catalog
+
+*   Imported from a third-party password manager
+
+*   Captured with Land & Catch
+
+Make sure you only share credentials for business applications. Do not share your personal application credentials or any personally identifiable information with other users.
+
+Be aware of the following limitations:
+
+*   Before you can share user password business application credentials, your administrator must add you to a role with the Shared Credentials administrative right.
+
+*   When you share web apps, secured items, and folders, only Universal and Global Security groups are supported. However, you can also share these items with individual users and roles.
+
+The Shared Credentials administrative right enables the following functionality:
+
+*   Add CyberArk Identity users, groups or roles that you want to have access to your application credentials
+
+*   Set password modification restrictions
+
+*   Add a start and end time for access to the application
+
+*   Revoke application sharing for a specific user, group, or role
+
+[](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps.htm) To share user password business application credentials from the Secure Access space
+
+1.   Sign in to the Identity User Portal and click Applications.
+
+2.   [](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-web-apps.htm)Mouse over the application you want to share with other users, then click the Application Settings icon.
+
+<Frame>
+![Image 2](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/userportalappsettingsicon.png)
+</Frame>
+
+3.   Click the Sharing tab.
+
+<Frame>
+![Image 3](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/appsharingtab_782x248.png)
+</Frame>

@@ -1,0 +1,81 @@
+---
+title: "Approve or reject an on-demand access request"
+description: "This topic explains how to approve or reject requests for on-demand access to cloud consoles when you are a designated approver."
+---
+
+This topic explains how to approve or reject requests for on-demand access to cloud consoles when you are a designated approver.
+
+When you approve a request, you grant the user access to the requested console for the specified time window.
+
+To complete these tasks using APIs, see [Access request APIs](/secure-access-space/latest/en/content/cloud-consoles/ar-apis).
+
+Where to find access requests
+-------------------------------------------
+
+Requests for you to handle are displayed in the Secure Access space, under Access requests&gt;For my approval.
+
+You also receive an email notification when a request requires your approval.
+
+If you don't handle a request before the time of the requested access passes, the request will expire.
+
+Approval requirements and visibility
+--------------------------------------------------
+
+*   You can access the request approvals page only if you have been granted the Access request approver role. This role allows access to view the approval page only.
+
+*   Your ability to approve a request depends on the type of access being requested:
+
+    *   Cloud console requests: Your right to approve depends on whether you have been delegated to approve those requests. For more information, see Set up on-demand access.
+
+Each request can have up to 15 approvers. Even if more than 15 users are delegated as approvers, only 15 are assigned to approve the request.
+
+*   Access requests for cloud consoles appear only when in-platform approval is configured. For more information about configuring on-demand access to web applications using the in-platform approval channel, see Set up on-demand access.
+
+Audits
+--------------------
+
+All audit trail data related to submitting and handling on-demand access requests is available in the Audit service. For more information, see [Access request audit events](/audit/latest/en/content/audit/product-audits/isp-ar-audit).
+
+Approve or reject an access request
+-------------------------------------------------
+
+1.   In the Secure Access space, click Access requests&gt;For my approval – Cloud.
+
+By default, requests appear with the most urgent deadlines first. You can use the filter and search functionality to locate a specific request. For example, you might want to filter the view by request status, priority, or location type, or to search for a specific target address, requester name, or reason.
+
+2.   Hover over the row containing the request to be handled, so that the Approve and Reject buttons are visible.
+
+3.   Use the buttons to approve or reject the request.
+
+    *   If you approve a request, it is optional to add a comment.
+
+    *   If you reject a request, you must enter a comment, giving the reason for the rejection.
+
+After you handle a request, an email is sent to the requester and the status of the request is updated on their My requests page.
+
+After you approve the request, the access policy is created in the system.
+
+Once the For my approval page is open, it is not automatically updated. So, to get the most up-to-date requests, click Refresh to update the page or adjust the filters.
+
+How approvers are selected
+----------------------------------------
+
+When a user submits an access request, the system selects approvers based on a predefined hierarchy that is defined by the service. For example, Secure Cloud Access (SCA) defines its own approval hierarchy.
+
+The system evaluates approvers level by level:
+
+*   It first attempts to retrieve approvers from the first level.
+
+*   If no valid approvers are found, it evaluates the next level.
+
+*   The process continues until valid approvers are identified.
+
+The system moves to the next level in the following situations:
+
+*   No approvers are defined at the current level.
+
+*   A technical issue prevents retrieving the approvers.
+
+*   The only approver identified is the same user who submitted the request.
+
+Users cannot approve their own requests. If the requester is the only approver found at a given level, the system automatically evaluates the next level in the hierarchy.

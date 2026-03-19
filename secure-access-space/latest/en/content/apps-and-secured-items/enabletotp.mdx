@@ -1,0 +1,108 @@
+---
+title: "Use time-based passwords (TOTPs) for sites with two-factor authentication"
+description: "This topic describes how to access applications in Workforce Password Management using a time-based one-time password (TOTP) for multi-factor authentication. You can use a TOTP to access applications that you have added"
+---
+
+This topic describes how to access applications in Workforce Password Management using a time-based one-time password (TOTP) for multi-factor authentication. You can use a TOTP to access applications that you have added to the Secure Access space or that an administrator has shared with you. You can use a TOTP only once and only within a 30-second (default) timeframe.
+
+Configure TOTP authentication for each application
+----------------------------------------------------------------
+
+You must configure TOTP for each application you want to access. Decide if you want to configure using the Secure Access space or the mobile app.
+
+You do not need to configure shared applications if the Admin provided a username and password.
+
+After you configure TOTP for an application in either the Secure Access space or mobile app, you will be able to access that application from both locations. You only need to configure an application once to use TOTP from the Secure Access space or mobile app.
+
+### Before you begin
+
+*   Confirm that your administrator has enabled TOTP.
+
+*   Confirm that two-factor authentication is enabled for the application. See your application documentation for specific instructions to find the settings within the application.
+
+*   [Configure in Secure Access space](/secure-access-space/latest/en/content/apps-and-secured-items/enabletotp)
+*   [Configure in mobile app](/secure-access-space/latest/en/content/apps-and-secured-items/enabletotp)
+
+1.   Open the application you are configuring and copy the authentication key.
+
+Different applications might refer to this key by different names, such as setup key, authentication key, or two-factor secret.
+2.   In the User Portal, find the application tile and open the Application Settings.
+
+1.   In Applications Settings, under User Identity, paste the authentication key you just copied from the application into the Authentication Key field. Click Apply and Save.
+
+The TOTP is displayed in the Verification Code field.
+
+    *   Some applications have a verification field. If yours has one, copy the code, then go to the application and paste the code into the verification field.
+
+    *   Some applications prompt you to download the recovery codes and save them in a safe place on a different device. Recovery codes can help you access your account if you lose your device. It is important to save them on a different device.
+
+The application is configured and you can use TOTP in the Secure Access space or on the CyberArk mobile app to access this application.
+
+1.   Open the CyberArk mobile app on your phone.
+2.   Go to the application tile in the app or in the User Portal and open the Application Settings menu.
+3.   Enter your username and password.
+
+4.   You need to add the authentication key to the application. In the Application Settings dialog box, tap +Add, then tap Scan QR Code to scan the QR code in the application or Enter key to enter the authentication key manually (or copy and paste if the application is on your phone).
+
+The app generates a TOTP code in the Verification Code field.
+
+1.   In the application, enter the TOTP code in Verification Code field. (Different applications might use slightly different terminology.)
+
+2.   In the application, tap or click Save.
+
+The application is configured and you can use TOTP in the Secure Access space or on the CyberArk mobile app to access this application.
+
+Use a TOTP to access applications
+-----------------------------------------------
+
+During authentication, you can access the TOTP in multiple ways.
+
+### WPM auto-fills the TOTP
+
+WPM automatically retrieves the TOTP and signs you in when you open the app using any of the following methods:
+
+*   Secure Access space
+
+*   Browser Extension context menu
+
+*   Browser Extension
+
+If multiple accounts are configured for the same application, click the account you want and credentials will auto-fill for that account.
+
+### [](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/enabletotp.htm)Copy and paste the TOTP
+
+If auto-fill is unavailable, you can generate a TOTP and then copy/paste from the following locations.
+
+[Browser Extension context menu](/secure-access-space/latest/en/content/apps-and-secured-items/enabletotp)
+
+1.   Go to your application sign-in page and enter your username and password, then click Sign-in.
+
+2.   In the Authentication Code field, right-click to display the Browser Extension context menu.
+
+3.   Select CyberArk &gt; Copy verification code &gt;&lt;your-account&gt;, then click  Verify.
+
+[Browser Extension](/secure-access-space/latest/en/content/apps-and-secured-items/enabletotp)
+
+1.   Open your browser and click the Browser Extension button.
+
+2.   Select the application name, then right-click and select CyberArk &gt; Copy verification code &gt;&lt;your-account&gt;.
+
+[Secure Access space](/secure-access-space/latest/en/content/apps-and-secured-items/enabletotp)
+
+1.   In the Secure Access space, find the tile for the application.
+
+2.   Click the ellipses menu in the top right corner of the tile.
+
+3.   Select Copy verification code.
+
+[CyberArk mobile app](/secure-access-space/latest/en/content/apps-and-secured-items/enabletotp)
+
+1.   Open the application sign-in page. You can do this on your phone or from the User Portal. Enter your username and password, then click Sign-in.
+
+2.   On your phone, open the CyberArk mobile app. Go to the application tile you want and open the App Settings menu.
+
+The Verification Code (TOTP) is displayed.
+
+3.   If your application is on your computer, type the Verification Code value that you see on your phone into the application verification field in the application. If the application is on your phone, tap the Copy button to copy the code and paste it into the application sign-in page.
+
+You can generate a new TOTP in the CyberArk mobile app (on iOS and Android devices) after the old one has expired.

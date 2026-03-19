@@ -1,0 +1,34 @@
+---
+title: "Collect setup details and sign in to the ISPSS user portal"
+description: "This topic describes your first steps for collecting the necessary details to sign in to the ISPSS user portal and perform the initial setup steps."
+---
+
+This topic describes your first steps for collecting the necessary details to sign in to the ISPSS user portal and perform the initial setup steps.
+
+[](https://docs.cyberark.com/ispss-deployment/latest/en/content/ispss/ispss-collect-login-and-setup-details.htm)Receive the CyberArk Welcome email to the Shared Services (ISPSS) tenant
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+When your ISPSS tenant is ready, CyberArk sends you a Welcome email with your access credentials to the ISPSS platform,including the tenant URL and user name.
+
+Upon signing in for the first time, you will be prompted to set your password. If you are unsure or have forgotten the password, please use self-service "Forgot Password" option.
+
+[](https://docs.cyberark.com/ispss-deployment/latest/en/content/ispss/ispss-collect-login-and-setup-details.htm)Save the original tenant URL for optional future use
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The original ISPSS tenant URL is an important address. In cases where a vanity URL is applied to the tenant, end users may optionally require the original URL to access targets within the CyberArk environment, for example, when connecting to privileged targets using SIA.
+
+1.   In the Welcome email, copy the domain from the address field and store it in a safe place.
+
+2.   Optionally, if you have a vanity URL applied in your tenant, send the original URL to end users who may be using SIA to access their targets.
+
+Prepare signin and setup details
+----------------------------------------------
+
+To sign in to and set up the ISPSS environment you'll need to use the following details. Be sure you have them on hand.
+
+For recommended communication configuration, see [Outbound traffic network and port requirements.](/privilege-cloud-shared-services/latest/en/content/privilege cloud/privcloud-sys-req-networks)
+
+General signin details| Required details | Used for | Format/Found in |
+| --- | --- | --- |
+| CyberArk Identity Security Platform Shared Services URL &initial user | Sign in to CyberArk Identity Security Platform Shared Services | Provided in the CyberArk Welcome email. Link to https://&lt;subdomain&gt;.cyberark.cloud See [Sign in to the ISPSS portal and access the Identity Administration portal](/ispss-deployment/latest/en/content/ispss/ispss-collect-login-and-setup-details). On first entry you're required to reset the password for the user account. |
+| InstallerUser credentials | All installation steps | Set by you at any required time, using InstallerUser built-in user. The InstallerUser password that you define applies for 24 hours and should then be redefined. Access Identity Administration to define the InstallerUser password. See [Set the Installeruser password](/ispss-deployment/latest/en/content/ispss/ispss-installeruser-password) |

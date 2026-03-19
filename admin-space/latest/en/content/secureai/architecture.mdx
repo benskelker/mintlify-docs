@@ -1,0 +1,14 @@
+---
+title: "Architecture"
+description: "[](https://docs.cyberark.com/admin-space/latest/en/content/images/secureaiarchitecture.png)"
+---
+
+[![Image 3](https://docs.cyberark.com/admin-space/latest/en/content/images/secureaiarchitecture.png)](https://docs.cyberark.com/admin-space/latest/en/content/images/secureaiarchitecture.png)
+
+The diagram above describes how an AI agent can query a Secure Infrastructure Access-protected database using natural-language requests.
+
+The AI agent is registered in AI Agents Gateway. It is created as a web app in CyberArk Identity and configured with the credentials defined by AI Agents Gateway. The agent is set to use the AI Agents Gateway URL as the Secure Infrastructure Access MCP server address.
+
+The user signs in to CyberArk Identity through AI Agents Gateway. After authentication, the user can invoke the AI agent to query the Secure Infrastructure Access-protected database using a natural-language request—for example, “Show me the data in the flight table of database A.”
+
+Natural language is converted into an SQL query and sent to the Secure Infrastructure Access MCP server. The Secure Infrastructure Access MCP server uses a native database client to query the database. The database response is converted to MCP format and returned to the AI agent, which translates it into natural language.

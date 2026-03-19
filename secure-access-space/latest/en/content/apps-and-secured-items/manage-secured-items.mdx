@@ -1,0 +1,136 @@
+---
+title: "Manage secured items"
+description: "This topic describes how to manage secured items in the Secure Access space for Workforce Password Management."
+---
+
+This topic describes how to manage secured items in the Secure Access space for Workforce Password Management.
+
+Types of secured items| secured item type | Description |
+| --- | --- |
+| Password | Credentials used to access non-web apps, such as virtual machines or on-premises applications. |
+| Secured Note | Credentials or secrets for uses other than application access. For example: app licenses, access tokens, encryption keys, and security questions. |
+
+You can move secured items into folders to group them together with other related secured items or applications. For instructions, see [Manage applications and secured items in folders](/secure-access-space/latest/en/content/apps-and-secured-items/manage-folders).
+
+Your administrator can make secured items unavailable in the Secure Access space and Browser Extension.
+
+[](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-secured-items.htm)Add a secured item to your Secure Access space
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To add a secured item to your Secure Access space:
+
+1.   In the Secure Access space, click Add and select either Password or Secured Note.
+
+2.   Complete the following fields, then click Save.
+
+| Field | Description | Applicable type | Required or Optional |
+| --- | --- | --- | --- |
+| Name | Name to display on the secured item tile in the Secure Access space for quick identification. | Secured Note Password | Required |
+| Add Tags | A tag to help organize the secured item in your Secure Access space. | Secured Note Password | Optional |
+| Add to folder | Select a folder from the dropdown or enter a folder name to create a new folder. | Password Secured Note | Optional |
+| User Name | Your username for the non-web app. | Password | Optional |
+| Password | Your password for the non-web app. | Password | Optional |
+| Notes | A string representing the non-password secret that you want to save. For example, a note can be an access token or app license. The character limit is 3999. | Secured Note Password | Required Optional |
+| Custom field | Scroll down and click Add custom field to add additional information as a name:value pair. You can add up to 10 custom fields. Name and Value fields are limited to 100 characters. Mark a custom field as Hidden to hide the field from anyone you share the secured item with using View permissions. This enables you to share common credentials while hiding personal credentials in the same Secured item. If you share an item with Edit permissions, recipients can see all custom fields, even the ones marked Hidden. ![Image 1](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/img/secureditem-customfield.png) | Secured Note Password | Optional |
+
+If you are unable to save a secured item, check to see if you are trying to save text in combination with special characters, for example, SRC= or onerror=. Such combinations are unacceptable.
+
+[](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-secured-items.htm)Find specific secured items
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+In the Secure Access space, you can search for your secured items using a variety of fields. The search results include matches based in the following fields:
+
+*   Name
+*   Username
+*   Description
+*   Custom field name
+*   File attachment name
+
+### Search for a specific secured item
+
+1.   At the top of the window, open the Search by list and select a search type (for example, **All**, **Name**, or **Username**).
+
+2.   In the Search field, enter a value to look for.
+
+3.   Press **Enter** or wait a moment for the results to appear.
+
+Filter the Secure Access space contents
+-----------------------------------------------------
+
+You can filter the contents in the Secure Access space using the following criteria:
+
+Filter options| Filter | Options |
+| --- | --- |
+| Type | * Applications * Passwords * Notes * Folders |
+| Shared | * Shared by me * Shared with me * Not shared |
+| Password risk | * Compromised * Weak * Aged Password risk filters appear only if enabled by your administrator. Detection for weak and aged passwords are early access features, provided on a case-by-case basis. |
+| Tags | Filter by custom tags |
+
+Filters use **AND** logic, so you can combine multiple criteria to refine results. For example, you can filter for applications and secured passwords with compromised passwords to quickly identify at-risk entries.
+
+### Filter the displayed contents
+
+1.   Select the filter button to expand the filter panel.
+
+2.   Under each category, select the options that match what you want to see. The contents update automatically.
+
+### Save and reuse filters
+
+Saved filters let you store up to ten filter combinations and select a default filter to load automatically each time you open the Secure Access space.
+
+#### Save a filter configuration
+
+1.   In the filter panel, select the desired filter criteria.
+
+2.   Do one of the following:
+
+    *   If no saved filter is currently selected, choose Save Filters.
+
+    *   If a saved filter is selected, choose:
+
+        *   Save to overwrite the selected filter with the current conditions.
+
+        *   Save As to create a new filter from the current conditions.
+
+3.   In the Save Filter Configuration dialog, enter a name. Filter names can contain up to 30 characters.
+
+4.   (Optional)Select Set as default to load this filter automatically whenever you open the Secure Access space.
+
+5.   Select Save.
+
+#### Manage or delete saved filters
+
+1.   Next to the Saved Filters menu, click the gear button.
+
+2.   On the Manage saved filters screen, highlight a filter's row and do one or both of the following:
+
+    *   Click Set as default to set the highlighted filter as the default filter.
+
+    *   Click Remove default to remove the highlighted filter as the default filter.
+
+    *   Click the trashcan button to delete a filter.
+
+3.   When finished, select Save Changes.
+
+[](https://docs.cyberark.com/secure-access-space/latest/en/content/apps-and-secured-items/manage-secured-items.htm)Share secured items
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+You can share secured items with other CyberArk Identity users. Only the secured item owner can share the secured item; recipients can not share with additional users.
+
+If you delete a secured item from your Secure Access space, then any users that you shared the secured item with can no longer access the secured item.
+
+When you share a secured item, any files attached to the item are also shared. The files remain in the file owner's storage space, so the recipient user's storage space is unaffected. For details on attaching files, see [Attach a file to a secured item](/secure-access-space/latest/en/content/apps-and-secured-items/manage-secured-items).
+
+When you share a secured item, make sure it does not contain any personal application credentials or other personally identifiable information. Be aware that information provided in hidden custom fields is shared with users that have Edit permission.
+
+Be aware of the following limitations:
+
+*   Before you can share user password business application credentials, your administrator must add you to a role with the Shared Credentials administrative right.
+
+*   When you share web apps, secured items, and folders, only Universal and Global Security groups are supported. However, you can also share these items with individual users and roles.
+
+To share a secured item:
+
+1.   On the secured item that you want to share, click the more options button, and select Settings.
+
+2.   Go to the Sharing tab, then click Add to display the Select User, Group, or Role dialog box.

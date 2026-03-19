@@ -1,0 +1,36 @@
+---
+title: "Access request audit events"
+description: "This topic describes the audit events and codes related to on-demand access requests for cloud consoles."
+---
+
+This topic describes the audit events and codes related to on-demand access requests for cloud consoles.
+
+Audit events by component and activity
+----------------------------------------------------
+
+Audit events and codes are available for the components and activities listed below.
+
+Access request audit events by component and activity| Component | Activity |
+| --- | --- |
+| New access request submitted | Submit |
+| Access request canceled by the requester | Delete |
+| Access request approved | Approve |
+| Access request rejected | Deny |
+| Access request failed | End |
+| Access request deleted by the service | Delete |
+| Access request handled | Submit |
+
+Audit codes
+-------------------------
+
+The following sections describe the access request audit codes according to functionality.
+
+Access request audit codes| Audit code | Audit type | Description |
+| --- | --- | --- |
+| ARSI201 | Info (Success) | A new access request was submitted by a user. |
+| ARSI205 | Info (Success) | An access request was canceled by the requester. |
+| ARSI203 | Info (Success) | An access request was approved. |
+| ARSI204 | Info (Success) | An access request was rejected. |
+| ARSI208 | Info (Success) | An access request failed. |
+| ARSI207 | Info (Success) | Access request was automatically deleted by the service after exceeding the defined retention period without resolution. |
+| ARSI209 | Info (Success) | An access request was handled successfully. |

@@ -1,0 +1,90 @@
+---
+title: "Detect, monitor, and respond to threats"
+description: "This topic introduces how to use the Threat Detection and Response page, which focuses on identifying and mitigating threats targeting identity systems within organizations."
+---
+
+This topic introduces how to use the Threat Detection and Response page, which focuses on identifying and mitigating threats targeting identity systems within organizations.
+
+Introduction
+--------------------------
+
+Many organizations struggle to detect high-risk behavior, privilege abuse, or security control bypasses by users. As a result, anomalous activity often goes unnoticed during the early stages of an attack, increasing the risk of system compromise and lasting damage.
+
+Security teams cannot automate the detection of threats and risky behavior on sensitive systems during user activities. Despite investments in proper PAM controls, they often fail to detect bypass attempts by attackers or internal employees.
+
+With Threat Detection and Response, organizations can now automatically detect and respond to privileged security events.
+
+Threat Detection and Response plays a critical role in modern cybersecurity strategies by addressing threats to identity systems. By integrating proactive and reactive measures, organizations can better protect their identity infrastructures and respond effectively to potential breaches.
+
+The following table describes the Threat Detection and Response workflow:
+
+Threat Detection and Response workflow| Step | Description |
+| --- | --- |
+| Detection | Continuously monitor identity systems to detect suspicious activities and potential threats. Analyze logs, user behaviors, and system interactions to identify anomalies. |
+| Response | Take immediate action when detecting a threat to contain and mitigate its impact. Steps include alerting security teams, isolating compromised accounts, and initiating incident response protocols. |
+
+Enhance your ability to detect and respond to threats
+-------------------------------------------------------------------
+
+CyberArk enhances identity security by enabling customers to detect and respond to threats more effectively. This approach includes:
+
+*   Data consolidation - Aggregate data from CyberArk solutions and third-party tools to create a complete view of identity-related threats.
+
+*   Advanced detection techniques - Use rule-based and AI/ML-driven methods to detect potential compromises and abuses.
+
+*   Unified response mechanisms - Automate and streamline responses to threats, leveraging our session monitoring capabilities.
+
+Manage access to Threat Detection and Response
+------------------------------------------------------------
+
+Users that are members of the Administration role have access to the Administration space and some of its capabilities.
+
+The following roles are automatically assigned to the administration users upon tenant creation:
+
+*   System Administrator
+
+*   Global Auditor (read-only)
+
+*   Privilege Cloud Administrators
+
+*   DpaAdmin
+
+The Administration role includes the following rights:
+
+Rights and their description| Right | Description |
+| --- | --- |
+| Show Administration Space | Show the Administration space in the navigator. |
+| Import data from SIEM | Show Integrations &gt; Import from SIEM page in the Administration space. |
+
+For the list of rights, see [Threat Detection and Response administrative rights](/identity-administration/latest/en/content/coreservices/usersroles/administrativerights).
+
+Roles can be assigned to a group of users or to a single user. For a list of built-in roles, see [Threat Detection and Response user roles](/identity-administration/latest/en/content/coreservices/getstarted/ispss-user-roles).
+
+### Add a member to a role
+
+1.   From the navigator, go to Identity Administration.
+
+2.   In the left pane, under Core Services, click Roles.
+
+3.   Select the role from the list of available roles.
+
+4.   Click Members, then click Add.
+
+5.   In the Add Members dialog box, start typing the user name, Active Directory/LDAP group name, or an existing role.
+
+Entries matching the string you type are displayed.
+
+6.   Select the check box associated with the user, group, or role you want to add, then click Add.
+
+7.   Click Save.
+
+Integration with SIEM systems
+-------------------------------------------
+
+You can integrate Threat Detection and Response with a Security Information and Event Management (SIEM) application to:
+
+*   Import logon events to detect credential theft and unmanaged privileged accounts. For more information, see [Import logon events](/admin-space/latest/en/content/siem-integration/siem-import).
+
+*   Export audit logs and security alerts for centralized monitoring and analysis. We support integrating Audit so you can monitor your services in any third-party SIEM application. For more information, see [SIEM integrations](/admin-space/latest/en/content/siem-integration/siem-export-main).
+
+To view the complete list of audit events reported by CyberArk, see [Threat Detection and Response audit events](/audit/latest/en/content/audit/product-audits/isp-tdr-audit).
